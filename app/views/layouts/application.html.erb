@@ -7,14 +7,70 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
     <%= csrf_meta_tags %>
+    <!-- Bootstrap Core CSS -->
   </head>
   <body>
-    <header>
-      <%= render 'layouts/navigation' %>
-    </header>
-    <main role="main">
-       <%= render 'layouts/messages' %>
-       <%= yield %>
-    </main>
+      <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <h3 class="on-color"><strong>...On Project...</strong></h3>
+          </div>
+          <!-- /.navbar-header -->
+
+          <ul class="nav navbar-top-links navbar-right">
+
+            <!-- /.dropdown -->
+            <li class="dropdown">
+              <a class="dropdown-toggle text-lateral" data-toggle="dropdown" href="#">
+                <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+              </a>
+              <ul class="dropdown-menu dropdown-user">
+                <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                </li>
+                <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                </li>
+                <li class="divider"></li>
+                <li><a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                </li>
+              </ul>
+              <!-- /.dropdown-user -->
+            </li>
+            <!-- /.dropdown -->
+          </ul>
+          <!-- /.navbar-top-links -->
+          <br>
+          <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav navbar-collapse">
+              <ul class="nav" id="side-menu">
+                <li>
+                  <a href="#" class="text-lateral"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                </li>
+
+                <li>
+                  <a href="#" class="text-lateral"><i class="fa fa-table fa-fw"></i> Tables</a>
+                </li>
+                <li>
+                  <a href="#" class="text-lateral"><i class="fa fa-edit fa-fw"></i> Forms</a>
+                </li>
+
+              </ul>
+            </div>
+            <!-- /.sidebar-collapse -->
+          </div>
+          <!-- /.navbar-static-side -->
+        </nav>
+      </div>
+      <!-- /#wrapper -->
+
+      <!-- Contenido -->
+      <%= yield %>
   </body>
 </html>
