@@ -1,0 +1,2 @@
+module MovementDetailsHelper
+end

@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Fecha:</strong>
+  <%= @material_movement.fecha %>
+</p>
+
+<p>
+  <strong>Motivo:</strong>
+  <%= @material_movement.motivo %>
+</p>
+
+<%= link_to 'Edit', edit_material_movement_path(@material_movement) %> |
+<%= link_to 'Back', material_movements_path %>

@@ -1,0 +1,2 @@
+class MovementDetail < ApplicationRecord
+end

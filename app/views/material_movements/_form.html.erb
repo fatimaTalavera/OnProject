@@ -1,0 +1,27 @@
+<%= form_for(material_movement) do |f| %>
+  <% if material_movement.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(material_movement.errors.count, "error") %> prohibited this material_movement from being saved:</h2>
+
+      <ul>
+      <% material_movement.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :fecha %>
+    <%= f.date_select :fecha %>
+  </div>
+
+  <div class="field">
+    <%= f.label :motivo %>
+    <%= f.text_field :motivo %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
