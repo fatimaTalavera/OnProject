@@ -1,13 +1,47 @@
+
+#page-wrapper {
+  border-left: transparent !important;
+}
+/* barra de navegacion y panel lateral*/
+.navbar-inverse{
+    background-color: #182E4A !important;
+    border-color: #182E4A !important;
+}
 .navbar-default{
-    background-color: #942A01 !important;
+  background-color: #182E4A !important;
+  border-color: #182E4A !important;
+  margin-left: -10px;
 }
-.navbar-default .navbar-collapse, .navbar-default .navbar-form{
-  borde-color: #942A01 !important;
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form{
+  borde-color: #182E4A !important;
 }
+/* formato titulo*/
 .on-color{
     color: white;
+    font-size: 3em;
     font-family: "Source Code Pro", Monaco, monospace;
 }
+.navbar-header {
+  float: left;
+  margin-left: 5%;
+}
+/* color de letra panel lateral*/
 .text-lateral{
   color: white !important;
+}
+/*color letras de los accesos directos*/
+.a:visited {
+  color: black;
+}
+/*color linea divisoria panel lateral*/
+.sidebar ul li {
+  border-bottom: 1px solid #182E4A !important;
+}
+.sidebar ul li a.active {
+  background-color: #264773 !important
+}
+
+.nav > li > a:hover, .nav > li > a:focus {
+  text-decoration: none;
+  background-color: #264773 !important;
 }
