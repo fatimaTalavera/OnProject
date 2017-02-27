@@ -52,10 +52,10 @@ test:
 
 production:
   adapter:  postgresql
-  host:     localhost
+  host:     ec2-107-20-193-74.compute-1.amazonaws.com
   encoding: unicode
-  database: OnProject_production
+  database: d4bmkirb1bm50m
   pool:     5
-  username: postgres
-  password: postgres
+  username: gmcieqhhbbrzph
+  password: aad9b2cfd3a37cd71286f5864376abebe0d4c0b3d2c2e46091026eaf7824528b
   template: template0
