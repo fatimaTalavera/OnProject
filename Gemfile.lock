@@ -41,7 +41,7 @@ GEM
     arel (7.1.4)
     autoprefixer-rails (6.7.5)
       execjs
-    bcrypt (3.1.11-x86-mingw32)
+    bcrypt (3.1.11)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -49,7 +49,9 @@ GEM
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
+    bootstrap_sb_admin_base_v2 (0.1.1)
     builder (3.2.3)
+    byebug (9.0.6)
     coderay (1.1.1)
     coffee-rails (4.2.1)
       coffee-script (>= 2.2.0)
@@ -57,8 +59,8 @@ GEM
     coffee-script (2.4.1)
       coffee-script-source
       execjs
-    coffee-script-source (1.12.2)
-    concurrent-ruby (1.0.4)
+    coffee-script-source (1.8.0)
+    concurrent-ruby (1.0.5)
     debug_inspector (0.0.2)
     devise (4.2.0)
       bcrypt (~> 3.0)
@@ -91,10 +93,10 @@ GEM
     minitest (5.10.1)
     multi_json (1.12.1)
     nio4r (1.2.1)
-    nokogiri (1.7.0.1-x86-mingw32)
+    nokogiri (1.7.0.1)
       mini_portile2 (~> 2.1.0)
     orm_adapter (0.5.0)
-    pg (0.19.0-x86-mingw32)
+    pg (0.19.0)
     puma (3.7.1)
     rack (2.0.1)
     rack-test (0.6.3)
@@ -149,9 +151,7 @@ GEM
     turbolinks-source (5.0.0)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
-    tzinfo-data (1.2016.10)
-      tzinfo (>= 1.0.0)
-    uglifier (3.0.4)
+    uglifier (3.1.0)
       execjs (>= 0.3.0, < 3)
     warden (1.2.7)
       rack (>= 1.0)
@@ -165,13 +165,15 @@ GEM
     websocket-extensions (0.1.2)
 
 PLATFORMS
-  x86-mingw32
+  ruby
 
 DEPENDENCIES
   better_errors
   bootstrap-sass
+  bootstrap_sb_admin_base_v2 (~> 0.1.0)
   byebug
   coffee-rails (~> 4.2)
+  coffee-script-source (= 1.8.0)
   devise
   high_voltage
   jbuilder (~> 2.5)
@@ -191,4 +193,4 @@ RUBY VERSION
    ruby 2.2.6p396
 
 BUNDLED WITH
-   1.13.6
+   1.14.5
