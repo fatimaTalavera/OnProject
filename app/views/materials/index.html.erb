@@ -1,37 +1,9 @@
-<p id="notice"><%= notice %></p>
+<div id="page-wrapper">
+  <div class="row">
+    <div class="col-lg-12">
+      <%= render 'table' %>
 
-<h1>Materials</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th>Descripcion</th>
-      <th>Unidad medida</th>
-      <th>Cantidad</th>
-      <th>Precio</th>
-      <th>Stock minimo</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @materials.each do |material| %>
-      <tr>
-        <td><%= material.nombre %></td>
-        <td><%= material.descripcion %></td>
-        <td><%= material.unidad_medida %></td>
-        <td><%= material.cantidad %></td>
-        <td><%= material.precio %></td>
-        <td><%= material.stock_minimo %></td>
-        <td><%= link_to 'Show', material %></td>
-        <td><%= link_to 'Edit', edit_material_path(material) %></td>
-        <td><%= link_to 'Destroy', material, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Material', new_material_path %>
+      <%= link_to 'Nuevo Material', new_material_path, :class => 'btn btn-default' %>
+    </div>
+  </div>
+</div>

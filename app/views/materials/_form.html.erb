@@ -1,47 +1,85 @@
 <%= form_for(material) do |f| %>
-  <% if material.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(material.errors.count, "error") %> prohibited this material from being saved:</h2>
+    <% if material.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(material.errors.count, "error") %> prohibited this material from being saved:</h2>
 
-      <ul>
-      <% material.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+          <ul>
+            <% material.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="row">
+      <form class="form-horizontal">
+
+        <div class="field col-md-12 form-group">
+          <div class="field col-md-6 form-group">
+            <div class="col-sm-2">
+              <%= f.label :nombre %>
+            </div>
+            <div class="col-sm-10 ">
+              <%= f.text_field :nombre, autofocus: true, :class => 'form-control' %>
+            </div>
+          </div>
+
+          <div class="field col-md-6 form-group">
+            <div class="col-sm-2">
+              <%= f.label :descripcion %>
+            </div>
+            <div class="col-sm-10">
+              <%= f.text_field :descripcion, :class => 'form-control' %>
+            </div>
+          </div>
+        </div>
+
+        <div class="field col-md-12 form-group">
+          <div class="field col-md-6 form-group">
+            <div class="col-sm-2">
+              <%= f.label :unidad_medida %>
+            </div>
+            <div class="col-sm-2 ">
+              <%= f.text_field :unidad_medida, :class => 'form-control' %>
+            </div>
+          </div>
+
+          <div class="field col-md-6 form-group">
+            <div class="col-sm-2">
+              <%= f.label :cantidad %>
+            </div>
+            <div class="col-sm-10 ">
+              <%= f.text_field :cantidad, :class => 'form-control' %>
+            </div>
+          </div>
+        </div>
+
+        <div class="field col-md-12 form-group">
+          <div class="field col-md-6 form-group">
+            <div class="col-sm-2">
+              <%= f.label :precio %>
+            </div>
+            <div class="col-sm-5 ">
+              <%= f.text_field :precio, :class => 'form-control' %>
+            </div>
+          </div>
+
+          <div class="field col-md-6 form-group">
+            <div class="col-sm-2">
+              <%= f.label :stock_minimo %>
+            </div>
+            <div class="col-sm-5 ">
+              <%= f.number_field :stock_minimo, :class => 'form-control' %>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="actions">
+            <%= f.submit "Guardar", :class => 'btn btn-primary margen' %>
+            <%= link_to 'Cancelar', materials_path, :class => 'btn btn-default' %>
+          </div>
+        </div>
+      </form>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :nombre %>
-    <%= f.text_field :nombre %>
-  </div>
-
-  <div class="field">
-    <%= f.label :descripcion %>
-    <%= f.text_field :descripcion %>
-  </div>
-
-  <div class="field">
-    <%= f.label :unidad_medida %>
-    <%= f.text_field :unidad_medida %>
-  </div>
-
-  <div class="field">
-    <%= f.label :cantidad %>
-    <%= f.text_field :cantidad %>
-  </div>
-
-  <div class="field">
-    <%= f.label :precio %>
-    <%= f.text_field :precio %>
-  </div>
-
-  <div class="field">
-    <%= f.label :stock_minimo %>
-    <%= f.number_field :stock_minimo %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
 <% end %>
