@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :materials
   resources :movement_details
   resources :material_movements
   resources :materials
