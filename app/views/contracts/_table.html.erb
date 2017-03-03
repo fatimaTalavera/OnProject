@@ -1,0 +1,34 @@
+<div class="panel panel-default">
+  <h1 class="panel-heading">Lista de Contratos</h1>
+  <div class="panel-body">
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered table-hover">
+        <thead>
+        <tr>
+          <th>Obra</th>
+          <th>Cliente</th>
+          <th>Fecha de inicio</th>
+          <th>Fecha de fin</th>
+          <th>Monto</th>
+          <th colspan="3"></th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <% @contracts.each do |contract| %>
+            <tr>
+              <td><%= contract.name %></td>
+              <td><%= contract.client.name %> <%= contract.client.last_name %></td>
+              <td><%= contract.start_date %></td>
+              <td><%= contract.end_date %></td>
+              <td><%= contract.amount %></td>
+              <td><%= link_to 'Ver', contract %></td>
+              <td><%= link_to 'Editar', edit_contract_path(contract) %></td>
+              <td><%= link_to 'Eliminar', contract, method: :delete, data: {confirm: 'Estas seguro?' } %></td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

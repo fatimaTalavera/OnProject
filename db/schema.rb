@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170302004743) do
+ActiveRecord::Schema.define(version: 20170303020714) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,17 @@ ActiveRecord::Schema.define(version: 20170302004743) do
     t.string   "phone"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+  end
+
+  create_table "contracts", force: :cascade do |t|
+    t.integer  "client_id"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.string   "name"
+    t.decimal  "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_contracts_on_client_id", using: :btree
   end
 
   create_table "material_movements", force: :cascade do |t|
@@ -70,4 +81,5 @@ ActiveRecord::Schema.define(version: 20170302004743) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "contracts", "clients"
 end
