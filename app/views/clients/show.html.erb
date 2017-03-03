@@ -1,34 +1,44 @@
-<p id="notice"><%= notice %></p>
+<div id="page-wrapper">
+  <div class="row">
+    <div class="panel panel-default">
+      <div class="panel panel-heading">Ver Cliente</div>
+      <p id="notice"><%= notice %></p>
+      <div class="panel-body">
+        <p>
+          <strong>Nombre:</strong>
+          <%= @client.name %>
+        </p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @client.name %>
-</p>
+        <p>
+          <strong>Apellido:</strong>
+          <%= @client.last_name %>
+        </p>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @client.last_name %>
-</p>
+        <p>
+          <strong>Documento:</strong>
+          <%= @client.identification_document %>
+        </p>
 
-<p>
-  <strong>Identification document:</strong>
-  <%= @client.identification_document %>
-</p>
+        <p>
+          <strong>Correo:</strong>
+          <%= @client.email %>
+        </p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @client.email %>
-</p>
+        <p>
+          <strong>Direccion:</strong>
+          <%= @client.adress %>
+        </p>
 
-<p>
-  <strong>Adress:</strong>
-  <%= @client.adress %>
-</p>
+        <p>
+          <strong>Telefono:</strong>
+          <%= @client.phone %>
+        </p>
+      </div>
 
-<p>
-  <strong>Phone:</strong>
-  <%= @client.phone %>
-</p>
-
-<%= link_to 'Edit', edit_client_path(@client) %> |
-<%= link_to 'Back', clients_path %>
+      <div class="panel-footer">
+        <%= link_to 'Editar', edit_client_path(@client), :class => 'btn btn-default' %> |
+        <%= link_to 'Atras', clients_path %>
+      </div>
+    </div>
+  </div>
+</div>
