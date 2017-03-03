@@ -1,0 +1,40 @@
+<div id="page-wrapper">
+  <div class="row">
+    <div class="panel panel-default">
+      <div class="panel panel-heading">Contrato</div>
+      <p id="notice"><%= notice %></p>
+      <div class="panel-body">
+        <p>
+          <strong>Obra:</strong>
+          <%= @contract.name %>
+        </p>
+
+        <p>
+          <strong>Cliente:</strong>
+          <%= @contract.client.name %> <%= @contract.client.last_name %>
+        </p>
+
+        <p>
+          <strong>Fecha de inicio:</strong>
+          <%= @contract.start_date %>
+        </p>
+
+        <p>
+          <strong>Fecha de cierre:</strong>
+          <%= @contract.end_date %>
+        </p>
+
+        <p>
+          <strong>Monto:</strong>
+          <%= @contract.amount %>
+        </p>
+
+      </div>
+
+      <div class="panel-footer">
+        <%= link_to 'Editar', edit_contract_path(@contract), :class => 'btn btn-default' %> |
+        <%= link_to 'Atras', contracts_path %>
+      </div>
+    </div>
+  </div>
+</div>

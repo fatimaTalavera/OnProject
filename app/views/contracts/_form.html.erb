@@ -1,0 +1,84 @@
+<%= form_for(contract) do |f| %>
+    <% if contract.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(contract.errors.count, "error") %> prohibited this contratc from being saved:</h2>
+
+          <ul>
+            <% contract.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="row">
+      <form class="form-horizontal">
+
+        <div class="field col-md-12 form-group">
+          <div class="field col-md-6 form-group">
+            <div class="col-md-3">
+              <%= f.label :name, 'Nombre de la obra:', :class => 'control-label' %>
+            </div>
+            <div class="col-md-9">
+              <%= f.text_field :name, :class => 'form-control', autofocus:true %>
+            </div>
+          </div>
+
+          <div class="field col-md-6 form-group">
+            <div class="col-md-2">
+              <%= f.label :client, 'Cliente:', :class => 'control-label' %>
+            </div>
+            <div class="col-md-10">
+              <%= f.collection_select :client_id, Client.all.order('name'), :id, :full_name, {prompt: "Ninguno"} ,:class => 'btn btn-default'%>
+            </div>
+          </div>
+        </div>
+
+        <div class="field col-md-12 form-group">
+          <div class="field col-md-6 form-group">
+            <div class="col-md-3">
+              <%= f.label :start_date, 'Inicio de ejecucion:', :class => 'control-label' %>
+            </div>
+            <div class="col-md-5">
+              <%= f.date_select :start_date, :class => 'form-control' %>
+            </div>
+          </div>
+
+          <div class="field col-md-6 form-group">
+            <div class="col-md-2">
+              <%= f.label :end_date, 'Fin de Ejecucin:', :class => 'control-label' %>
+            </div>
+            <div class="col-md-10">
+              <%= f.date_select :end_date, :class => 'form-control' %>
+            </div>
+          </div>
+        </div>
+
+        <div class="field col-md-12 form-group">
+          <div class="field col-md-6 form-group">
+            <div class="col-md-3">
+              <%= f.label :amount, 'Monto:', :class => 'control-label' %>
+            </div>
+            <div class="col-md-9">
+              <%= f.number_field :amount, :class => 'form-control' %>
+            </div>
+          </div>
+
+          <div class="field col-md-12 form-group">
+          </div>
+
+          <div class="field col-md-12 form-group">
+            <% if controller.action_name == 'edit'  %>
+                <%= f.submit 'Guardar', :class => "btn btn-primary" %>
+            <% else %>
+                <%= f.submit 'Agregar', :class => 'btn btn-primary'%>
+            <% end %>
+            <%= link_to 'Cancelar',  contracts_path , class: 'btn btn-default' %>
+<% end %>
+</div>
+
+</div>
+</form>
+</div>
+
+
