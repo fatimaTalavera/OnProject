@@ -38,8 +38,9 @@
                 <li><a href="#"><i class="fa fa-gear fa-fw"></i> Configuraciones</a>
                 </li>
                 <li class="divider"></li>
-                <li><a href="#"><i class="fa fa-sign-out fa-fw"></i> Salir</a>
-                </li>
+                <li><%= link_to destroy_user_session_path, method: :delete do %>
+                    <i class="fa fa-sign-out fa-fw"></i> Salir
+                <% end %></li>
               </ul>
               <!-- /.dropdown-user -->
             </li>
@@ -73,7 +74,7 @@
                   <a href="#" class="text-lateral"><i class="fa fa-edit fa-fw"></i>Contratos</a>
                 </li>
                 <li>
-                  <a href="#" class="text-lateral"><i class="fa fa-users fa-fw"></i>Usuarios</a>
+                  <a href="/users" class="text-lateral"><i class="fa fa-users fa-fw"></i>Usuarios</a>
                 </li>
                 <li>
                   <a href="#" class="text-lateral"><i class="fa fa-briefcase fa-fw"></i>Servicios</a>
