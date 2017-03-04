@@ -65,6 +65,8 @@ GEM
       execjs
     coffee-script-source (1.8.0)
     concurrent-ruby (1.0.5)
+    datatables-rails-bs3 (0.0.6)
+      jquery-rails
     debug_inspector (0.0.2)
     devise (4.2.0)
       bcrypt (~> 3.0)
@@ -197,6 +199,7 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.2)
   coffee-script-source (= 1.8.0)
+  datatables-rails-bs3
   devise
   high_voltage
   jbuilder (~> 2.5)
