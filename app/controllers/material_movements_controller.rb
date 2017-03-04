@@ -69,6 +69,7 @@ class MaterialMovementsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def material_movement_params
-      params.require(:material_movement).permit(:fecha, :motivo)
+      params.require(:material_movement).permit(:fecha, :motivo,
+        :movement_details_attributes => [:id, :cantidad, :material_id, :_destroy])
     end
 end

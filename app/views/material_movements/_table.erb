@@ -1,0 +1,29 @@
+<div class="panel panel-default">
+  <h1 class="panel-heading"> Lista de Movimientos de Materiales </h1>
+  <div class="panel-body">
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered table-hover">
+        <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Motivo</th>
+          <th colspan="3">Acciones</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <% @material_movements.each do |material_movement| %>
+            <tr>
+              <td><%= material_movement.fecha %></td>
+              <td><%= material_movement.motivo %></td>
+
+              <td><%= link_to 'Show', material_movement %></td>
+              <td><%= link_to 'Edit', edit_material_movement_path(material_movement) %></td>
+              <td><%= link_to 'Destroy', material_movement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

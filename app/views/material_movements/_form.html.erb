@@ -1,4 +1,5 @@
-<%= form_for(material_movement) do |f| %>
+
+<%= nested_form_for(material_movement) do |f| %>
   <% if material_movement.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(material_movement.errors.count, "error") %> prohibited this material_movement from being saved:</h2>
@@ -20,7 +21,16 @@
     <%= f.label :motivo %>
     <%= f.text_field :motivo %>
   </div>
-
+    <div class="field">
+    <%= f.fields_for :movement_details do |detalle| %>
+        <tr class="fields">
+          <td><%= detalle.number_field :cantidad %></td>
+          <td><%= detalle.number_field :material_id %></td>
+          <td></td><%= detalle.link_to_remove "Remove this task" %></td>
+        </tr>
+    <% end %>
+    <p><%= f.link_to_add "Agregar movimiento", :movement_details %></p>
+    </div>
   <div class="actions">
     <%= f.submit %>
   </div>

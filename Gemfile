@@ -13,6 +13,7 @@ gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'coffee-script-source','1.8.0'
+gem 'nested_form'
 # gema para el template
 gem 'bootstrap_sb_admin_base_v2', '~> 0.1.0'
 group :development, :test do

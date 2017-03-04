@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  material_movement_id: 1
+  material_movement: one
+  material: one
   cantidad: 1.5
 
 two:
-  material_movement_id: 1
+  material_movement: two
+  material: two
   cantidad: 1.5

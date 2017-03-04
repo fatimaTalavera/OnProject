@@ -15,4 +15,5 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require bootstrap_sb_admin_base_v2
+//= require jquery_nested_form
 //= require_tree .
