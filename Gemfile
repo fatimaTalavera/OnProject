@@ -12,7 +12,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
-gem 'coffee-script-source','1.8.0'
+gem 'coffee-script-source', '1.8.0'
 # gema para el template
 gem 'bootstrap_sb_admin_base_v2', '~> 0.1.0'
 group :development, :test do
@@ -26,8 +26,10 @@ gem 'bootstrap-sass'
 gem 'devise'
 gem 'high_voltage'
 gem 'pg'
+gem 'rails_best_practices'
 group :development do
   gem 'better_errors'
   gem 'rails_apps_pages'
   gem 'rails_layout'
+  gem 'brakeman', :require => false
 end
