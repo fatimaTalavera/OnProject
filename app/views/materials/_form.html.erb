@@ -28,23 +28,15 @@
             <div class="col-sm-2">
               <%= f.label :description, 'Descripcion:' %>
             </div>
-            <div class="col-sm-8">
+            <div class="col-sm-9">
               <%= f.text_field :description, :class => 'form-control' %>
             </div>
           </div>
         </div>
-
         <div class="field col-md-12 form-group">
-          <div class="field col-md-6 form-group">
-            <div class="col-sm-2">
-              <%= f.label :measurement_unit, 'Unidad de medida' %>
-            </div>
-            <div class="col-sm-4 ">
-              <%= f.text_field :measurement_unit, :class => 'form-control' %>
-            </div>
-          </div>
-          <div class="field col-md-6 form-group">
-            <div class="col-sm-2">
+          <br>
+          <div class="field col-md-3 form-group">
+            <div class="col-sm-4">
 
               <%= f.label :quantity, 'Cantidad:' %>
             </div>
@@ -52,22 +44,27 @@
               <%= f.text_field :quantity, :class => 'form-control' %>
             </div>
           </div>
-        </div>
+          <div class="field col-md-3 form-group">
+            <div class="col-sm-4">
+              <%= f.label :measurement_unit, 'Ud. de medida:' %>
+            </div>
+            <div class="col-sm-4   ">
+              <%= f.text_field :measurement_unit, :class => 'form-control' %>
+            </div>
+          </div>
 
-        <div class="field col-md-12 form-group">
-          <div class="field col-md-6 form-group">
-            <div class="col-sm-2">
+          <div class="field col-md-3 form-group">
+            <div class="col-sm-4">
               <%= f.label :price, 'Precio:' %>
             </div>
-            <div class="col-sm-5 ">
-
+            <div class="col-sm-7 ">
               <%= f.text_field :price, :class => 'form-control' %>
             </div>
           </div>
 
 
-          <div class="field col-md-6 form-group">
-            <div class="col-sm-2">
+          <div class="field col-md-3 form-group">
+            <div class="col-sm-5">
               <%= f.label :minimun_stock, 'Stock minimo:' %>
             </div>
             <div class="col-sm-5 ">
@@ -75,13 +72,20 @@
             </div>
           </div>
         </div>
-        <div class="col-sm-6">
 
-          <div class="actions">
-            <%= f.submit "Guardar", :class => 'btn btn-primary margen' %>
+        <div class="field col-md-12 form-group">
+          <br>
+          <div class="field col-md-3 form-group">
+          <% if controller.action_name == 'edit'  %>
+              <%= f.submit 'Guardar', :class => "btn btn-primary" %>
+          <% else %>
+              <%= f.submit 'Agregar', :class => 'btn btn-primary'%>
+          <% end %>
             <%= link_to 'Cancelar', materials_path, :class => 'btn btn-default' %>
+          <% end %>
           </div>
-        </div>
+          </div>
+
       </form>
     </div>
-<% end %>
+

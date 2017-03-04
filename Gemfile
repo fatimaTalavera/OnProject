@@ -27,8 +27,10 @@ gem 'bootstrap-sass'
 gem 'devise'
 gem 'high_voltage'
 gem 'pg'
+gem 'rails_best_practices'
 group :development do
   gem 'better_errors'
   gem 'rails_apps_pages'
   gem 'rails_layout'
+  gem 'brakeman', :require => false
 end
