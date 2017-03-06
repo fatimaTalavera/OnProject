@@ -1,8 +1,12 @@
 <div id="page-wrapper">
-<h1>Editing Material Movement</h1>
-
-<%= render 'form', material_movement: @material_movement %>
-
-<%= link_to 'Show', @material_movement %> |
-<%= link_to 'Back', material_movements_path %>
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Editar Movimiento</h1>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <br>
+    <%= render 'form', material_movement: @material_movement %>
+    <br>
+  </div>
 </div>

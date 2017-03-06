@@ -1,15 +1,54 @@
-<p id="notice"><%= notice %></p>
 <div id="page-wrapper">
-<p>
-  <strong>Fecha:</strong>
-  <%= @material_movement.fecha %>
-</p>
+  <div class="row">
+    <div class="panel panel-default">
+      <div class="panel panel-heading">Ver Movimiento</div>
+      <div class="panel-body">
+        <div class="col-md-12">
+          <div class="col-md-4">
+            <strong>Contrato:</strong>
+            <%= @material_movement.contract.name %>
+          </div>
 
-<p>
-  <strong>Motivo:</strong>
-  <%= @material_movement.motivo %>
-</p>
+          <div class="col-md-4">
+            <strong>Motivo:</strong>
+            <%= @material_movement.motivo %>
+          </div>
 
-<%= link_to 'Edit', edit_material_movement_path(@material_movement) %> |
-<%= link_to 'Back', material_movements_path %>
+          <div class="col-md-4">
+            <strong>Fecha:</strong>
+            <%= @material_movement.fecha %>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <div class="col-md-4">
+          <div class="form-group">
+            <div class="panel panel-default">
+      <table class="table table-striped table-bordered", cellspacing="0" width="100%">
+        <thead>
+        <tr>
+          <th>Material</th>
+          <th>Cantidad</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @material_movement.movement_details.each do |detalle| %>
+            <td><%= detalle.material.name %></td>
+            <td><%= detalle.cantidad %></td>
+        <% end %>
+        </tbody>
+      </table>
+              </div>
+          </div>
+        </div>
+      </div>
+
+      <br><br><br><br>
+      <div class="panel-footer">
+        <%= link_to 'Editar', edit_material_movement_path(@material_movement), :class => 'btn btn-default' %> |
+        <%= link_to 'Atras', material_movements_path %>
+      </div>
+    </div>
+  </div>
 </div>

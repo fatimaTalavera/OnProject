@@ -1,37 +1,77 @@
-
 <%= nested_form_for(material_movement) do |f| %>
-  <% if material_movement.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(material_movement.errors.count, "error") %> prohibited this material_movement from being saved:</h2>
+    <% if material_movement.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(material_movement.errors.count, "error") %> prohibited this material_movement from being saved:</h2>
 
-      <ul>
-      <% material_movement.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :fecha %>
-    <%= f.date_select :fecha %>
-  </div>
-
-  <div class="field">
-    <%= f.label :motivo %>
-    <%= f.text_field :motivo %>
-  </div>
-    <div class="field">
-    <%= f.fields_for :movement_details do |detalle| %>
-        <tr class="fields">
-          <td><%= detalle.number_field :cantidad %></td>
-          <td><%= detalle.number_field :material_id %></td>
-          <td></td><%= detalle.link_to_remove "Remove this task" %></td>
-        </tr>
+          <ul>
+            <% material_movement.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
     <% end %>
-    <p><%= f.link_to_add "Agregar movimiento", :movement_details %></p>
-    </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
+    <div class="row">
+      <form class="form-horizontal">
+        <div class="field col-md-12 form-group">
+
+          <div class="field col-md-4 form-group">
+            <div class="col-md-2">
+              <%= f.label :contract, 'Contrato:', :class => 'control-label' %>
+            </div>
+            <div class="col-md-10">
+              <%= f.collection_select(:contract_id, Contract.all, :id, :name, {prompt: 'Seleccionar'}, :class => 'form-control') %>
+            </div>
+          </div>
+
+          <div class="field col-md-4 form-group">
+            <div class="col-md-2">
+              <%= f.label :motivo, 'Motivo:', :class => 'control-label' %>
+            </div>
+            <div class="col-md-10">
+              <%= f.text_field :motivo, :class => 'form-control' %>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="col-md-3">
+              <div class="form-group">
+                <div class="panel panel-default">
+                  <div class="panel panel-heading">
+                    <b>Movimientos</b>
+                  </div>
+                  <table id="movimientos_detalles" class="display", cellspacing="0" width="100%">
+                    <tr>
+                      <th>Material</th>
+                      <th>Cantidad</th>
+                      <th></th>
+                    </tr>
+                    <%= f.fields_for :movement_details, :wrapper => false do |form| %>
+                        <tr class="fields">
+                          <td><%=form.collection_select(:material_id, Material.all, :id, :name, {prompt: 'Seleccionar'})%></td>
+                          <td><%=form.number_field :cantidad%></td>
+                          <td><%=form.link_to_remove '<i class="fa fa-minus"></i>'.html_safe, class: 'btn btn-danger'%></td>
+                        </tr>
+                    <% end %>
+                  </table>
+                  <%=f.link_to_add '<i class="fa fa-plus"></i>'.html_safe, :movement_details, class: 'btn btn-success'%>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+        <div class="field col-md-12 form-group">
+          <div class="field col-md-12 form-group">
+            <% if controller.action_name == 'edit'  %>
+                <%= f.submit 'Guardar', :class => "btn btn-primary" %>
+            <% else %>
+                <%= f.submit 'Agregar', :class => 'btn btn-primary'%>
+            <% end %>
+            <%= link_to 'Cancelar',  material_movements_path , class: 'btn btn-default' %>
 <% end %>
+</div>
+</div>
+</form>
+</div>
