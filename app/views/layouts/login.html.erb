@@ -9,7 +9,18 @@
     <%= csrf_meta_tags %>
     <!-- Bootstrap Core CSS -->
   </head>
-  <body class="wrapper" data-action="new" data-controller="sessions">
-    <%= yield %>
+  <body data-action="new" data-controller="sessions" role="login">
+    <h1 class="welcome-login text-center">Ingresar a OnProject</h1>
+    <div class="container" style="margin-top:70px">
+      <div class="row">
+        <div class="col-sm-6 col-md-4 col-sm-offset-3 col-md-offset-4">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <%= yield %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

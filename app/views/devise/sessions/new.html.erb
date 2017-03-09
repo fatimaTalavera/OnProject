@@ -1,28 +1,27 @@
-<div class="authform">
-  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :role => 'form'}) do |f| %>
-    <h3>Sign in</h3>
-    <%= devise_error_messages! %>
-    <div class="form-group">
-      <%- if devise_mapping.registerable? %>
-        <%= link_to 'Registrarse', new_registration_path(resource_name), class: 'right'  %>
-      <% end -%>
-      <%= f.label :email, 'Correo' %>
-      <%= f.email_field :email, :autofocus => true, class: 'form-control' %>
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :role => 'form'} ) do |f| %>
+  <fieldset>
+    <div class="row">
+      <div class="center-block"> <img class="profile-img" src="<%= asset_path 'on-project-logo.png' %>" class="img-responsive" alt=""> </div>
+      <hr>
     </div>
-    <div class="form-group">
-      <%- if devise_mapping.recoverable? %>
-        <%= link_to "Olvido su contraseña?", new_password_path(resource_name), class: 'right' %>
-      <% end -%>
-      <%= f.label :password, 'Contraseña' %>
-      <%= f.password_field :password, class: 'form-control' %>
-    </div>
-      <%= f.submit 'Iniciar Sesion', :class => 'button right' %>
-      <% if devise_mapping.rememberable? -%>
-        <div class="checkbox" style="width:150px">
-          <label>
-            <%= f.check_box :remember_me %> Recordarme
-          </label>
+    <div class="row">
+      <div class="col-sm-12 col-md-10  col-md-offset-1 ">
+        <div class="form-group">
+          <label>Email:</label>
+          <div class="input-group"> <span class="input-group-addon"> <i class="glyphicon glyphicon-user"></i> </span>
+            <%= f.email_field :email, :autofocus => true, class: 'form-control' %>
+          </div>
         </div>
-      <% end -%>
-  <% end %>
-</div>
+        <div class="form-group">
+          <label>Contraseña:</label>
+          <div class="input-group"> <span class="input-group-addon"> <i class="glyphicon glyphicon-lock"></i> </span>
+            <%= f.password_field :password, :autofocus => true, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.submit 'Iniciar Sesion', :class => 'form-control btn btn-primary'%>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+<% end %>
