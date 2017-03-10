@@ -14,6 +14,8 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'coffee-script-source','1.8.0'
 gem 'nested_form'
+# Gema para heredar
+gem 'heritage'
 # gema para el template
 gem 'bootstrap_sb_admin_base_v2', '~> 0.1.0'
 # gema datatable
