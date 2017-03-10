@@ -16,19 +16,19 @@
 
         <div class="field col-md-12 form-group">
           <div class="field col-md-6 form-group">
-            <div class="col-md-3">
+            <div class="col-md-4">
               <%= f.label :name, 'Nombre de la obra:', :class => 'control-label' %>
             </div>
-            <div class="col-md-9">
+            <div class="col-md-8">
               <%= f.text_field :name, :class => 'form-control', autofocus:true %>
             </div>
           </div>
 
           <div class="field col-md-6 form-group">
-            <div class="col-md-2">
+            <div class="col-md-4">
               <%= f.label :client, 'Cliente:', :class => 'control-label' %>
             </div>
-            <div class="col-md-10">
+            <div class="col-md-8">
               <%= f.collection_select :client_id, Client.all.order('name'), :id, :full_name, {prompt: "Ninguno"} ,:class => 'btn btn-default'%>
             </div>
           </div>
@@ -36,30 +36,30 @@
 
         <div class="field col-md-12 form-group">
           <div class="field col-md-6 form-group">
-            <div class="col-md-3">
+            <div class="col-md-4">
               <%= f.label :start_date, 'Inicio de ejecución:', :class => 'control-label' %>
             </div>
-            <div class="col-md-5">
-              <%= f.date_select :start_date, :class => 'form-control' %>
+            <div  class="input-group col-md-5">
+              <%= f.text_field :start_date, :id => 'datepickerFrom', :class => 'input-group date form-control' %><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
             </div>
           </div>
 
           <div class="field col-md-6 form-group">
-            <div class="col-md-2">
+            <div class="col-md-4">
               <%= f.label :end_date, 'Fin de Ejecución:', :class => 'control-label' %>
             </div>
-            <div class="col-md-10">
-              <%= f.date_select :end_date, :class => 'form-control' %>
+            <div class="input-group col-md-5">
+              <%= f.text_field :end_date, :id => 'datepickerTo', :class => 'input-group date form-control',  data: { date_format: 'dd-mm-yyyy' }%><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
             </div>
           </div>
         </div>
 
         <div class="field col-md-12 form-group">
           <div class="field col-md-6 form-group">
-            <div class="col-md-3">
+            <div class="col-md-4">
               <%= f.label :amount, 'Monto:', :class => 'control-label' %>
             </div>
-            <div class="col-md-9">
+            <div class="col-md-8">
               <%= f.number_field :amount, :class => 'form-control' %>
             </div>
           </div>

@@ -30,5 +30,10 @@ document.addEventListener 'turbolinks:load', ->
         'targets': 5
       }
     ]
-
+    $('#datepickerFrom').datepicker
+      format: 'dd/mm/yyyy'
+      language: "es"
+    $('#datepickerTo').datepicker
+      format: 'dd/mm/yyyy'
+      language: "es"
   return
