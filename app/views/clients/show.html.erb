@@ -5,56 +5,60 @@
       <div class="panel-body">
 
         <div class="field col-md-12 form-group">
-          <div class="col-md-2">
-            <strong>Nombre:</strong>
+          <div class="field col-md-4 form-group">
+            <div class="col-md-4">
+              <strong>Nombre:</strong>
+            </div>
+            <div class="col-md-7">
+              <%= @client.name %>
+            </div>
           </div>
-          <div class="col-md-6">
-            <%= @client.name %>
+
+          <div class="field col-md-4 form-group">
+            <div class="col-md-4">
+              <strong>Apellido:</strong>
+            </div>
+            <div class="col-md-7">
+              <%= @client.last_name %>
+            </div>
+          </div>
+
+          <div class="field col-md-4 form-group">
+            <div class="col-md-4">
+              <strong>Documento:</strong>
+            </div>
+            <div class="col-md-7">
+              <%= @client.identification_document %>
+            </div>
           </div>
         </div>
 
         <div class="field col-md-12 form-group">
-          <div class="col-md-2">
-            <strong>Apellido:</strong>
+          <div class="field col-md-4 form-group">
+            <div class="col-md-4">
+              <strong>Correo:</strong>
+            </div>
+            <div class="col-md-7">
+              <%= @client.email %>
+            </div>
           </div>
-          <div class="col-md-6">
-            <%= @client.last_name %>
-          </div>
-        </div>
 
-        <div class="field col-md-12 form-group">
-          <div class="col-md-2">
-            <strong>Documento:</strong>
+          <div class="field col-md-4 form-group">
+            <div class="col-md-4">
+              <strong>Direccion:</strong>
+            </div>
+            <div class="col-md-7">
+              <%= @client.adress %>
+            </div>
           </div>
-          <div class="col-md-6">
-            <%= @client.identification_document %>
-          </div>
-        </div>
 
-        <div class="field col-md-12 form-group">
-          <div class="col-md-2">
-            <strong>Correo:</strong>
-          </div>
-          <div class="col-md-6">
-            <%= @client.email %>
-          </div>
-        </div>
-
-        <div class="field col-md-12 form-group">
-          <div class="col-md-2">
-            <strong>Direccion:</strong>
-          </div>
-          <div class="col-md-6">
-            <%= @client.adress %>
-          </div>
-        </div>
-
-        <div class="field col-md-12 form-group">
-          <div class="col-md-2">
-            <strong>Telefono:</strong>
-          </div>
-          <div class="col-md-6">
-            <%= @client.phone %>
+          <div class="field col-md-4 form-group">
+            <div class="col-md-4">
+              <strong>Telefono:</strong>
+            </div>
+            <div class="col-md-7">
+              <%= @client.phone %>
+            </div>
           </div>
         </div>
       </div>
