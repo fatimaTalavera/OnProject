@@ -1,42 +1,67 @@
   <div class="row">
     <div class="panel panel-default">
-      <div class="panel panel-heading">Ver Cliente</div>
+      <div class="panel panel-heading">Cliente</div>
       <p id="notice"><%= notice %></p>
       <div class="panel-body">
-        <p>
-          <strong>Nombre:</strong>
-          <%= @client.name %>
-        </p>
 
-        <p>
-          <strong>Apellido:</strong>
-          <%= @client.last_name %>
-        </p>
+        <div class="field col-md-12 form-group">
+          <div class="col-md-2">
+            <strong>Nombre:</strong>
+          </div>
+          <div class="col-md-6">
+            <%= @client.name %>
+          </div>
+        </div>
 
-        <p>
-          <strong>Documento:</strong>
-          <%= @client.identification_document %>
-        </p>
+        <div class="field col-md-12 form-group">
+          <div class="col-md-2">
+            <strong>Apellido:</strong>
+          </div>
+          <div class="col-md-6">
+            <%= @client.last_name %>
+          </div>
+        </div>
 
-        <p>
-          <strong>Correo:</strong>
-          <%= @client.email %>
-        </p>
+        <div class="field col-md-12 form-group">
+          <div class="col-md-2">
+            <strong>Documento:</strong>
+          </div>
+          <div class="col-md-6">
+            <%= @client.identification_document %>
+          </div>
+        </div>
 
-        <p>
-          <strong>Direccion:</strong>
-          <%= @client.adress %>
-        </p>
+        <div class="field col-md-12 form-group">
+          <div class="col-md-2">
+            <strong>Correo:</strong>
+          </div>
+          <div class="col-md-6">
+            <%= @client.email %>
+          </div>
+        </div>
 
-        <p>
-          <strong>Telefono:</strong>
-          <%= @client.phone %>
-        </p>
+        <div class="field col-md-12 form-group">
+          <div class="col-md-2">
+            <strong>Direccion:</strong>
+          </div>
+          <div class="col-md-6">
+            <%= @client.adress %>
+          </div>
+        </div>
+
+        <div class="field col-md-12 form-group">
+          <div class="col-md-2">
+            <strong>Telefono:</strong>
+          </div>
+          <div class="col-md-6">
+            <%= @client.phone %>
+          </div>
+        </div>
       </div>
 
       <div class="panel-footer">
-        <%= link_to 'Editar', edit_client_path(@client), :class => 'btn btn-default' %> |
-        <%= link_to 'Atras', clients_path %>
+        <%= link_to 'Editar', edit_client_path(@client), :class => 'btn btn-primary active' %>
+        <%= link_to 'Atras', clients_path, :class => 'btn btn-default' %>
       </div>
     </div>
   </div>
