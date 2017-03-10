@@ -31,6 +31,8 @@ gem 'bootstrap-sass'
 gem 'devise'
 gem 'high_voltage'
 gem 'pg'
+# gem para validaciones
+gem 'client_side_validations'
 gem 'rails_best_practices'
 group :development do
   gem 'better_errors'
