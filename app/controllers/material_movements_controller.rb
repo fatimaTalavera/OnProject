@@ -28,7 +28,7 @@ class MaterialMovementsController < ApplicationController
 
     respond_to do |format|
       if @material_movement.save
-        format.html { redirect_to @material_movement, notice: 'Material movement was successfully created.' }
+        format.html { redirect_to material_movements_url, notice: 'El movimiento ha sido creado correctamente.' }
         format.json { render :show, status: :created, location: @material_movement }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class MaterialMovementsController < ApplicationController
   def update
     respond_to do |format|
       if @material_movement.update(material_movement_params)
-        format.html { redirect_to @material_movement, notice: 'Material movement was successfully updated.' }
+        format.html { redirect_to @material_movement, notice: 'El movimiento ha sido editado correctamente.' }
         format.json { render :show, status: :ok, location: @material_movement }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class MaterialMovementsController < ApplicationController
   def destroy
     @material_movement.destroy
     respond_to do |format|
-      format.html { redirect_to material_movements_url, notice: 'Material movement was successfully destroyed.' }
+      format.html { redirect_to material_movements_url, notice: 'El movimiento ha sido eliminado correctamente.' }
       format.json { head :no_content }
     end
   end

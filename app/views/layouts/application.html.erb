@@ -104,7 +104,22 @@
       </div>
       <!-- /#wrapper -->
 
-      <!-- Contenido -->
-      <%= yield %>
+      <div id="page-wrapper">
+        <% if notice != nil %>
+            <div class="alert alert-success alert-dismissable">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">˟</button>
+              <p id="notice"><%= notice %></p>
+            </div>
+        <% end %>
+        <% if alert != nil %>
+            <div class="alert alert-danger alert-dismissable">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">˟</button>
+              <p id="notice"><%= alert %></p>
+            </div>
+        <% end %>
+        <!-- Contenido -->
+        <%= yield %>
+      </div>
+
   </body>
 </html>
