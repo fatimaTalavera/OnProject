@@ -14,10 +14,14 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'coffee-script-source','1.8.0'
 gem 'nested_form'
+# Gema para heredar
+gem 'heritage'
 # gema para el template
 gem 'bootstrap_sb_admin_base_v2', '~> 0.1.0'
 # gema datatable
 gem 'jquery-datatables-rails', '~> 3.4.0'
+# gema calendar
+gem 'bootstrap-datepicker-rails'
 group :development, :test do
   gem 'byebug', platform: :mri
 end
@@ -29,6 +33,8 @@ gem 'bootstrap-sass'
 gem 'devise'
 gem 'high_voltage'
 gem 'pg'
+# gem para validaciones
+gem 'client_side_validations'
 gem 'rails_best_practices'
 group :development do
   gem 'better_errors'
