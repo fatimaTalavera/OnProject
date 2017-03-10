@@ -20,6 +20,8 @@ gem 'heritage'
 gem 'bootstrap_sb_admin_base_v2', '~> 0.1.0'
 # gema datatable
 gem 'jquery-datatables-rails', '~> 3.4.0'
+# gema calendar
+gem 'bootstrap-datepicker-rails'
 group :development, :test do
   gem 'byebug', platform: :mri
 end
