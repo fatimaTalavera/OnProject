@@ -5,7 +5,7 @@ class CreateMaterials < ActiveRecord::Migration[5.0]
       t.string :description
       t.decimal :price
       t.decimal :quantity
-      t.integer :minimun_stock
+      t.integer :minimun_stock, default: 0
 
       t.timestamps
     end

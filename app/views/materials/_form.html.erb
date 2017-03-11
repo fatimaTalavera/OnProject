@@ -1,4 +1,4 @@
-<%= form_for(material) do |f| %>
+<%= form_for @material, validate: true do |f| %>
     <% if material.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(material.errors.count, "error") %> prohibited this material from being saved:</h2>
@@ -15,60 +15,58 @@
       <form class="form-horizontal">
 
         <div class="field col-md-12 form-group">
-          <div class="field col-md-6 form-group">
+          <div class="field col-md-6 form-group required">
             <div class="col-sm-2">
-              <%= f.label :name, 'Nombre:' %>
+              <%= f.label :name, 'Nombre:', :class => 'control-label' %>
             </div>
-            <div class="col-sm-8 ">
-              <%= f.text_field :name, autofocus: true, :class => 'form-control' %>
+            <div class="col-sm-6 ">
+              <%= f.text_field :name, autofocus: true,  :maxlength => 30, :class => 'form-control' %>
             </div>
           </div>
 
-          <div class="field col-md-6 form-group">
-            <div class="col-sm-2">
-              <%= f.label :description, 'Descripcion:' %>
+          <div class="field col-md-6 form-group required">
+            <div class="col-sm-3">
+              <%= f.label :description, 'Descripcion:', :class => 'control-label' %>
             </div>
-            <div class="col-sm-9">
-              <%= f.text_field :description, :class => 'form-control' %>
+            <div class="col-sm-6">
+              <%= f.text_field :description,  :maxlength => 35, :class => 'form-control' %>
             </div>
           </div>
         </div>
         <div class="field col-md-12 form-group">
           <br>
-          <div class="field col-md-3 form-group">
-            <div class="col-sm-4">
-
-              <%= f.label :quantity, 'Cantidad:' %>
+          <div class="field col-md-3 form-group required">
+            <div class="col-sm-5">
+              <%= f.label :quantity, 'Cantidad:', :class => 'control-label' %>
             </div>
             <div class="col-sm-6 ">
-              <%= f.text_field :quantity, :class => 'form-control' %>
+              <%= f.text_field :quantity, :maxlength => 8, :class => 'form-control' %>
             </div>
           </div>
-          <div class="field col-md-3 form-group">
+          <div class="field col-md-3 form-group required">
             <div class="col-sm-4">
-              <%= f.label :measurement_unit, 'Ud. de medida:' %>
+              <%= f.label :measurement_unit, 'Ud. de medida:', :class => 'control-label' %>
             </div>
-            <div class="col-sm-4   ">
-              <%= f.text_field :measurement_unit, :class => 'form-control' %>
+            <div class="col-sm-5">
+              <%= f.text_field :measurement_unit, :maxlength => 5, :class => 'form-control' %>
             </div>
           </div>
 
-          <div class="field col-md-3 form-group">
+          <div class="field col-md-3 form-group required">
             <div class="col-sm-4">
-              <%= f.label :price, 'Precio:' %>
+              <%= f.label :price, 'Precio:', :class => 'control-label' %>
             </div>
             <div class="col-sm-7 ">
-              <%= f.text_field :price, :class => 'form-control' %>
+              <%= f.text_field :price, :maxlength => 10, :class => 'form-control' %>
             </div>
           </div>
-
 
           <div class="field col-md-3 form-group">
             <div class="col-sm-5">
               <%= f.label :minimun_stock, 'Stock minimo:' %>
             </div>
             <div class="col-sm-5 ">
-              <%= f.number_field :minimun_stock, :class => 'form-control' %>
+              <%= f.number_field :minimun_stock, :maxlength => 7, :class => 'form-control' %>
             </div>
           </div>
         </div>
@@ -76,16 +74,16 @@
         <div class="field col-md-12 form-group">
           <br>
           <div class="field col-md-3 form-group">
-          <% if controller.action_name == 'edit'  %>
-              <%= f.submit 'Guardar', :class => "btn btn-primary" %>
-          <% else %>
-              <%= f.submit 'Agregar', :class => 'btn btn-primary'%>
-          <% end %>
+            <% if controller.action_name == 'edit'  %>
+                <%= f.submit 'Guardar', :class => "btn btn-primary" %>
+            <% else %>
+                <%= f.submit 'Agregar', :class => 'btn btn-primary'%>
+            <% end %>
             <%= link_to 'Cancelar', materials_path, :class => 'btn btn-default' %>
-          <% end %>
-          </div>
-          </div>
+<% end %>
+</div>
+</div>
 
-      </form>
-    </div>
+</form>
+</div>
 
