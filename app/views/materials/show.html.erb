@@ -1,36 +1,76 @@
   <div class="row">
+    <h1 class="page-header">Ver Material</h1>
     <div class="panel panel-default">
-      <div class="panel panel-heading">Ver Material</div>
       <div class="panel-body">
-        <p>
+
+        <div class="field col-md-12 form-group">
+          <div class="field col-md-6 form-group required">
+            <div class="col-sm-2">
           <strong>Nombre:</strong>
+              </div>
+            <div class="col-sm-4 ">
           <%= @material.name %>
-        </p>
+        </div>
+        </div>
 
-        <p>
+          <div class="field col-md-6 form-group required">
+            <div class="col-sm-3">
           <strong>Descripcion:</strong>
+            </div>
+            <div class="col-sm-3">
           <%= @material.description %>
-        </p>
+            </div>
+          </div>
+        </div>
 
-        <p>
-          <strong>Unidad de medida:</strong>
-          <%= @material.measurement_unit %>
-        </p>
-
-        <p>
+        <div class="field col-md-12 form-group">
+          <br>
+          <div class="field col-md-3 form-group required">
+            <div class="col-sm-5">
           <strong>Cantidad:</strong>
+            </div>
+            <div class="col-sm-7 ">
           <%= @material.quantity %>
-        </p>
+            </div>
+          </div>
 
-        <p>
+          <div class="field col-md-3 form-group required">
+            <div class="col-sm-8">
+          <strong>Unidad de medida:</strong>
+            </div>
+            <div class="col-sm-4">
+          <%= @material.measurement_unit %>
+            </div>
+          </div>
+
+          <div class="field col-md-3 form-group required">
+            <div class="col-sm-4">
           <strong>Precio:</strong>
+            </div>
+            <div class="col-sm-7 ">
           <%= @material.price %>
-        </p>
-      </div>
-      <div class="panel-footer">
+            </div>
+          </div>
 
-        <%= link_to 'Editar', edit_material_path(@material), :class => 'btn btn-default'  %> |
-        <%= link_to 'Atras', materials_path %>
+          <div class="field col-md-3 form-group">
+            <div class="col-sm-6">
+        <strong>Stock minimo:</strong>
+            </div>
+            <div class="col-sm-4 ">
+        <%= @material.minimun_stock %>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+
+    <div class="panel-group">
+      <%= link_to 'Editar', edit_material_path(@material), :class => 'btn btn-primary active'  %>
+      <%= link_to 'Atras', materials_path, :class => 'btn btn-default' %>
+    </div>
+        <div>
+        <br>
+        <%= render 'table', material: @material %>
+        <br>
       </div>
     </div>
-  </div>

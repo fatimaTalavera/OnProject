@@ -6,11 +6,13 @@ class MaterialsController < ApplicationController
   # GET /materials.json
   def index
     @materials = Material.all
+    @material = Material.new
   end
 
   # GET /materials/1
   # GET /materials/1.json
   def show
+    @materials = Material.all
   end
 
   # GET /materials/new
@@ -20,6 +22,7 @@ class MaterialsController < ApplicationController
 
   # GET /materials/1/edit
   def edit
+    @materials = Material.all
   end
 
   # POST /materials
