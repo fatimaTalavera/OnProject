@@ -3,4 +3,7 @@ class Client < ApplicationRecord
   def full_name
     "#{name} #{last_name}"
   end
+
+  validates :name, :presence => {:message => "No puede estar en blanco"}
+
 end
