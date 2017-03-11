@@ -1,7 +1,7 @@
   <div class="row">
-    <div class="panel panel-default">
-      <div class="panel panel-heading">Cliente</div>
+      <h1 class="page-header">Cliente</h1>
       <p id="notice"><%= notice %></p>
+    <div class="panel panel-default">
       <div class="panel-body">
 
         <div class="field col-md-12 form-group">
@@ -62,10 +62,17 @@
           </div>
         </div>
       </div>
+    </div>
+
+      <div>
+        <br>
+        <%= render 'table', client: @client %>
+        <br>
+      </div>
 
       <div class="panel-footer">
         <%= link_to 'Editar', edit_client_path(@client), :class => 'btn btn-primary active' %>
         <%= link_to 'Atras', clients_path, :class => 'btn btn-default' %>
       </div>
     </div>
-  </div>
+

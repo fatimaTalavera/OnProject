@@ -109,6 +109,7 @@ es:
   errors:
     format: "%{attribute} %{message}"
     messages:
+      email_format: "El formato es incorrecto. (Ej:example@example.com)"
       accepted: debe ser aceptado
       blank: no puede estar en blanco
       present: debe estar en blanco
