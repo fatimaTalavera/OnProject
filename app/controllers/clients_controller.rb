@@ -5,11 +5,13 @@ class ClientsController < ApplicationController
   # GET /clients.json
   def index
     @clients = Client.all
+    @client = Client.new
   end
 
   # GET /clients/1
   # GET /clients/1.json
   def show
+    @clients = Client.all
   end
 
   # GET /clients/new
@@ -19,6 +21,7 @@ class ClientsController < ApplicationController
 
   # GET /clients/1/edit
   def edit
+    @clients = Client.all
   end
 
   # POST /clients
@@ -42,7 +45,7 @@ class ClientsController < ApplicationController
   def update
     respond_to do |format|
       if @client.update(client_params)
-        format.html { redirect_to @client, notice: 'El cliente se actualizo correctamente.' }
+        format.html { redirect_to clients_path, notice: 'El cliente se actualizo correctamente.' }
         format.json { render :show, status: :ok, location: @client }
       else
         format.html { render :edit }

@@ -15,9 +15,9 @@
     <form class="form-horizontal">
 
       <div class="field col-md-12 form-group">
-        <div class="field col-md-6 form-group">
+        <div class="field col-md-6 form-group required">
           <div class="col-md-3">
-           <%= f.label :name, 'Nombre:', :class => 'control-label' %>
+           <%= f.label :name, 'Razón Social:', :class => 'control-label' %>
           </div>
           <div class="col-md-9">
             <%= f.text_field :name, :class => 'form-control', autofocus:true %>
@@ -35,7 +35,7 @@
       </div>
 
       <div class="field col-md-12 form-group">
-        <div class="field col-md-6 form-group">
+        <div class="field col-md-6 form-group required">
           <div class="col-md-3">
             <%= f.label :identification_document, 'Documento:', :class => 'control-label' %>
           </div>
