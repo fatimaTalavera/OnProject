@@ -1,0 +1,9 @@
+es:
+  button:
+    new: Agregar
+    save: Guardar
+    cancel: Cancelar
+    login:
+      sign_in: "Iniciar Sesión"
+    clients:
+      new: "Agregar"

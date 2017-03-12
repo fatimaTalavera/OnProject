@@ -1,0 +1,21 @@
+es:
+  helpers:
+    menu:
+      dashboard: Inicio
+      clients: Clientes
+      materials: Materiales
+      material_movements: Movimiento de Materiales
+      contracts: Contratos
+
+    breadcrumbs:
+      dashboard: Inicio
+      clients: Clientes
+      materials: Materiales
+      material_movements: Movimiento de Materiales
+      contracts: Contratos
+
+    login:
+      messages:
+        title_login: "Ingresar al Sistema"
+      labels:
+        forgot_password: "Olvidé mi contraseña"
