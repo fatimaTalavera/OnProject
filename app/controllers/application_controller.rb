@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
 
+  add_breadcrumb I18n.t('helpers.breadcrumbs.dashboard'), :root_path
+
   layout :layout_by_resource
 
   # Prevent CSRF attacks by raising an exception.

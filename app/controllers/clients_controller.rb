@@ -1,4 +1,6 @@
 class ClientsController < ApplicationController
+  add_breadcrumb I18n.t('helpers.breadcrumbs.clients'), :clients_path
+
   before_action :set_client, only: [:show, :edit, :update, :destroy]
 
   # GET /clients

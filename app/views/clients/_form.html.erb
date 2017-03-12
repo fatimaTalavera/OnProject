@@ -78,11 +78,11 @@
 
         <div class="field col-md-12 form-group">
         <% if controller.action_name == 'edit'  %>
-            <%= f.submit 'Guardar', :class => "btn btn-primary" %>
+            <%= f.submit t('button.save'), :class => "btn btn-primary" %>
         <% else %>
-            <%= f.submit 'Agregar', :class => 'btn btn-primary'%>
+            <%= f.submit t('button.new'), :class => 'btn btn-primary'%>
         <% end %>
-          <%= link_to 'Cancelar',  clients_path , class: 'btn btn-default' %>
+          <%= link_to t('button.cancel'),  clients_path , class: 'btn btn-default' %>
         <% end %>
       </div>
 

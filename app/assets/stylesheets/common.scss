@@ -1,0 +1,16 @@
+// Bootstrap
+@import "libs/bootstrap/bootstrap-sprockets";
+@import "libs/bootstrap/bootstrap";
+
+// Variables
+
+// AdminLTE
+@import "adminLTE/AdminLTE";
+@import "adminLTE/skins/skins";
+
+// Librerias
+@import "libs/fontawesome/font-awesome";
+@import "libs/iCheck/square/blue";
+@import "libs/bootstrap-datepicker/datepicker3";
+@import "libs/select2/select2";
+@import "libs/data-tables/dataTables.bootstrap.css";

@@ -13,14 +13,15 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require bootstrap-sprockets
-//= require bootstrap_sb_admin_base_v2
-//= require jquery_nested_form
-//= require bootstrap-datepicker
-//= require dataTables/jquery.dataTables
-//= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
+//= require ./adminLTE/app.js
+//= require ./libs/slimScroll/jquery.slimscroll.min.js
+//= require ./libs/iCheck/icheck.js
+//= require ./libs/bootstrap-datepicker/bootstrap-datepicker.js
+//= require ./libs/bootstrap-datepicker/bootstrap-datepicker.es.js
+//= require ./libs/select2/select2.full.min.js
+//= require ./libs/select2/es.js
+//= require ./libs/data-tables/jquery.dataTables.min.js
+//= require ./libs/data-tables/dataTables.bootstrap.min.js
 //= require rails.validations
+//= require jquery_nested_form
 //= require_tree .
-
-
-
