@@ -6,6 +6,7 @@ class MaterialMovementsController < ApplicationController
   # GET /material_movements.json
   def index
     @material_movements = MaterialMovement.all
+    @material_movement = MaterialMovement.new
   end
 
   # GET /material_movements/1

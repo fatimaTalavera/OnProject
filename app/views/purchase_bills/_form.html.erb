@@ -1,10 +1,10 @@
-<%= nested_form_for(material_movement) do |f| %>
-    <% if material_movement.errors.any? %>
+<%= nested_form_for(purchase_bill) do |f| %>
+    <% if purchase_bill.errors.any? %>
         <div id="error_explanation">
-          <h2><%= pluralize(material_movement.errors.count, "error") %> prohibited this material_movement from being saved:</h2>
+          <h2><%= pluralize(purchase_bill.errors.count, "error") %> prohibited this material_movement from being saved:</h2>
 
           <ul>
-            <% material_movement.errors.full_messages.each do |message| %>
+            <% purchase_bill.errors.full_messages.each do |message| %>
                 <li><%= message %></li>
             <% end %>
           </ul>
@@ -14,27 +14,26 @@
     <div class="row">
       <form class="form-horizontal">
         <div class="field col-md-12 form-group">
-
           <div class="field col-md-5 form-group">
             <div class="col-md-2">
-              <%= f.label :contract, 'Contrato:', :class => 'control-label' %>
+              <%= f.label :condition, 'Condicion:', :class => 'control-label' %>
             </div>
             <div class="col-md-8">
-              <%= f.collection_select(:contract_id, Contract.all, :id, :name, {prompt: 'Seleccionar'}, :class => 'form-control') %>
+              <%= f.select(:condition, ["Contado", "Credito"], {prompt: 'Seleccionar'}, :class => 'form-control') %>
             </div>
           </div>
 
           <div class="field col-md-6 form-group">
             <div class="col-md-2">
-              <%= f.label :motivo, 'Motivo:', :class => 'control-label' %>
+              <%= f.label :number, 'Numero:', :class => 'control-label' %>
             </div>
             <div class="col-md-10">
-              <%= f.text_field :motivo, :class => 'form-control' %>
+              <%= f.number_field :number, :class => 'form-control' %>
             </div>
           </div>
 
           <div class="col-md-12">
-            <div class="col-md-6">
+            <div class="col-md-4">
               <div class="form-group">
                 <div class="panel panel-default">
                   <div class="panel panel-heading">
@@ -44,17 +43,19 @@
                     <tr>
                       <th>Material</th>
                       <th>Cantidad</th>
+                      <th>Precio</th>
                       <th></th>
                     </tr>
-                    <%= f.fields_for :movement_details, :wrapper => false do |form| %>
+                    <%= f.fields_for :purchase_details, :wrapper => false do |form| %>
                         <tr class="fields">
                           <td><%=form.collection_select(:material_id, Material.all, :id, :name, {prompt: 'Seleccionar'}, class: 'form-control')%></td>
-                          <td><%=form.number_field :cantidad, class: 'form-control'%></td>
+                          <td><%=form.number_field :quantity, class: 'form-control'%></td>
+                          <td><%=form.number_field :price, class: 'form-control'%></td>
                           <td><%=form.link_to_remove '<i class="fa fa-minus"></i>'.html_safe, class: 'btn btn-danger'%></td>
                         </tr>
                     <% end %>
                   </table>
-                  <%=f.link_to_add '<i class="fa fa-plus"></i>'.html_safe, :movement_details, class: 'btn btn-success'%>
+                  <%=f.link_to_add '<i class="fa fa-plus"></i>'.html_safe, :purchase_details, class: 'btn btn-success'%>
                 </div>
               </div>
             </div>
@@ -68,7 +69,7 @@
             <% else %>
                 <%= f.submit 'Agregar', :class => 'btn btn-primary'%>
             <% end %>
-            <%= link_to 'Cancelar',  material_movements_path , class: 'btn btn-default' %>
+            <%= link_to 'Cancelar',  purchase_bills_path , class: 'btn btn-default' %>
 
           </div>
         </div>
