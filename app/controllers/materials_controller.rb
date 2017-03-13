@@ -32,7 +32,7 @@ class MaterialsController < ApplicationController
 
     respond_to do |format|
       if @material.save
-        format.html { redirect_to @material, notice: 'Has creado el registro con exito.' }
+        format.html { redirect_to materials_path, notice: 'Has creado el registro con exito.' }
         format.json { render :show, status: :created, location: @material }
       else
         format.html { render :new }
@@ -46,7 +46,7 @@ class MaterialsController < ApplicationController
   def update
     respond_to do |format|
       if @material.update(material_params)
-        format.html { redirect_to @material, notice: 'Has modificado el registro con exito.' }
+        format.html { redirect_to materials_path, notice: 'Has modificado el registro con exito.' }
         format.json { render :show, status: :ok, location: @material }
       else
         format.html { render :edit }
@@ -66,13 +66,13 @@ class MaterialsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_material
-      @material = Material.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_material
+    @material = Material.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def material_params
-      params.require(:material).permit(:name, :description, :price, :quantity, :minimun_stock, :measurement_unit)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def material_params
+    params.require(:material).permit(:name, :description, :price, :quantity, :minimun_stock, :measurement_unit)
+  end
 end
