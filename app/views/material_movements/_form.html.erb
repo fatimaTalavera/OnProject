@@ -14,48 +14,51 @@
     <div class="row">
       <form class="form-horizontal">
         <div class="field col-md-12 form-group">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <div class="field col-md-5 form-group required">
+                <div class="col-md-3">
+                  <%= f.label :contract, 'Contrato:', :class => 'control-label' %>
+                </div>
+                <div class="col-md-9">
+                  <%= f.collection_select(:contract_id, Contract.all, :id, :name, {prompt: 'Seleccionar'}, :class => 'form-control') %>
+                </div>
+              </div>
 
-          <div class="field col-md-5 form-group">
-            <div class="col-md-2">
-              <%= f.label :contract, 'Contrato:', :class => 'control-label' %>
-            </div>
-            <div class="col-md-8">
-              <%= f.collection_select(:contract_id, Contract.all, :id, :name, {prompt: 'Seleccionar'}, :class => 'form-control') %>
-            </div>
-          </div>
-
-          <div class="field col-md-6 form-group">
-            <div class="col-md-2">
-              <%= f.label :motivo, 'Motivo:', :class => 'control-label' %>
-            </div>
-            <div class="col-md-10">
-              <%= f.text_field :motivo, :class => 'form-control' %>
+              <div class="field col-md-7 form-group">
+                <div class="col-md-1">
+                  <%= f.label :motivo, 'Motivo:', :class => 'control-label' %>
+                </div>
+                <div class="col-md-11">
+                  <%= f.text_field :motivo, :maxlength => 120, :class => 'form-control' %>
+                </div>
+              </div>
             </div>
           </div>
 
           <div class="col-md-12">
-            <div class="col-md-6">
-              <div class="form-group">
-                <div class="panel panel-default">
-                  <div class="panel panel-heading">
-                    <b>Movimientos</b>
-                  </div>
+            <div class="col-md-8">
+              <div class="panel panel-default">
+                <div class="panel panel-heading">
+                  <b>Movimientos</b>
+                </div>
+                <div class="col-sm-12">
                   <table id="movimientos_detalles" class="display", cellspacing="0" width="100%">
                     <tr>
-                      <th>Material</th>
-                      <th>Cantidad</th>
-                      <th></th>
+                      <th class="col-md-7">Material</th>
+                      <th class="col-md-3">Cantidad</th>
+                      <th class="col-md-2"></th>
                     </tr>
                     <%= f.fields_for :movement_details, :wrapper => false do |form| %>
-                        <tr class="fields">
-                          <td><%=form.collection_select(:material_id, Material.all, :id, :name, {prompt: 'Seleccionar'}, class: 'form-control')%></td>
-                          <td><%=form.number_field :cantidad, class: 'form-control'%></td>
-                          <td><%=form.link_to_remove '<i class="fa fa-minus"></i>'.html_safe, class: 'btn btn-danger'%></td>
+                        <tr class="fields col-md-12">
+                          <td class="col-md-7"><%=form.collection_select(:material_id, Material.all, :id, :name, {prompt: 'Seleccionar'}, class: 'form-control')%></td>
+                          <td class="col-md-3"><%=form.number_field :cantidad, class: 'form-control'%></td>
+                          <td class="col-md-2"><%=form.link_to_remove '<i class="fa fa-minus"></i>'.html_safe, class: 'btn btn-danger'%></td>
                         </tr>
                     <% end %>
                   </table>
-                  <%=f.link_to_add '<i class="fa fa-plus"></i>'.html_safe, :movement_details, class: 'btn btn-success'%>
                 </div>
+                <%=f.link_to_add '<i class="fa fa-plus"></i>'.html_safe, :movement_details, class: 'btn btn-success'%>
               </div>
             </div>
           </div>

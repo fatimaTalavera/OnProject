@@ -12,6 +12,7 @@ class MaterialMovementsController < ApplicationController
   # GET /material_movements/1
   # GET /material_movements/1.json
   def show
+    @material_movements = MaterialMovement.all
   end
 
   # GET /material_movements/new

@@ -7,4 +7,5 @@ class MaterialMovement < ApplicationRecord
   def crear_fecha
     self.fecha = Time.zone.now
   end
+
 end
