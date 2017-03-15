@@ -1,0 +1,22 @@
+  <table class="table table-bordered table-hover">
+    <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Email</th>
+      <th>Último ingreso</th>
+      <th>Fecha de registro</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr class="row-click" data-url="<%= user_path(user) %>">
+          <td><%= user.name %></td>
+          <td><%= user.email %></td>
+          <td><%= user.last_sign_in_at%></td>
+          <td><%= l user.created_at, format: :long%></td>
+          <td></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>

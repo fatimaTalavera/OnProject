@@ -10,7 +10,7 @@
   <%= csrf_meta_tags %>
 </head>
 
-<body class="hold-transition skin-blue fixed sidebar-mini">
+<body data-controller="<%= controller_name %>" data-action="<%= action_name %>" class="hold-transition skin-blue fixed sidebar-mini">
   <div class="wrapper">
 
     <header class="main-header">
@@ -68,6 +68,7 @@
               <li><a href="<%= root_path %>"><i class="fa fa-circle-o"></i><%= t('helpers.menu.dashboard') %></a></li>
             </ul>
           </li>
+          <li><a href="<%= users_path %>"><i class="fa fa-users"></i> <span><%= t('helpers.menu.users') %></span></a></li>
           <li><a href="<%= clients_path %>"><i class="fa fa-users"></i> <span><%= t('helpers.menu.clients') %></span></a></li>
           <li><a href="<%= materials_path %>"><i class="fa fa-book"></i> <span><%= t('helpers.menu.materials') %></span></a></li>
           <li><a href="<%= material_movements_path %>"><i class="fa fa-exchange"></i> <span><%= t('helpers.menu.material_movements') %></span></a></li>

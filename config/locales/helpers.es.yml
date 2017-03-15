@@ -6,7 +6,7 @@ es:
       materials: Materiales
       material_movements: Movimiento de Materiales
       contracts: Contratos
-      services: Servicios
+      users: Usuarios
 
     breadcrumbs:
       dashboard: Inicio
@@ -19,14 +19,17 @@ es:
       materials: Materiales
       material_movements: Movimiento de Materiales
       contracts: Contratos
-      services:
-              index: Servicios
-              new: Agregar
-              edit: Editar
-              show: Servicio
+      users:
+        index: Usuarios
+        new: Agregar
 
     login:
       messages:
-        title_login: "Ingresar al Sistema"
+        title_login: Ingresar al Sistema
       labels:
-        forgot_password: "Olvidé mi contraseña"
+        forgot_password: Olvidé mi contraseña
+
+    title:
+      user:
+        new: Agregar Usuario
+        list: Lista de Usuarios

@@ -1,13 +1,13 @@
 class User < ApplicationRecord
-  enum role: [:user, :vip, :admin]
-  after_initialize :set_default_role, :if => :new_record?
-
-  def set_default_role
-    self.role ||= :user
-  end
-
+  paginates_per 2
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  devise :database_authenticatable,
+         :recoverable, :rememberable, :trackable
+
+  validates :email, presence: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, message: :email_format}
+  validates :password, presence: true, on: :create
+  validates :password, length: {maximum: 15, minimum: 8}, presence: true, on: :create
+  validates :password, length: {maximum: 12, minimum: 8}, presence: true, on: :update, allow_blank: true
+  validates_uniqueness_of :email, allow_blank: false
 end
