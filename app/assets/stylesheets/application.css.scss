@@ -13,3 +13,40 @@
   font-size: absolute;
   margin-left: -15px;
 }
+
+th.table-actions{
+  min-width: 90px;
+}
+
+tr.row-click{
+  cursor: pointer;
+}
+
+// Buscador de abms
+.buscador-listado{
+  margin-bottom: 15px;
+}
+
+.overlay-wrapper{
+  &.buscador-resultados{
+    position: relative;
+  }
+}
+
+.daterange{
+  span{
+    margin: 10px;
+  }
+}
+
+// margen para campos que no tienen label
+.top-25{
+  margin-top: 25px;
+}
+
+.ordenar-link{
+  display: block;
+  > i{
+    float: right;
+  }
+}

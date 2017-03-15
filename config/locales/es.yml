@@ -1,8 +1,29 @@
 ---
 es:
+  views:
+    pagination:
+      first: "&laquo;"
+      last: "&raquo;"
+      previous: anterior
+      next: siguiente
+      truncate: "&hellip;"
   activerecord:
+    models:
+      user: Usuarios
+    attributes:
+      email: Email
+      user:
+        name: Nombre de usuario
+        password: Contraseña
+        password_confirmation: Confirmación de contraseña
+        rol: "Rol"
+    success:
+      messages:
+        user:
+          new: El usuario se creo correctamente
     errors:
       messages:
+        password_format: "debe contener una combinación de letras (minúsculas y mayúsculas)"
         record_invalid: "La validación falló: %{errors}"
         restrict_dependent_destroy:
           has_one: No se puede eliminar el registro porque existe un %{record} dependiente
@@ -213,6 +234,6 @@ es:
     am: am
     formats:
       default: "%A, %d de %B de %Y %H:%M:%S %z"
-      long: "%d de %B de %Y %H:%M"
+      long: "%d de %B de %Y %H:%M:%S"
       short: "%d de %b %H:%M"
       pm: pm
