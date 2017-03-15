@@ -14,6 +14,8 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'coffee-script-source','1.8.0'
 gem 'nested_form'
+gem 'kaminari'
+gem 'ransack'
 group :development, :test do
   gem 'byebug', platform: :mri
 end
