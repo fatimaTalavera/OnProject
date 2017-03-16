@@ -29,9 +29,6 @@
               <%= link_to edit_client_path(client), class: 'btn btn-success active', title: 'Editar', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
                   <span class= "fa fa-edit"></span>
               <% end %>
-              <%= link_to client, method: :delete, data: { confirm: 'Esta seguro que desea eliminar este registro?' }, class: 'btn btn-danger active', title: 'Eliminar', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
-                    <span class= "fa fa-trash"></span>
-                <% end %></td>
             </tr>
         <% end %>
         </tbody>

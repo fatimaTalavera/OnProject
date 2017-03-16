@@ -1,5 +1,5 @@
 class ClientsController < ApplicationController
-  add_breadcrumb I18n.t('helpers.breadcrumbs.clients'), :clients_path
+  add_breadcrumb I18n.t('helpers.breadcrumbs.clients.index'), :clients_path
 
   before_action :set_client, only: [:show, :edit, :update, :destroy]
 
@@ -13,16 +13,19 @@ class ClientsController < ApplicationController
   # GET /clients/1
   # GET /clients/1.json
   def show
+    add_breadcrumb I18n.t('helpers.breadcrumbs.clients.show')
     @clients = Client.all
   end
 
   # GET /clients/new
   def new
+    add_breadcrumb I18n.t('helpers.breadcrumbs.clients.new')
     @client = Client.new
   end
 
   # GET /clients/1/edit
   def edit
+    add_breadcrumb I18n.t('helpers.breadcrumbs.clients.edit')
     @clients = Client.all
   end
 
