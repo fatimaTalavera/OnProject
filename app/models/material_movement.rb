@@ -8,4 +8,6 @@ class MaterialMovement < ApplicationRecord
     self.fecha = Time.zone.now
   end
 
+  validates :contract_id, :presence => {:message => "Debe seleccionar un contrato"}
+
 end

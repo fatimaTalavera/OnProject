@@ -1,5 +1,5 @@
 <div class="row">
-  <h1 class="page-header">Movimiento de Materiales</h1>
+  <h1 class="page-header col-md-3">Movimiento de Materiales</h1>
   <div class="col-md-12">
     <div class="panel panel-default">
       <div class="panel-body">
@@ -47,13 +47,7 @@
   </div>
 
   <div class="col-md-3">
-  <%= link_to 'Editar', edit_material_movement_path(@material_movement), :class => 'btn btn-primary active' %>
-  <%= link_to 'Atras', material_movements_path, :class => 'btn btn-default' %>
+    <%= link_to 'Editar', edit_material_movement_path(@material_movement), :class => 'btn btn-primary active' %>
+    <%= link_to 'Atras', material_movements_path, :class => 'btn btn-default' %>
   </div>
-</div>
-
-<div>
-  <br><br><br>
-  <%= render 'table' %>
-  <br>
 </div>
