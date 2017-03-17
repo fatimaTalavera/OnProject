@@ -1,21 +1,24 @@
-  <table class="table table-bordered table-hover">
+  <table class="table table-bordered table-condensed">
     <thead>
     <tr>
       <th>Nombre</th>
       <th>Email</th>
       <th>Último ingreso</th>
       <th>Fecha de registro</th>
-      <th></th>
+      <th class="table-actions"></th>
     </tr>
     </thead>
     <tbody>
-      <% @users.each do |user| %>
+      <% users.each do |user| %>
         <tr class="row-click" data-url="<%= user_path(user) %>">
-          <td><%= user.name %></td>
+          <td><%= user.full_name %></td>
           <td><%= user.email %></td>
-          <td><%= user.last_sign_in_at%></td>
+          <td><%= user.last_sign_in_at ? user.last_sign_in_at : "no registra ingreso"%></td>
           <td><%= l user.created_at, format: :long%></td>
-          <td></td>
+          <td>
+            <%= link_to "<i class=\"fa fa-eye\"></i>".html_safe, user_path(user), {:class => "btn btn-xs bg-teal btn-flat"} %>
+            <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_user_path(user), {:class => "btn btn-xs bg-orange btn-flat"} %>
+          </td>
         </tr>
       <% end %>
     </tbody>

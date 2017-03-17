@@ -14,24 +14,27 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to users_path, notice: I18n.t('activerecord.success.messages.users.new') }
-      else
-        format.html { render :new }
-      end
+    if @user.save
+      redirect_to users_path, notice: I18n.t('activerecord.success.messages.users.new')
+    else
+      render :new
     end
   end
 
+  def edit
+    add_breadcrumb I18n.t('helpers.breadcrumbs.users.edit')
+  end
+
   def show
+    add_breadcrumb I18n.t('helpers.breadcrumbs.users.show', user: @user.full_name).titleize
   end
 
   def update
     @user = User.find(params[:id])
-    if @user.update_attributes(secure_params)
-      redirect_to users_path, :notice => "User updated."
+    if @user.update(user_params)
+      redirect_to users_path, :notice => "El usuario se edito correctamente."
     else
-      redirect_to users_path, :alert => "Unable to update user."
+      render :edit
     end
   end
 
@@ -51,7 +54,7 @@ class UsersController < ApplicationController
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+      params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
     end
 
 end

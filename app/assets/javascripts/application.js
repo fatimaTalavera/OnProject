@@ -24,7 +24,7 @@
 //= require ./libs/data-tables/jquery.dataTables.min.js
 //= require ./libs/data-tables/dataTables.bootstrap.min.js
 //= require ./libs/moment.js
-//= require rails.validations
+//= require ./libs/rails.validations
 //= require jquery_nested_form
 //= require_tree ./helpers
 //= require_tree .
@@ -39,7 +39,7 @@ OnProject = {
                     return false;
 
                 var form = $(this).parents('form');
-                setTimeout(function() {
+                delay(function() {
                     var buscadorLista = form.parents('.buscador-listado').next('.buscador-resultados');
                     buscadorLista.append('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
                     form.submit();
@@ -52,6 +52,14 @@ OnProject = {
     },
 
 };
+
+var delay = (function(){
+    var timer = 0;
+    return function(callback, ms){
+        clearTimeout (timer);
+        timer = setTimeout(callback, ms);
+    };
+})();
 
 UTIL = {
     exec: function( controller, action ) {
