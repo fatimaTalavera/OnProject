@@ -14,7 +14,6 @@ class ClientsController < ApplicationController
   # GET /clients/1.json
   def show
     add_breadcrumb I18n.t('helpers.breadcrumbs.clients.show')
-    @clients = Client.all
   end
 
   # GET /clients/new
@@ -26,7 +25,6 @@ class ClientsController < ApplicationController
   # GET /clients/1/edit
   def edit
     add_breadcrumb I18n.t('helpers.breadcrumbs.clients.edit')
-    @clients = Client.all
   end
 
   # POST /clients
