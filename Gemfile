@@ -16,6 +16,7 @@ gem 'coffee-script-source','1.8.0'
 gem 'nested_form'
 gem 'kaminari'
 gem 'ransack'
+gem 'slim'
 group :development, :test do
   gem 'byebug', platform: :mri
 end
