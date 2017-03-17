@@ -11,7 +11,7 @@
     <tbody>
       <% @users.each do |user| %>
         <tr class="row-click" data-url="<%= user_path(user) %>">
-          <td><%= user.name %></td>
+          <td><%= user.full_name %></td>
           <td><%= user.email %></td>
           <td><%= user.last_sign_in_at%></td>
           <td><%= l user.created_at, format: :long%></td>

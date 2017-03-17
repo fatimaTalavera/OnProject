@@ -11,11 +11,12 @@ es:
     models:
       user: Usuarios
     attributes:
-      email: Email
       user:
-        name: Nombre de usuario
-        password: Contraseña
-        password_confirmation: Confirmación de contraseña
+        first_name_html: Nombre(s) <abbr data-toggle="tooltip" data-original-title="Campo obligatorio"><font color="red">*</font></abbr>
+        last_name_html: Apellido(s) <abbr data-toggle="tooltip" data-original-title="Campo obligatorio"><font color="red">*</font></abbr>
+        email_html: Email <abbr data-toggle="tooltip" data-original-title="Campo obligatorio"><font color="red">*</font></abbr>
+        password_html: Contraseña <abbr data-toggle="tooltip" data-original-title="Campo obligatorio"><font color="red">*</font></abbr>
+        password_confirmation_html: Confirmar de contraseña <abbr data-toggle="tooltip" data-original-title="Campo obligatorio"><font color="red">*</font></abbr>
         rol: "Rol"
     success:
       messages:
@@ -134,7 +135,7 @@ es:
       accepted: debe ser aceptado
       blank: no puede estar en blanco
       present: debe estar en blanco
-      confirmation: no coincide
+      confirmation: las contraseñas no coinciden
       empty: no puede estar vacío
       equal_to: debe ser igual a %{count}
       even: debe ser par

@@ -32,21 +32,3 @@ tr.row-click{
     position: relative;
   }
 }
-
-.daterange{
-  span{
-    margin: 10px;
-  }
-}
-
-// margen para campos que no tienen label
-.top-25{
-  margin-top: 25px;
-}
-
-.ordenar-link{
-  display: block;
-  > i{
-    float: right;
-  }
-}
