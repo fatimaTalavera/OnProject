@@ -1,11 +1,13 @@
 es:
   helpers:
+    not_change_passwd_html: '<h5 style="color: #b5b5b5;"><b>Obs.</b> Dejar los campos de contraseña en blanco si no desea cambiar.</h5>'
     menu:
       dashboard: Inicio
       clients: Clientes
       materials: Materiales
       material_movements: Movimiento de Materiales
       contracts: Contratos
+      users: Usuarios
 
     breadcrumbs:
       dashboard: Inicio
@@ -13,9 +15,20 @@ es:
       materials: Materiales
       material_movements: Movimiento de Materiales
       contracts: Contratos
-
+      users:
+        index: Usuarios
+        new: Agregar
+        edit: Editar
+        show: "%{user}"
     login:
       messages:
-        title_login: "Ingresar al Sistema"
+        title_login: Ingresar al Sistema
       labels:
-        forgot_password: "Olvidé mi contraseña"
+        forgot_password: Olvidé mi contraseña
+
+    title:
+      user:
+        new: Agregar Usuario
+        edit: Editar Usuario
+        list: Lista de Usuarios
+        show: Usuario

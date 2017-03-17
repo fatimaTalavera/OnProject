@@ -1,0 +1,61 @@
+<%= form_for @user, validate: true, :html => { class: 'form-horizontal' } do |f| %>
+  <div class="box-body">
+    <div class="col-md-12 col-sm-12">
+      <div class="row">
+        <div class="col-md-5">
+          <div class="form-group">
+            <%= f.label :name, t('activerecord.attributes.user.first_name_html'), class: 'col-md-5 col-sm-3 control-label' %>
+            <div class="col-md-7 col-sm-12">
+              <%= f.text_field :first_name, :autofocus => true, class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="form-group">
+            <%= f.label :name, t('activerecord.attributes.user.last_name_html'), class: 'col-md-5 col-sm-3 control-label' %>
+            <div class="col-md-7 col-sm-12">
+              <%= f.text_field :last_name, :autofocus => true, class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-5">
+          <div class="form-group">
+            <%= f.label :email, t('activerecord.attributes.user.email_html'), class: 'col-md-5 col-sm-3 control-label' %>
+            <div class="col-md-7 col-sm-12">
+              <%= f.email_field :email, :autofocus => true, class: 'form-control uniqueUserEmail' %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-5">
+          <div class="form-group">
+            <%= f.label :password, t('activerecord.attributes.user.password_html'), class: 'col-md-5 col-sm-3 control-label' %>
+            <div class="col-md-7 col-sm-12">
+              <%= f.password_field :password, :autofocus => true, class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="form-group">
+            <%= f.label :password_confirmation, t('activerecord.attributes.user.password_confirmation_html'), class: 'col-md-5 col-sm-3 control-label' %>
+            <div class="col-md-7 col-sm-12">
+              <%= f.password_field :password_confirmation, :autofocus => true, class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <%= @user.new_record? ? '' : t('helpers.not_change_passwd_html') %>
+    </div>
+  </div>
+  <div class="box-footer clearfix">
+    <div class="col-md-12 col-sm-12">
+      <div class="pull-right">
+        <%= f.submit 'Guardar', :class => "btn btn-primary" %>
+        <%= link_to 'Cancelar',  users_path , class: 'btn btn-default' %>
+      </div>
+    </div>
+  </div>
+<% end %>

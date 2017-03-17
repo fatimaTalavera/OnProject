@@ -1,14 +1,32 @@
-  <div class="row">
-    <h3>Usuarios</h3>
-    <div class="column">
-      <table class="table">
-        <tbody>
-          <% @users.each do |user| %>
-            <tr>
-              <%= render user %>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+<div class="box box-success">
+  <div class="box-header with-border box-success">
+    <h3 class="box-title"><%= t('helpers.title.user.list') %></h3>
+    <div class="box-tools pull-right">
+      <%= link_to t('button.new'), new_user_path, {:class => "btn btn-sm bg-aqua"} %>
     </div>
   </div>
+  <div class="box-body">
+    <div class="user-search buscador-listado">
+      <%= search_form_for(@q, remote: true, :html => { class: 'remote-search' }) do |f| %>
+        <div class="input-group">
+          <%= f.text_field :email_cont, :autofocus => true, class: 'form-control', autocomplete: 'off' %>
+          <div class="input-group-btn">
+            <button type="submit" name="button" class="btn btn-default">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="overlay-wrapper buscador-resultados table-responsive" id="users-table">
+      <%= render 'list', locals: {users: @users} %>
+    </div>
+  </div>
+  <div class="box-footer clearfix">
+    <div id="paginate-container">
+      <ul class="pagination pagination-sm no-margin pull-right">
+        <%= paginate @users %>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -22,6 +22,63 @@
 //= require ./libs/select2/es.js
 //= require ./libs/data-tables/jquery.dataTables.min.js
 //= require ./libs/data-tables/dataTables.bootstrap.min.js
-//= require rails.validations
+//= require ./libs/moment.js
+//= require ./libs/rails.validations
 //= require jquery_nested_form
+//= require_tree ./helpers
 //= require_tree .
+
+OnProject = {
+
+    common: {
+        init: function() {
+
+            $('.remote-search').on('keyup change', 'input, select', function (event) {
+                if(event.type === 'change' && this.type === 'text')
+                    return false;
+
+                var form = $(this).parents('form');
+                delay(function() {
+                    var buscadorLista = form.parents('.buscador-listado').next('.buscador-resultados');
+                    buscadorLista.append('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
+                    form.submit();
+                }, 500);
+            });
+
+            TableHelper.rowsClicksEvent();
+
+        }
+    },
+
+};
+
+var delay = (function(){
+    var timer = 0;
+    return function(callback, ms){
+        clearTimeout (timer);
+        timer = setTimeout(callback, ms);
+    };
+})();
+
+UTIL = {
+    exec: function( controller, action ) {
+        var ns = OnProject,
+            action = ( action === undefined ) ? "init" : action;
+
+        if ( controller !== "" && ns[controller] && typeof ns[controller][action] == "function" ) {
+            ns[controller][action]();
+        }
+    },
+
+    init: function() {
+        var body = document.body,
+            controller = body.getAttribute( "data-controller" ),
+            action = body.getAttribute( "data-action" );
+
+        UTIL.exec( "common" );
+        UTIL.exec( controller );
+        UTIL.exec( controller, action );
+    }
+};
+
+$( document ).on('ready', UTIL.init );

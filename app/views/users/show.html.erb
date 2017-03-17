@@ -1,3 +1,22 @@
-<h3>User</h3>
-<p>Name: <%= @user.name if @user.name %></p>
-<p>Email: <%= @user.email if @user.email %></p>
+<div class="box box-success">
+  <div class="box-header with-border">
+    <h3 class="box-title"><%= t('helpers.title.user.show') %></h3>
+    <div class="box-tools pull-right">
+      <%= link_to t('button.edit'), edit_user_path(@user), {:class => "btn btn-sm bg-aqua"} %>
+    </div>
+  </div>
+  <div class="box-body">
+    <div class="col-md-4">
+      <label class="control-label">Nombre</label>
+      <p> <%= @user.full_name.titleize %> </p>
+      <label class="control-label">Email</label>
+      <p><%= @user.email %></p>
+    </div>
+    <div class="col-md-4">
+      <label class="control-label">Fecha de Registro</label>
+      <p><%= l @user.created_at, format: :long %></p>
+      <label class="control-label">Fecha de Último Ingreso</label>
+      <p><%= @user.last_sign_in_at ? (l @user.last_sign_in_at, format: :long) : "No regista ingreso" %></p>
+    </div>
+  </div>
+</div>

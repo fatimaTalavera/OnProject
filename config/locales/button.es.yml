@@ -2,8 +2,7 @@ es:
   button:
     new: Agregar
     save: Guardar
+    edit: Editar
     cancel: Cancelar
     login:
-      sign_in: "Iniciar Sesión"
-    clients:
-      new: "Agregar"
+      sign_in: Iniciar Sesión
