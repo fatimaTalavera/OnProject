@@ -1,33 +1,10 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Services</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Measurement unit</th>
-      <th>Price</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @services.each do |service| %>
-      <tr>
-        <td><%= service.name %></td>
-        <td><%= service.description %></td>
-        <td><%= service.measurement_unit %></td>
-        <td><%= service.price %></td>
-        <td><%= link_to 'Show', service %></td>
-        <td><%= link_to 'Edit', edit_service_path(service) %></td>
-        <td><%= link_to 'Destroy', service, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Service', new_service_path %>
+<div class="box">
+  <div class="box-header with-header">
+    <h1 class="page-header">Lista de Servicios <%= link_to new_service_path(@service), :class => 'btn btn-success' do %>
+          <span class="fa fa-plus"></span>
+      <% end %></h1>
+    <br>
+    <%= render 'table', service: @service %>
+    <br>
+  </div>
+</div>

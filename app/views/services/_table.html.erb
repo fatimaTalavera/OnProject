@@ -1,0 +1,32 @@
+<div class="box">
+  <div class="box-body">
+    <div  class="table-responsive">
+      <table id="services_table" class="table table-striped table-bordered table-hover">
+        <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Precio</th>
+          <th>Ud. de Medida</th>
+          <th></th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <% @services.each do |service| %>
+            <tr>
+              <td><%= service.name %></td>
+              <td><%= service.price %></td>
+              <td><%= service.measurement_unit %></td>
+              <td><%= link_to service, class: 'btn btn-info active', title: 'Ver', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
+                    <span class= "fa fa-eye"></span>
+                <% end %>
+                <%= link_to edit_service_path(service), class: 'btn btn-success active', title: 'Editar', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
+                    <span class= "fa fa-edit"></span>
+                <% end %>
+                </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

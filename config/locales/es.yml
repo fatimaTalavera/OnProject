@@ -119,7 +119,7 @@ es:
       even: debe ser par
       exclusion: está reservado
       greater_than: debe ser mayor que %{count}
-      greater_than_or_equal_to: debe ser mayor que o igual a %{count}
+      greater_than_or_equal_to: Debe ser mayor que o igual a %{count}
       inclusion: no está incluido en la lista
       invalid: no es válido
       less_than: debe ser menor que %{count}

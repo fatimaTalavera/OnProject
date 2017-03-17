@@ -4,16 +4,16 @@ class Client < ApplicationRecord
     "#{name} #{last_name}"
   end
 
+  VALID_LETTER_REGEX = /\A([a-zA-Z]|[a-zA-Z][\. ])+\z/
   validates :name,  :presence => {:message => "No puede estar en blanco"},
-                    :length => { in: 4..30 , message: "Debe tener entre 4 y 30 caracteres"},
-                    :format => {with: /\A[a-zA-ZÃ�ï¿½Ã�Â±Ã�Â¡Ã�Â©Ã�Â­Ã�Â³Ã�Âº]\z/, message: 'Solo permite letras'}
+                    :length => { maximum:30, :message => "Permite hasta 30 caracteres"},
+                    format: { :with => VALID_LETTER_REGEX, message: 'Solo permite letras'}
 
   validates :identification_document, :presence => {:message => "No puede estar en blanco"},
-                                      :length => { in: 6..10 , message: "Debe tener entre 7 y 10 caracteres"},
                                       :numericality => {:only_integer => true, :message => "Debe ser un numero"},
                                       :uniqueness => {:message => "Ya existe el numero de documento"}
 
-  validates :last_name, :format => {with: /\A[a-zA-ZÃ�ï¿½Ã�Â±Ã�Â¡Ã�Â©Ã�Â­Ã�Â³Ã�Âº]\z/, message: 'Solo permite letras'},
+  validates :last_name, format: { :with => VALID_LETTER_REGEX, message: 'Solo permite letras'},
                         :allow_blank => true
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

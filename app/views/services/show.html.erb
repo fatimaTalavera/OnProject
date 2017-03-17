@@ -1,24 +1,52 @@
-<p id="notice"><%= notice %></p>
+<div class="box">
+  <div class="box-header with-header">
+    <h1 class="page-header">Servicio</h1>
+    <div class="box-body">
 
-<p>
-  <strong>Name:</strong>
-  <%= @service.name %>
-</p>
+      <div class="field col-md-12 form-group">
+        <div class="field col-md-5 form-group">
+          <div class="col-md-3">
+            <strong>Nombre:</strong>
+          </div>
+          <div class="col-md-9">
+            <%= @service.name %>
+          </div>
+        </div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @service.description %>
-</p>
+        <div class="field col-md-7 form-group">
+          <div class="col-md-3">
+            <strong>Descripción:</strong>
+          </div>
+          <div class="col-md-9">
+            <%= @service.description %>
+          </div>
+        </div>
+      </div>
 
-<p>
-  <strong>Measurement unit:</strong>
-  <%= @service.measurement_unit %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @service.price %>
-</p>
-
-<%= link_to 'Edit', edit_service_path(@service) %> |
-<%= link_to 'Back', services_path %>
+      <div class="field col-md-12 form-group">
+        <div class="field col-md-4 form-group">
+          <div class="col-md-3">
+            <strong>Precio:</strong>
+          </div>
+          <div class="col-md-9">
+            <%= @service.price %>
+          </div>
+        </div>
+        <div class="field col-md-8 form-group">
+          <div class="col-md-3">
+            <strong>Ud. de Medida:</strong>
+          </div>
+          <div class="col-md-9">
+            <%= @service.measurement_unit %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="box-footer">
+      <div class="pull-right">
+        <%= link_to 'Editar', edit_service_path(@service), :class => 'btn btn-primary active' %>
+        <%= link_to 'Atras', services_path, :class => 'btn btn-default' %>
+      </div>
+    </div>
+  </div>
+</div>
