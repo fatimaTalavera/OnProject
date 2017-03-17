@@ -29,6 +29,7 @@ gem "breadcrumbs_on_rails"
 # gem para validaciones
 gem 'client_side_validations'
 gem 'rails_best_practices'
+gem "rubycritic", :require => false
 group :development do
   gem 'better_errors'
   gem 'rails_apps_pages'

@@ -2,72 +2,69 @@
   <div class="box-header with-header">
     <h1 class="page-header">Material</h1>
   </div>
-    <div class="box-body">
+  <div class="box-body">
     <div class="field col-md-12 form-group">
-          <div class="field col-md-6 form-group required">
-            <div class="col-sm-2">
+      <div class="field col-md-4 form-group required">
+        <div class="col-sm-2 alineado">
           <strong>Nombre:</strong>
-              </div>
-            <div class="col-sm-4 ">
+        </div>
+        <div class="col-sm-4 ">
           <%= @material.name %>
-        </div>
-        </div>
-
-          <div class="field col-md-6 form-group required">
-            <div class="col-sm-3">
-          <strong>Descripcion:</strong>
-            </div>
-            <div class="col-sm-3">
-          <%= @material.description %>
-            </div>
-          </div>
-        </div>
-
-        <div class="field col-md-12 form-group">
-          <br>
-          <div class="field col-md-3 form-group required">
-            <div class="col-sm-5">
-          <strong>Cantidad:</strong>
-            </div>
-            <div class="col-sm-7 ">
-          <%= @material.quantity %>
-            </div>
-          </div>
-
-          <div class="field col-md-3 form-group required">
-            <div class="col-sm-8">
-          <strong>Unidad de medida:</strong>
-            </div>
-            <div class="col-sm-4">
-          <%= @material.measurement_unit %>
-            </div>
-          </div>
-
-          <div class="field col-md-3 form-group required">
-            <div class="col-sm-4">
-          <strong>Precio:</strong>
-            </div>
-            <div class="col-sm-7 ">
-          <%= @material.price %>
-            </div>
-          </div>
-
-          <div class="field col-md-3 form-group">
-            <div class="col-sm-6">
-        <strong>Stock minimo:</strong>
-            </div>
-            <div class="col-sm-4 ">
-        <%= @material.minimun_stock %>
-            </div>
-          </div>
         </div>
       </div>
 
-  <div class="box-footer">
-    <div class="pull-right">
-      <%= link_to 'Editar', edit_material_path(@material), :class => 'btn btn-primary active'  %>
-      <%= link_to 'Atras', materials_path, :class => 'btn btn-default' %>
-    </div>
+      <div class="field col-md-4 form-group required">
+        <div class="col-sm-3 alineado">
+          <strong>Descripcion:</strong>
+        </div>
+        <div class="col-sm-3">
+          <%= @material.description %>
+        </div>
+      </div>
 
+      <div class="field col-md-4 form-group required">
+        <div class="col-sm-4 alineado">
+          <strong>Cantidad:</strong>
+        </div>
+        <div class="col-sm-6 ">
+          <%= @material.quantity %>
+        </div>
+      </div>
+    </div>
+    <div class="field col-md-12 form-group">
+      <div class="field col-md-4 form-group required">
+        <div class="col-sm-8 alineado">
+          <strong>Ud. de medida:</strong>
+        </div>
+        <div class="col-sm-4">
+          <%= @material.measurement_unit %>
+        </div>
+      </div>
+
+      <div class="field col-md-4 form-group required">
+        <div class="col-sm-4 alineado">
+          <strong>Precio:</strong>
+        </div>
+        <div class="col-sm-7 ">
+          <%= @material.price %>
+        </div>
+      </div>
+
+      <div class="field col-md-4 form-group">
+        <div class="col-sm-6 alineado">
+          <strong>Stock minimo:</strong>
+        </div>
+        <div class="col-sm-4 ">
+          <%= @material.minimun_stock %>
+        </div>
+      </div>
     </div>
   </div>
+
+  <div class="box-footer">
+    <div class="pull-right">
+      <%= link_to 'Editar', edit_material_path(@material), :class => 'btn btn-primary active' %>
+      <%= link_to 'Atras', materials_path, :class => 'btn btn-default' %>
+    </div>
+  </div>
+</div>

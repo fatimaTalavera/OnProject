@@ -14,7 +14,7 @@
         </thead>
 
         <tbody>
-        <% @materials.each do |material| %>
+        <% materials.each do |material| %>
             <tr>
               <td><%= material.name %></td>
               <td><%= material.description %></td>
@@ -23,12 +23,12 @@
               <td><%= material.price %></td>
 
               <td><%= link_to material, class: 'btn btn-info active', title: 'Ver', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
-                    <span class= "fa fa-eye"></span>
-                    <%end%>
-                <%= link_to edit_material_path(material), class: 'btn btn-success active', title: 'Editar', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
-                    <span class= "fa fa-edit"></span>
+                    <span class="fa fa-eye"></span>
                 <% end %>
-            </tr>
+                <%= link_to edit_material_path(material), class: 'btn btn-success active', title: 'Editar', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
+                    <span class="fa fa-edit"></span>
+                <% end %>
+                </tr>
         <% end %>
         </tbody>
       </table>

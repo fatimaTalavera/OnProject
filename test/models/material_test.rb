@@ -37,11 +37,6 @@ class MaterialTest < ActiveSupport::TestCase
     assert_not material.valid?, "Cannot save a material with existing name. Errors: #{material.errors.to_a.to_sentence}"
   end
 
-  test "Should not save a material with existing description" do
-    material = Material.new(name: "name", description: "otherDescription", price: 9.99, quantity: 9.99, minimun_stock: 1, measurement_unit: "m")
-    assert_not material.valid?, "Cannot save a material with existing description. Errors: #{material.errors.to_a.to_sentence}"
-  end
-
   test "Should not save a material with negative price" do
     material = Material.new(name: "name", description: "description", price: -2.0, quantity: 9.99, minimun_stock: 1, measurement_unit: "m")
     assert_not material.valid?, "Cannot save a material with negative price. Errors: #{material.errors.to_a.to_sentence}"
@@ -57,16 +52,25 @@ class MaterialTest < ActiveSupport::TestCase
     assert_not material.valid?, "Cannot save a material with negative minimun stock. Errors: #{material.errors.to_a.to_sentence}"
   end
 
+  test "Should not save a material with invalid name" do
+    material = Material.new(name: '100', description: "description", price: '9a', quantity: 9.99, minimun_stock: 1, measurement_unit: "m")
+    assert_not material.valid?, "Cannot save a material with invalid name. Errors: #{material.errors.to_a.to_sentence}"
+  end
+
+  test "Should not save a material with invalid description" do
+    material = Material.new(name: "name", description: '100', price: '9a', quantity: 9.99, minimun_stock: 1, measurement_unit: "m")
+    assert_not material.valid?, "Cannot save a material with invalid description. Errors: #{material.errors.to_a.to_sentence}"
+  end
+
   test "Should not save a material with invalid price" do
     material = Material.new(name: "name", description: "description", price: '9a', quantity: 9.99, minimun_stock: 1, measurement_unit: "m")
-    assert_not material.valid?, "Cannot save a material with invalid price . Errors: #{material.errors.to_a.to_sentence}"
+    assert_not material.valid?, "Cannot save a material with invalid price. Errors: #{material.errors.to_a.to_sentence}"
   end
 
   test "Should not save a material with invalid quantity" do
     material = Material.new(name: "name", description: "description", price: 9.99, quantity: '9a', minimun_stock: 1, measurement_unit: "m")
-    assert_not material.valid?, "Cannot save a material with invalid quantity . Errors: #{material.errors.to_a.to_sentence}"
+    assert_not material.valid?, "Cannot save a material with invalid quantity. Errors: #{material.errors.to_a.to_sentence}"
   end
-
 
   test "Should not save a material with invalid minimun stock" do
     material = Material.new(name: "name", description: "description", price: 9.99, quantity: 9.9, minimun_stock: '9a', measurement_unit: "m")
