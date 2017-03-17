@@ -10,7 +10,7 @@
   <%= csrf_meta_tags %>
 </head>
 
-<body data-controller="<%= controller_name %>" data-action="<%= action_name %>" class="hold-transition skin-blue fixed sidebar-mini">
+<body data-controller="<%= controller_name %>" data-action="<%= action_name %>" class="hold-transition skin-green fixed sidebar-mini">
   <div class="wrapper">
 
     <header class="main-header">
@@ -29,13 +29,13 @@
           <ul class="nav navbar-nav">
             <li class="dropdown user user-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <span class="hidden-xs">USUARIO</span>
+                <%= current_user.full_name.titleize %>&nbsp;<span class="hidden-xs caret"></span>
               </a>
               <ul class="dropdown-menu">
                 <li class="user-header">
                   <p>
-                    Usuario - ROLE
-                    <small>Ultimo ingreso: </small>
+                    <%= current_user.full_name.titleize %> - ROLE
+                    <small>Ultimo ingreso: <%= l current_user.last_sign_in_at, format: :long %></small>
                   </p>
                 </li>
                 <li class="user-footer">
@@ -79,6 +79,7 @@
     </aside>
 
     <div class="content-wrapper">
+      <%= render 'layouts/messages' %>
       <section class="content-header">
         <h4>
           <ol class="breadcrumb">

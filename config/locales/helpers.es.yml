@@ -1,5 +1,6 @@
 es:
   helpers:
+    not_change_passwd_html: '<h5 style="color: #b5b5b5;"><b>Obs.</b> Dejar los campos de contraseña en blanco si no desea cambiar.</h5>'
     menu:
       dashboard: Inicio
       clients: Clientes
@@ -22,7 +23,8 @@ es:
       users:
         index: Usuarios
         new: Agregar
-
+        edit: Editar
+        show: "%{user}"
     login:
       messages:
         title_login: Ingresar al Sistema
@@ -32,4 +34,6 @@ es:
     title:
       user:
         new: Agregar Usuario
+        edit: Editar Usuario
         list: Lista de Usuarios
+        show: Usuario

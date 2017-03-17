@@ -18,11 +18,6 @@ th.table-actions{
   min-width: 90px;
 }
 
-tr.row-click{
-  cursor: pointer;
-}
-
-// Buscador de abms
 .buscador-listado{
   margin-bottom: 15px;
 }
@@ -33,20 +28,11 @@ tr.row-click{
   }
 }
 
-.daterange{
-  span{
-    margin: 10px;
-  }
+th.table-actions{
+  width: 50px;
 }
 
-// margen para campos que no tienen label
-.top-25{
-  margin-top: 25px;
-}
-
-.ordenar-link{
-  display: block;
-  > i{
-    float: right;
-  }
+.btn-title {
+  margin-top: -15px;
+  margin-bottom: -10px;
 }
