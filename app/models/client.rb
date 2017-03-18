@@ -13,9 +13,6 @@ class Client < ApplicationRecord
                                       :numericality => {:only_integer => true, :message => "Debe ser un numero"},
                                       :uniqueness => {:message => "Ya existe el numero de documento"}
 
-  validates :last_name, format: { :with => VALID_LETTER_REGEX, message: 'Solo permite letras'},
-                        :allow_blank => true
-
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, format: { :with => VALID_EMAIL_REGEX , message: "El formato del correo es invalido" },
                     :uniqueness => {:message => "El correo ya esta en uso, vuelva a intentarlo"},
