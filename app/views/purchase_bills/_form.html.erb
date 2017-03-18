@@ -1,7 +1,7 @@
 <%= nested_form_for purchase_bill, validate: true, :html => { class: 'form-horizontal' } do |f| %>
     <div class="box-body">
       <div class="field col-md-12 form-group">
-        <div class="field col-md-6 form-group required">
+        <div class="field col-md-4 form-group required">
           <div class="col-md-3">
             <%= f.label :condition, 'Condicion:', :class => 'control-label' %>
           </div>
@@ -9,12 +9,20 @@
             <%= f.select(:condition, ["Contado", "Credito"], {prompt: 'Seleccionar'}, :class => 'form-control') %>
           </div>
         </div>
-        <div class="field col-md-6 form-group">
+        <div class="field col-md-4 form-group required">
           <div class="col-md-2">
             <%= f.label :number, 'Numero:', :class => 'control-label' %>
           </div>
           <div class="col-md-10">
             <%= f.number_field :number, :class => 'form-control' %>
+          </div>
+        </div>
+        <div class="field col-md-4 form-group required">
+          <div class="col-md-3">
+            <%= f.label :date, 'Fecha:', :class => 'control-label' %>
+          </div>
+          <div class="input-group col-md-9">
+            <%= f.text_field :date, :id => 'datepickerFrom', :class => 'input-group date form-control' %><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
           </div>
         </div>
       </div>

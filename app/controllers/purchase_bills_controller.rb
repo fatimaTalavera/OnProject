@@ -30,7 +30,7 @@ class PurchaseBillsController < ApplicationController
 
     respond_to do |format|
       if @purchase_bill.save
-        format.html { redirect_to @purchase_bill, notice: 'Purchase bill was successfully created.' }
+        format.html { redirect_to purchase_bills_url, notice: 'Purchase bill was successfully created.' }
         format.json { render :show, status: :created, location: @purchase_bill }
       else
         format.html { render :new }

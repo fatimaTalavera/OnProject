@@ -1,7 +1,6 @@
 class PurchaseBill < ApplicationRecord
   has_many :purchase_details
   accepts_nested_attributes_for :purchase_details, allow_destroy: true
-  before_create :crear_fecha
 
   def crear_fecha
     self.date = Time.zone.now
@@ -14,5 +13,7 @@ class PurchaseBill < ApplicationRecord
             :format => {:multiline => true, with: /^-?([0-9]|(\.[0-9]+))*$/, :message => "Solo permite numeros"},
             #valida que no sea negativo
             :numericality => {:greater_than_or_equal_to => 0, message: "No puede ser negativo"}
+
+  validates :date, :presence => {:message => "No puede estar en blanco"}
 
 end

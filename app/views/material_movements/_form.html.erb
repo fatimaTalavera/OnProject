@@ -1,7 +1,7 @@
 <%= nested_form_for material_movement, validate: true, :html => { class: 'form-horizontal' } do |f| %>
     <div class="box-body">
       <div class="field col-md-12 form-group">
-        <div class="field col-md-6 form-group required">
+        <div class="field col-md-4 form-group required">
           <div class="col-md-3">
             <%= f.label :contract, 'Contrato:', :class => 'control-label' %>
           </div>
@@ -9,12 +9,20 @@
             <%= f.collection_select(:contract_id, Contract.all, :id, :name, {prompt: 'Seleccionar'}, :class => 'form-control') %>
           </div>
         </div>
-        <div class="field col-md-6 form-group">
+        <div class="field col-md-4 form-group">
           <div class="col-md-2">
             <%= f.label :motivo, 'Motivo:', :class => 'control-label' %>
           </div>
           <div class="col-md-10">
             <%= f.text_field :motivo, :maxlength => 120, :class => 'form-control' %>
+          </div>
+        </div>
+        <div class="field col-md-4 form-group">
+          <div class="col-md-3">
+            <%= f.label :fecha, 'Fecha:', :class => 'control-label' %>
+          </div>
+          <div class="input-group col-md-9">
+            <%= f.text_field :fecha, :id => 'datepickerFrom', :class => 'input-group date form-control' %><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
           </div>
         </div>
       </div>
