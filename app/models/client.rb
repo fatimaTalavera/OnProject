@@ -21,8 +21,4 @@ class Client < ApplicationRecord
                     :uniqueness => {:message => "El correo ya esta en uso, vuelva a intentarlo"},
                     :allow_blank => true
 
-  VALID_PHONE_REGEX = /\A\d{4}-\d{3}-\d{3}\z/
-  validates :phone, format: { :with => VALID_PHONE_REGEX , message: "El formato debe ser 0000-000-000" },
-                    :allow_blank => true
-
 end

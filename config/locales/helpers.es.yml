@@ -6,13 +6,24 @@ es:
       materials: Materiales
       material_movements: Movimiento de Materiales
       contracts: Contratos
+      services: Servicios
 
     breadcrumbs:
       dashboard: Inicio
-      clients: Clientes
+      clients:
+              index: Clientes
+              new: Agregar
+              edit: Editar
+              show: Ciente
+
       materials: Materiales
       material_movements: Movimiento de Materiales
       contracts: Contratos
+      services:
+              index: Servicios
+              new: Agregar
+              edit: Editar
+              show: Servicio
 
     login:
       messages:

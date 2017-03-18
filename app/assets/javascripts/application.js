@@ -20,8 +20,16 @@
 //= require ./libs/bootstrap-datepicker/bootstrap-datepicker.es.js
 //= require ./libs/select2/select2.full.min.js
 //= require ./libs/select2/es.js
+//= require maskedinput
 //= require ./libs/data-tables/jquery.dataTables.min.js
 //= require ./libs/data-tables/dataTables.bootstrap.min.js
 //= require rails.validations
 //= require jquery_nested_form
 //= require_tree .
+
+//Mascara para el input de telefono
+$(document).on('turbolinks:load', function() {
+
+    $("#phone").mask("9999-999-999");
+
+});
