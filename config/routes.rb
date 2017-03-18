@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :purchase_bills
+  resources :services
   resources :contracts
   resources :clients
   resources :materials

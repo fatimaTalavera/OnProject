@@ -6,4 +6,9 @@ class MovementDetail < ApplicationRecord
   def restar_material
     Material.update(self.material.id, quantity: self.material.quantity - self.cantidad)
   end
+
+  validates :cantidad, :presence => {:message => "Debe rellenar este campo"}
+
+  validates :material_id, :presence => {:message => "Debe seleccionar un material"}
+
 end

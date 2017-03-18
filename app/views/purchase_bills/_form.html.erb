@@ -1,82 +1,62 @@
-<%= nested_form_for(purchase_bill) do |f| %>
-    <% if purchase_bill.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(purchase_bill.errors.count, "error") %> prohibited this material_movement from being saved:</h2>
-
-          <ul>
-            <% purchase_bill.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-            <% end %>
-          </ul>
+<%= nested_form_for purchase_bill, validate: true, :html => { class: 'form-horizontal' } do |f| %>
+    <div class="box-body">
+      <div class="field col-md-12 form-group">
+        <div class="field col-md-6 form-group required">
+          <div class="col-md-3">
+            <%= f.label :condition, 'Condicion:', :class => 'control-label' %>
+          </div>
+          <div class="col-md-9">
+            <%= f.select(:condition, ["Contado", "Credito"], {prompt: 'Seleccionar'}, :class => 'form-control') %>
+          </div>
         </div>
-    <% end %>
+        <div class="field col-md-6 form-group">
+          <div class="col-md-2">
+            <%= f.label :number, 'Numero:', :class => 'control-label' %>
+          </div>
+          <div class="col-md-10">
+            <%= f.number_field :number, :class => 'form-control' %>
+          </div>
+        </div>
+      </div>
 
-    <div class="row">
-      <form class="form-horizontal">
-        <div class="field col-md-12 form-group">
+      <div class="col-md-12">
+        <div class="col-md-8">
           <div class="panel panel-default">
-            <div class="panel-body">
-              <div class="field col-md-5 form-group required">
-                <div class="col-md-3">
-              <%= f.label :condition, 'Condicion:', :class => 'control-label' %>
+            <div class="panel panel-heading">
+              <b>Movimientos</b>
             </div>
-            <div class="col-md-8">
-              <%= f.select(:condition, ["Contado", "Credito"], {prompt: 'Seleccionar'}, :class => 'form-control') %>
-            </div>
-          </div>
-
-          <div class="field col-md-6 form-group required">
-            <div class="col-md-2">
-              <%= f.label :number, 'Numero:', :class => 'control-label' %>
-            </div>
-            <div class="col-md-10">
-              <%= f.number_field :number, :class => 'form-control' %>
-            </div>
-          </div>
-            </div>
-          </div>
-
-          <div class="col-md-12">
-            <div class="col-md-8">
-              <div class="panel panel-default">
-                <div class="panel panel-heading">
-                    <b>Movimientos</b>
-                  </div>
-                <div class="col-sm-12">
-                  <table id="purchase_details" class="display", cellspacing="0" width="100%">
-                    <tr>
-                      <th class="col-md-5">Material</th>
-                      <th class="col-md-3">Cantidad</th>
-                      <th class="col-md-3">Precio</th>
-                      <th class="col-md-1"></th>
+            <div class="col-sm-12">
+              <table id="purchase_details" class="display", cellspacing="0" width="100%">
+                <tr>
+                  <th class="col-md-5">Material</th>
+                  <th class="col-md-3">Cantidad</th>
+                  <th class="col-md-3">Precio</th>
+                  <th class="col-md-1"></th>
+                </tr>
+                <%= f.fields_for :purchase_details, :wrapper => false do |form| %>
+                    <tr class="fields col-md-12">
+                      <td class="col-md-5"><%=form.collection_select(:material_id, Material.all, :id, :name, {prompt: 'Seleccionar'}, class: 'form-control')%></td>
+                      <td class="col-md-3"><%=form.number_field :quantity, class: 'form-control'%></td>
+                      <td class="col-md-3"><%=form.number_field :price, class: 'form-control'%></td>
+                      <td class="col-md-1"><%=form.link_to_remove '<i class="fa fa-minus"></i>'.html_safe, class: 'btn btn-danger'%></td>
                     </tr>
-                    <%= f.fields_for :purchase_details, :wrapper => false do |form| %>
-                        <tr class="fields col-md-12">
-                          <td class="col-md-5"><%=form.collection_select(:material_id, Material.all, :id, :name, {prompt: 'Seleccionar'}, class: 'form-control')%></td>
-                          <td class="col-md-3"><%=form.number_field :quantity, class: 'form-control'%></td>
-                          <td class="col-md-3"><%=form.number_field :price, class: 'form-control'%></td>
-                          <td class="col-md-1"><%=form.link_to_remove '<i class="fa fa-minus"></i>'.html_safe, class: 'btn btn-danger'%></td>
-                        </tr>
-                    <% end %>
-                  </table>
-                  </div>
-                  <%=f.link_to_add '<i class="fa fa-plus"></i>'.html_safe, :purchase_details, class: 'btn btn-success'%>
-              </div>
+                <% end %>
+              </table>
             </div>
-          </div>
-
-        </div>
-        <div class="field col-md-12 form-group">
-          <div class="field col-md-12 form-group">
-            <% if controller.action_name == 'edit'  %>
-                <%= f.submit 'Guardar', :class => "btn btn-primary" %>
-            <% else %>
-                <%= f.submit 'Agregar', :class => 'btn btn-primary'%>
-            <% end %>
-            <%= link_to 'Cancelar',  purchase_bills_path , class: 'btn btn-default' %>
-
+            <%=f.link_to_add '<i class="fa fa-plus"></i>'.html_safe, :purchase_details, class: 'btn btn-success'%>
           </div>
         </div>
-      </form>
+      </div>
+    </div>
+
+    <div class="box-footer">
+      <div class="pull-right">
+        <% if controller.action_name == 'edit'  %>
+            <%= f.submit 'Guardar', :class => "btn btn-primary active" %>
+        <% else %>
+            <%= f.submit 'Guardar', :class => 'btn btn-primary active'%>
+        <% end %>
+        <%= link_to 'Cancelar',  purchase_bills_path , class: 'btn btn-default' %>
+      </div>
     </div>
 <% end %>

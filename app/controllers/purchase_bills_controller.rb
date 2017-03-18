@@ -1,4 +1,5 @@
 class PurchaseBillsController < ApplicationController
+  add_breadcrumb I18n.t('helpers.breadcrumbs.purchase_bills'), :purchase_bills_path
   before_action :set_purchase_bill, only: [:show, :edit, :update, :destroy]
 
   # GET /purchase_bills
