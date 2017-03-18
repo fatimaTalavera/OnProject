@@ -51,9 +51,9 @@ ActiveRecord::Schema.define(version: 20170314035731) do
     t.string   "description"
     t.decimal  "price"
     t.decimal  "quantity"
-    t.integer  "minimun_stock"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.integer  "minimun_stock",    default: 0
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.string   "measurement_unit"
   end
 
@@ -87,10 +87,17 @@ ActiveRecord::Schema.define(version: 20170314035731) do
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
+    t.string   "first_name",             default: "", null: false
+    t.string   "last_name",              default: "", null: false
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "name"
     t.integer  "role"
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
