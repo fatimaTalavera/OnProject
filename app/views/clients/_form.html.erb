@@ -1,4 +1,4 @@
-<%= form_for @client, validate: true, :html => { class: 'form-horizontal' } do |f| %>
+<%= form_for client, validate: true, :html => { class: 'form-horizontal' } do |f| %>
       <div class="box-body">
         <div class="field col-md-12 form-group">
           <div class="field col-md-6 form-group required">
@@ -55,7 +55,7 @@
               <%= f.label :phone, 'Telefono:', :class => 'control-label' %>
             </div>
             <div class="col-md-6">
-              <%= f.text_field :phone, :class => 'form-control', :maxlength => 12, placeholder: '0000-000-000' %>
+              <%= f.text_field :phone, id: 'phone', :class => 'form-control', :maxlength => 12 %>
             </div>
           </div>
         </div>
@@ -63,12 +63,8 @@
 
     <div class="box-footer">
         <div class="pull-right">
-          <% if controller.action_name == 'edit'  %>
-              <%= f.submit 'Guardar', :class => "btn btn-primary" %>
-          <% else %>
-              <%= f.submit 'Guardar', :class => 'btn btn-primary'%>
-          <% end %>
-          <%= link_to 'Cancelar',  clients_path , class: 'btn btn-default' %>
+          <%= f.submit 'Guardar', :class => "btn btn-primary" %>
+          <%= link_to 'Cancelar', materials_path, :class => 'btn btn-default' %>
         </div>
       </div>
     <% end %>

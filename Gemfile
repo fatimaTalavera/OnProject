@@ -30,6 +30,8 @@ gem "breadcrumbs_on_rails"
 gem 'client_side_validations'
 gem 'rails_best_practices'
 gem "rubycritic", :require => false
+# gem para mascara en los inputs
+gem 'maskedinput-rails'
 group :development do
   gem 'better_errors'
   gem 'rails_apps_pages'
