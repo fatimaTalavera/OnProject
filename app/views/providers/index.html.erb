@@ -1,0 +1,10 @@
+<div class="box box-success">
+  <div class="box-header with-header">
+    <h1 class="page-header">Lista de Proveedores <%= link_to new_provider_path(@provider), :class => 'btn btn-success' do %>
+          <span class="fa fa-plus"></span>
+      <% end %></h1>
+    <br>
+    <%= render 'table', providers: @providers %>
+    <br>
+  </div>
+</div>

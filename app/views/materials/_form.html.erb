@@ -5,12 +5,12 @@
           <div class="col-sm-2 alineado">
             <%= f.label :name, 'Nombre:', :class => 'control-label' %>
           </div>
-          <div class="col-sm-6 ">
+          <div class="col-sm-7 ">
             <%= f.text_field :name, autofocus: true, :maxlength => 30, :class => 'form-control' %>
           </div>
         </div>
 
-        <div class="field col-md-6 form-group required">
+        <div class="field col-md-6 form-group">
           <div class="col-sm-2 alineado">
             <%= f.label :description, 'Descripcion:', :class => 'control-label' %>
           </div>
@@ -39,7 +39,7 @@
         </div>
 
         <div class="field col-md-3 form-group required">
-          <div class="col-sm-4 alineado">
+          <div class="col-sm-3 alineado">
             <%= f.label :price, 'Precio:', :class => 'control-label' %>
           </div>
           <div class="col-sm-6 ">
@@ -52,7 +52,7 @@
             <%= f.label :minimun_stock, 'Stock min:', :class => 'control-label' %>
           </div>
           <div class="col-sm-5 ">
-            <%= f.text_field :minimun_stock, :maxlength => 5, :class => 'form-control' %>
+            <%= f.text_field :minimun_stock, value: 0 , :maxlength => 5, :class => 'form-control' %>
           </div>
         </div>
       </div>

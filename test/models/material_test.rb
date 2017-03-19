@@ -12,11 +12,6 @@ class MaterialTest < ActiveSupport::TestCase
     assert_not material.valid?, "Cannot save a material without name. Errors: #{material.errors.to_a.to_sentence}"
   end
 
-  test "Should not save a material without description" do
-    material = Material.new(name: "name", price: 9.99, quantity: 9.99, minimun_stock: 1, measurement_unit: "m")
-    assert_not material.valid?, "Cannot save a material without description. Errors: #{material.errors.to_a.to_sentence}"
-  end
-
   test "Should not save a material without price" do
     material = Material.new(name: "name", description: "description", quantity: 9.99, minimun_stock: 1, measurement_unit: "m")
     assert_not material.valid?, "Cannot save a material without price. Errors: #{material.errors.to_a.to_sentence}"
