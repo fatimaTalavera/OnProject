@@ -7,6 +7,7 @@ es:
       materials: Materiales
       material_movements: Movimiento de Materiales
       contracts: Contratos
+      providers: Proveedores
       users: Usuarios
 
     breadcrumbs:
@@ -17,7 +18,12 @@ es:
               edit: Editar
               show: Ciente
 
-      materials: Materiales
+      materials:
+              index: Materiales
+              new: Agregar
+              edit: Editar
+              show: Material
+
       material_movements: Movimiento de Materiales
       contracts: Contratos
       users:
@@ -25,6 +31,12 @@ es:
         new: Agregar
         edit: Editar
         show: "%{user}"
+
+      providers:
+            index: Proveedores
+            new: Agregar
+            edit: Editar
+            show: Proveedor
     login:
       messages:
         title_login: Ingresar al Sistema

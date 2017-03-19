@@ -1,0 +1,61 @@
+<%= form_for provider, validate: true, :html => { class: 'form-horizontal' } do |f| %>
+    <div class="box-body box-success">
+      <div class="field col-md-12 form-group">
+        <div class="field col-md-9 form-group required">
+          <div class="col-md-3">
+            <%= f.label :name, 'Nombre o Razón Social:', :class => 'control-label' %>
+          </div>
+          <div class="col-md-7">
+            <%= f.text_field :name, :class => 'form-control', autofocus:true, :maxlength => 45 %>
+          </div>
+        </div>
+      </div>
+
+      <div class="field col-md-12 form-group">
+        <div class="field col-md-6 form-group required">
+          <div class="col-md-3">
+            <%= f.label :ruc, 'RUC:', :class => 'control-label' %>
+          </div>
+          <div class="col-md-5">
+            <%= f.text_field :ruc, :class => 'form-control', :maxlength => 12 %>
+          </div>
+        </div>
+
+        <div class="field col-md-6 form-group">
+          <div class="col-md-2">
+            <%= f.label :email, 'Correo:', :class => 'control-label' %>
+          </div>
+          <div class="col-md-10">
+            <%= f.text_field :email, :class => 'form-control', :maxlength => 50 %>
+          </div>
+        </div>
+      </div>
+
+      <div class="field col-md-12 form-group">
+        <div class="field col-md-6 form-group">
+          <div class="col-md-3">
+            <%= f.label :address, 'Direccion:', :class => 'control-label' %>
+          </div>
+          <div class="col-md-9">
+            <%= f.text_field :address, :class => 'form-control', :maxlength => 50 %>
+          </div>
+        </div>
+
+        <div class="field col-md-6 form-group">
+          <div class="col-md-2">
+            <%= f.label :phone, 'Telefono:', :class => 'control-label' %>
+          </div>
+          <div class="col-md-6">
+            <%= f.text_field :phone, id: 'phone', :class => 'form-control', :maxlength => 12 %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="box-footer">
+      <div class="pull-right">
+        <%= f.submit 'Guardar', :class => "btn btn-primary" %>
+        <%= link_to 'Cancelar', providers_path, :class => 'btn btn-default' %>
+      </div>
+    </div>
+<% end %>

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  ruc: MyString
+  address: MyString
+  phone: MyString
+  email: MyString
+  state: false
+  balance: 9.99
+
+two:
+  name: MyString
+  ruc: MyString
+  address: MyString
+  phone: MyString
+  email: MyString
+  state: false
+  balance: 9.99
