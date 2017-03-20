@@ -19,5 +19,4 @@ class Provider < ApplicationRecord
             :uniqueness => {:message => "El correo ya esta en uso, vuelva a intentarlo"},
             :allow_blank => true
 
-  validates :address, :format => {with: VALID_LETTER_NUMBER_REGEX, message: "No permite SOLO numeros o simbolos"}
 end

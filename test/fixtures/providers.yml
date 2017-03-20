@@ -4,16 +4,25 @@ one:
   name: MyString
   ruc: MyString
   address: MyString
-  phone: MyString
+  phone: 205020
   email: MyString
   state: false
   balance: 9.99
 
 two:
-  name: MyString
-  ruc: MyString
+  name: string
+  ruc: 1234456-4
   address: MyString
-  phone: MyString
-  email: MyString
+  phone: 123123
+  email: mail@test.com
+  state: false
+  balance: 9.99
+
+three:
+  name: stringg
+  ruc: 1234456-2
+  address: MyString
+  phone: 12123
+  email: mail@test.com
   state: false
   balance: 9.99

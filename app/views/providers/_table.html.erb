@@ -1,36 +1,35 @@
 <div class="panel panel-default">
   <div class="panel-body">
-    <div class="table-responsive">
-      <table id="providers_table" class="table table-striped table-bordered table-hover">
-        <thead>
-        <tr>
-          <th>Nombre</th>
-          <th>RUC</th>
-          <th>Telefono</th>
-          <th>Correo</th>
-          <th>Direccion</th>
-          <th></th>
-        </tr>
-        </thead>
+    <table id="providers_table" class="table table-striped table-bordered table-hover">
+      <thead>
+      <tr>
+        <th>Nombre o Razon Social</th>
+        <th>RUC</th>
+        <th>Telefono</th>
+        <th>Correo</th>
+        <th>Direccion</th>
+        <th></th>
+      </tr>
+      </thead>
 
-        <tbody>
-        <% providers.each do |provider| %>
-            <tr>
-              <td><%= provider.name %></td>
-              <td><%= provider.ruc %></td>
-              <td><%= provider.phone %></td>
-              <td><%= provider.email %></td>
-              <td><%= provider.address %></td>
-              <td><%= link_to provider, class: 'btn btn-info active', title: 'Ver', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
-                    <span class= "fa fa-eye"></span>
-                <% end %>
-                <%= link_to edit_provider_path(provider), class: 'btn btn-success active', title: 'Editar', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
-                    <span class= "fa fa-edit"></span>
-                <% end %>
-                </tr>
-        <% end %>
-        </tbody>
-      </table>
-    </div>
+      <tbody>
+      <% providers.each do |provider| %>
+          <tr>
+            <td><%= provider.name %></td>
+            <td><%= provider.ruc %></td>
+            <td><%= provider.phone %></td>
+            <td><%= provider.email %></td>
+            <td><%= provider.address %></td>
+            <td><%= link_to provider, class: 'btn btn-info active', title: 'Ver', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
+                  <span class="fa fa-eye"></span>
+              <% end %>
+              <%= link_to edit_provider_path(provider), class: 'btn btn-success active', title: 'Editar', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
+                  <span class="fa fa-edit"></span>
+              <% end %>
+              </tr>
+      <% end %>
+      </tbody>
+    </table>
   </div>
+
 </div>
