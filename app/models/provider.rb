@@ -2,16 +2,17 @@ class Provider < ApplicationRecord
 
   VALID_LETTER_REGEX = /\A([a-zA-Z]|[a-zA-Z][\. ])+\z/
   VALID_NUMBER_REGEX = /\A^-?([0-9]|(\-[0-9]))*$\z/
+  VALID_RUC_REGEX = /\A\d{5,9}[-]?\d{1}\z/
 
   #cadena de letras con numeros
   VALID_LETTER_NUMBER_REGEX = /\A^(?:[A-Za-z]+)(?:[A-Za-z0-9 _]*)$\z/
 
   validates :name,  :presence => {:message => "No puede estar en blanco"},
-            :length => { maximum:30, :message => "Permite hasta 30 caracteres"},
+            :length => { maximum:40, :message => "Permite hasta 40 caracteres"},
             format: { :with => VALID_LETTER_REGEX, message: "Solo permite letras"}
 
   validates :ruc, :presence => {:message => "No puede estar en blanco"},
-            :format => {:multiline => true, with: VALID_NUMBER_REGEX, :message => "Solo permite numeros"},
+            :format => {:multiline => true, with: VALID_RUC_REGEX, :message => "Formato de RUC/CI incorrecto"},
             :uniqueness => {:message => "Ya existe este RUC"}
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
