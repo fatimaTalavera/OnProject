@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170318212121) do
+ActiveRecord::Schema.define(version: 20170320211646) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,8 +83,10 @@ ActiveRecord::Schema.define(version: 20170318212121) do
     t.datetime "date"
     t.string   "condition"
     t.integer  "number"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "provider_id"
+    t.index ["provider_id"], name: "index_purchase_bills_on_provider_id", using: :btree
   end
 
   create_table "purchase_details", force: :cascade do |t|
@@ -130,6 +132,7 @@ ActiveRecord::Schema.define(version: 20170318212121) do
   add_foreign_key "material_movements", "contracts"
   add_foreign_key "movement_details", "material_movements"
   add_foreign_key "movement_details", "materials"
+  add_foreign_key "purchase_bills", "providers"
   add_foreign_key "purchase_details", "materials"
   add_foreign_key "purchase_details", "purchase_bills"
 end

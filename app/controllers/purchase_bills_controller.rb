@@ -44,7 +44,7 @@ class PurchaseBillsController < ApplicationController
   def update
     respond_to do |format|
       if @purchase_bill.update(purchase_bill_params)
-        format.html { redirect_to @purchase_bill, notice: 'Purchase bill was successfully updated.' }
+        format.html { redirect_to purchase_bills_url, notice: 'Purchase bill was successfully updated.' }
         format.json { render :show, status: :ok, location: @purchase_bill }
       else
         format.html { render :edit }
@@ -71,7 +71,7 @@ class PurchaseBillsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def purchase_bill_params
-      params.require(:purchase_bill).permit(:date, :condition, :number,
+      params.require(:purchase_bill).permit(:date, :condition, :number, :provider_id,
                                             :purchase_details_attributes => [:id, :quantity, :material_id, :price, :_destroy])
     end
 end
