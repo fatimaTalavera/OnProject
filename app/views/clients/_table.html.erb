@@ -1,5 +1,5 @@
-<div class="panel panel-default">
-  <div class="panel-body">
+<div class="box">
+  <div class="box-body">
     <div class="table-responsive">
       <table id="clients_table" class="table table-striped table-bordered table-hover">
         <thead>
@@ -15,7 +15,7 @@
         </thead>
 
         <tbody>
-        <% @clients.each do |client| %>
+        <% clients.each do |client| %>
             <tr>
               <td><%= client.name %></td>
               <td><%= client.last_name %></td>

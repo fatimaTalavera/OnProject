@@ -1,28 +1,28 @@
 class MaterialsController < ApplicationController
-  add_breadcrumb I18n.t('helpers.breadcrumbs.materials'), :materials_path
+  add_breadcrumb I18n.t('helpers.breadcrumbs.materials.index'), :materials_path
   before_action :set_material, only: [:show, :edit, :update, :destroy]
 
   # GET /materials
   # GET /materials.json
   def index
-    @materials = Material.all
-    @material = Material.new
+    get_materials
   end
 
   # GET /materials/1
   # GET /materials/1.json
   def show
-    @materials = Material.all
+    add_breadcrumb I18n.t('helpers.breadcrumbs.materials.show')
   end
 
   # GET /materials/new
   def new
+    add_breadcrumb I18n.t('helpers.breadcrumbs.materials.new')
     @material = Material.new
   end
 
   # GET /materials/1/edit
   def edit
-    @materials = Material.all
+    add_breadcrumb I18n.t('helpers.breadcrumbs.materials.edit')
   end
 
   # POST /materials
@@ -66,6 +66,10 @@ class MaterialsController < ApplicationController
   end
 
   private
+
+  def get_materials
+    @materials = Material.all
+  end
   # Use callbacks to share common setup or constraints between actions.
   def set_material
     @material = Material.find(params[:id])

@@ -1,24 +1,29 @@
 class ServicesController < ApplicationController
   before_action :set_service, only: [:show, :edit, :update, :destroy]
+  add_breadcrumb I18n.t('helpers.breadcrumbs.services.index'), :services_path
 
   # GET /services
   # GET /services.json
   def index
     @services = Service.all
+    @service = Service.new
   end
 
   # GET /services/1
   # GET /services/1.json
   def show
+    add_breadcrumb I18n.t('helpers.breadcrumbs.services.show')
   end
 
   # GET /services/new
   def new
+    add_breadcrumb I18n.t('helpers.breadcrumbs.services.new')
     @service = Service.new
   end
 
   # GET /services/1/edit
   def edit
+    add_breadcrumb I18n.t('helpers.breadcrumbs.services.edit')
   end
 
   # POST /services
@@ -28,7 +33,7 @@ class ServicesController < ApplicationController
 
     respond_to do |format|
       if @service.save
-        format.html { redirect_to @service, notice: 'Service was successfully created.' }
+        format.html { redirect_to services_path, notice: 'Service was successfully created.' }
         format.json { render :show, status: :created, location: @service }
       else
         format.html { render :new }
@@ -42,7 +47,7 @@ class ServicesController < ApplicationController
   def update
     respond_to do |format|
       if @service.update(service_params)
-        format.html { redirect_to @service, notice: 'Service was successfully updated.' }
+        format.html { redirect_to services_path, notice: 'Service was successfully updated.' }
         format.json { render :show, status: :ok, location: @service }
       else
         format.html { render :edit }

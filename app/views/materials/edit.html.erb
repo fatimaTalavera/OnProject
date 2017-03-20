@@ -1,15 +1,10 @@
-  <div class="row">
-    <div class="col-lg-12">
-      <h1 class="page-header">Editar Material</h1>
+<div class="box box-success">
+  <div class="box-header with-header">
+    <h1 class="page-header">Editar Material</h1>
+
+    <div class="box-body">
+      <%= render 'form', :material => @material %>
+      <br>
     </div>
   </div>
-  <div class="panel panel-default">
-    <br>
-    <%= render 'form', material: @material %>
-    <br>
-  </div>
-  <div>
-    <br>
-    <%= render 'table', material: @material %>
-    <br>
-  </div>
+</div>

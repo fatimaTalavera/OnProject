@@ -14,6 +14,9 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'coffee-script-source','1.8.0'
 gem 'nested_form'
+gem 'kaminari'
+gem 'ransack'
+gem 'slim'
 group :development, :test do
   gem 'byebug', platform: :mri
 end
@@ -29,6 +32,9 @@ gem "breadcrumbs_on_rails"
 # gem para validaciones
 gem 'client_side_validations'
 gem 'rails_best_practices'
+gem "rubycritic", :require => false
+# gem para mascara en los inputs
+gem 'maskedinput-rails'
 group :development do
   gem 'better_errors'
   gem 'rails_apps_pages'
