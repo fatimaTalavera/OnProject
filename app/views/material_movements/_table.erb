@@ -15,7 +15,7 @@
         <% material_movements.each do |material_movement| %>
             <tr>
               <td><%= material_movement.fecha %></td>
-              <td><%= material_movement.contract.name %></td>
+              <td><%= material_movement.contract_name %></td>
               <td><%= material_movement.motivo %></td>
 
               <td><%= link_to material_movement, class: 'btn btn-info active', title: 'Ver', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>

@@ -84,7 +84,7 @@ ActiveRecord::Schema.define(version: 20170314035731) do
     t.integer  "purchase_bill_id"
     t.index ["material_id"], name: "index_purchase_details_on_material_id", using: :btree
     t.index ["purchase_bill_id"], name: "index_purchase_details_on_purchase_bill_id", using: :btree
-    end
+  end
 
   create_table "services", force: :cascade do |t|
     t.string   "name"

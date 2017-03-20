@@ -41,7 +41,7 @@
                   <th class="col-md-2"></th>
                 </tr>
                 <%= f.fields_for :movement_details, :wrapper => false do |form| %>
-                    <tr class="fields col-md-12">
+                    <tr class="fields col-md-12 form-group required">
                       <td class="col-md-7"><%=form.collection_select(:material_id, Material.all, :id, :name, {prompt: 'Seleccionar'}, class: 'form-control')%></td>
                       <td class="col-md-3"><%=form.number_field :cantidad, class: 'form-control'%></td>
                       <td class="col-md-2"><%=form.link_to_remove '<i class="fa fa-minus"></i>'.html_safe, class: 'btn btn-danger'%></td>
@@ -60,7 +60,7 @@
         <% if controller.action_name == 'edit' %>
             <%= f.submit 'Guardar', :class => "btn btn-primary active" %>
         <% else %>
-            <%= f.submit 'Guardar', :class => 'btn btn-primary'%>
+            <%= f.submit 'Guardar', :class => 'btn btn-primary active'%>
         <% end %>
         <%= link_to 'Cancelar',  material_movements_path , class: 'btn btn-default' %>
       </div>

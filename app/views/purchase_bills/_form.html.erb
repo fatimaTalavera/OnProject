@@ -10,10 +10,10 @@
           </div>
         </div>
         <div class="field col-md-4 form-group required">
-          <div class="col-md-2">
+          <div class="col-md-3">
             <%= f.label :number, 'Numero:', :class => 'control-label' %>
           </div>
-          <div class="col-md-10">
+          <div class="col-md-9">
             <%= f.number_field :number, :class => 'form-control' %>
           </div>
         </div>
@@ -31,7 +31,7 @@
         <div class="col-md-8">
           <div class="panel panel-default">
             <div class="panel panel-heading">
-              <b>Movimientos</b>
+              <b>Detalles de Factura</b>
             </div>
             <div class="col-sm-12">
               <table id="purchase_details" class="display", cellspacing="0" width="100%">
@@ -42,7 +42,7 @@
                   <th class="col-md-1"></th>
                 </tr>
                 <%= f.fields_for :purchase_details, :wrapper => false do |form| %>
-                    <tr class="fields col-md-12">
+                    <tr class="fields col-md-12 form-group required">
                       <td class="col-md-5"><%=form.collection_select(:material_id, Material.all, :id, :name, {prompt: 'Seleccionar'}, class: 'form-control')%></td>
                       <td class="col-md-3"><%=form.number_field :quantity, class: 'form-control'%></td>
                       <td class="col-md-3"><%=form.number_field :price, class: 'form-control'%></td>
