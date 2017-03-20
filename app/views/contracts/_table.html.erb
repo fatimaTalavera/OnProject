@@ -20,9 +20,7 @@
               <td><%= contract.start_date %></td>
               <td><%= contract.end_date %></td>
               <td><%= contract.amount %></td>
-              <td><%= link_to contract, class: 'btn btn-info active', title: 'Ver', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
-                    <span class= "fa fa-eye"></span>
-                <% end %>
+              <td>
                 <%= link_to edit_contract_path(contract), class: 'btn btn-success active', title: 'Editar', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
                     <span class= "fa fa-edit"></span>
                 <% end %>
