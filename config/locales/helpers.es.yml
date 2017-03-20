@@ -25,7 +25,11 @@ es:
               show: Material
 
       material_movements: Movimiento de Materiales
-      contracts: Contratos
+      contracts:
+            index: Contratos
+            new: Agregar
+            edit: Editar
+            show: Contrato
       users:
         index: Usuarios
         new: Agregar
