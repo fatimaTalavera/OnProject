@@ -5,28 +5,28 @@
   <div class="box-body">
     <div class="field col-md-12 form-group">
       <div class="field col-md-4 form-group">
-        <div class="col-sm-3 ">
+        <div class="col-sm-3 label-pad">
           <strong>Nombre:</strong>
         </div>
-        <div class="col-sm-7 ">
+        <div class="col-sm-7 show-padding">
           <%= @material.name %>
         </div>
       </div>
 
       <div class="field col-md-4 form-group">
-        <div class="col-sm-3 ">
+        <div class="col-sm-4 label-pad">
           <strong>Descripcion:</strong>
         </div>
-        <div class="col-sm-7">
+        <div class="col-sm-7 show-padding">
           <%= @material.description %>
         </div>
       </div>
 
       <div class="field col-md-4 ">
-        <div class="col-sm-3 ">
+        <div class="col-sm-3 label-pad ">
           <strong>Cantidad:</strong>
         </div>
-        <div class="col-sm-6 ">
+        <div class="col-sm-6 show-padding">
           <%= @material.quantity %>
         </div>
       </div>
@@ -34,16 +34,16 @@
     <div class="field col-md-12">
       <br>
       <div class="field col-md-4">
-        <div class="col-sm-5 ">
+        <div class="col-sm-5 label-pad ">
           <strong>Ud. de medida:</strong>
         </div>
-        <div class="col-sm-5">
+        <div class="col-sm-5 show-padding">
           <%= @material.measurement_unit %>
         </div>
       </div>
 
       <div class="field col-md-4">
-        <div class="col-sm-4">
+        <div class="col-sm-2">
           <strong>Precio:</strong>
         </div>
         <div class="col-sm-6 ">
@@ -51,11 +51,11 @@
         </div>
       </div>
 
-      <div class="field col-md-4">
-        <div class="col-sm-5 ">
+      <div class="field col-md-4 ">
+        <div class="col-sm-5 label-pad">
           <strong>Stock minimo:</strong>
         </div>
-        <div class="col-sm-2 ">
+        <div class="col-sm-3 show-padding">
           <%= @material.minimun_stock %>
         </div>
       </div>
