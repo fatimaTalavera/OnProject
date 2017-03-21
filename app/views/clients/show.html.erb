@@ -4,30 +4,21 @@
       <div class="box-body">
 
         <div class="field col-md-12 form-group">
-          <div class="field col-md-4 form-group">
+          <div class="field col-md-8 form-group">
             <div class="col-md-4">
-              <strong>Nombre:</strong>
+              <strong>Nombre o Razón Social:</strong>
             </div>
-            <div class="col-md-7">
+            <div class="col-md-8">
               <%= @client.name %>
             </div>
           </div>
 
           <div class="field col-md-4 form-group">
             <div class="col-md-4">
-              <strong>Apellido:</strong>
+              <strong>RUC:</strong>
             </div>
             <div class="col-md-7">
-              <%= @client.last_name %>
-            </div>
-          </div>
-
-          <div class="field col-md-4 form-group">
-            <div class="col-md-4">
-              <strong>Documento:</strong>
-            </div>
-            <div class="col-md-7">
-              <%= @client.identification_document %>
+              <%= @client.ruc %>
             </div>
           </div>
         </div>

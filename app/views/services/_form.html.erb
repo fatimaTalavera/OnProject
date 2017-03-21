@@ -1,5 +1,5 @@
 <%= form_for service, validate: true, :html => { class: 'form-horizontal' } do |f| %>
-    <div class="box-body">
+    <div class="box-body box-success">
       <div class="field col-md-12 form-group">
         <div class="field col-md-6 form-group required">
           <div class="col-md-3">
@@ -9,14 +9,16 @@
             <%= f.text_field :name, :class => 'form-control', autofocus:true, :maxlength => 40 %>
           </div>
         </div>
+
         <div class="field col-md-6 form-group required">
           <div class="col-md-3">
-            <%= f.label :description, 'Descripción:', :class => 'control-label' %>
+            <%= f.label :price, 'Precio:', :class => 'control-label' %>
           </div>
-          <div class="col-md-9">
-            <%= f.text_field :description, :class => 'form-control', :maxlength => 40  %>
+          <div class="col-md-4">
+            <%= f.text_field :price, :class => 'form-control', :maxlength => 12 %>
           </div>
         </div>
+
       </div>
 
       <div class="field col-md-12 form-group">
@@ -31,10 +33,10 @@
 
         <div class="field col-md-6 form-group required">
           <div class="col-md-3">
-            <%= f.label :price, 'Precio:', :class => 'control-label' %>
+            <%= f.label :description, 'Descripción:', :class => 'control-label' %>
           </div>
-          <div class="col-md-4">
-            <%= f.text_field :price, :class => 'form-control', :maxlength => 12 %>
+          <div class="col-md-9">
+            <%= f.text_area :description, :class => 'form-control', cols: "30", rows: "5", :maxlength => 200  %>
           </div>
         </div>
       </div>

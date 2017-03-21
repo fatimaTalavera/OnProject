@@ -28,7 +28,7 @@ document.addEventListener 'turbolinks:load', ->
       {
         'searchable': false
         'orderable': false
-        'targets': 6
+        'targets': 5
       }
     ]
   return
