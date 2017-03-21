@@ -47,17 +47,8 @@ OnProject = {
       });
 
       DataTableHelper.configLanguage('.data-table');
-
-      $('#datepickerFrom').datepicker({
-        format: 'dd/mm/yyyy',
-        language: "es"
-      });
-
-      $('#datepickerTo').datepicker({
-        format: 'dd/mm/yyyy',
-        language: "es"
-      });
-
+      DatepickerHelper.initDatepicker('.datepicker')
+      
     }
   },
 };
