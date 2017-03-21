@@ -25,16 +25,8 @@ es:
               edit: Editar
               show: Material
 
-      material_movements:
-            index: Movimientos de Materiales
-            new: Agregar
-            edit: Editar
-            show: Movimiento de Materiales
-      purchase_bills:
-            index: Facturas de Compras
-            new: Agregar
-            edit: Editar
-            show: Factura de compra
+      material_movements: Movimientos de Materiales
+      purchase_bills: Facturas de Compras
       contracts:
             index: Contratos
             new: Agregar
