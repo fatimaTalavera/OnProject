@@ -22,11 +22,6 @@ class ContractTest < ActiveSupport::TestCase
     assert_not contract.valid?, "The contract was not valid. Errors: #{contract.errors.to_a.to_sentence}"
   end
 
-  test "Should not save a contract if the end date is less than the start date" do
-    contract = Contract.new(client: Client.first, start_date: Date.today, end_date: Date.yesterday, name: "name", amount: 5000 )
-    assert_not contract.valid?, "The contract was not valid. Errors: #{contract.errors.to_a.to_sentence}"
-  end
-
   test "Should not save a contract without name" do
     contract = Contract.new(client: Client.first, start_date: Date.today, end_date: Date.today, amount: 5000 )
     assert_not contract.valid?, "The contract was not valid. Errors: #{contract.errors.to_a.to_sentence}"

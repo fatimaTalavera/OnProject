@@ -1,84 +1,61 @@
-<%= form_for(contract) do |f| %>
-    <% if contract.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(contract.errors.count, "error") %> prohibited this contratc from being saved:</h2>
-
-          <ul>
-            <% contract.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-    <% end %>
-
-    <div class="row">
-      <form class="form-horizontal">
-
-        <div class="field col-md-12 form-group">
-          <div class="field col-md-6 form-group">
-            <div class="col-md-4">
-              <%= f.label :name, 'Nombre de la obra:', :class => 'control-label' %>
-            </div>
-            <div class="col-md-8">
-              <%= f.text_field :name, :class => 'form-control', autofocus:true %>
-            </div>
+<%= form_for contract, validate: true, :html => { class: 'form-horizontal' } do |f| %>
+    <div class="box-body">
+      <div class="field col-md-12 form-group">
+        <div class="field col-md-6 form-group required">
+          <div class="col-md-3">
+            <%= f.label :name, 'Nombre de la obra:', :class => 'control-label' %>
           </div>
-
-          <div class="field col-md-6 form-group">
-            <div class="col-md-4">
-              <%= f.label :client, 'Cliente:', :class => 'control-label' %>
-            </div>
-            <div class="col-md-8">
-              <%= f.collection_select :client_id, Client.all.order('name'), :id, :full_name, {prompt: "Ninguno"} ,:class => 'btn btn-default'%>
-            </div>
+          <div class="col-md-6">
+            <%= f.text_field :name, :class => 'form-control', autofocus:true, :maxlength => 50 %>
           </div>
         </div>
 
-        <div class="field col-md-12 form-group">
-          <div class="field col-md-6 form-group">
-            <div class="col-md-4">
-              <%= f.label :start_date, 'Inicio de ejecución:', :class => 'control-label' %>
-            </div>
-            <div  class="input-group col-md-5">
-              <%= f.text_field :start_date, :id => 'datepickerFrom', :class => 'input-group date form-control' %><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-            </div>
+        <div class="field col-md-6 form-group required">
+          <div class="col-md-3">
+            <%= f.label :client, 'Cliente:', :class => 'control-label' %>
           </div>
+          <div class="col-md-5">
+            <%= f.collection_select :client_id, Client.all.order('name'), :id, :full_name, {prompt: "Ninguno"} ,:class => 'btn btn-default'%>
+          </div>
+        </div>
+      </div>
 
-          <div class="field col-md-6 form-group">
-            <div class="col-md-4">
-              <%= f.label :end_date, 'Fin de Ejecución:', :class => 'control-label' %>
-            </div>
-            <div class="input-group col-md-5">
-              <%= f.text_field :end_date, :id => 'datepickerTo', :class => 'input-group date form-control',  data: { date_format: 'dd-mm-yyyy' }%><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-            </div>
+      <div class="field col-md-12 form-group">
+        <div class="field col-md-6 form-group required">
+          <div class="col-md-3">
+            <%= f.label :start_date, 'Inicio de ejecución:', :class => 'control-label' %>
+          </div>
+          <div class="col-md-3">
+            <%= f.text_field :start_date, :id => 'datepickerFrom', :class => 'input-group date form-control', :readonly => true %>
           </div>
         </div>
 
-        <div class="field col-md-12 form-group">
-          <div class="field col-md-6 form-group">
-            <div class="col-md-4">
-              <%= f.label :amount, 'Monto:', :class => 'control-label' %>
-            </div>
-            <div class="col-md-8">
-              <%= f.number_field :amount, :class => 'form-control' %>
-            </div>
+        <div class="field col-md-6 form-group required">
+          <div class="col-md-3">
+            <%= f.label :end_date, 'Fin de Ejecución:', :class => 'control-label' %>
           </div>
-
-          <div class="field col-md-12 form-group">
+          <div class="col-md-3">
+            <%= f.text_field :end_date, :id => 'datepickerTo', :class => 'input-group date form-control', :readonly => true %>
           </div>
+        </div>
+      </div>
 
-          <div class="field col-md-12 form-group">
-            <% if controller.action_name == 'edit'  %>
-                <%= f.submit 'Guardar', :class => "btn btn-primary" %>
-            <% else %>
-                <%= f.submit 'Agregar', :class => 'btn btn-primary'%>
-            <% end %>
-            <%= link_to 'Cancelar',  contracts_path , class: 'btn btn-default' %>
+      <div class="field col-md-12 form-group">
+        <div class="field col-md-6 form-group required">
+          <div class="col-md-3">
+            <%= f.label :amount, 'Monto:', :class => 'control-label' %>
+          </div>
+          <div class="col-md-5">
+            <%= f.number_field :amount, :class => 'form-control' %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="box-footer">
+      <div class="pull-right">
+        <%= f.submit 'Guardar', :class => 'btn btn-primary'%>
+        <%= link_to 'Cancelar',  contracts_path , class: 'btn btn-default' %>
+      </div>
+    </div>
 <% end %>
-</div>
-
-</div>
-</form>
-</div>
-
-
