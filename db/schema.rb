@@ -79,6 +79,27 @@ ActiveRecord::Schema.define(version: 20170321015203) do
     t.datetime "updated_at",                 null: false
   end
 
+  create_table "purchase_bills", force: :cascade do |t|
+    t.datetime "date"
+    t.string   "condition"
+    t.integer  "number"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "provider_id"
+    t.index ["provider_id"], name: "index_purchase_bills_on_provider_id", using: :btree
+  end
+
+  create_table "purchase_details", force: :cascade do |t|
+    t.integer  "material_id"
+    t.integer  "quantity"
+    t.integer  "price"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "purchase_bill_id"
+    t.index ["material_id"], name: "index_purchase_details_on_material_id", using: :btree
+    t.index ["purchase_bill_id"], name: "index_purchase_details_on_purchase_bill_id", using: :btree
+  end
+
   create_table "services", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
@@ -118,4 +139,7 @@ ActiveRecord::Schema.define(version: 20170321015203) do
   add_foreign_key "material_movements", "contracts"
   add_foreign_key "movement_details", "material_movements"
   add_foreign_key "movement_details", "materials"
+  add_foreign_key "purchase_bills", "providers"
+  add_foreign_key "purchase_details", "materials"
+  add_foreign_key "purchase_details", "purchase_bills"
 end

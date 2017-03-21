@@ -1,77 +1,68 @@
-<%= nested_form_for(material_movement) do |f| %>
-    <% if material_movement.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(material_movement.errors.count, "error") %> prohibited this material_movement from being saved:</h2>
-
-          <ul>
-            <% material_movement.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-            <% end %>
-          </ul>
+<%= nested_form_for material_movement, validate: true, :html => { class: 'form-horizontal' } do |f| %>
+    <div class="box-body">
+      <div class="field col-md-12 form-group">
+        <div class="field col-md-4 form-group required">
+          <div class="col-md-3">
+            <%= f.label :contract, 'Contrato:', :class => 'control-label' %>
+          </div>
+          <div class="col-md-9">
+            <%= f.collection_select(:contract_id, Contract.all, :id, :name, {prompt: 'Seleccionar'}, :class => 'form-control') %>
+          </div>
         </div>
-    <% end %>
-
-    <div class="row">
-      <form class="form-horizontal">
-        <div class="field col-md-12 form-group">
-
-          <div class="field col-md-4 form-group">
-            <div class="col-md-2">
-              <%= f.label :contract, 'Contrato:', :class => 'control-label' %>
-            </div>
-            <div class="col-md-10">
-              <%= f.collection_select(:contract_id, Contract.all, :id, :name, {prompt: 'Seleccionar'}, :class => 'form-control') %>
-            </div>
+        <div class="field col-md-4 form-group">
+          <div class="col-md-2">
+            <%= f.label :motivo, 'Motivo:', :class => 'control-label' %>
           </div>
-
-          <div class="field col-md-4 form-group">
-            <div class="col-md-2">
-              <%= f.label :motivo, 'Motivo:', :class => 'control-label' %>
-            </div>
-            <div class="col-md-10">
-              <%= f.text_field :motivo, :class => 'form-control' %>
-            </div>
+          <div class="col-md-10">
+            <%= f.text_field :motivo, :maxlength => 120, :class => 'form-control' %>
           </div>
+        </div>
+        <div class="field col-md-4 form-group">
+          <div class="col-md-3">
+            <%= f.label :fecha, 'Fecha:', :class => 'control-label' %>
+          </div>
+          <div class="input-group col-md-9">
+            <%= f.text_field :fecha, :id => 'datepickerFrom', :class => 'input-group date form-control' %><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+          </div>
+        </div>
+      </div>
 
-          <div class="col-md-12">
-            <div class="col-md-3">
-              <div class="form-group">
-                <div class="panel panel-default">
-                  <div class="panel panel-heading">
-                    <b>Movimientos</b>
-                  </div>
-                  <table id="movimientos_detalles" class="display", cellspacing="0" width="100%">
-                    <tr>
-                      <th>Material</th>
-                      <th>Cantidad</th>
-                      <th></th>
+      <div class="col-md-12">
+        <div class="col-md-8">
+          <div class="panel panel-default">
+            <div class="panel panel-heading">
+              <b>Movimientos</b>
+            </div>
+            <div class="col-sm-12">
+              <table id="movimientos_detalles" class="display", cellspacing="0" width="100%">
+                <tr>
+                  <th class="col-md-7">Material</th>
+                  <th class="col-md-3">Cantidad</th>
+                  <th class="col-md-2"></th>
+                </tr>
+                <%= f.fields_for :movement_details, :wrapper => false do |form| %>
+                    <tr class="fields col-md-12 form-group required">
+                      <td class="col-md-7"><%=form.collection_select(:material_id, Material.all, :id, :name, {prompt: 'Seleccionar'}, class: 'form-control')%></td>
+                      <td class="col-md-3"><%=form.number_field :cantidad, class: 'form-control'%></td>
+                      <td class="col-md-2"><%=form.link_to_remove '<i class="fa fa-minus"></i>'.html_safe, class: 'btn btn-danger'%></td>
                     </tr>
-                    <%= f.fields_for :movement_details, :wrapper => false do |form| %>
-                        <tr class="fields">
-                          <td><%=form.collection_select(:material_id, Material.all, :id, :name, {prompt: 'Seleccionar'})%></td>
-                          <td><%=form.number_field :cantidad%></td>
-                          <td><%=form.link_to_remove '<i class="fa fa-minus"></i>'.html_safe, class: 'btn btn-danger'%></td>
-                        </tr>
-                    <% end %>
-                  </table>
-                  <%=f.link_to_add '<i class="fa fa-plus"></i>'.html_safe, :movement_details, class: 'btn btn-success'%>
-                </div>
-              </div>
+                <% end %>
+              </table>
             </div>
+            <%=f.link_to_add '<i class="fa fa-plus"></i>'.html_safe, :movement_details, class: 'btn btn-success'%>
           </div>
-
-
         </div>
-        <div class="field col-md-12 form-group">
-          <div class="field col-md-12 form-group">
-            <% if controller.action_name == 'edit'  %>
-                <%= f.submit 'Guardar', :class => "btn btn-primary" %>
-            <% else %>
-                <%= f.submit 'Agregar', :class => 'btn btn-primary'%>
-            <% end %>
-            <%= link_to 'Cancelar',  material_movements_path , class: 'btn btn-default' %>
+      </div>
+    </div>
+
+    <div class="box-footer">
+      <div class="pull-right">
+        <% if controller.action_name == 'edit' %>
+            <%= f.submit 'Guardar', :class => "btn btn-primary active" %>
+        <% else %>
+            <%= f.submit 'Guardar', :class => 'btn btn-primary active'%>
+        <% end %>
+        <%= link_to 'Cancelar',  material_movements_path , class: 'btn btn-default' %>
+      </div>
+    </div>
 <% end %>
-</div>
-</div>
-</form>
-</div>
