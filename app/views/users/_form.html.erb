@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-md-5">
           <div class="form-group">
-            <%= f.label :name, t('activerecord.attributes.user.first_name_html'), class: 'col-md-5 col-sm-3 control-label' %>
+            <%= f.label :name, t('activerecord.attributes.user.first_name_html'), class: 'col-md-5 col-sm-3 control-label tooltip_required' %>
             <div class="col-md-7 col-sm-12">
               <%= f.text_field :first_name, class: 'form-control' %>
             </div>
@@ -12,7 +12,7 @@
         </div>
         <div class="col-md-5">
           <div class="form-group">
-            <%= f.label :name, t('activerecord.attributes.user.last_name_html'), class: 'col-md-5 col-sm-3 control-label' %>
+            <%= f.label :name, t('activerecord.attributes.user.last_name_html'), class: 'col-md-5 col-sm-3 control-label tooltip_required' %>
             <div class="col-md-7 col-sm-12">
               <%= f.text_field :last_name, class: 'form-control' %>
             </div>
@@ -22,7 +22,7 @@
       <div class="row">
         <div class="col-md-5">
           <div class="form-group">
-            <%= f.label :email, t('activerecord.attributes.user.email_html'), class: 'col-md-5 col-sm-3 control-label' %>
+            <%= f.label :email, t('activerecord.attributes.user.email_html'), class: 'col-md-5 col-sm-3 control-label tooltip_required' %>
             <div class="col-md-7 col-sm-12">
               <%= f.email_field :email, class: 'form-control uniqueUserEmail' %>
             </div>
@@ -32,7 +32,7 @@
       <div class="row">
         <div class="col-md-5">
           <div class="form-group">
-            <%= f.label :password, t('activerecord.attributes.user.password_html'), class: 'col-md-5 col-sm-3 control-label' %>
+            <%= f.label :password, t('activerecord.attributes.user.password_html'), class: 'col-md-5 col-sm-3 control-label tooltip_required' %>
             <div class="col-md-7 col-sm-12">
               <%= f.password_field :password, class: 'form-control' %>
             </div>
@@ -40,7 +40,7 @@
         </div>
         <div class="col-md-5">
           <div class="form-group">
-            <%= f.label :password_confirmation, t('activerecord.attributes.user.password_confirmation_html'), class: 'col-md-5 col-sm-3 control-label' %>
+            <%= f.label :password_confirmation, t('activerecord.attributes.user.password_confirmation_html'), class: 'col-md-5 col-sm-3 control-label tooltip_required' %>
             <div class="col-md-7 col-sm-12">
               <%= f.password_field :password_confirmation, class: 'form-control' %>
             </div>

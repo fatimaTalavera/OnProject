@@ -47,6 +47,7 @@ class UsersController < ApplicationController
   private
     def get_users
       @q = User.ransack(params[:q])
+      @q.sorts = ['first_name asc', 'last_name asc'] if @q.sorts.empty?
       @users = @q.result.page(params[:page])
     end
     def set_user

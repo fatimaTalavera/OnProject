@@ -1,4 +1,4 @@
 
-| $("#users-table").html("#{escape_javascript(render partial: 'list', format: 'html', locals: {users: @users})}");
+| $("#users-table").html("#{escape_javascript(render 'list', format: 'html', :users => @users)}");
 | $('#paginate-container').html("#{escape_javascript(paginate(@users, remote: true)) }");
-| $('.buscador-resultados > .overlay').remove();
+| $('.searchResult > .overlay').remove();

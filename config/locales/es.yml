@@ -12,11 +12,11 @@ es:
       user: Usuarios
     attributes:
       user:
-        first_name_html: Nombre(s) <abbr data-toggle="tooltip" data-original-title="Campo obligatorio"><font color="red">*</font></abbr>
-        last_name_html: Apellido(s) <abbr data-toggle="tooltip" data-original-title="Campo obligatorio"><font color="red">*</font></abbr>
-        email_html: Email <abbr data-toggle="tooltip" data-original-title="Campo obligatorio"><font color="red">*</font></abbr>
-        password_html: Contraseña <abbr data-toggle="tooltip" data-original-title="Campo obligatorio"><font color="red">*</font></abbr>
-        password_confirmation_html: Confirmar de contraseña <abbr data-toggle="tooltip" data-original-title="Campo obligatorio"><font color="red">*</font></abbr>
+        first_name_html: Nombre(s)
+        last_name_html: Apellido(s)
+        email_html: Email
+        password_html: Contraseña
+        password_confirmation_html: Confirmar de contraseña
         rol: "Rol"
     success:
       messages:

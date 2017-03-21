@@ -40,15 +40,17 @@ OnProject = {
 
         var form = $(this).parents('form');
         delay(function() {
-          var buscadorLista = form.parents('.buscador-listado').next('.buscador-resultados');
-          buscadorLista.append('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
+          var searchList = form.parents('.searchList').next('.searchResult');
+          searchList.append('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
           form.submit();
         }, 500);
       });
 
+      $( ".tooltip_required" ).prepend('<abbr data-toggle="tooltip" data-original-title="Campo obligatorio"><font color="red">*&nbsp</font></abbr>');
+
       DataTableHelper.configLanguage('.data-table');
       DatepickerHelper.initDatepicker('.datepicker')
-      
+
     }
   },
 };
