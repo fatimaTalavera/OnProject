@@ -17,4 +17,6 @@ class Employee < ApplicationRecord
   validates :email, format: { :with => VALID_EMAIL_REGEX , message: "El formato del correo es invalido" },
             :uniqueness => {:message => "El correo ya esta en uso, vuelva a intentarlo"},
             :allow_blank => true
+
+  validates :phone, :uniqueness => {:message => "El numero ya existe"}
 end
