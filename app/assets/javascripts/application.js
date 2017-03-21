@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require ./adminLTE/app.js
 //= require ./libs/slimScroll/jquery.slimscroll.min.js
 //= require ./libs/iCheck/icheck.js
@@ -28,12 +27,6 @@
 //= require jquery_nested_form
 //= require_tree ./helpers
 //= require_tree .
-
-$(document).on('turbolinks:load', function() {
-
-    $("#phone").mask("9999-999-999");
-
-});
 
 OnProject = {
   common: {
@@ -53,7 +46,17 @@ OnProject = {
         }, 500);
       });
 
-      // InputMaskHelper.phoneMask('#phoneMask');
+      DataTableHelper.configLanguage('.data-table');
+
+      $('#datepickerFrom').datepicker({
+        format: 'dd/mm/yyyy',
+        language: "es"
+      });
+
+      $('#datepickerTo').datepicker({
+        format: 'dd/mm/yyyy',
+        language: "es"
+      });
 
     }
   },
@@ -88,4 +91,4 @@ UTIL = {
     }
 };
 
-$( document ).on('turbolinks:load', UTIL.init );
+$( document ).on('ready', UTIL.init );
