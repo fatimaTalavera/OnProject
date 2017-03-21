@@ -13,3 +13,40 @@
   font-size: absolute;
   margin-left: -15px;
 }
+
+th.table-actions{
+  min-width: 90px;
+}
+
+.buscador-listado{
+  margin-bottom: 15px;
+}
+
+.overlay-wrapper{
+  &.buscador-resultados{
+    position: relative;
+  }
+}
+
+th.table-actions{
+  width: 50px;
+}
+
+.btn-title {
+  margin-top: -15px;
+  margin-bottom: -10px;
+}
+
+.alineado {
+  display: inline-block;
+  width: 105px;
+  text-align: right;
+}
+
+.show-padding {
+  padding-left: 1px;
+}
+
+.label-pad {
+  padding-right: 1px;
+}

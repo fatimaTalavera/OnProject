@@ -8,7 +8,7 @@ class Service < ApplicationRecord
                     :uniqueness => {:message => "Este servicio ya existe, vuelva a intentarlo"}
 
   validates :description,   :presence => {:message => "No puede estar en blanco"},
-                            :length => { maximum:45, :message => "Permite hasta 45 caracteres"}
+                            :length => { maximum:200, :message => "Permite hasta 200 caracteres"}
 
   validates :measurement_unit,  :presence => {:message => "No puede estar en blanco"},
                                 format: { :with => VALID_LETTER_REGEX, message: 'Solo permite letras'}

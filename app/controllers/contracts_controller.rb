@@ -1,5 +1,5 @@
 class ContractsController < ApplicationController
-  add_breadcrumb I18n.t('helpers.breadcrumbs.contracts'), :contracts_path
+  add_breadcrumb I18n.t('helpers.breadcrumbs.contracts.index'), :contracts_path
   before_action :set_contract, only: [:show, :edit, :update, :destroy]
 
   # GET /contracts
@@ -11,15 +11,18 @@ class ContractsController < ApplicationController
   # GET /contracts/1
   # GET /contracts/1.json
   def show
+    add_breadcrumb I18n.t('helpers.breadcrumbs.clients.show')
   end
 
   # GET /contracts/new
   def new
+    add_breadcrumb I18n.t('helpers.breadcrumbs.contracts.new')
     @contract = Contract.new
   end
 
   # GET /contracts/1/edit
   def edit
+    add_breadcrumb I18n.t('helpers.breadcrumbs.contracts.edit')
   end
 
   # POST /contracts
@@ -29,7 +32,7 @@ class ContractsController < ApplicationController
 
     respond_to do |format|
       if @contract.save
-        format.html { redirect_to @contract, notice: 'El contrato se creo correctamente.' }
+        format.html { redirect_to contracts_path, notice: 'El contrato se creo correctamente.' }
         format.json { render :show, status: :created, location: @contract }
       else
         format.html { render :new }
@@ -43,7 +46,7 @@ class ContractsController < ApplicationController
   def update
     respond_to do |format|
       if @contract.update(contract_params)
-        format.html { redirect_to @contract, notice: 'El contrato se modifico correctamente.' }
+        format.html { redirect_to contracts_path, notice: 'El contrato se modifico correctamente.' }
         format.json { render :show, status: :ok, location: @contract }
       else
         format.html { render :edit }

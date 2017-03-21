@@ -1,76 +1,71 @@
-  <div class="row">
-    <h1 class="page-header">Ver Material</h1>
-    <div class="panel panel-default">
-      <div class="panel-body">
-
-        <div class="field col-md-12 form-group">
-          <div class="field col-md-6 form-group required">
-            <div class="col-sm-2">
+<div class="box box-success">
+  <div class="box-header with-header box-success">
+    <h1 class="page-header">Material</h1>
+  </div>
+  <div class="box-body">
+    <div class="field col-md-12 form-group">
+      <div class="field col-md-4 form-group">
+        <div class="col-sm-3 label-pad">
           <strong>Nombre:</strong>
-              </div>
-            <div class="col-sm-4 ">
+        </div>
+        <div class="col-sm-7 show-padding">
           <%= @material.name %>
         </div>
-        </div>
+      </div>
 
-          <div class="field col-md-6 form-group required">
-            <div class="col-sm-3">
+      <div class="field col-md-4 form-group">
+        <div class="col-sm-4 label-pad">
           <strong>Descripcion:</strong>
-            </div>
-            <div class="col-sm-3">
+        </div>
+        <div class="col-sm-7 show-padding">
           <%= @material.description %>
-            </div>
-          </div>
         </div>
+      </div>
 
-        <div class="field col-md-12 form-group">
-          <br>
-          <div class="field col-md-3 form-group required">
-            <div class="col-sm-5">
+      <div class="field col-md-4 ">
+        <div class="col-sm-3 label-pad ">
           <strong>Cantidad:</strong>
-            </div>
-            <div class="col-sm-7 ">
+        </div>
+        <div class="col-sm-6 show-padding">
           <%= @material.quantity %>
-            </div>
-          </div>
-
-          <div class="field col-md-3 form-group required">
-            <div class="col-sm-8">
-          <strong>Unidad de medida:</strong>
-            </div>
-            <div class="col-sm-4">
-          <%= @material.measurement_unit %>
-            </div>
-          </div>
-
-          <div class="field col-md-3 form-group required">
-            <div class="col-sm-4">
-          <strong>Precio:</strong>
-            </div>
-            <div class="col-sm-7 ">
-          <%= @material.price %>
-            </div>
-          </div>
-
-          <div class="field col-md-3 form-group">
-            <div class="col-sm-6">
-        <strong>Stock minimo:</strong>
-            </div>
-            <div class="col-sm-4 ">
-        <%= @material.minimun_stock %>
-            </div>
-          </div>
         </div>
       </div>
+    </div>
+    <div class="field col-md-12">
+      <br>
+      <div class="field col-md-4">
+        <div class="col-sm-5 label-pad ">
+          <strong>Ud. de medida:</strong>
+        </div>
+        <div class="col-sm-5 show-padding">
+          <%= @material.measurement_unit %>
+        </div>
       </div>
 
-    <div class="panel-group">
-      <%= link_to 'Editar', edit_material_path(@material), :class => 'btn btn-primary active'  %>
+      <div class="field col-md-4">
+        <div class="col-sm-2">
+          <strong>Precio:</strong>
+        </div>
+        <div class="col-sm-6 ">
+          <%= @material.price %>
+        </div>
+      </div>
+
+      <div class="field col-md-4 ">
+        <div class="col-sm-5 label-pad">
+          <strong>Stock minimo:</strong>
+        </div>
+        <div class="col-sm-3 show-padding">
+          <%= @material.minimun_stock %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="box-footer">
+    <div class="pull-right">
+      <%= link_to 'Editar', edit_material_path(@material), :class => 'btn btn-primary active' %>
       <%= link_to 'Atras', materials_path, :class => 'btn btn-default' %>
     </div>
-        <div>
-        <br>
-        <%= render 'table', material: @material %>
-        <br>
-      </div>
-    </div>
+  </div>
+</div>
