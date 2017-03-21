@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170320211646) do
+ActiveRecord::Schema.define(version: 20170321015203) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,12 +18,12 @@ ActiveRecord::Schema.define(version: 20170320211646) do
   create_table "clients", force: :cascade do |t|
     t.string   "name"
     t.string   "last_name"
-    t.integer  "identification_document"
     t.string   "email"
     t.string   "adress"
     t.string   "phone"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "ruc"
   end
 
   create_table "contracts", force: :cascade do |t|
@@ -51,9 +51,9 @@ ActiveRecord::Schema.define(version: 20170320211646) do
     t.string   "description"
     t.decimal  "price"
     t.decimal  "quantity"
-    t.integer  "minimun_stock"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.integer  "minimun_stock",    default: 0
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.string   "measurement_unit"
   end
 
@@ -120,10 +120,17 @@ ActiveRecord::Schema.define(version: 20170320211646) do
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
+    t.string   "first_name",             default: "", null: false
+    t.string   "last_name",              default: "", null: false
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "name"
     t.integer  "role"
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end

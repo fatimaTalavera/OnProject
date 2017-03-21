@@ -29,6 +29,12 @@
 //= require_tree ./helpers
 //= require_tree .
 
+$(document).on('turbolinks:load', function() {
+
+    $("#phone").mask("9999-999-999");
+
+});
+
 OnProject = {
   common: {
     init: function() {

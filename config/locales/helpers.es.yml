@@ -7,6 +7,7 @@ es:
       materials: Materiales
       material_movements: Movimiento de Materiales
       contracts: Contratos
+      services: Servicios
       purchase_bills: Facturas de compra
       providers: Proveedores
       users: Usuarios
@@ -18,6 +19,12 @@ es:
               new: Agregar
               edit: Editar
               show: Ciente
+
+      services:
+              index: Servicios
+              new: Agregar
+              edit: Editar
+              show: Servicio
 
       materials:
               index: Materiales
