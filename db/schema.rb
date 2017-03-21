@@ -37,6 +37,17 @@ ActiveRecord::Schema.define(version: 20170321015203) do
     t.index ["client_id"], name: "index_contracts_on_client_id", using: :btree
   end
 
+  create_table "employees", force: :cascade do |t|
+    t.string   "name"
+    t.string   "last_name"
+    t.string   "address"
+    t.string   "email"
+    t.string   "phone"
+    t.string   "identification_document"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+  
   create_table "material_movements", force: :cascade do |t|
     t.date     "fecha"
     t.string   "motivo"
