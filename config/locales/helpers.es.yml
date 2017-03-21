@@ -7,6 +7,7 @@ es:
       materials: Materiales
       material_movements: Movimiento de Materiales
       contracts: Contratos
+      employees: Empleados
       providers: Proveedores
       users: Usuarios
 
@@ -17,6 +18,12 @@ es:
               new: Agregar
               edit: Editar
               show: Ciente
+
+      employees:
+              index: Empleados
+              new: Agregar
+              edit: Editar
+              show: Empleado
 
       materials:
               index: Materiales
