@@ -24,6 +24,7 @@
 //= require ./libs/data-tables/dataTables.bootstrap.min.js
 //= require ./libs/moment.js
 //= require ./libs/rails.validations
+//= require ./libs/defaults.configs.js
 //= require jquery_nested_form
 //= require_tree ./helpers
 //= require_tree .
@@ -49,7 +50,8 @@ OnProject = {
       $( ".tooltip_required" ).prepend('<abbr data-toggle="tooltip" data-original-title="Campo obligatorio"><font color="red">*&nbsp</font></abbr>');
 
       DataTableHelper.configLanguage('.data-table');
-      DatepickerHelper.initDatepicker('.datepicker')
+      
+      DatepickerHelper.initDatepicker('.datepicker');
 
     }
   },
