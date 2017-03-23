@@ -19,7 +19,7 @@
 //= require ./libs/bootstrap-datepicker/bootstrap-datepicker.es.js
 //= require ./libs/select2/select2.full.min.js
 //= require ./libs/select2/es.js
-//= require maskedinput
+//= require ./libs/jquery.inputmask.js
 //= require ./libs/data-tables/jquery.dataTables.min.js
 //= require ./libs/data-tables/dataTables.bootstrap.min.js
 //= require ./libs/moment.js
@@ -27,13 +27,14 @@
 //= require ./libs/defaults.configs.js
 //= require jquery_nested_form
 //= require_tree ./helpers
+//= require_tree ./modules
 //= require_tree .
 
 OnProject = {
   common: {
     init: function() {
 
-      $("#phone").mask("9999-999-999");
+      $("#phone").inputmask("9999-999-999");
 
       $('.remote-search').on('keyup change', 'input, select', function (event) {
         if(event.type === 'change' && this.type === 'text')
@@ -50,11 +51,15 @@ OnProject = {
       $( ".tooltip_required" ).prepend('<abbr data-toggle="tooltip" data-original-title="Campo obligatorio"><font color="red">*&nbsp</font></abbr>');
 
       DataTableHelper.configLanguage('.data-table');
-      
+
       DatepickerHelper.initDatepicker('.datepicker');
 
+      BootstrapFilestyleHelper.filestyle('.file-style');
     }
   },
+
+  // Iniciar los modulos
+  company_config: CompanyConfig
 };
 
 var delay = (function(){

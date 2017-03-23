@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: onproject
+  api_key: '178524266361525'
+  api_secret: hyrWAZUjAvZRN9YNjyLy1sTv68I
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: onproject
+  api_key: '178524266361525'
+  api_secret: hyrWAZUjAvZRN9YNjyLy1sTv68I
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: onproject
+  api_key: '178524266361525'
+  api_secret: hyrWAZUjAvZRN9YNjyLy1sTv68I
+  enhance_image_tag: true
+  static_image_support: false

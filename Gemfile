@@ -17,10 +17,14 @@ gem 'nested_form'
 gem 'kaminari'
 gem 'ransack'
 gem 'slim'
+gem 'carrierwave'
+gem 'cloudinary'
 group :development, :test do
   gem 'byebug', platform: :mri
+  gem "mini_magick"
 end
 group :development do
+  gem 'fog'
   gem 'web-console', '>= 3.3.0'
 end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

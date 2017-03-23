@@ -15,8 +15,8 @@
 
     <header class="main-header">
       <a href="<% root_path %>" class="logo">
-        <span class="logo-mini"><b>A</b>LT</span>
-        <span class="logo-lg"><b>ON</b>Project</span>
+        <span class="logo-mini"><%= cl_image_tag CompanyConfig.first.avatar_url(:thumb)  if CompanyConfig.first.avatar? %></span>
+        <span class="logo-lg"><%= CompanyConfig.first.name %></span>
       </a>
       <nav class="navbar navbar-static-top">
         <a href="!#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
@@ -33,6 +33,7 @@
               </a>
               <ul class="dropdown-menu">
                 <li class="user-header">
+                  
                   <p>
                     <%= current_user.full_name.titleize %> - ROLE
                     <small>Ultimo ingreso: <%= l current_user.last_sign_in_at, format: :long %></small>
@@ -77,6 +78,7 @@
           <li><a href="<%= purchase_bills_path %>"><i class="fa fa-list-alt"></i> <span><%= t('helpers.menu.purchase_bills') %></span></a></li>
           <li><a href="<%= contracts_path %>"><i class="fa fa-file-text"></i> <span><%= t('helpers.menu.contracts') %></span></a></li>
           <li><a href="<%= services_path %>"><i class="fa fa-file-text"></i> <span><%= t('helpers.menu.services') %></span></a></li>
+          <li><a href="<%= company_config_index_path %>"><i class="fa fa-file-text"></i> <span><%= t('helpers.menu.company_config') %></span></a></li>
         </ul>
       </section>
     </aside>

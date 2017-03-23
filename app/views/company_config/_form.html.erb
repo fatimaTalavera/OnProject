@@ -1,0 +1,68 @@
+<%= form_for company_config, validate: true, :html => { multipart: true, class: 'form-horizontal' } do |f| %>
+  <div class="box-body">
+    <div class="col-md-12 col-sm-12">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.label :name, t('activerecord.attributes.company_config.name'), class: 'col-md-4 col-sm-3 control-label tooltip_required' %>
+            <div class="col-md-7 col-sm-12">
+              <%= f.text_field :name, class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.label :email, t('activerecord.attributes.company_config.email'), class: 'col-md-4 col-sm-3 control-label' %>
+            <div class="col-md-7 col-sm-12">
+              <%= f.text_field :email, class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.label :tel_fax, t('activerecord.attributes.company_config.tel_fax'), class: 'col-md-4 col-sm-3 control-label' %>
+            <div class="col-md-7 col-sm-12">
+              <%= f.text_field :tel_fax, class: 'form-control tel-fax-mask' %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.label :celphone, t('activerecord.attributes.company_config.celphone'), class: 'col-md-4 col-sm-3 control-label' %>
+            <div class="col-md-7 col-sm-12">
+              <%= f.text_field :celphone, class: 'form-control celphone-mask' %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.label :address, t('activerecord.attributes.company_config.address'), class: 'col-md-4 col-sm-3 control-label tooltip_required' %>
+            <div class="col-md-8 col-sm-12">
+              <%= f.text_area :address, :class => 'form-control', rows: "3", :maxlength => 200  %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.label :avatar, t('activerecord.attributes.company_config.avatar'), class: 'col-md-4 col-sm-3 control-label' %>
+            <div class="col-md-8 col-sm-12">
+              <%= f.file_field :avatar, :class => 'file-style' %>
+              <p class="help-block">Se aceptan imágenes jpg, jpge, png y gif. Recomendado 300x300. Tamaño máximo 1mb.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="box-footer clearfix">
+    <div class="pull-right">
+      <%= f.submit t('button.save'), :class => "btn btn-flat bg-blue" %>
+    </div>
+  </div>
+<% end %>

@@ -18,9 +18,16 @@ es:
         password_html: Contraseña
         password_confirmation_html: Confirmar de contraseña
         rol: "Rol"
+      company_config:
+        name: Nombre
+        email: Email
+        address: Dirección
+        celphone: Celular
+        tel_fax: Tel/Fax
+        avatar: Imágen
     success:
       messages:
-        user:
+        users:
           new: El usuario se creo correctamente
     errors:
       messages:

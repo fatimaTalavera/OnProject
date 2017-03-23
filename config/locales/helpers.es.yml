@@ -12,50 +12,51 @@ es:
       purchase_bills: Facturas de compra
       providers: Proveedores
       users: Usuarios
+      company_config: Congifuraciones de Empresa
 
     breadcrumbs:
       dashboard: Inicio
       clients:
-              index: Clientes
-              new: Agregar
-              edit: Editar
-              show: Ciente
-
+        index: Clientes
+        new: Agregar
+        edit: Editar
+        show: Ciente
       employees:
-              index: Empleados
-              new: Agregar
-              edit: Editar
-              show: Empleado
+        index: Empleados
+        new: Agregar
+        edit: Editar
+        show: Empleado
       services:
-              index: Servicios
-              new: Agregar
-              edit: Editar
-              show: Servicio
-
+        index: Servicios
+        new: Agregar
+        edit: Editar
+        show: Servicio
       materials:
-              index: Materiales
-              new: Agregar
-              edit: Editar
-              show: Material
-
-      material_movements: Movimientos de Materiales
-      purchase_bills: Facturas de Compras
+        index: Materiales
+        new: Agregar
+        edit: Editar
+        show: Material
       contracts:
-            index: Contratos
-            new: Agregar
-            edit: Editar
-            show: Contrato
+        index: Contratos
+        new: Agregar
+        edit: Editar
+        show: Contrato
       users:
         index: Usuarios
         new: Agregar
         edit: Editar
         show: "%{user}"
-
       providers:
-            index: Proveedores
-            new: Agregar
-            edit: Editar
-            show: Proveedor
+        index: Proveedores
+        new: Agregar
+        edit: Editar
+        show: Proveedor
+      company_config:
+        index: Datos de la Empresa
+
+      material_movements: Movimientos de Materiales
+      purchase_bills: Facturas de Compras
+
     login:
       messages:
         title_login: Ingresar al Sistema
@@ -68,3 +69,5 @@ es:
         edit: Editar Usuario
         list: Lista de Usuarios
         show: Usuario
+      company_config:
+        index: Datos de la Empresa

@@ -1,0 +1,73 @@
+<div class="row" style="margin-bottom: 20px;">
+  <div class="col-md-2">
+    <div class="avatar_company">
+      <%= cl_image_tag(CompanyConfig.first.avatar_url(:medium), :class => 'img-rounded')if CompanyConfig.first.avatar?%>
+    </div>
+  </div>
+  <div class="col-md-6 info-company">
+    <div class="row">
+      <div class="col-md-12" style="margin-top: -15px;">
+        <h1><%= CompanyConfig.first.name %></h1>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <label class="control-label" style="text-size: 10px;">Dirección:</label>
+        <span><%= CompanyConfig.first.address %></span>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <label class="control-label">Tel/Fax:</label>
+        <span><%= CompanyConfig.first.tel_fax %></span>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <label class="control-label">Celular:</label>
+        <span><%= CompanyConfig.first.celphone %></span>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <label class="control-label">Email:</label>
+        <span><%= CompanyConfig.first.email %></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-3 col-xs-6">
+    <div class="small-box bg-aqua">
+      <div class="inner">
+        <h3><%= @users.count %></h3>
+        <% if @users.count == 1 %>
+          <p>Usuario Registrado</p>
+        <% else %>
+          <p>Usuarios Registrados</p>
+        <% end %>
+      </div>
+      <div class="icon">
+        <i class="fa fa-user-plus"></i>
+      </div>
+      <a href="<%= users_path  %>" class="small-box-footer">Ver Detalles <i class="fa fa-arrow-circle-right"></i></a>
+    </div>
+  </div>
+  <div class="col-lg-3 col-xs-6">
+    <div class="small-box bg-green">
+      <div class="inner">
+        <h3>23</h3>
+        <p>Facturas de Compras</p>
+      </div>
+      <div class="icon">
+        <i class="fa fa-file-text"></i>
+      </div>
+      <a href="#" class="small-box-footer">Ver Detalles <i class="fa fa-arrow-circle-right"></i></a>
+    </div>
+  </div>
+</div>
