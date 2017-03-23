@@ -10,3 +10,9 @@
 @superuser = User.new first_name: 'Super', last_name: 'Admin', email: 'admin@admin.com', password: '12341234'
 @superuser.skip_confirmation!
 @superuser.save!
+
+# Datos por defecto para la empresa
+if CompanyConfig.first.nil?
+  @company_config = CompanyConfig.new name: 'ON', address: 'Encarnación', tel_fax: '(000) 000 000', celphone: '(0000) 000 000', email: 'email@email.com', avatar: ''
+  @company_config.save!
+end
