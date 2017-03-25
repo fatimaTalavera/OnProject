@@ -1,0 +1,10 @@
+<div class="box box-success">
+  <div class="box-header with-header">
+    <h1 class="page-header">Certificaciones Internas <%= link_to new_internal_certification_path(@internal_certification), :class => 'btn btn-success' do %>
+          <span class="fa fa-plus"></span>
+      <% end %></h1>
+    <br>
+    <%= render 'table', internal_certifications: @internal_certifications %>
+    <br>
+  </div>
+</div>

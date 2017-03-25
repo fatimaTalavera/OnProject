@@ -3,7 +3,7 @@ class CreateMovementDetails < ActiveRecord::Migration[5.0]
     create_table :movement_details do |t|
       t.references :material_movement, foreign_key: true
       t.references :material, foreign_key: true
-      t.float :cantidad
+      t.float :cantidad, default:1
 
       t.timestamps
     end
