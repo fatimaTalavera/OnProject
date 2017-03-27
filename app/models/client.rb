@@ -8,7 +8,7 @@ class Client < ApplicationRecord
   VALID_RUC_REGEX = /\A\d{5,9}[-]?\d{1}\z/
 
   validates :name,  :presence => {:message => "No puede estar en blanco"},
-                    :length => { maximum:30, :message => "Permite hasta 30 caracteres"},
+                    :length => { maximum:100, :message => "Permite hasta 100 caracteres"},
                     format: { :with => VALID_LETTER_REGEX, message: 'Solo permite letras'}
 
   validates :ruc, :presence => {:message => "No puede estar en blanco"},
@@ -16,7 +16,7 @@ class Client < ApplicationRecord
                   :uniqueness => {:message => "Ya existe este RUC"}
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email, format: { :with => VALID_EMAIL_REGEX , message: "El formato del correo es invalido" },
+  validates :email, format: { :with => VALID_EMAIL_REGEX , message: "El formato debe ser example@example.com" },
                     :uniqueness => {:message => "El correo ya esta en uso, vuelva a intentarlo"},
                     :allow_blank => true
 

@@ -1,10 +1,10 @@
-<div class="box">
-  <div class="box-header with-header">
-    <h1 class="page-header">Lista de Movimientos de Materiales <%= link_to new_material_movement_path(@material_movement), :class => 'btn btn-success' do %>
+<div class="box box-success">
+  <div class="box-header with-border">
+    <h3 class="box-title">Lista de Movimientos de Materiales  <%= link_to new_material_movement_path(@material_movement), :class => 'btn btn-success' do %>
           <span class="fa fa-plus"></span>
-      <% end %></h1>
-    <br>
+      <% end %></h3>
+  </div>
+  <div class="box-body">
     <%= render 'table', material_movements: @material_movements %>
-    <br>
   </div>
 </div>

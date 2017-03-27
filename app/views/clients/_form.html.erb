@@ -6,7 +6,7 @@
               <%= f.label :name, 'Nombre o Razón Social:', :class => 'control-label' %>
             </div>
             <div class="col-md-8">
-              <%= f.text_field :name, :class => 'form-control', autofocus:true, :maxlength => 30 %>
+              <%= f.text_field :name, :class => 'form-control', autofocus:true, :maxlength => 100 %>
             </div>
           </div>
         </div>
@@ -37,7 +37,7 @@
               <%= f.label :adress, 'Direccion:', :class => 'control-label' %>
             </div>
             <div class="col-md-9">
-              <%= f.text_field :adress, :class => 'form-control', :maxlength => 50 %>
+              <%= f.text_area :adress, :class => 'form-control', cols: "20", rows: "2", :maxlength => 200  %>
             </div>
           </div>
 
