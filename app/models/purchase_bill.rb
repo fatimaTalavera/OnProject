@@ -1,6 +1,7 @@
 class PurchaseBill < ApplicationRecord
   belongs_to :provider
-  delegate :name, to: :provider, prefix: true
+  delegate :name, :ruc, to: :provider, prefix: true
+
   has_many :purchase_details
   accepts_nested_attributes_for :purchase_details, allow_destroy: true
 

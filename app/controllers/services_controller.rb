@@ -5,8 +5,7 @@ class ServicesController < ApplicationController
   # GET /services
   # GET /services.json
   def index
-    @services = Service.all
-    @service = Service.new
+    get_services
   end
 
   # GET /services/1
@@ -67,6 +66,12 @@ class ServicesController < ApplicationController
   end
 
   private
+    def get_services
+      @q = Service.ransack(params[:q])
+      @q.sorts = ['name asc'] if @q.sorts.empty?
+      @services = @q.result.page(params[:page])
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_service
       @service = Service.find(params[:id])
