@@ -1,0 +1,27 @@
+<table class="table table-bordered table-condensed">
+  <thead>
+  <tr>
+    <th>Obra</th>
+    <th>Cliente</th>
+    <th>Fecha de inicio</th>
+    <th>Fecha de fin</th>
+    <th>Monto</th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% contracts.each do |contract| %>
+      <tr>
+        <td><%= contract.name %></td>
+        <td><%= contract.client_name %> </td>
+        <td><%= contract.start_date %></td>
+        <td><%= contract.end_date %></td>
+        <td><%= contract.amount %></td>
+        <td>
+          <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_contract_path(contract), {:class => "btn btn-xs bg-orange btn-flat"} %>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

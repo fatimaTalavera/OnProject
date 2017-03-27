@@ -5,7 +5,7 @@ class ProvidersController < ApplicationController
   # GET /providers
   # GET /providers.json
   def index
-    @providers = Provider.all
+    get_providers
   end
 
   # GET /providers/1
@@ -66,6 +66,11 @@ class ProvidersController < ApplicationController
   end
 
   private
+    def get_providers
+      @q = Provider.ransack(params[:q])
+      @q.sorts = ['name asc'] if @q.sorts.empty?
+      @providers = @q.result.page(params[:page])
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_provider
       @provider = Provider.find(params[:id])

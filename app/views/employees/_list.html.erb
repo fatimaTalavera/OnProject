@@ -1,0 +1,29 @@
+<table class="table table-bordered table-condensed">
+  <thead>
+  <tr>
+    <th>Nombre</th>
+    <th>Apellido</th>
+    <th>Documento</th>
+    <th>Correo</th>
+    <th>Direccion</th>
+    <th>Telefono</th>
+    <th class="table-actions"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% employees.each do |employee| %>
+      <tr>
+        <td><%= employee.name %></td>
+        <td><%= employee.last_name %></td>
+        <td><%= employee.identification_document %></td>
+        <td><%= employee.email %></td>
+        <td><%= employee.address %></td>
+        <td><%= employee.phone %></td>
+        <td>
+          <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_employee_path(employee), {:class => "btn btn-xs bg-orange btn-flat"} %>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

@@ -5,7 +5,7 @@ class ContractsController < ApplicationController
   # GET /contracts
   # GET /contracts.json
   def index
-    @contracts = Contract.all
+    get_contracts
   end
 
   # GET /contracts/1
@@ -66,6 +66,11 @@ class ContractsController < ApplicationController
   end
 
   private
+    def get_contracts
+      @q = Contract.ransack(params[:q])
+      @q.sorts = ['name asc', 'client_name asc'] if @q.sorts.empty?
+      @contracts = @q.result.page(params[:page])
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_contract
       @contract = Contract.find(params[:id])
