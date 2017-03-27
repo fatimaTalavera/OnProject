@@ -32,7 +32,7 @@
 
 
 
-      <div class="col-md-10">
+      <div class="col-md-6">
         <div class="box box-success">
           <div class="box-header with-border">
             <h3 class="box-title">Movimientos</h3>
@@ -41,17 +41,17 @@
               <table class="table table-bordered">
                 <theah>
                 <tr>
-                  <th class="col-md-7">Material</th>
-                  <th class="col-md-3">Cantidad</th>
+                  <th class="col-md-6">Material</th>
+                  <th class="col-md-4">Cantidad</th>
                   <th class="col-md-2"></th>
                 </tr>
                 </theah>
                 <tbody>
                 <%= f.fields_for :movement_details, :wrapper => false do |form| %>
-                    <tr class="fields col-md-12 form-group">
+                    <tr class="fields">
                       <td class="col-md-7"><%=form.collection_select(:material_id, Material.all, :id, :name, {prompt: 'Seleccionar'}, class: 'form-control')%></td>
-                      <td class="col-md-3"><%=form.number_field :cantidad, class: 'form-control'%></td>
-                      <td class="col-md-2"><%=form.link_to_remove '<i class="fa  fa-trash-o"></i>'.html_safe, class: 'btn btn-danger'%></td>
+                      <td class="col-md-4"><%=form.number_field :cantidad, class: 'form-control'%></td>
+                      <td class="col-md-1"><%=form.link_to_remove '<i class="fa  fa-trash-o"></i>'.html_safe, class: 'btn btn-danger'%></td>
                     </tr>
                 <% end %>
                 </tbody>
