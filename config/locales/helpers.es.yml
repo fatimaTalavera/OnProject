@@ -85,10 +85,10 @@ es:
         list: Lista de Servicios
         show: Servicio
       material:
-        new: Agregar Materiale
-        edit: Editar Materiale
+        new: Agregar Material
+        edit: Editar Material
         list: Lista de Materiales
-        show: Materiale
+        show: Material
       contract:
         new: Agregar Contrato
         edit: Editar Contrato
