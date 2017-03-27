@@ -1,0 +1,3 @@
+| $("#providers-table").html("#{escape_javascript(render 'list', format: 'html', :providers => @providers)}");
+| $('#paginate-container').html("#{escape_javascript(paginate(@providers, remote: true)) }");
+| $('.searchResult > .overlay').remove();

@@ -1,0 +1,28 @@
+<table class="table table-bordered table-condensed">
+  <thead>
+  <tr>
+    <th>Nombre</th>
+    <th>Descripcion</th>
+    <th>Unidad medida</th>
+    <th>Cantidad</th>
+    <th>Precio</th>
+    <th class="table-actions"></th>
+  </tr>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% materials.each do |material| %>
+      <tr>
+        <td><%= material.name %></td>
+        <td><%= material.description %></td>
+        <td><%= material.measurement_unit %></td>
+        <td><%= material.quantity %></td>
+        <td><%= material.price %></td>
+
+        <td>
+          <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_material_path(material), {:class => "btn btn-xs bg-orange btn-flat"} %>
+        </tr>
+  <% end %>
+  </tbody>
+</table>

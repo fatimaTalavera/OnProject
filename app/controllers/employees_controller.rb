@@ -5,7 +5,7 @@ class EmployeesController < ApplicationController
   # GET /employees
   # GET /employees.json
   def index
-    @employees = Employee.all
+    get_employees
   end
 
   # GET /employees/1
@@ -66,6 +66,11 @@ class EmployeesController < ApplicationController
   end
 
   private
+    def get_employees
+      @q = Employee.ransack(params[:q])
+      @q.sorts = ['name asc', 'last_name asc'] if @q.sorts.empty?
+      @employees = @q.result.page(params[:page])
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_employee
       @employee = Employee.find(params[:id])

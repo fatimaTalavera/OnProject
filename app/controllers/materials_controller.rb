@@ -68,7 +68,9 @@ class MaterialsController < ApplicationController
   private
 
   def get_materials
-    @materials = Material.all
+    @q = Material.ransack(params[:q])
+    @q.sorts = ['name asc'] if @q.sorts.empty?
+    @materials = @q.result.page(params[:page])
   end
   # Use callbacks to share common setup or constraints between actions.
   def set_material

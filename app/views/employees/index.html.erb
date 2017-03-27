@@ -1,12 +1,30 @@
 <div class="box box-success">
-  <div class="box-header with-header">
-    <h3 class="page-header">Lista de
-      Empleados <%= link_to new_employee_path(@employee), :class => 'btn btn-success' do %>
-          <span class="fa fa-plus"></span>
-      <% end %></h3>
-    <br>
-    <br>
-    <%= render 'table', :employees => @employees %>
-    <br>
+  <div class="box-header with-border box-success">
+    <h3 class="box-title"><%= t('helpers.title.employee.list') %></h3>
+    <%= link_to "<i class=\"fa fa-plus\"></i>".html_safe, new_employee_path, {:class => "btn btn-sm btn-flat bg-green btn-title", :title => "Agregar Empleado"} %>
+  </div>
+  <div class="box-body">
+    <div class="employee-search searchList">
+      <%= search_form_for(@q, remote: true, :html => { class: 'remote-search' }) do |f| %>
+          <div class="input-group">
+            <%= f.text_field :name_or_last_name_or_identification_document_cont, class: 'form-control', autocomplete: 'off' %>
+            <div class="input-group-btn">
+              <button type="submit" name="button" class="btn btn-default">
+                <i class="fa fa-search"></i>
+              </button>
+            </div>
+          </div>
+      <% end %>
+    </div>
+    <div class="overlay-wrapper searchResult table-responsive" id="employees-table">
+      <%= render 'list', :employees => @employees %>
+    </div>
+  </div>
+  <div class="box-footer clearfix">
+    <div id="paginate-container">
+      <ul class="pagination pagination-sm no-margin pull-right">
+        <%= paginate @employees %>
+      </ul>
+    </div>
   </div>
 </div>

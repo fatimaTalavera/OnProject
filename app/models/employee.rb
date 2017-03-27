@@ -18,5 +18,5 @@ class Employee < ApplicationRecord
             :uniqueness => {:message => "El correo ya esta en uso, vuelva a intentarlo"},
             :allow_blank => true
 
-  validates :phone, :uniqueness => {:message => "El numero ya existe"}
+  validates :phone, :uniqueness => {:message => "El numero ya existe"}, :allow_blank => true
 end
