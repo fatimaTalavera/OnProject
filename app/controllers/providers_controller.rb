@@ -32,7 +32,7 @@ class ProvidersController < ApplicationController
 
     respond_to do |format|
       if @provider.save
-        format.html { redirect_to @provider, notice: 'El proveedor se creo correctamente.' }
+        format.html { redirect_to providers_url, notice: 'El proveedor se creo correctamente.' }
         format.json { render :show, status: :created, location: @provider }
       else
         format.html { render :new }
@@ -46,7 +46,7 @@ class ProvidersController < ApplicationController
   def update
     respond_to do |format|
       if @provider.update(provider_params)
-        format.html { redirect_to @provider, notice: 'El proveedor se actualizo correctamente.' }
+        format.html { redirect_to providers_url, notice: 'El proveedor se actualizo correctamente.' }
         format.json { render :show, status: :ok, location: @provider }
       else
         format.html { render :edit }
