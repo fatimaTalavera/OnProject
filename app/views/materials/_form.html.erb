@@ -1,9 +1,9 @@
 <%= form_for material, validate: true, :html => {class: 'form-horizontal'} do |f| %>
     <div class="box-body">
       <div class="field col-md-12 form-group">
-        <div class="field col-md-6 form-group required">
+        <div class="field col-md-6 form-group">
           <div class="col-sm-2 alineado">
-            <%= f.label :name, 'Nombre:', :class => 'control-label' %>
+            <%= f.label :name, 'Nombre:', :class => 'control-label tooltip_required' %>
           </div>
           <div class="col-sm-7 ">
             <%= f.text_field :name, autofocus: true, :maxlength => 30, :class => 'form-control' %>
@@ -21,26 +21,26 @@
       </div>
       <div class="field col-md-12 form-group">
         <br>
-        <div class="field col-md-3 form-group required">
+        <div class="field col-md-3 form-group">
           <div class="col-sm-5 alineado">
-            <%= f.label :quantity, 'Cantidad:', :class => 'control-label' %>
+            <%= f.label :quantity, 'Cantidad:', :class => 'control-label tooltip_required' %>
           </div>
           <div class="col-sm-6 ">
             <%= f.text_field :quantity, :maxlength => 8, :class => 'form-control' %>
           </div>
         </div>
-        <div class="field col-md-3 form-group required">
+        <div class="field col-md-3 form-group">
           <div class="col-sm-3 alineado">
-            <%= f.label :measurement_unit, 'Ud. medida:', :class => 'control-label' %>
+            <%= f.label :measurement_unit, 'Ud. medida:', :class => 'control-label tooltip_required' %>
           </div>
           <div class="col-sm-5">
             <%= f.text_field :measurement_unit, :maxlength => 5, :class => 'form-control' %>
           </div>
         </div>
 
-        <div class="field col-md-3 form-group required">
+        <div class="field col-md-3 form-group">
           <div class="col-sm-3 alineado">
-            <%= f.label :price, 'Precio:', :class => 'control-label' %>
+            <%= f.label :price, 'Precio:', :class => 'control-label tooltip_required' %>
           </div>
           <div class="col-sm-6 ">
             <%= f.text_field :price, :maxlength => 10, :class => 'form-control' %>
