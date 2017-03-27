@@ -1,11 +1,6 @@
-<div class="box">
-  <div class="box-header with-header">
-    <h1 class="page-header">Registrar Contrato</h1>
-
-    <div class="box-body">
-      <%= render 'form', contract: @contract %>
-      <br>
-    </div>
+<div class="box box-success">
+  <div class="box-header with-border">
+    <h3 class="box-title"><%= t('helpers.title.contract.new') %></h3>
   </div>
+  <%= render 'form', :contract => @contract %>
 </div>
-

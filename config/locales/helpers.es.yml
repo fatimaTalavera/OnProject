@@ -69,5 +69,35 @@ es:
         edit: Editar Usuario
         list: Lista de Usuarios
         show: Usuario
+      employee:
+        new: Agregar Empleado
+        edit: Editar Empleado
+        list: Lista de Empleados
+        show: Empleado
+      client:
+        new: Agregar Cliente
+        edit: Editar Cliente
+        list: Lista de Clientes
+        show: Cliente
+      service:
+        new: Agregar Servicio
+        edit: Editar Servicio
+        list: Lista de Servicios
+        show: Servicio
+      material:
+        new: Agregar Materiale
+        edit: Editar Materiale
+        list: Lista de Materiales
+        show: Materiale
+      contract:
+        new: Agregar Contrato
+        edit: Editar Contrato
+        list: Lista de Contratos
+        show: Contrato
+      provider:
+        new: Agregar Proveedor
+        edit: Editar Proveedor
+        list: Lista de Proveedores
+        show: Proveedor
       company_config:
         index: Datos de la Empresa

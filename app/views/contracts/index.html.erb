@@ -1,8 +1,8 @@
 <div class="box box-success">
   <div class="box-header with-header">
-    <h1 class="page-header">Lista de Contratos <%= link_to new_contract_path(@contract), :class => 'btn btn-success' do %>
+    <h3 class="page-header">Lista de Contratos <%= link_to new_contract_path(@contract), :class => 'btn btn-success' do %>
           <span class="fa fa-plus"></span>
-      <% end %></h1>
+      <% end %></h3>
     <br>
     <%= render 'table', contracts: @contracts %>
     <br>
