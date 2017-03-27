@@ -20,9 +20,7 @@
               <td><%= client.email %></td>
               <td><%= client.adress %></td>
               <td><%= client.phone %></td>
-              <td><%= link_to client, class: 'btn btn-info active', title: 'Ver', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
-                    <span class= "fa fa-eye"></span>
-                <% end %>
+              <td>
               <%= link_to edit_client_path(client), class: 'btn btn-success active', title: 'Editar', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
                   <span class= "fa fa-edit"></span>
               <% end %>

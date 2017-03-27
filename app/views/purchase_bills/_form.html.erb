@@ -33,41 +33,38 @@
               <%= f.label :date, 'Fecha:', :class => 'control-label' %>
             </div>
             <div class="input-group col-md-6">
-              <%= f.text_field :date, :id => 'datepickerFrom', :class => 'input-group date form-control' %><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+              <%= f.text_field :date, :id => 'datepickerFrom', :class => 'input-group date form-control datepicker' %><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
             </div>
           </div>
         </div>
 
-
-      <div class="col-md-10">
-          <div class="box box-success">
-            <div class="box-header with-border">
-              <h3 class="box-title">Detalles de factura</h3>
-            </div>
+      <div class="col-md-8">
+        <div class="box box-success">
+          <div class="box-header with-border">
+            <h3 class="box-title">Detalles de factura</h3>
+          </div>
             <div class="box-body">
               <table class="table table-bordered">
-                <theah>
                 <tr>
                   <th class="col-md-4">Material</th>
-                  <th class="col-md-4">Cantidad</th>
-                  <th class="col-md-3">Precio</th>
+                  <th class="col-md-3">Cantidad</th>
+                  <th class="col-md-4">Precio</th>
                   <th class="col-md-1"></th>
                 </tr>
-                </theah>
                 <tbody>
                 <%= f.fields_for :purchase_details, :wrapper => false do |form| %>
-                    <tr class="fields col-md-12 form-group">
-                      <td class="col-md-4"><%=form.collection_select(:material_id, Material.all, :id, :name, {prompt: 'Seleccionar'}, class: 'form-control')%></td>
+                    <tr class="fields">
+                      <td class="col-md-5"><%=form.collection_select(:material_id, Material.all, :id, :name, {prompt: 'Seleccionar'}, class: 'form-control')%></td>
                       <td class="col-md-3"><%=form.number_field :quantity, class: 'form-control'%></td>
                       <td class="col-md-3"><%=form.number_field :price, class: 'form-control'%></td>
-                      <td class="col-md-2"><%=form.link_to_remove '<i class="fa  fa-trash-o"></i>'.html_safe, class: 'btn btn-danger'%></td>
+                      <td class="col-md-1"><%=form.link_to_remove '<i class="fa  fa-trash-o"></i>'.html_safe, class: 'btn btn-danger'%></td>
                     </tr>
                 <% end %>
                 </tbody>
               </table>
             </div>
             <%=f.link_to_add '<i class="fa fa-plus"></i>'.html_safe, :purchase_details, class: 'btn btn-success'%>
-          </div>
+        </div>
       </div>
     </div>
 
@@ -82,3 +79,7 @@
       </div>
     </div>
 <% end %>
+
+
+
+
