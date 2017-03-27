@@ -7,7 +7,7 @@
     <div class="material-search searchList">
       <%= search_form_for(@q, remote: true, :html => { class: 'remote-search' }) do |f| %>
           <div class="input-group">
-            <%= f.text_field :name_or_description_cont, class: 'form-control', autocomplete: 'off' %>
+            <%= f.text_field :name_or_description_cont, class: 'form-control', autocomplete: 'off', placeholder: 'Busca por nombre o descripción' %>
             <div class="input-group-btn">
               <button type="submit" name="button" class="btn btn-default">
                 <i class="fa fa-search"></i>
