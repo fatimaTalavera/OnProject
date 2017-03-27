@@ -1,10 +1,30 @@
 <div class="box box-success">
-  <div class="box-header with-border">
-    <h3 class="box-title">Lista de Facturas de compras <%= link_to new_purchase_bill_path(@purchase_bill), :class => 'btn btn-success' do %>
-          <span class="fa fa-plus"></span>
-      <% end %></h3>
+  <div class="box-header with-border box-success">
+    <h3 class="box-title"><%= t('helpers.title.purchase_bill.list') %></h3>
+    <%= link_to "<i class=\"fa fa-plus\"></i>".html_safe, new_purchase_bill_path, {:class => "btn btn-sm btn-flat bg-green btn-title", :title => "Agregar Factura"} %>
   </div>
   <div class="box-body">
-    <%= render 'table', purchase_bills: @purchase_bills %>
+    <div class="purchase_bill-search searchList">
+      <%= search_form_for(@q, remote: true, :html => { class: 'remote-search' }) do |f| %>
+          <div class="input-group">
+            <%= f.text_field :condition_or_provider_name_or_provider_ruc_cont, class: 'form-control', autocomplete: 'off', placeholder: 'Busca por nombre/ruc del proveedor o condicion' %>
+            <div class="input-group-btn">
+              <button type="submit" name="button" class="btn btn-default">
+                <i class="fa fa-search"></i>
+              </button>
+            </div>
+          </div>
+      <% end %>
+    </div>
+    <div class="overlay-wrapper searchResult table-responsive" id="purchase-bills-table">
+      <%= render 'list', :purchase_bills => @purchase_bills %>
+    </div>
+  </div>
+  <div class="box-footer clearfix">
+    <div id="paginate-container">
+      <ul class="pagination pagination-sm no-margin pull-right">
+        <%= paginate @purchase_bills %>
+      </ul>
+    </div>
   </div>
 </div>

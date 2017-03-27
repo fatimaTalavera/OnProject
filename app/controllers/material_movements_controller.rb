@@ -5,8 +5,7 @@ class MaterialMovementsController < ApplicationController
   # GET /material_movements
   # GET /material_movements.json
   def index
-    @material_movements = MaterialMovement.all
-    @material_movement = MaterialMovement.new
+    get_movements
   end
 
   # GET /material_movements/1
@@ -65,6 +64,12 @@ class MaterialMovementsController < ApplicationController
   end
 
   private
+    def get_movements
+      @q = MaterialMovement.ransack(params[:q])
+      @q.sorts = ['fecha desc'] if @q.sorts.empty?
+      @material_movements = @q.result.page(params[:page])
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_material_movement
       @material_movement = MaterialMovement.find(params[:id])

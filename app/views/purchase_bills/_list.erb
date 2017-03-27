@@ -1,0 +1,28 @@
+<table class="table table-bordered table-condensed">
+  <thead>
+  <tr>
+    <th>Proveedor</th>
+    <th>Fecha</th>
+    <th>Condicion</th>
+    <th>Numero</th>
+    <th class="table-actions"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% purchase_bills.each do |purchase_bill| %>
+      <tr>
+        <td><%= purchase_bill.provider_name %></td>
+        <td><%= purchase_bill.date.strftime("%d/%m/%Y") %></td>
+        <td><%= purchase_bill.condition %></td>
+        <td><%= purchase_bill.number %></td>
+
+        <td>
+          <%= link_to "<i class=\"fa fa-eye\"></i>".html_safe, purchase_bill_path(purchase_bill), {:class => "btn btn-xs bg-teal btn-flat"} %>
+          <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_purchase_bill_path(purchase_bill), {:class => "btn btn-xs bg-orange btn-flat"} %>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+

@@ -1,0 +1,3 @@
+| $("#services-table").html("#{escape_javascript(render 'list', format: 'html', :services => @services)}");
+| $('#paginate-container').html("#{escape_javascript(paginate(@services, remote: true)) }");
+| $('.searchResult > .overlay').remove();

@@ -1,0 +1,28 @@
+<table class="table table-bordered table-condensed">
+  <thead>
+  <tr>
+    <th>Nombre o Razón Social</th>
+    <th>RUC</th>
+    <th>Correo</th>
+    <th>Direccion</th>
+    <th>Telefono</th>
+    <th class="table-actions"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% clients.each do |client| %>
+      <tr>
+        <td><%= client.name %></td>
+        <td><%= client.ruc %></td>
+        <td><%= client.email %></td>
+        <td><%= client.adress %></td>
+        <td><%= client.phone %></td>
+        <td>
+          <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_client_path(client), {:class => "btn btn-xs bg-orange btn-flat"} %>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+

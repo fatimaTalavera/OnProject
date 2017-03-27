@@ -1,0 +1,23 @@
+<table class="table table-bordered table-condensed">
+  <thead>
+  <tr>
+    <th>Nombre</th>
+    <th>Precio</th>
+    <th>Ud. de Medida</th>
+    <th class="table-actions"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% services.each do |service| %>
+      <tr>
+        <td><%= service.name %></td>
+        <td><%= service.price %></td>
+        <td><%= service.measurement_unit %></td>
+        <td>
+          <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_service_path(service), {:class => "btn btn-xs bg-orange btn-flat"} %>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

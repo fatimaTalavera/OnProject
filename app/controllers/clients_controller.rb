@@ -6,8 +6,7 @@ class ClientsController < ApplicationController
   # GET /clients
   # GET /clients.json
   def index
-    @clients = Client.all
-    @client = Client.new
+    get_clients
   end
 
   # GET /clients/1
@@ -68,6 +67,12 @@ class ClientsController < ApplicationController
   end
 
   private
+    def get_clients
+      @q = Client.ransack(params[:q])
+      @q.sorts = ['first_name asc', 'ruc asc'] if @q.sorts.empty?
+      @clients = @q.result.page(params[:page])
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_client
       @client = Client.find(params[:id])

@@ -5,8 +5,7 @@ class PurchaseBillsController < ApplicationController
   # GET /purchase_bills
   # GET /purchase_bills.json
   def index
-    @purchase_bills = PurchaseBill.all
-    @purchase_bill = PurchaseBill.new
+    get_purchases
   end
 
   # GET /purchase_bills/1
@@ -64,6 +63,12 @@ class PurchaseBillsController < ApplicationController
   end
 
   private
+    def get_purchases
+      @q = PurchaseBill.ransack(params[:q])
+      @q.sorts = ['date desc'] if @q.sorts.empty?
+      @purchase_bills = @q.result.page(params[:page])
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_purchase_bill
       @purchase_bill = PurchaseBill.find(params[:id])

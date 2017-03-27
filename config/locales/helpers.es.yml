@@ -101,3 +101,13 @@ es:
         show: Proveedor
       company_config:
         index: Datos de la Empresa
+      purchase_bill:
+        new: Agregar Factura de Compra
+        edit: Editar Factura de Compra
+        list: Lista de Facturas de Compra
+        show: Factura de Compra
+      material_movement:
+        new: Agregar Movimiento de Materiales
+        edit: Editar Movimiento de Materiales
+        list: Lista de Movimientos de Materiales
+        show: Movimiento de Materiales
