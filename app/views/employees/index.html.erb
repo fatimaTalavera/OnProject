@@ -1,9 +1,9 @@
 <div class="box box-success">
   <div class="box-header with-header">
-    <h1 class="page-header">Lista de
+    <h3 class="page-header">Lista de
       Empleados <%= link_to new_employee_path(@employee), :class => 'btn btn-success' do %>
           <span class="fa fa-plus"></span>
-      <% end %></h1>
+      <% end %></h3>
     <br>
     <br>
     <%= render 'table', :employees => @employees %>

@@ -1,9 +1,6 @@
 <div class="box box-success">
-  <div class="box-header with-header">
-    <h1 class="page-header">Registrar Material</h1>
-    <div class="box-body">
-      <%= render 'form', :material => @material %>
-      <br>
-    </div>
+  <div class="box-header with-border">
+    <h3 class="box-title"><%= t('helpers.title.material.new') %></h3>
   </div>
+  <%= render 'form', :material => @material %>
 </div>
