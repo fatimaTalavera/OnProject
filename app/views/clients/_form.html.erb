@@ -1,9 +1,9 @@
 <%= form_for client, validate: true, :html => { class: 'form-horizontal' } do |f| %>
     <div class="box-body box-success">
         <div class="field col-md-12 form-group">
-          <div class="field col-md-9 form-group required">
+          <div class="field col-md-9 form-group">
             <div class="col-md-3">
-              <%= f.label :name, 'Nombre o Razón Social:', :class => 'control-label' %>
+              <%= f.label :name, 'Nombre o Razón Social:', :class => 'control-label tooltip_required' %>
             </div>
             <div class="col-md-8">
               <%= f.text_field :name, :class => 'form-control', autofocus:true, :maxlength => 100 %>
@@ -12,9 +12,9 @@
         </div>
 
         <div class="field col-md-12 form-group">
-          <div class="field col-md-6 form-group required">
+          <div class="field col-md-6 form-group">
             <div class="col-md-3">
-              <%= f.label :ruc, 'RUC:', :class => 'control-label' %>
+              <%= f.label :ruc, 'RUC:', :class => 'control-label tooltip_required' %>
             </div>
             <div class="col-md-5">
               <%= f.text_field :ruc, :class => 'form-control', :maxlength => 12 %>
