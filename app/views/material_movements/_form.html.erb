@@ -1,9 +1,9 @@
 <%= nested_form_for material_movement, validate: true, :html => { class: 'form-horizontal' } do |f| %>
     <div class="box-body">
       <div class="field col-md-12 form-group">
-        <div class="field col-md-6 form-group required">
+        <div class="field col-md-6 form-group">
           <div class="col-md-3">
-            <%= f.label :contract, 'Contrato:', :class => 'control-label' %>
+            <%= f.label :contract, 'Contrato:', :class => 'control-label tooltip_required' %>
           </div>
           <div class="col-md-7">
             <%= f.collection_select(:contract_id, Contract.all, :id, :name, {prompt: 'Seleccionar'}, :class => 'form-control') %>

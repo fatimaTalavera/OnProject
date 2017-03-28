@@ -1,6 +1,6 @@
 <div class="box box-success">
-    <div class="box-header with-border">
-      <h3 class="box-title">Editar Movimiento de Material</h3>
-    </div>
-    <%= render 'form', material_movement: @material_movement %>
+  <div class="box-header with-border">
+    <h3 class="box-title"><%= t('helpers.title.material_movement.edit') %></h3>
   </div>
+  <%= render 'form', :material_movement => @material_movement %>
+</div>
