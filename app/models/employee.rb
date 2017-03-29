@@ -11,12 +11,16 @@ class Employee < ApplicationRecord
 
   validates :identification_document, :presence => {:message => "No puede estar en blanco"},
             :numericality => {:only_integer => true, :message => "Debe ser un numero"},
-            :uniqueness => {:message => "Ya existe el numero de documento"}
+            :uniqueness => {:message => "Ya existe el numero de documento"},
+            :length => { maximum:10, :message => "Permite hasta 10 digitos"}
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email, format: { :with => VALID_EMAIL_REGEX , message: "El formato del correo es invalido" },
+  validates :email, format: { :with => VALID_EMAIL_REGEX , message: "El formato es incorrecto. (Ej:example@example.com)" },
             :uniqueness => {:message => "El correo ya esta en uso, vuelva a intentarlo"},
-            :allow_blank => true
+            :allow_blank => true,
+            :length => { maximum:30, :message => "Permite hasta 30 caracteres"}
+
+  validates :address, :length  => { maximum:150, :message => "Permite hasta 150 caracteres"}
 
   validates :phone, :uniqueness => {:message => "El numero ya existe"}, :allow_blank => true
 end
