@@ -1,6 +1,7 @@
 class Contract < ApplicationRecord
   belongs_to :client, required: true
   has_many :material_movements
+  has_many :client_certifications
   delegate :name, :ruc, to: :client, prefix: true
 
   validates :client,  :presence => {:message => "Debe seleccionar un cliente"}

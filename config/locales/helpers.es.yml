@@ -13,6 +13,7 @@ es:
       providers: Proveedores
       users: Usuarios
       company_config: Congifuraciones de Empresa
+      client_certifications: Certificación por parte del Cliente
 
     breadcrumbs:
       dashboard: Inicio
@@ -51,6 +52,11 @@ es:
         new: Agregar
         edit: Editar
         show: Proveedor
+      client_certifications:
+              index: Certificaciones
+              new: Agregar
+              edit: Editar
+              show: Certificación
       company_config:
         index: Datos de la Empresa
 
@@ -111,3 +117,8 @@ es:
         edit: Editar Movimiento de Materiales
         list: Lista de Movimientos de Materiales
         show: Movimiento de Materiales
+      client_certification:
+        new: Agregar Certificación
+        edit: Editar Certificación
+        list: Lista de Certificaciones
+        show: Certificación

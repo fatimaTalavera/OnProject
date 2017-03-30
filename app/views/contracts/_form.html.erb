@@ -15,7 +15,7 @@
             <%= f.label :client, 'Cliente:', :class => 'control-label  tooltip_required' %>
           </div>
           <div class="col-md-5">
-            <%= f.collection_select :client_id, Client.all.order('name'), :id, :full_name, {prompt: "Ninguno"} ,:class => 'btn btn-default'%>
+            <%= f.collection_select :client_id, Client.all.order('name'), :id, :name, {prompt: "Ninguno"} ,:class => 'btn btn-default'%>
           </div>
         </div>
       </div>

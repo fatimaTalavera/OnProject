@@ -1,0 +1,74 @@
+<div class="box box-success">
+  <div class="box-header with-border">
+    <h3 class="box-title"><%= t('helpers.title.client_certification.show') %></h3>
+  </div>
+  <div class="box-body">
+
+    <div class="field col-md-12 form-group">
+      <div class="field col-md-6 form-group">
+        <div class="col-md-2">
+          <strong>Cliente:</strong>
+        </div>
+        <div class="col-md-8">
+          <%= @client_certification.client_name %>
+        </div>
+      </div>
+
+      <div class="field col-md-6 form-group">
+        <div class="col-md-2">
+          <strong>Obra:</strong>
+        </div>
+        <div class="col-md-8">
+          <%= @client_certification.contract_name %>
+        </div>
+      </div>
+    </div>
+
+    <div class="field col-md-12 form-group">
+      <div class="field col-md-3 form-group">
+        <div class="col-md-4">
+          <strong>Fecha:</strong>
+        </div>
+        <div class="col-md-7">
+          <%= @client_certification.date %>
+        </div>
+      </div>
+
+      <div class="field col-md-3 form-group">
+        <div class="col-md-3">
+          <strong>Estado:</strong>
+        </div>
+        <div class="col-md-7">
+          <%= @client_certification.state %>
+        </div>
+      </div>
+
+      <div class="field col-md-6 form-group">
+        <div class="col-md-3">
+          <strong>Recibido por:</strong>
+        </div>
+        <div class="col-md-7">
+          <%= @client_certification.received %>
+        </div>
+      </div>
+    </div>
+
+    <div class="field col-md-12 form-group">
+      <div class="field col-md-6 form-group">
+        <div class="col-md-3">
+          <strong>Observaciones:</strong>
+        </div>
+        <div class="col-md-7">
+          <%= @client_certification.observation %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="box-footer">
+    <div class="pull-right">
+      <%= link_to 'Editar', edit_client_certification_path(@client_certification), :class => 'btn btn-primary active' %>
+      <%= link_to 'Atras', client_certifications_path, :class => 'btn btn-default' %>
+    </div>
+  </div>
+</div>

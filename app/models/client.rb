@@ -1,5 +1,6 @@
 class Client < ApplicationRecord
   has_many :contracts
+  has_many :client_certifications
   def full_name
     "#{name} #{last_name}"
   end

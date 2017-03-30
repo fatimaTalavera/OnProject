@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  client: one
+  contract: one
+  date: 2017-03-27
+  state: false
+  observation: MyString
+  received: MyString
+
+two:
+  client: two
+  contract: two
+  date: 2017-03-27
+  state: false
+  observation: MyString
+  received: MyString

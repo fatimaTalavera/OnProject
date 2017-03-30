@@ -1,0 +1,3 @@
+| $("#client_certifications-table").html("#{escape_javascript(render 'list', format: 'html', :client_certifications => @client_certifications)}");
+| $('#paginate-container').html("#{escape_javascript(paginate(@client_certifications, remote: true)) }");
+| $('.searchResult > .overlay').remove();
