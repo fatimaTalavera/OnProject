@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  client: one
+  date: 2017-03-29
+  description: MyString
+  utility: 9.99
+  state: false
+  total_service: 9.99
+  total_material: 9.99
+  total_amount: 9.99
+
+two:
+  client: two
+  date: 2017-03-29
+  description: MyString
+  utility: 9.99
+  state: false
+  total_service: 9.99
+  total_material: 9.99
+  total_amount: 9.99

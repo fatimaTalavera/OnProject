@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  budget: one
+  material: one
+  material_price: 9.99
+  material_quantity: 9.99
+  subtotal: 9.99
+
+two:
+  budget: two
+  material: two
+  material_price: 9.99
+  material_quantity: 9.99
+  subtotal: 9.99
