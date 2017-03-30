@@ -13,6 +13,7 @@ es:
       providers: Proveedores
       users: Usuarios
       company_config: Congifuraciones de Empresa
+      budgets: Presupuestos
 
     breadcrumbs:
       dashboard: Inicio
@@ -56,6 +57,11 @@ es:
 
       material_movements: Movimientos de Materiales
       purchase_bills: Facturas de Compras
+      budgets:
+        index: Presupuestos
+        new: Agregar
+        edit: Editar
+        show: Presupuesto
 
     login:
       messages:
@@ -111,3 +117,8 @@ es:
         edit: Editar Movimiento de Materiales
         list: Lista de Movimientos de Materiales
         show: Movimiento de Materiales
+      budget:
+        new: Agregar Presupuesto
+        edit: Editar Presupuesto
+        list: Lista de Presupuestos
+        show: Presupuesto

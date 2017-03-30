@@ -10,10 +10,48 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170322195036) do
+ActiveRecord::Schema.define(version: 20170329200827) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "budget_material_details", force: :cascade do |t|
+    t.integer  "budget_id"
+    t.integer  "material_id"
+    t.decimal  "material_price",    default: "0.0"
+    t.decimal  "material_quantity", default: "0.0"
+    t.decimal  "subtotal",          default: "0.0"
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.index ["budget_id"], name: "index_budget_material_details_on_budget_id", using: :btree
+    t.index ["material_id"], name: "index_budget_material_details_on_material_id", using: :btree
+  end
+
+  create_table "budget_service_details", force: :cascade do |t|
+    t.integer  "budget_id"
+    t.integer  "service_id"
+    t.decimal  "service_price",    default: "0.0"
+    t.decimal  "service_quantity", default: "0.0"
+    t.decimal  "subtotal",         default: "0.0"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.index ["budget_id"], name: "index_budget_service_details_on_budget_id", using: :btree
+    t.index ["service_id"], name: "index_budget_service_details_on_service_id", using: :btree
+  end
+
+  create_table "budgets", force: :cascade do |t|
+    t.integer  "client_id"
+    t.date     "date"
+    t.string   "description"
+    t.decimal  "utility"
+    t.string   "state"
+    t.decimal  "total_service",  default: "0.0"
+    t.decimal  "total_material", default: "0.0"
+    t.decimal  "total_amount",   default: "0.0"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.index ["client_id"], name: "index_budgets_on_client_id", using: :btree
+  end
 
   create_table "clients", force: :cascade do |t|
     t.string   "name"
@@ -157,6 +195,11 @@ ActiveRecord::Schema.define(version: 20170322195036) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "budget_material_details", "budgets"
+  add_foreign_key "budget_material_details", "materials"
+  add_foreign_key "budget_service_details", "budgets"
+  add_foreign_key "budget_service_details", "services"
+  add_foreign_key "budgets", "clients"
   add_foreign_key "contracts", "clients"
   add_foreign_key "material_movements", "contracts"
   add_foreign_key "movement_details", "material_movements"

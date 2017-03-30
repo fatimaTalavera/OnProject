@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Client:</strong>
+  <%= @budget.client %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @budget.date %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @budget.description %>
+</p>
+
+<p>
+  <strong>Utility:</strong>
+  <%= @budget.utility %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @budget.state %>
+</p>
+
+<p>
+  <strong>Total service:</strong>
+  <%= @budget.total_service %>
+</p>
+
+<p>
+  <strong>Total material:</strong>
+  <%= @budget.total_material %>
+</p>
+
+<p>
+  <strong>Total amount:</strong>
+  <%= @budget.total_amount %>
+</p>
+
+<%= link_to 'Edit', edit_budget_path(@budget) %> |
+<%= link_to 'Back', budgets_path %>
