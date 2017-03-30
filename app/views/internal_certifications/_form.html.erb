@@ -11,7 +11,7 @@
         </div>
         <div class="field col-md-6 form-group required">
           <div class="col-md-3">
-            <%= f.label :employee_id, 'Jornalero:', :class => 'control-label' %>
+            <%= f.label :employee_id, 'Jornalero:', :class => 'control-label'%>
           </div>
           <div class="col-md-9">
             <%= f.collection_select(:employee_id, Employee.all, :id, :name, {prompt: 'Seleccionar'}, :class => 'form-control') %>
@@ -46,12 +46,6 @@
             <%= f.text_field :date, :id => 'datepickerFrom', :class => 'input-group date form-control datepicker' %><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
           </div>
         </div>
-      </div>
-
-      <div class="field col-md-12 form-group">
-
-
-
       </div>
     </div>
 

@@ -29,7 +29,7 @@ class InternalCertificationsController < ApplicationController
 
     respond_to do |format|
       if @internal_certification.save
-        format.html { redirect_to @internal_certification, notice: 'Internal certification was successfully created.' }
+        format.html { redirect_to internal_certifications_path, notice: 'Internal certification was successfully created.' }
         format.json { render :show, status: :created, location: @internal_certification }
       else
         format.html { render :new }

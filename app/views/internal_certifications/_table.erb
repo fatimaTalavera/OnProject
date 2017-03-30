@@ -1,6 +1,6 @@
-<div class="panel panel-default">
-  <div class="panel-body">
-    <table class="table table-striped table-bordered table-hover data-table">
+<table class="table table-bordered table-condensed">
+  <thead>
+  <tr>
       <thead>
       <tr>
         <th>Fecha</th>
@@ -20,15 +20,10 @@
             <td><%= certification.discount %></td>
             <td><%= certification.employee.name %></td>
             <td><%= certification.contract.name %></td>
-            <td><%= link_to certification, class: 'btn btn-info active', title: 'Ver', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
-                  <span class= "fa fa-eye"></span>
-              <% end %>
-              <%= link_to edit_internal_certification_path(certification), class: 'btn btn-success active', title: 'Editar', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
+            <td><%= link_to edit_internal_certification_path(certification), class: 'btn btn-success active', title: 'Editar', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
                   <span class= "fa fa-edit"></span>
-              <% end %>
+              <% end %></td>
               </tr>
       <% end %>
       </tbody>
     </table>
-  </div>
-</div>
