@@ -9,7 +9,8 @@ class PurchaseBill < ApplicationRecord
 
   validates :number, :presence => {:message => "No puede estar en blanco"},
             #valida que no sea negativo
-            :numericality => {:greater_than_or_equal_to => 0, message: "No puede ser negativo"}
+            :numericality => {:greater_than_or_equal_to => 0, message: "No puede ser negativo"},
+            :numericality => {:less_than_or_equal_to => 2147483647, message: "No puede ser un número tan grande"}
 
   validates :date, :presence => {:message => "No puede estar en blanco"}
 

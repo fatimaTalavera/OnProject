@@ -29,7 +29,7 @@ class MaterialMovementsController < ApplicationController
     @material_movement = MaterialMovement.new(material_movement_params)
 
     respond_to do |format|
-      if @material_movement.save
+      if @material_movement.save!
         format.html { redirect_to material_movements_url, notice: 'El movimiento ha sido creado correctamente.' }
         format.json { render :show, status: :created, location: @material_movement }
       else

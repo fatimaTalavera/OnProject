@@ -30,9 +30,4 @@ class PurchaseDetailTest < ActiveSupport::TestCase
     purchaseDetail = PurchaseDetail.new(material_id: 1, quantity: 1, price: -3, purchase_bill_id: 1)
     assert_not purchaseDetail.valid?, "The movement detail was not valid. Errors: #{purchaseDetail.errors.to_a.to_sentence}"
   end
-
-  test "Should not save purchase detail without Purchase Bill" do
-    purchaseDetail = PurchaseDetail.new(material_id: 1, quantity: 1, price: 3)
-    assert_not purchaseDetail.valid?, "The movement detail was not valid. Errors: #{purchaseDetail.errors.to_a.to_sentence}"
-  end
 end
