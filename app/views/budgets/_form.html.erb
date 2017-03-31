@@ -7,16 +7,16 @@
             <%= f.label :client_id,  'Cliente:', :class => 'control-label tooltip_required' %>
           </div>
           <div class="col-sm-8 ">
-            <%= f.collection_select(:client_id, Client.all, :id, :name, {prompt: 'Seleccionar'}, :class => 'form-control') %>
+            <%= f.collection_select(:client_id, Client.all, :id, :name, {prompt: 'Selecciona Cliente'}, :class => 'form-control') %>
           </div>
         </div>
 
         <div class="field col-md-4 form-group">
-          <div class="col-sm-2 alineado">
+          <div class="col-sm-5 alineado">
             <%= f.label :date, 'Fecha:', :class => 'control-label' %>
           </div>
-          <div class="col-sm-5">
-            <%= f.text_field :date, :id => 'datepickerFrom', :class => 'input-group date form-control datepicker', :readonly => true %>
+          <div class="input-group col-sm-7" style="padding-left: 14px">
+            <%= f.text_field :date, :id => 'datepickerFrom', :class => ' date form-control datepicker'%><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
           </div>
         </div>
 
@@ -36,7 +36,7 @@
             <%= f.label :description, 'Descripcion:', :class => 'control-label' %>
           </div>
           <div class="col-sm-8 ">
-            <%= f.text_area :description, :class => 'form-control', cols: "30", rows: "5", :maxlength => 200 %>
+            <%= f.text_area :description, :class => 'form-control', cols: "30", rows: "4", :maxlength => 200 %>
           </div>
         </div>
 
@@ -53,20 +53,21 @@
 
     <div class="col-md-12">
       <div class="col-md-6">
-        <div class="box  box-success">
+        <div class="box box-success">
           <div class=" box-body">
             <div class="col-sm-12">
-              <table class="table table-bordered">
+              <table class="table table-bordered table-condensed">
                 <tr>
-                  <th class="col-md-4">Servicio</th>
+                  <th class="col-md-5">Servicio</th>
                   <th class="col-md-3">Cantidad</th>
-                  <th class="col-md-3">Precio</th>
+                  <th class="col-md-3">Sub Total</th>
+                  <th class="col-md-1"> </th>
                 </tr>
                 <%= f.fields_for :budget_service_details, :wrapper => false do |form| %>
-                    <tr class="fields col-md-12 form-group required">
+                    <tr class="fields ">
                       <td class="col-md-5"><%=form.collection_select(:service_id, Service.all, :id, :name, {prompt: 'Seleccionar'}, class: 'form-control')%></td>
                       <td class="col-md-3"><%=form.number_field :service_quantity, class: 'form-control'%></td>
-                      <td class="col-md-3"><%=form.number_field :service_price, class: 'form-control'%></td>
+                      <td class="col-md-3"><%=form.number_field :subtotal, class: 'form-control'%></td>
                       <td class="col-md-1"><%=form.link_to_remove '<i class="fa fa-trash"></i>'.html_safe, class: 'btn btn-danger'%></td>
                     </tr>
                 <% end %>
@@ -80,28 +81,29 @@
         </div>
       </div>
       <div class="col-md-6">
-        <div class="box  box-success">
+        <div class="box box-success">
           <div class=" box-body">
             <div class="col-sm-12">
-              <table class="table table-bordered">
+              <table class="table table-bordered table-condensed">
                 <tr>
-                  <th class="col-md-4">Material</th>
+                  <th class="col-md-5">Material</th>
                   <th class="col-md-3">Cantidad</th>
-                  <th class="col-md-3">Precio</th>
+                  <th class="col-md-3">Sub total</th>
+                  <th class="col-md-1"> </th>
                 </tr>
                 <%= f.fields_for :budget_material_details, :wrapper => false do |form| %>
-                    <tr class="fields col-md-12 form-group required">
+                    <tr class="fields">
                       <td class="col-md-5"><%=form.collection_select(:material_id, Material.all, :id, :name, {prompt: 'Seleccionar'}, class: 'form-control')%></td>
                       <td class="col-md-3"><%=form.number_field :material_quantity, class: 'form-control'%></td>
-                      <td class="col-md-3"><%=form.number_field :material_price, class: 'form-control'%></td>
+                      <td class="col-md-3"><%=form.number_field :subtotal, class: 'form-control'%></td>
                       <td class="col-md-1"><%=form.link_to_remove '<i class="fa fa-trash"></i>'.html_safe, class: 'btn btn-danger'%></td>
+                      <br>
                     </tr>
                 <% end %>
               </table>
             </div>
           </div>
-
-          <div class="box box-footer">
+          <div class="box box-footer form-group">
             <%=f.link_to_add 'Agregar Material', :budget_material_details, class: 'btn btn-success'%>
           </div>
         </div>
@@ -112,9 +114,8 @@
     <div class="box-footer clearfix">
       <div class="pull-right">
         <%= f.submit 'Guardar', :class => "btn btn-flat bg-blue" %>
-        <%= link_to 'Cancelar', materials_path, class: 'btn btn-flat btn-default' %>
+        <%= link_to 'Cancelar', budgets_path, class: 'btn btn-flat btn-default' %>
       </div>
-    </div>
     </div>
 <%end%>
 
