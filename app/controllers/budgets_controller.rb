@@ -1,5 +1,6 @@
 class BudgetsController < ApplicationController
   before_action :set_budget, only: [:show, :edit, :update, :destroy]
+  add_breadcrumb I18n.t('helpers.breadcrumbs.budgets.index'), :budgets_path
 
   # GET /budgets
   # GET /budgets.json
@@ -10,10 +11,13 @@ class BudgetsController < ApplicationController
   # GET /budgets/1
   # GET /budgets/1.json
   def show
+    add_breadcrumb I18n.t('helpers.breadcrumbs.budgets.show')
+    @budget_service_details = BudgetServiceDetail.all
   end
 
   # GET /budgets/new
   def new
+    add_breadcrumb I18n.t('helpers.breadcrumbs.budgets.new')
     @budget = Budget.new
 
 
@@ -21,7 +25,7 @@ class BudgetsController < ApplicationController
 
   # GET /budgets/1/edit
   def edit
-
+    add_breadcrumb I18n.t('helpers.breadcrumbs.budgets.edit')
   end
 
   # POST /budgets
@@ -31,7 +35,7 @@ class BudgetsController < ApplicationController
 
     respond_to do |format|
       if @budget.save
-        format.html { redirect_to @budget, notice: 'Budget was successfully created.' }
+        format.html { redirect_to @budget, notice: 'El presupuesto se creo correctamente' }
         format.json { render :show, status: :created, location: @budget }
       else
         format.html { render :new }
@@ -45,7 +49,7 @@ class BudgetsController < ApplicationController
   def update
     respond_to do |format|
       if @budget.update(budget_params)
-        format.html { redirect_to @budget, notice: 'Budget was successfully updated.' }
+        format.html { redirect_to @budget, notice: 'El presupuesto se actualizo correctamente' }
         format.json { render :show, status: :ok, location: @budget }
       else
         format.html { render :edit }
