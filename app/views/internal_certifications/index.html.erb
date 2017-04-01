@@ -1,10 +1,18 @@
 <div class="box box-success">
-  <div class="box-header with-header">
-    <h1 class="page-header">Certificaciones Internas <%= link_to new_internal_certification_path(@internal_certification), :class => 'btn btn-success' do %>
-          <span class="fa fa-plus"></span>
-      <% end %></h1>
-    <br>
-    <%= render 'table', internal_certifications: @internal_certifications %>
-    <br>
+  <div class="box-header with-border box-success">
+    <h3 class="box-title">Lista de Certificaciones internas</h3>
+    <%= link_to "<i class=\"fa fa-plus\"></i>".html_safe, new_internal_certification_path, {:class => "btn btn-sm btn-flat bg-green btn-title", :title => "Agregar Certificación"} %>
+  </div>
+  <div class="box-body">
+    <div class="overlay-wrapper searchResult table-responsive" id="clients-table">
+      <%= render 'list', :internal_certifications => @internal_certifications %>
+    </div>
+  </div>
+  <div class="box-footer clearfix">
+    <div id="paginate-container">
+      <ul class="pagination pagination-sm no-margin pull-right">
+        <%= paginate @internal_certifications %>
+      </ul>
+    </div>
   </div>
 </div>

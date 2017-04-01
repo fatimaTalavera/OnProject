@@ -20,7 +20,7 @@
       </div>
 
       <div class="field col-md-12 form-group">
-        <div class="field col-md-4 form-group required">
+        <div class="field col-md-6 form-group required">
           <div class="col-md-3">
             <%= f.label :amount, 'Monto:', :class => 'control-label' %>
           </div>
@@ -29,7 +29,7 @@
           </div>
         </div>
 
-        <div class="field col-md-4 form-group">
+        <div class="field col-md-6 form-group">
           <div class="col-md-3">
             <%= f.label :discount, 'Descuento:', :class => 'control-label' %>
           </div>
@@ -38,14 +38,17 @@
           </div>
         </div>
 
-        <div class="field col-md-4 form-group required">
-          <div class="col-md-3 col-md-offset-3">
-            <%= f.label :date, 'Fecha:', :class => 'control-label' %>
-          </div>
-          <div class="input-group col-md-6">
-            <%= f.text_field :date, :id => 'datepickerFrom', :class => 'input-group date form-control datepicker' %><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-          </div>
+
+      </div>
+      <div class="field col-md-12 form-group">
+      <div class="field col-md-6 form-group required">
+        <div class="col-md-3">
+          <%= f.label :date, 'Fecha:', :class => 'control-label' %>
         </div>
+        <div class="input-group col-md-3">
+          <%= f.text_field :date, :id => 'datepickerFrom', :class => 'input-group date form-control datepicker' %><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+        </div>
+      </div>
       </div>
     </div>
 

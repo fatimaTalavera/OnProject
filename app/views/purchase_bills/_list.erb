@@ -1,8 +1,8 @@
 <table class="table table-bordered table-condensed">
   <thead>
   <tr>
-    <th>Proveedor</th>
     <th>Fecha</th>
+    <th>Proveedor</th>
     <th>Condicion</th>
     <th>Numero</th>
     <th class="table-actions"></th>
@@ -12,8 +12,8 @@
   <tbody>
   <% purchase_bills.each do |purchase_bill| %>
       <tr>
-        <td><%= purchase_bill.provider_name %></td>
         <td><%= purchase_bill.date.strftime("%d/%m/%Y") %></td>
+        <td><%= purchase_bill.provider_name %></td>
         <td><%= purchase_bill.condition %></td>
         <td><%= purchase_bill.number %></td>
 

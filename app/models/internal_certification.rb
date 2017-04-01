@@ -13,5 +13,4 @@ class InternalCertification < ApplicationRecord
 
   validates :date, :presence => {:message => "Seleccione una fecha"}
 
-
 end

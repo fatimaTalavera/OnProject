@@ -5,7 +5,7 @@ class InternalCertificationsController < ApplicationController
   # GET /internal_certifications
   # GET /internal_certifications.json
   def index
-    @internal_certifications = InternalCertification.all
+    get_certifications
   end
 
   # GET /internal_certifications/1
@@ -29,7 +29,7 @@ class InternalCertificationsController < ApplicationController
 
     respond_to do |format|
       if @internal_certification.save
-        format.html { redirect_to internal_certifications_path, notice: 'Internal certification was successfully created.' }
+        format.html { redirect_to internal_certifications_path, notice: 'La certificación interna ha sido creada correctamente.' }
         format.json { render :show, status: :created, location: @internal_certification }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class InternalCertificationsController < ApplicationController
   def update
     respond_to do |format|
       if @internal_certification.update(internal_certification_params)
-        format.html { redirect_to @internal_certification, notice: 'Internal certification was successfully updated.' }
+        format.html { redirect_to @internal_certification, notice: 'La certificación interna ha sido editada correctamente' }
         format.json { render :show, status: :ok, location: @internal_certification }
       else
         format.html { render :edit }
@@ -63,6 +63,13 @@ class InternalCertificationsController < ApplicationController
   end
 
   private
+
+  def get_certifications
+    @q = InternalCertification.ransack(params[:q])
+    @q.sorts = ['date asc'] if @q.sorts.empty?
+    @internal_certifications = @q.result.page(params[:page])
+  end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_internal_certification
       @internal_certification = InternalCertification.find(params[:id])
