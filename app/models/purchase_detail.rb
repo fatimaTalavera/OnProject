@@ -1,18 +1,18 @@
 class PurchaseDetail < ApplicationRecord
   belongs_to :material
   belongs_to :purchase_bill, required: false
-  before_create :sumar_material
+  before_create :add_material
 
-  def sumar_material
+  def add_material
     Material.update(self.material.id, quantity: self.material.quantity + self.quantity)
   end
 
   validates :quantity, :presence => {:message => "Debe rellenar este campo"},
-            :numericality => {:greater_than_or_equal_to => 0, message: "No puede ser negativo", :less_than_or_equal_to => 2147483647, message: "No puede ser un número tan grande"}
+            :numericality => {inclusion: 1..2147483647, message: "Ingrese un número válido"}
 
   validates :price, :presence => {:message => "Debe rellenar este campo"},
             #valida que no sea negativo
-            :numericality => {:greater_than_or_equal_to => 0, message: "No puede ser negativo", :less_than_or_equal_to => 2147483647, message: "No puede ser un número tan grande"}
+            :numericality => {inclusion: 1..2147483647, message: "Ingrese un número válido"}
 
   validates :material_id, :presence => {:message => "Debe seleccionar un material"}
 

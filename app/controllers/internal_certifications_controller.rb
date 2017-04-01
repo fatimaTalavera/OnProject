@@ -8,11 +8,6 @@ class InternalCertificationsController < ApplicationController
     get_certifications
   end
 
-  # GET /internal_certifications/1
-  # GET /internal_certifications/1.json
-  def show
-  end
-
   # GET /internal_certifications/new
   def new
     @internal_certification = InternalCertification.new
@@ -43,7 +38,7 @@ class InternalCertificationsController < ApplicationController
   def update
     respond_to do |format|
       if @internal_certification.update(internal_certification_params)
-        format.html { redirect_to @internal_certification, notice: 'La certificación interna ha sido editada correctamente' }
+        format.html { redirect_to internal_certifications_path, notice: 'La certificación interna ha sido editada correctamente' }
         format.json { render :show, status: :ok, location: @internal_certification }
       else
         format.html { render :edit }

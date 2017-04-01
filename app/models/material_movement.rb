@@ -6,6 +6,6 @@ class MaterialMovement < ApplicationRecord
 
   validates :contract_id, :presence => {:message => "Debe seleccionar un contrato"}
 
-  validates :fecha, :presence => {:message => "Seleccione la fecha"}
+  validates :date, :presence => {:message => "Seleccione la fecha"}
 
 end

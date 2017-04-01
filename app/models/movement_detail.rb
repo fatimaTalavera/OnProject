@@ -1,14 +1,14 @@
 class MovementDetail < ApplicationRecord
   belongs_to :material_movement, required: false
   belongs_to :material
-  before_create :restar_material
+  before_create :withdraw_material
 
-  def restar_material
-      Material.update(self.material.id, quantity: self.material.quantity - self.cantidad)
+  def withdraw_material
+      Material.update(self.material.id, quantity: self.material.quantity - self.quantity)
   end
 
-  validates :cantidad, :presence => {:message => "Debe rellenar este campo"},
-            :numericality => {:greater_than_or_equal_to => 0, message: "No puede ser negativo", :less_than_or_equal_to => 2147483647, message: "No puede ser un número tan grande"}
+  validates :quantity, :presence => {:message => "Debe rellenar este campo"},
+            :numericality => {inclusion: 1..2147483647, message: "Ingrese un número válido"}
 
   validates :material_id, :presence => {:message => "Debe seleccionar un material"}
 
@@ -18,9 +18,9 @@ class MovementDetail < ApplicationRecord
     if self.material.nil?
       return
     end
-    if self.cantidad.nil?
+    if self.quantity.nil?
       return
     end
-    self.errors.add(:cantidad, "Seleccione una cantidad disponible") unless self.material.quantity >= self.cantidad
+    self.errors.add(:quantity, "Seleccione una cantidad disponible") unless self.material.quantity >= self.quantity
   end
 end

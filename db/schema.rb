@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170404021707) do
+ActiveRecord::Schema.define(version: 20170401202146) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,11 +79,24 @@ ActiveRecord::Schema.define(version: 20170404021707) do
     t.datetime "updated_at",              null: false
   end
 
+  create_table "internal_certifications", force: :cascade do |t|
+    t.date     "date",         default: -> { "('now'::text)::date" }
+    t.float    "amount"
+    t.float    "discount",     default: 0.0
+    t.integer  "employee_id"
+    t.integer  "contract_id"
+    t.datetime "created_at",                                          null: false
+    t.datetime "updated_at",                                          null: false
+    t.string   "observations"
+    t.index ["contract_id"], name: "index_internal_certifications_on_contract_id", using: :btree
+    t.index ["employee_id"], name: "index_internal_certifications_on_employee_id", using: :btree
+  end
+
   create_table "material_movements", force: :cascade do |t|
-    t.date     "fecha"
-    t.string   "motivo"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.date     "date",        default: -> { "('now'::text)::date" }
+    t.string   "reason"
+    t.datetime "created_at",                                         null: false
+    t.datetime "updated_at",                                         null: false
     t.integer  "contract_id"
     t.index ["contract_id"], name: "index_material_movements_on_contract_id", using: :btree
   end
@@ -102,9 +115,9 @@ ActiveRecord::Schema.define(version: 20170404021707) do
   create_table "movement_details", force: :cascade do |t|
     t.integer  "material_movement_id"
     t.integer  "material_id"
-    t.float    "cantidad"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.float    "quantity",             default: 1.0
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.index ["material_id"], name: "index_movement_details_on_material_id", using: :btree
     t.index ["material_movement_id"], name: "index_movement_details_on_material_movement_id", using: :btree
   end
@@ -122,21 +135,21 @@ ActiveRecord::Schema.define(version: 20170404021707) do
   end
 
   create_table "purchase_bills", force: :cascade do |t|
-    t.datetime "date"
+    t.datetime "date",        default: -> { "('now'::text)::date" }
     t.string   "condition"
     t.integer  "number"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                                         null: false
+    t.datetime "updated_at",                                         null: false
     t.integer  "provider_id"
     t.index ["provider_id"], name: "index_purchase_bills_on_provider_id", using: :btree
   end
 
   create_table "purchase_details", force: :cascade do |t|
     t.integer  "material_id"
-    t.integer  "quantity"
+    t.integer  "quantity",         default: 1
     t.integer  "price"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.integer  "purchase_bill_id"
     t.index ["material_id"], name: "index_purchase_details_on_material_id", using: :btree
     t.index ["purchase_bill_id"], name: "index_purchase_details_on_purchase_bill_id", using: :btree
@@ -181,6 +194,8 @@ ActiveRecord::Schema.define(version: 20170404021707) do
   add_foreign_key "client_certification_details", "services"
   add_foreign_key "client_certifications", "contracts"
   add_foreign_key "contracts", "clients"
+  add_foreign_key "internal_certifications", "contracts"
+  add_foreign_key "internal_certifications", "employees"
   add_foreign_key "material_movements", "contracts"
   add_foreign_key "movement_details", "material_movements"
   add_foreign_key "movement_details", "materials"

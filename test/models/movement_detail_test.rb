@@ -7,7 +7,7 @@ class MovementDetailTest < ActiveSupport::TestCase
   end
 
   test "Should not save movement detail without material" do
-    movementDetail = MovementDetail.new(cantidad: 1, material_movement_id: 1)
+    movementDetail = MovementDetail.new(quantity: 1, material_movement_id: 1)
     assert_not movementDetail.valid?, "The movement detail was not valid. Errors: #{movementDetail.errors.to_a.to_sentence}"
   end
 
@@ -17,7 +17,7 @@ class MovementDetailTest < ActiveSupport::TestCase
   end
 
   test "Should not save movement detail with an invalid quantity" do
-    movementDetail = MovementDetail.new(material_id: 1, cantidad: -1, material_movement_id: 1)
+    movementDetail = MovementDetail.new(material_id: 1, quantity: -1, material_movement_id: 1)
     assert_not movementDetail.valid?, "The movement detail was not valid. Errors: #{movementDetail.errors.to_a.to_sentence}"
   end
 end

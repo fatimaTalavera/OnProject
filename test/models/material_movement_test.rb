@@ -6,8 +6,8 @@ class MaterialMovementTest < ActiveSupport::TestCase
     assert_not materialMovement.valid?, "The material movement was not valid. Errors: #{materialMovement.errors.to_a.to_sentence}"
   end
 
-  test "Should save material movement without motivo" do
-    materialMovement = MaterialMovement.new(fecha: '01-01-2000', contract_id: 1)
+  test "Should save material movement without reason" do
+    materialMovement = MaterialMovement.new(date: '01-01-2000', contract_id: 1)
     assert materialMovement.valid?, "The material movement is valid"
   end
 
@@ -17,7 +17,7 @@ class MaterialMovementTest < ActiveSupport::TestCase
   end
 
   test "Should not save material movement without contract" do
-    materialMovement = MaterialMovement.new(fecha: '01-01-2000')
+    materialMovement = MaterialMovement.new(date: '01-01-2000')
     assert_not materialMovement.valid?, "The material movement was not valid. Errors: #{materialMovement.errors.to_a.to_sentence}"
   end
 end

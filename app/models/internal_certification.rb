@@ -1,6 +1,8 @@
 class InternalCertification < ApplicationRecord
   belongs_to :employee
+  delegate :name, to: :employee, prefix: true
   belongs_to :contract
+  delegate :name, to: :contract, prefix: true
 
   validates :contract_id, :presence => {:message => "Seleccione un contrato"}
 
@@ -8,8 +10,7 @@ class InternalCertification < ApplicationRecord
 
   validates :amount, :presence => {:message => "No puede estar en blanco"},
             :format => {:multiline => true, with: VALID_NUMBER_REGEX, :message => "Solo permite numeros"},
-            #valida que no sea negativo
-            :numericality => {:greater_than_or_equal_to => 0, message: "No puede ser negativo"}
+            :numericality => {inclusion: 1..2147483647, message: "Ingrese un número válido"}
 
   validates :date, :presence => {:message => "Seleccione una fecha"}
 

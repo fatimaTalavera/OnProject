@@ -7,7 +7,7 @@
     <div class="material_movement-search searchList">
       <%= search_form_for(@q, remote: true, :html => { class: 'remote-search' }) do |f| %>
           <div class="input-group">
-            <%= f.text_field :contract_name_or_motivo_cont, class: 'form-control', autocomplete: 'off', placeholder: 'Busca por contrato o motivo' %>
+            <%= f.text_field :contract_name_or_reason_cont, class: 'form-control', autocomplete: 'off', placeholder: 'Busca por contrato o motivo' %>
             <div class="input-group-btn">
               <button type="submit" name="button" class="btn btn-default">
                 <i class="fa fa-search"></i>

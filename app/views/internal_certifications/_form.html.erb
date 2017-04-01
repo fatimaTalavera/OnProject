@@ -37,18 +37,25 @@
             <%= f.number_field :discount, :class => 'form-control', :maxlength => 50 %>
           </div>
         </div>
-
-
       </div>
       <div class="field col-md-12 form-group">
-      <div class="field col-md-6 form-group">
-        <div class="col-md-3">
-          <%= f.label :date, 'Fecha:', :class => 'control-label tooltip_required' %>
+        <div class="field col-md-6 form-group">
+          <div class="col-md-3">
+            <%= f.label :date, 'Fecha:', :class => 'control-label tooltip_required' %>
+          </div>
+          <div class="input-group col-md-3">
+            <%= f.text_field :date, :id => 'datepickerFrom', :class => 'input-group date form-control datepicker', :value => Date.today.strftime("%d/%m/%Y") %><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+          </div>
         </div>
-        <div class="input-group col-md-3">
-          <%= f.text_field :date, :id => 'datepickerFrom', :class => 'input-group date form-control datepicker' %><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+
+        <div class="field col-md-6 form-group">
+          <div class="col-md-3">
+            <%= f.label :observations, 'Observaciones:', :class => 'control-label' %>
+          </div>
+          <div class="input-group col-md-9">
+            <%= f.text_area :observations, :class => 'form-control', :maxlength => 255 %>
+          </div>
         </div>
-      </div>
       </div>
     </div>
 

@@ -1,5 +1,5 @@
 class Employee < ApplicationRecord
-
+  has_many :internal_certifications
   VALID_LETTER_REGEX = /\A([a-zA-Z]|[a-zA-Z][\. ])+\z/
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 

@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  fecha: 2017-02-25
-  motivo: MyString
+  date: 2017-02-25
+  reason: MyString
 
 two:
-  fecha: 2017-02-25
-  motivo: MyString
+  date: 2017-02-25
+  reason: MyString

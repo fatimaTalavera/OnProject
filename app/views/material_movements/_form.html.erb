@@ -11,10 +11,10 @@
         </div>
         <div class="field col-md-6 form-group">
           <div class="col-md-3">
-            <%= f.label :fecha, 'Fecha:', :class => 'control-label tooltip_required' %>
+            <%= f.label :date, 'Fecha:', :class => 'control-label tooltip_required' %>
           </div>
           <div class="input-group col-md-7">
-            <%= f.text_field :fecha, :id => 'datepickerFrom', :class => 'input-group date form-control datepicker' %><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+            <%= f.text_field :date, :id => 'datepickerFrom', :class => 'input-group date form-control datepicker', :value => Date.today.strftime("%d/%m/%Y") %><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
           </div>
         </div>
       </div>
@@ -22,10 +22,10 @@
       <div class="field col-md-12 form-group">
         <div class="field col-md-6 form-group">
           <div class="col-md-3">
-            <%= f.label :motivo, 'Motivo:', :class => 'control-label' %>
+            <%= f.label :reason, 'Motivo:', :class => 'control-label' %>
           </div>
           <div class="col-md-9">
-            <%= f.text_field :motivo, :maxlength => 120, :class => 'form-control' %>
+            <%= f.text_field :reason, :maxlength => 120, :class => 'form-control' %>
           </div>
         </div>
       </div>
@@ -50,7 +50,7 @@
                 <%= f.fields_for :movement_details, :wrapper => false do |form| %>
                     <tr class="fields">
                       <td class="col-md-7"><%=form.collection_select(:material_id, Material.all, :id, :name, {prompt: 'Seleccionar'}, class: 'form-control tooltip_required')%></td>
-                      <td class="col-md-4"><%=form.number_field :cantidad, class: 'form-control tooltip_required'%></td>
+                      <td class="col-md-4"><%=form.number_field :quantity, class: 'form-control tooltip_required'%></td>
                       <td class="col-md-1"><%=form.link_to_remove '<i class="fa  fa-trash-o"></i>'.html_safe, class: 'btn btn-danger'%></td>
                     </tr>
                 <% end %>

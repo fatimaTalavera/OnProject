@@ -17,7 +17,7 @@ class MaterialMovementsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create material_movement" do
     assert_difference('MaterialMovement.count') do
-      post material_movements_url, params: { material_movement: { fecha: @material_movement.fecha, motivo: @material_movement.motivo } }
+      post material_movements_url, params: { material_movement: { date: @material_movement.date, reason: @material_movement.reason } }
     end
 
     assert_redirected_to material_movement_url(MaterialMovement.last)
@@ -34,7 +34,7 @@ class MaterialMovementsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update material_movement" do
-    patch material_movement_url(@material_movement), params: { material_movement: { fecha: @material_movement.fecha, motivo: @material_movement.motivo } }
+    patch material_movement_url(@material_movement), params: { material_movement: { date: @material_movement.date, reason: @material_movement.reason } }
     assert_redirected_to material_movement_url(@material_movement)
   end
 

@@ -11,12 +11,12 @@
 
       <div class="col-md-4">
         <strong>Motivo:</strong>
-        <%= @material_movement.motivo %>
+        <%= @material_movement.reason %>
       </div>
 
       <div class="col-md-4">
         <strong>Fecha:</strong>
-        <%= @material_movement.fecha %>
+        <%= @material_movement.date %>
       </div>
     </div>
 
@@ -32,7 +32,7 @@
             <tbody>
             <% @material_movement.movement_details.each do |detalle| %>
                 <td><%= detalle.material.name %></td>
-                <td><%= detalle.cantidad %></td>
+                <td><%= detalle.quantity %></td>
             <% end %>
             </tbody>
           </table>

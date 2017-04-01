@@ -3,9 +3,9 @@
 one:
   material_movement: one
   material: one
-  cantidad: 1.5
+  quantity: 1.5
 
 two:
   material_movement: two
   material: two
-  cantidad: 1.5
+  quantity: 1.5

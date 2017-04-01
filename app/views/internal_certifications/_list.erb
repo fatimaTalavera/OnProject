@@ -2,10 +2,11 @@
   <thead>
   <tr>
         <th>Fecha</th>
+        <th>Contrato</th>
+        <th>Jornalero</th>
         <th>Monto</th>
         <th>Descuento</th>
-        <th>Jornalero</th>
-        <th>Contrato</th>
+        <th>Observaciones</th>
         <th></th>
       </tr>
 
@@ -13,10 +14,11 @@
       <% internal_certifications.each do |certification| %>
           <tr>
             <td><%= certification.date %></td>
+            <td><%= certification.contract_name %></td>
+            <td><%= certification.employee_name %></td>
             <td><%= certification.amount %></td>
             <td><%= certification.discount %></td>
-            <td><%= certification.employee.name %></td>
-            <td><%= certification.contract.name %></td>
+            <td><%= certification.observations %></td>
             <td>
               <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_internal_certification_path(certification), {:class => "btn btn-xs bg-orange btn-flat"} %>
             </td>

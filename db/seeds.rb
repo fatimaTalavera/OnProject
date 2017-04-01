@@ -53,11 +53,11 @@ end
 @service.save!
 
 # Movimientos de materiales
-@materialMovement = MaterialMovement.new(fecha: '01/01/2000', contract_id: @contract.id, motivo: "Lecherado para la bicicenda, tramo 1")
+@materialMovement = MaterialMovement.new(date: '01/01/2000', contract_id: @contract.id, reason: "Lecherado para la bicicenda, tramo 1")
 @materialMovement.save!
 
 # Movimientos detalles
-@movementDetail = MovementDetail.new(cantidad: 3, material_id: @cemento.id, material_movement_id: @materialMovement.id)
+@movementDetail = MovementDetail.new(quantity: 3, material_id: @cemento.id, material_movement_id: @materialMovement.id)
 @movementDetail.save!
 #@movementDetail = MovementDetail.new(cantidad: 1, material_id: @cable.id, material_movement_id: @materialMovement.id)
 #@movementDetail.save!
