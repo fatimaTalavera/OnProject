@@ -68,7 +68,7 @@ class ClientCertificationsController < ApplicationController
   private
     def get_client_certifications
       @q = ClientCertification.ransack(params[:q])
-      @q.sorts = ['client_name asc', 'date desc'] if @q.sorts.empty?
+      @q.sorts = ['contract_name asc', 'state asc'] if @q.sorts.empty?
       @client_certifications = @q.result.page(params[:page])
     end
 
@@ -79,6 +79,6 @@ class ClientCertificationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def client_certification_params
-      params.require(:client_certification).permit(:client_id, :contract_id, :date, :state, :observation, :received)
+      params.require(:client_certification).permit(:contract_id, :date, :state, :observation, :received)
     end
 end

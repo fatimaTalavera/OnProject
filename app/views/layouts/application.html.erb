@@ -11,100 +11,115 @@
 </head>
 
 <body data-controller="<%= controller_name %>" data-action="<%= action_name %>" class="hold-transition skin-green fixed sidebar-mini">
-  <div class="wrapper">
+<div class="wrapper">
 
-    <header class="main-header">
-      <a href="<% root_path %>" class="logo">
-        <span class="logo-mini"><%= cl_image_tag CompanyConfig.first.avatar_url(:thumb)  if CompanyConfig.first.avatar? %></span>
-        <span class="logo-lg"><%= CompanyConfig.first.name %></span>
+  <header class="main-header">
+    <a href="
+      <% root_path %>" class="logo">
+      <span class="logo-mini"><%= cl_image_tag CompanyConfig.first.avatar_url(:thumb) if CompanyConfig.first.avatar? %></span>
+      <span class="logo-lg"><%= CompanyConfig.first.name %></span>
+    </a>
+    <nav class="navbar navbar-static-top">
+      <a href="!#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
       </a>
-      <nav class="navbar navbar-static-top">
-        <a href="!#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </a>
-        <div class="navbar-custom-menu">
-          <ul class="nav navbar-nav">
-            <li class="dropdown user user-menu">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <%= current_user.full_name.titleize %>&nbsp;<span class="hidden-xs caret"></span>
-              </a>
-              <ul class="dropdown-menu">
-                <li class="user-header">
-                  
-                  <p>
-                    <%= current_user.full_name.titleize %> - ROLE
-                    <small>Ultimo ingreso: <%= l current_user.last_sign_in_at, format: :long %></small>
-                  </p>
-                </li>
-                <li class="user-footer">
-                  <div class="pull-left">
-                    <a href="#" class="btn btn-default btn-flat">Perfil</a>
-                  </div>
-                  <div class="pull-right">
-                    <%= link_to "Cerrar Sesión", destroy_user_session_path, method: :delete, :class => "btn btn-default btn-flat"%>
-                  </div>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-      </nav>
-    </header>
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+          <li class="dropdown user user-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <%= current_user.full_name.titleize %>&nbsp;<span class="hidden-xs caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="user-header">
 
-    <aside class="main-sidebar">
-      <section class="sidebar">
-        <ul class="sidebar-menu">
-          <li class="header">MENÚ</li>
-          <li class="treeview">
-            <a href="#">
-              <i class="fa fa-dashboard"></i> <span><%= t('helpers.menu.dashboard') %></span>
+                <p>
+                  <%= current_user.full_name.titleize %> - ROLE
+                  <small>Ultimo ingreso: <%= l current_user.last_sign_in_at, format: :long %></small>
+                </p>
+              </li>
+              <li class="user-footer">
+                <div class="pull-left">
+                  <a href="#" class="btn btn-default btn-flat">Perfil</a>
+                </div>
+                <div class="pull-right">
+                  <%= link_to "Cerrar Sesión", destroy_user_session_path, method: :delete, :class => "btn btn-default btn-flat" %>
+                </div>
+              </li>
+            </ul>
+          </li>
+         </ul>
+      </div>
+    </nav>
+  </header>
+
+  <aside class="main-sidebar">
+    <section class="sidebar">
+      <ul class="sidebar-menu">
+        <li class="header">MENÚ</li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-dashboard"></i> <span><%= t('helpers.menu.dashboard') %></span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
-            </a>
-            <ul class="treeview-menu">
-              <li><a href="<%= root_path %>"><i class="fa fa-circle-o"></i><%= t('helpers.menu.dashboard') %></a></li>
-            </ul>
-          </li>
-          <li><a href="<%= users_path %>"><i class="fa fa-users"></i> <span><%= t('helpers.menu.users') %></span></a></li>
-          <li><a href="<%= clients_path %>"><i class="fa fa-users"></i> <span><%= t('helpers.menu.clients') %></span></a></li>
-          <li><a href="<%= providers_path %>"><i class="fa fa-truck"></i> <span><%= t('helpers.menu.providers') %></span></a></li>
-          <li><a href="<%= employees_path %>"><i class="fa fa-male"></i> <span><%= t('helpers.menu.employees') %></span></a></li>
-          <li><a href="<%= materials_path %>"><i class="fa fa-book"></i> <span><%= t('helpers.menu.materials') %></span></a></li>
-          <li><a href="<%= material_movements_path %>"><i class="fa fa-exchange"></i> <span><%= t('helpers.menu.material_movements') %></span></a></li>
-          <li><a href="<%= purchase_bills_path %>"><i class="fa fa-list-alt"></i> <span><%= t('helpers.menu.purchase_bills') %></span></a></li>
-          <li><a href="<%= contracts_path %>"><i class="fa fa-file-text"></i> <span><%= t('helpers.menu.contracts') %></span></a></li>
-          <li><a href="<%= services_path %>"><i class="fa fa-file-text"></i> <span><%= t('helpers.menu.services') %></span></a></li>
-          <li><a href="<%= client_certifications_path %>"><i class="fa fa-file-text"></i> <span><%= t('helpers.menu.client_certifications') %></span></a></li>
-          <li><a href="<%= company_config_index_path %>"><i class="fa fa-file-text"></i> <span><%= t('helpers.menu.company_config') %></span></a></li>
-        </ul>
-      </section>
-    </aside>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="<%= root_path %>"><i class="fa fa-circle-o"></i><%= t('helpers.menu.dashboard') %></a></li>
+          </ul>
+        </li>
+        <li><a href="<%= users_path %>"><i class="fa fa-users"></i> <span><%= t('helpers.menu.users') %></span></a></li>
+        <li><a href="<%= clients_path %>"><i class="fa fa-users"></i> <span><%= t('helpers.menu.clients') %></span></a>
+        </li>
+        <li><a href="<%= providers_path %>"><i class="fa fa-truck"></i> <span><%= t('helpers.menu.providers') %></span></a>
+        </li>
+        <li>
+          <a href="<%= employees_path %>"><i class="fa fa-male"></i> <span><%= t('helpers.menu.employees') %></span></a>
+        </li>
+        <li>
+          <a href="<%= materials_path %>"><i class="fa fa-book"></i> <span><%= t('helpers.menu.materials') %></span></a>
+        </li>
+        <li><a href="<%= material_movements_path %>"><i class="fa fa-exchange"></i>
+          <span><%= t('helpers.menu.material_movements') %></span></a></li>
+        <li><a href="<%= purchase_bills_path %>"><i class="fa fa-list-alt"></i>
+          <span><%= t('helpers.menu.purchase_bills') %></span></a></li>
+        <li><a href="<%= contracts_path %>"><i class="fa fa-file-text"></i>
+          <span><%= t('helpers.menu.contracts') %></span></a></li>
+        <li>
+          <a href="<%= services_path %>"><i class="fa fa-file-text"></i> <span><%= t('helpers.menu.services') %></span></a>
+        </li>
+        <li><a href="<%= client_certifications_path %>"><i class="fa fa-file-text"></i>
+          <span><%= t('helpers.menu.client_certifications') %></span></a></li>
+        <li><a href="<%= company_config_index_path %>"><i class="fa fa-file-text"></i>
+          <span><%= t('helpers.menu.company_config') %></span></a></li>
+      </ul>
+    </section>
+  </aside>
 
-    <div class="content-wrapper">
-      <%= render 'layouts/messages' %>
-      <section class="content-header">
-        <h4>
-          <ol class="breadcrumb">
-            <li><%= render_breadcrumbs %></li>
-          </ol>
-        </h4>
-      </section>
-      <section class="content">
-        <%= yield %>
-      </section>
-    </div>
-
-    <footer class="main-footer">
-      <div class="pull-right hidden-xs">
-        <b>Version</b> 0.1.0
-      </div>
-      <strong>Copyright &copy; 2017 <a href="https://github.com/fatimaTalavera/OnProject">ON Project</a>.</strong> Todos los derechos reservados
-    </footer>
-
+  <div class="content-wrapper">
+    <%= render 'layouts/messages' %>
+    <section class="content-header">
+      <h4>
+        <ol class="breadcrumb">
+          <li><%= render_breadcrumbs %></li>
+        </ol>
+      </h4>
+    </section>
+    <section class="content">
+      <%= yield %>
+    </section>
   </div>
+
+  <footer class="main-footer">
+    <div class="pull-right hidden-xs">
+      <b>Version</b> 0.1.0
+    </div>
+    <strong>Copyright &copy; 2017 <a href="https://github.com/fatimaTalavera/OnProject">ON Project</a>.</strong> Todos
+    los derechos reservados
+  </footer>
+
+</div>
 </body>
 </html>

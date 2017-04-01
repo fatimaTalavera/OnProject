@@ -10,13 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170329214724) do
+ActiveRecord::Schema.define(version: 20170331212836) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "client_certifications", force: :cascade do |t|
-    t.integer  "client_id"
     t.integer  "contract_id"
     t.date     "date"
     t.string   "observation"
@@ -24,7 +23,6 @@ ActiveRecord::Schema.define(version: 20170329214724) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.string   "state"
-    t.index ["client_id"], name: "index_client_certifications_on_client_id", using: :btree
     t.index ["contract_id"], name: "index_client_certifications_on_contract_id", using: :btree
   end
 
@@ -170,7 +168,6 @@ ActiveRecord::Schema.define(version: 20170329214724) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  add_foreign_key "client_certifications", "clients"
   add_foreign_key "client_certifications", "contracts"
   add_foreign_key "contracts", "clients"
   add_foreign_key "material_movements", "contracts"
