@@ -81,6 +81,30 @@
         </div>
       </div>
       </div>
+
+    <div class="col-md-6">
+      <div class="box box-success">
+        <div class=" box-body">
+          <div class="col-sm-12">
+            <table class="table table-bordered table-condensed">
+              <tr>
+                <th class="col-md-5">Material</th>
+                <th class="col-md-3">Cantidad</th>
+                <th class="col-md-3">Sub Total</th>
+              </tr>
+              <% @budget.budget_material_details.each do |budget_detail| %>
+                  <tr class="fields ">
+                    <% material = Material.find(budget_detail.material_id) %>
+                    <td class="col-md-5"><%= material.name %></td>
+                    <td class="col-md-3"><%= budget_detail.material_quantity%></td>
+                    <td class="col-md-3"><%= budget_detail.subtotal%></td>
+                  </tr>
+              <% end %>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
     </div>
 
 
