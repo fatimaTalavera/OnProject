@@ -5,10 +5,12 @@ class BudgetServiceDetail < ApplicationRecord
   after_create :ac_subtotal
 
 def ac_subtotal
-  subtotal_ = 0
-  service = Service.find(service_id)
 
-  subtotal = subtotal_ + (service.price * service_price)
+  service = Service.find(self.service_id)
+  subtotal = service.price * service_quantity
+
+  self.subtotal = subtotal
 end
+
 
 end
