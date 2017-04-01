@@ -11,7 +11,7 @@
         </div>
         <div class="field col-md-6 form-group">
           <div class="col-md-3">
-            <%= f.label :fecha, 'Fecha:', :class => 'control-label' %>
+            <%= f.label :fecha, 'Fecha:', :class => 'control-label tooltip_required' %>
           </div>
           <div class="input-group col-md-7">
             <%= f.text_field :fecha, :id => 'datepickerFrom', :class => 'input-group date form-control datepicker' %><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
@@ -49,8 +49,8 @@
                 <tbody>
                 <%= f.fields_for :movement_details, :wrapper => false do |form| %>
                     <tr class="fields">
-                      <td class="col-md-7"><%=form.collection_select(:material_id, Material.all, :id, :name, {prompt: 'Seleccionar'}, class: 'form-control')%></td>
-                      <td class="col-md-4"><%=form.number_field :cantidad, class: 'form-control'%></td>
+                      <td class="col-md-7"><%=form.collection_select(:material_id, Material.all, :id, :name, {prompt: 'Seleccionar'}, class: 'form-control tooltip_required')%></td>
+                      <td class="col-md-4"><%=form.number_field :cantidad, class: 'form-control tooltip_required'%></td>
                       <td class="col-md-1"><%=form.link_to_remove '<i class="fa  fa-trash-o"></i>'.html_safe, class: 'btn btn-danger'%></td>
                     </tr>
                 <% end %>
