@@ -29,24 +29,10 @@ class PurchaseBillsController < ApplicationController
 
     respond_to do |format|
       if @purchase_bill.save
-        format.html { redirect_to purchase_bills_url, notice: 'Purchase bill was successfully created.' }
+        format.html { redirect_to purchase_bills_url, notice: 'La factura de compra ha sido creada correctamente.' }
         format.json { render :show, status: :created, location: @purchase_bill }
       else
         format.html { render :new }
-        format.json { render json: @purchase_bill.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /purchase_bills/1
-  # PATCH/PUT /purchase_bills/1.json
-  def update
-    respond_to do |format|
-      if @purchase_bill.update(purchase_bill_params)
-        format.html { redirect_to purchase_bills_url, notice: 'Purchase bill was successfully updated.' }
-        format.json { render :show, status: :ok, location: @purchase_bill }
-      else
-        format.html { render :edit }
         format.json { render json: @purchase_bill.errors, status: :unprocessable_entity }
       end
     end

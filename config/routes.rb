@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :client_certifications
   resources :employees
-  resources :purchase_bills
+  resources :purchase_bills, except: [:edit, :update]
   resources :providers
   resources :services
   resources :contracts
