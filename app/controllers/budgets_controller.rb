@@ -35,7 +35,7 @@ class BudgetsController < ApplicationController
 
     respond_to do |format|
       if @budget.save
-        format.html { redirect_to @budget, notice: 'El presupuesto se creo correctamente' }
+        format.html { redirect_to budgets_path, notice: 'El presupuesto se creo correctamente' }
         format.json { render :show, status: :created, location: @budget }
       else
         format.html { render :new }
@@ -49,7 +49,7 @@ class BudgetsController < ApplicationController
   def update
     respond_to do |format|
       if @budget.update(budget_params)
-        format.html { redirect_to @budget, notice: 'El presupuesto se actualizo correctamente' }
+        format.html { redirect_to budgets_path, notice: 'El presupuesto se actualizo correctamente' }
         format.json { render :show, status: :ok, location: @budget }
       else
         format.html { render :edit }
@@ -84,7 +84,7 @@ class BudgetsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def budget_params
       params.require(:budget).permit(:client_id, :date, :description, :utility, :state, :total_service, :total_material, :total_amount,
-        budget_service_details_attributes: [:id, :service_id, :service_price, :service_quantity, :subtotal, :destroy],
-                                     budget_material_details_attributes: [:id, :material_id, :material_price, :material_quantity, :subtotal, :destroy])
+        budget_service_details_attributes: [:id, :service_id, :service_price, :service_quantity, :subtotal, :_destroy],
+                                     budget_material_details_attributes: [:id, :material_id, :material_price, :material_quantity, :subtotal, :_destroy])
     end
 end

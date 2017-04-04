@@ -24,11 +24,11 @@
         </div>
       </div>
 
-      <div class="field col-md-4 ">
-        <div class="col-sm-6 label-pad ">
+      <div class="field col-md-4 form-group ">
+        <div class="col-sm-7 label-pad ">
           <strong>Porcentaje de Utilidad:</strong>
         </div>
-        <div class="col-sm-3 show-padding">
+        <div class="col-sm-4 show-padding">
           <%= @budget.utility %>
         </div>
       </div>
@@ -78,6 +78,12 @@
               <% end %>
             </table>
           </div>
+          <div class="col-sm-4 label-pad">
+            <strong>Total Servicios(Gs):</strong>
+          </div>
+          <div class="col-sm-4 show-padding">
+            <%= @budget.total_service %>
+          </div>
         </div>
       </div>
       </div>
@@ -102,12 +108,27 @@
               <% end %>
             </table>
           </div>
+          <div class="col-sm-4 label-pad">
+            <strong>Total Materiales(Gs):</strong>
+          </div>
+          <div class="col-sm-4 show-padding">
+            <%= @budget.total_material %>
+          </div>
         </div>
       </div>
     </div>
     </div>
 
-
+  <div class="col-md-12">
+    <div class="col-sm-6">
+      <div class="col-sm-3 label-pad">
+        <strong>Monto Total(Gs):</strong>
+      </div>
+      <div class="col-sm-4 show-padding">
+        <%= @budget.total_amount %>
+      </div>
+</div>
+    </div>
   <div class="box-footer">
     <div class="pull-right">
       <%= link_to 'Editar', edit_budget_path(@budget), :class => 'btn btn-primary active' %>

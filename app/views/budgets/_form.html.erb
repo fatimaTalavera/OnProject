@@ -6,13 +6,16 @@
           <div class="col-sm-2 alineado">
             <%= f.label :client_id,  'Cliente:', :class => 'control-label tooltip_required' %>
           </div>
-          <div class="col-sm-8 ">
-            <%= f.collection_select(:client_id, Client.all, :id, :name, {prompt: 'Selecciona Cliente'}, :class => 'form-control') %>
+          <div class="col-sm-7">
+            <%= f.collection_select(:client_id, Client.all.order('name'), :id, :name, {prompt: '< Selecciona Cliente >'}, :class => 'form-control') %>
           </div>
-        </div>
+          <div col-sm-2>
+          <%= link_to "<i class=\"fa fa-plus\"></i>".html_safe, new_client_path, {:class => "btn btn-sm btn-flat bg-green ", :title => "Nuevo Cliente"} %>
+          </div>
+          </div>
 
         <div class="field col-md-4 form-group">
-          <div class="col-sm-5 alineado">
+          <div class="col-sm-4 alineado">
             <%= f.label :date, 'Fecha:', :class => 'control-label' %>
           </div>
           <div class="input-group col-sm-7" style="padding-left: 14px">
@@ -20,7 +23,7 @@
           </div>
         </div>
 
-        <div class="field col-md-3 form-group ">
+        <div class="field col-md-3 form-group">
           <div class="col-sm-3 alineado">
             <%= f.label :utility, '% Utilidad:', :class => 'control-label' %>
           </div>
@@ -45,7 +48,7 @@
             <%= f.label :state, 'Estado:', :class => 'control-label tooltip_required' %>
           </div>
           <div class="col-sm-6 ">
-            <%= f.select(:state, ["Pendiente", "Aprobado"], {prompt: 'Seleccionar'}, :class => 'form-control') %>
+            <%= f.select(:state, ["Pendiente", "Aprobado"], {prompt: '< Seleccionar >'}, :class => 'form-control') %>
           </div>
         </div>
       </div>
@@ -65,17 +68,18 @@
                 </tr>
                 <%= f.fields_for :budget_service_details, :wrapper => false do |form| %>
                     <tr class="fields ">
-                      <td class="col-md-5"><%=form.collection_select(:service_id, Service.all, :id, :name, {prompt: 'Seleccionar'}, class: 'form-control')%></td>
-                      <td class="col-md-3"><%=form.number_field :service_quantity, class: 'form-control'%></td>
-                      <td class="col-md-3"><%=form.number_field :subtotal, class: 'form-control'%></td>
+                      <td class="col-md-5"><%=form.collection_select(:service_id, Service.all.order('name'), :id, :name, {prompt: 'Seleccionar'}, class: 'form-control tooltip-required')%></td>
+                      <td class="col-md-3"><%=form.number_field :service_quantity, class: 'form-control tooltip-required'%></td>
+                      <td class="col-md-3"><%=form.number_field :subtotal, class: 'form-control', :readonly => true%></td>
                       <td class="col-md-1"><%=form.link_to_remove '<i class="fa fa-trash"></i>'.html_safe, class: 'btn btn-danger'%></td>
+                      <br>
                     </tr>
                 <% end %>
               </table>
             </div>
           </div>
 
-          <div class="box box-footer">
+          <div class="box box-footer ">
             <%=f.link_to_add 'Agregar Servicio', :budget_service_details, class: 'btn btn-success'%>
           </div>
         </div>
@@ -93,9 +97,9 @@
                 </tr>
                 <%= f.fields_for :budget_material_details, :wrapper => false do |form| %>
                     <tr class="fields">
-                      <td class="col-md-5"><%=form.collection_select(:material_id, Material.all, :id, :name, {prompt: 'Seleccionar'}, class: 'form-control')%></td>
-                      <td class="col-md-3"><%=form.number_field :material_quantity, class: 'form-control'%></td>
-                      <td class="col-md-3"><%=form.number_field :subtotal, class: 'form-control'%></td>
+                      <td class="col-md-5"><%=form.collection_select(:material_id, Material.all, :id, :name, {prompt: 'Seleccionar'}, class: 'form-control tooltip-required')%></td>
+                      <td class="col-md-3"><%=form.number_field :material_quantity, class: 'form-control tooltip-required'%></td>
+                      <td class="col-md-3"><%=form.number_field :subtotal, class: 'form-control', :readonly => true%></td>
                       <td class="col-md-1"><%=form.link_to_remove '<i class="fa fa-trash"></i>'.html_safe, class: 'btn btn-danger'%></td>
                       <br>
                     </tr>
