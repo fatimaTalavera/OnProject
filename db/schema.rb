@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170331212836) do
+ActiveRecord::Schema.define(version: 20170404021707) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "client_certification_details", force: :cascade do |t|
+    t.integer  "client_certification_id"
+    t.integer  "service_id"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.index ["client_certification_id"], name: "index_client_certification_details_on_client_certification_id", using: :btree
+    t.index ["service_id"], name: "index_client_certification_details_on_service_id", using: :btree
+  end
 
   create_table "client_certifications", force: :cascade do |t|
     t.integer  "contract_id"
@@ -168,6 +177,8 @@ ActiveRecord::Schema.define(version: 20170331212836) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "client_certification_details", "client_certifications"
+  add_foreign_key "client_certification_details", "services"
   add_foreign_key "client_certifications", "contracts"
   add_foreign_key "contracts", "clients"
   add_foreign_key "material_movements", "contracts"

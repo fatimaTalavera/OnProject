@@ -1,6 +1,10 @@
 class ClientCertification < ApplicationRecord
   belongs_to :contract
+  has_many :client_certification_details, dependent: :destroy
+
   delegate :name, to: :contract, prefix: true
+
+  accepts_nested_attributes_for :client_certification_details, :allow_destroy => true
 
   VALID_LETTER_REGEX = /\A([a-zA-Z]|[a-zA-Z][\. ])+\z/
 

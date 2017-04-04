@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  client_certification: one
+  service: one
+
+two:
+  client_certification: two
+  service: two

@@ -13,7 +13,7 @@ es:
       providers: Proveedores
       users: Usuarios
       company_config: Congifuraciones de Empresa
-      client_certifications: Certificación por parte del Cliente
+      client_certifications: Certificaciones Externas
 
     breadcrumbs:
       dashboard: Inicio

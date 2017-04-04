@@ -1,4 +1,4 @@
-<%= form_for client_certification, validate: true, :html => { class: 'form-horizontal' } do |f| %>
+<%= nested_form_for client_certification, validate: true, :html => { class: 'form-horizontal' } do |f| %>
 
     <div class="box-body box-success">
       <div class="field col-md-12 form-group">
@@ -16,7 +16,7 @@
             <%= f.label :state, 'Estado:', :class => 'control-label tooltip_required' %>
           </div>
           <div class="col-md-8">
-            <%= f.select(:state, ["Pendiente", "Terminado"], {prompt: 'Seleccionar'}, :class => 'form-control') %>
+            <%= f.select(:state, ["Pendiente", "Terminado", "Rechazado"], {prompt: 'Seleccionar'}, :class => 'form-control') %>
           </div>
         </div>
       </div>
@@ -35,7 +35,7 @@
             <%= f.label :received, 'Recibido por:', :class => 'control-label tooltip_required' %>
           </div>
           <div class="col-md-9">
-            <%= f.text_field :received, :class => 'form-control', :maxlength => 50%>
+            <%= f.text_field :received, value: current_user.full_name.titleize, :class => 'form-control', :readonly => true %>
           </div>
         </div>
       </div>
@@ -50,6 +50,35 @@
           </div>
         </div>
       </div>
+
+
+      <div class="col-md-4">
+        <div class="box box-success">
+          <div class="box-header with-border">
+            <h3 class="box-title">Servicios</h3>
+          </div>
+          <div class="box-body">
+            <table class="table table-bordered">
+              <theah>
+                <tr>
+                  <th class="col-md-10">Servicio</th>
+                  <th class="col-md-2"></th>
+                </tr>
+              </theah>
+              <tbody>
+              <%= f.fields_for :client_certification_details, :wrapper => false do |form| %>
+                  <tr class="fields">
+                    <td class="col-md-10"><%=form.collection_select(:service_id, Service.all, :id, :name, {prompt: 'Seleccionar'}, class: 'form-control')%></td>
+                    <td class="col-md-2"><%=form.link_to_remove '<i class="fa  fa-trash-o"></i>'.html_safe, class: 'btn btn-danger'%></td>
+                  </tr>
+              <% end %>
+              </tbody>
+            </table>
+          </div>
+          <%=f.link_to_add '<i class="fa fa-plus"></i>'.html_safe, :client_certification_details, class: 'btn btn-success'%>
+        </div>
+      </div>
+
     </div>
 
 

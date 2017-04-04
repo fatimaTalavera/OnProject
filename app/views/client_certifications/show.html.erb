@@ -51,6 +51,26 @@
         </div>
       </div>
     </div>
+
+    <div class="col-md-12 form-group">
+      <div class="col-md-8">
+        <table class="table table-bordered table-condensed">
+          <thead>
+          <tr>
+            <th><h4 class="box-title"><strong>Servicios</strong></h4></th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @client_certification.client_certification_details.each do |detail| %>
+          <tr>
+              <td><%= detail.service.name %></td>
+          </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
   </div>
 
   <div class="box-footer">
