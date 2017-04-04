@@ -1,0 +1,74 @@
+<div class="box box-success">
+  <div class="box-header with-border">
+    <h3 class="box-title"><%= current_user.full_name.titleize %></h3>
+  </div>
+  <%= form_for current_user, validate: true, :url => update_profile_path, :html => { :method => :post, class: 'form-horizontal' } do |f| %>
+    <div class="box-body">
+      <div class="col-md-12 col-sm-12">
+        <div class="row">
+          <div class="field col-md-6 form-group">
+            <div class="col-md-3">
+              <%= f.label :name, t('activerecord.attributes.user.first_name_html'), class: 'control-label tooltip_required' %>
+            </div>
+            <div class="col-md-6">
+              <%= f.text_field :first_name, class: 'form-control' %>
+            </div>
+          </div>
+          <div class="field col-md-6 form-group">
+            <div class="col-md-4">
+              <%= f.label :last_name, t('activerecord.attributes.user.last_name_html'), class: 'control-label tooltip_required' %>
+            </div>
+            <div class="col-md-6">
+              <%= f.text_field :last_name, class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="field col-md-6 form-group">
+            <div class="col-md-3">
+              <%= f.label :email, t('activerecord.attributes.user.email_html'), class: 'control-label tooltip_required' %>
+            </div>
+            <div class="col-md-6">
+              <%= f.email_field :email, class: 'form-control uniqueUserEmail' %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="field col-md-6 form-group">
+            <div class="col-md-3">
+              <%= f.label :password, t('activerecord.attributes.user.password_html'), class: 'control-label tooltip_required' %>
+            </div>
+            <div class="col-md-6">
+              <%= f.password_field :password, class: 'form-control' %>
+            </div>
+          </div>
+          <div class="field col-md-6 form-group">
+            <div class="col-md-4">
+              <%= f.label :password_confirmation, t('activerecord.attributes.user.password_confirmation_html'), class: 'control-label tooltip_required' %>
+            </div>
+            <div class="col-md-6">
+              <%= f.password_field :password_confirmation, class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="field col-md-6 form-group">
+            <div class="col-md-3">
+              <%= f.label :avatar, t('activerecord.attributes.company_config.avatar'), class: 'control-label' %>
+            </div>
+            <div class="col-md-6">
+              <%= f.file_field :avatar, :class => 'file-style' %>
+              <p class="help-block">Se aceptan imágenes jpg, jpge, png y gif. Recomendado 300x300. Tamaño máximo 1mb.</p>
+            </div>
+          </div>
+        </div>
+        <%= current_user.new_record? ? '' : t('helpers.not_change_passwd_html') %>
+      </div>
+    </div>
+    <div class="box-footer clearfix">
+      <div class="pull-right">
+        <%= f.submit t('button.save'), :class => "btn btn-flat bg-blue" %>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   root to: 'welcome#index'
   get 'welcome/index'
   devise_for :users
+  get '/users/me', to: 'users#edit_profile', as: 'edit_profile'
+  post '/users/me', to: 'users#update_profile', as: 'update_profile'
   resources :users
   resources :company_config, only: [:index, :edit, :update]
 end

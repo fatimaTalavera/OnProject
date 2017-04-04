@@ -59,6 +59,9 @@ es:
               show: Certificación
       company_config:
         index: Datos de la Empresa
+      profile:
+        index: Perfil
+        user: "%{user}"
 
       material_movements: Movimientos de Materiales
       purchase_bills: Facturas de Compras
