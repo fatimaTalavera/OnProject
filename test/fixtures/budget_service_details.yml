@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  budget: one
+  service: one
+  service_price: 9.99
+  service_quantity: 9.99
+  subtotal: 9.99
+
+two:
+  budget: two
+  service: two
+  service_price: 9.99
+  service_quantity: 9.99
+  subtotal: 9.99

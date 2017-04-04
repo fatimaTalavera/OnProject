@@ -1,0 +1,138 @@
+
+<div class="box box-success">
+  <div class="box-header with-header box-success">
+    <h3 class="page-header">Presupuesto</h3>
+  </div>
+  <div class="box-body">
+    <div class="field col-md-12 form-group">
+      <div class="field col-md-4 form-group">
+        <div class="col-sm-3 label-pad">
+          <strong>Cliente:</strong>
+        </div>
+        <div class="col-sm-7 show-padding">
+          <% client = Client.find(@budget.client_id) %>
+          <%= client.name %>
+        </div>
+      </div>
+
+      <div class="field col-md-4 form-group">
+        <div class="col-sm-3 label-pad">
+          <strong>Fecha:</strong>
+        </div>
+        <div class="col-sm-5 show-padding">
+          <%= @budget.date %>
+        </div>
+      </div>
+
+      <div class="field col-md-4 form-group ">
+        <div class="col-sm-7 label-pad ">
+          <strong>Porcentaje de Utilidad:</strong>
+        </div>
+        <div class="col-sm-4 show-padding">
+          <%= @budget.utility %>
+        </div>
+      </div>
+    </div>
+    <div class="field col-md-12">
+      <br>
+      <div class="field col-md-4">
+        <div class="col-sm-4 label-pad ">
+          <strong>Descripcion:</strong>
+        </div>
+        <div class="col-sm-8 show-padding">
+          <%= @budget.description %>
+        </div>
+      </div>
+
+
+      <div class="field col-md-4">
+        <div class="col-sm-3 label-pad">
+          <strong>Estado:</strong>
+        </div>
+        <div class="col-sm-6 show-padding">
+          <%= @budget.state %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <br>
+  <div class="col-md-12">
+    <div class="col-md-6">
+      <div class="box box-success">
+        <div class=" box-body">
+          <div class="col-sm-12">
+            <table class="table table-bordered table-condensed">
+              <tr>
+                <th class="col-md-5">Servicio</th>
+                <th class="col-md-3">Cantidad</th>
+                <th class="col-md-3">Sub Total</th>
+              </tr>
+              <% @budget.budget_service_details.each do |budget_detail| %>
+                  <tr class="fields ">
+                    <% service = Service.find(budget_detail.service_id) %>
+                    <td class="col-md-5"><%= service.name %></td>
+                    <td class="col-md-3"><%= budget_detail.service_quantity%></td>
+                    <td class="col-md-3"><%= budget_detail.subtotal%></td>
+                  </tr>
+              <% end %>
+            </table>
+          </div>
+          <div class="col-sm-4 label-pad">
+            <strong>Total Servicios(Gs):</strong>
+          </div>
+          <div class="col-sm-4 show-padding">
+            <%= @budget.total_service %>
+          </div>
+        </div>
+      </div>
+      </div>
+
+    <div class="col-md-6">
+      <div class="box box-success">
+        <div class=" box-body">
+          <div class="col-sm-12">
+            <table class="table table-bordered table-condensed">
+              <tr>
+                <th class="col-md-5">Material</th>
+                <th class="col-md-3">Cantidad</th>
+                <th class="col-md-3">Sub Total</th>
+              </tr>
+              <% @budget.budget_material_details.each do |budget_detail| %>
+                  <tr class="fields ">
+                    <% material = Material.find(budget_detail.material_id) %>
+                    <td class="col-md-5"><%= material.name %></td>
+                    <td class="col-md-3"><%= budget_detail.material_quantity%></td>
+                    <td class="col-md-3"><%= budget_detail.subtotal%></td>
+                  </tr>
+              <% end %>
+            </table>
+          </div>
+          <div class="col-sm-4 label-pad">
+            <strong>Total Materiales(Gs):</strong>
+          </div>
+          <div class="col-sm-4 show-padding">
+            <%= @budget.total_material %>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+  <div class="col-md-12">
+    <div class="col-sm-6">
+      <div class="col-sm-3 label-pad">
+        <strong>Monto Total(Gs):</strong>
+      </div>
+      <div class="col-sm-4 show-padding">
+        <%= @budget.total_amount %>
+      </div>
+</div>
+    </div>
+  <div class="box-footer">
+    <div class="pull-right">
+      <%= link_to 'Editar', edit_budget_path(@budget), :class => 'btn btn-primary active' %>
+      <%= link_to 'Atras', budgets_path, :class => 'btn btn-default' %>
+    </div>
+  </div>
+</div>
