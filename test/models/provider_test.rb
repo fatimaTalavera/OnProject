@@ -38,11 +38,6 @@ class ProviderTest < ActiveSupport::TestCase
     assert_not provider.valid?, "Cannot save a provider with invalid name. Errors: #{provider.errors.to_a.to_sentence}"
   end
 
-  test "Should not save a provider with invalid phone" do
-    provider = Provider.new(name: "name", address: "address", phone: "adfdf", ruc: "1234456-1", email: "email@test.com", state: TRUE, balance: 1.00)
-    assert_not provider.valid?, "Cannot save a provider with invalid phone. Errors: #{provider.errors.to_a.to_sentence}"
-  end
-
   test "Should not save a provider with invalid ruc" do
     provider = Provider.new(name: "name", address: "address", phone: "205012", ruc: "adfdf", email: "email@test.com", state: TRUE, balance: 1.00)
     assert_not provider.valid?, "Cannot save a provider with invalid ruc. Errors: #{provider.errors.to_a.to_sentence}"
