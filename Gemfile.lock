@@ -65,6 +65,7 @@ GEM
     breadcrumbs_on_rails (3.0.1)
     builder (3.2.3)
     byebug (9.0.6)
+    cancan (1.6.10)
     carrierwave (1.0.0)
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
@@ -493,6 +494,7 @@ DEPENDENCIES
   brakeman
   breadcrumbs_on_rails
   byebug
+  cancan
   carrierwave
   client_side_validations
   cloudinary
