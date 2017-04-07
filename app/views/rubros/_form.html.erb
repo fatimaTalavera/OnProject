@@ -1,0 +1,42 @@
+<%= form_for(rubro) do |f| %>
+  <% if rubro.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(rubro.errors.count, "error") %> prohibited this rubro from being saved:</h2>
+
+      <ul>
+      <% rubro.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :material_id %>
+    <%= f.text_field :material_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :service_id %>
+    <%= f.text_field :service_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :material_quantity %>
+    <%= f.number_field :material_quantity %>
+  </div>
+
+  <div class="field">
+    <%= f.label :service_quantity %>
+    <%= f.number_field :service_quantity %>
+  </div>
+
+  <div class="field">
+    <%= f.label :nombre %>
+    <%= f.text_field :nombre %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

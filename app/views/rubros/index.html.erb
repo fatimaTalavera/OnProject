@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Rubros</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Material</th>
+      <th>Service</th>
+      <th>Material quantity</th>
+      <th>Service quantity</th>
+      <th>Nombre</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rubros.each do |rubro| %>
+      <tr>
+        <td><%= rubro.material %></td>
+        <td><%= rubro.service %></td>
+        <td><%= rubro.material_quantity %></td>
+        <td><%= rubro.service_quantity %></td>
+        <td><%= rubro.nombre %></td>
+        <td><%= link_to 'Show', rubro %></td>
+        <td><%= link_to 'Edit', edit_rubro_path(rubro) %></td>
+        <td><%= link_to 'Destroy', rubro, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Rubro', new_rubro_path %>

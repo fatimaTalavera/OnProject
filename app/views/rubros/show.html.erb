@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Material:</strong>
+  <%= @rubro.material %>
+</p>
+
+<p>
+  <strong>Service:</strong>
+  <%= @rubro.service %>
+</p>
+
+<p>
+  <strong>Material quantity:</strong>
+  <%= @rubro.material_quantity %>
+</p>
+
+<p>
+  <strong>Service quantity:</strong>
+  <%= @rubro.service_quantity %>
+</p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @rubro.nombre %>
+</p>
+
+<%= link_to 'Edit', edit_rubro_path(@rubro) %> |
+<%= link_to 'Back', rubros_path %>
