@@ -4,10 +4,10 @@
       <div class="row">
         <div class="field col-md-6 form-group">
           <div class="col-md-3">
-            <%= f.label :name, t('activerecord.attributes.user.first_name_html'), class: 'control-label tooltip_required' %>
+            <%= f.label :name, t('activerecord.attributes.user.first_name_html'), class: 'control-label tooltip_required'%>
           </div>
           <div class="col-md-6">
-            <%= f.text_field :first_name, class: 'form-control' %>
+            <%= f.text_field :first_name, class: 'form-control', :maxlength => 40 %>
           </div>
         </div>
         <div class="field col-md-6 form-group">
@@ -15,7 +15,7 @@
             <%= f.label :last_name, t('activerecord.attributes.user.last_name_html'), class: 'control-label tooltip_required' %>
           </div>
           <div class="col-md-6">
-            <%= f.text_field :last_name, class: 'form-control' %>
+            <%= f.text_field :last_name, class: 'form-control', :maxlength => 40 %>
           </div>
         </div>
       </div>
@@ -25,7 +25,7 @@
             <%= f.label :email, t('activerecord.attributes.user.email_html'), class: 'control-label tooltip_required' %>
           </div>
           <div class="col-md-6">
-            <%= f.email_field :email, class: 'form-control uniqueUserEmail' %>
+            <%= f.email_field :email, class: 'form-control uniqueUserEmail', :maxlength => 40 %>
           </div>
         </div>
         <div class="field col-md-6 form-group">
@@ -43,7 +43,7 @@
             <%= f.label :password, t('activerecord.attributes.user.password_html'), class: 'control-label tooltip_required' %>
           </div>
           <div class="col-md-6">
-            <%= f.password_field :password, class: 'form-control' %>
+            <%= f.password_field :password, class: 'form-control', :maxlength => 30 %>
           </div>
         </div>
         <div class="field col-md-6 form-group">
@@ -51,7 +51,7 @@
             <%= f.label :password_confirmation, t('activerecord.attributes.user.password_confirmation_html'), class: 'control-label tooltip_required' %>
           </div>
           <div class="col-md-6">
-            <%= f.password_field :password_confirmation, class: 'form-control' %>
+            <%= f.password_field :password_confirmation, class: 'form-control', :maxlength => 30 %>
           </div>
         </div>
       </div>
