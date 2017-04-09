@@ -1,5 +1,9 @@
 class User < ApplicationRecord
   require 'carrierwave/orm/activerecord'
+
+  belongs_to :role
+  delegate :name, :to => :role, :prefix => true
+
   if Rails.env.development?
     mount_uploader :avatar, AvatarUploader # localhost
   else
@@ -18,8 +22,9 @@ class User < ApplicationRecord
   validates :password, length: {maximum: 15, minimum: 8}, on: :create
   validates :password, length: {maximum: 12, minimum: 8}, on: :update, allow_blank: true
   validates_uniqueness_of :email, allow_blank: false
+  validates :role_id , presence: true
   validate :avatar_size_validation
-  
+
   def full_name
     "#{self.try(:first_name)} #{self.try(:last_name)}"
   end
