@@ -1,42 +1,87 @@
-<%= form_for(rubro) do |f| %>
-  <% if rubro.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(rubro.errors.count, "error") %> prohibited this rubro from being saved:</h2>
+<%= nested_form_for rubro, validate: true, :html => { class: 'form-horizontal' } do |f| %>
+    <div class="box-body">
+      <div class="field col-md-12 form-group">
+        <div class="field col-md-6 form-group">
+          <div class="col-md-3">
+            <%= f.label :name, 'Nombre:', :class => 'control-label tooltip_required' %>
+          </div>
+          <div class="col-md-6">
+            <%= f.text_field :name, :class => 'form-control' %>
+          </div>
+        </div>
+        <div class="field col-md-6 form-group">
+          <div class="col-md-3">
+            <%= f.label :utility, 'Utilidad:', :class => 'control-label tooltip_required' %>
+          </div>
+          <div class="col-md-8">
+            <%= f.number_field :utility, :class => 'form-control' %>
+          </div>
+        </div>
+      </div>
 
-      <ul>
-      <% rubro.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+      <div class="col-md-8">
+        <div class="box box-success">
+          <div class="box-header with-border">
+            <h3 class="box-title">Materiales</h3>
+          </div>
+          <div class="box-body">
+            <table class="table table-bordered">
+              <tr>
+                <th class="col-md-4">Material</th>
+                <th class="col-md-3">Cantidad</th>
+                <th class="col-md-1"></th>
+              </tr>
+              <tbody>
+              <%= f.fields_for :rubro_material_details, :wrapper => false do |form| %>
+                  <tr class="fields">
+                    <td class="col-md-5"><%=form.collection_select(:material_id, Material.all, :id, :name, {prompt: 'Seleccionar'}, class: 'form-control')%></td>
+                    <td class="col-md-3"><%=form.number_field :quantity, class: 'form-control'%></td>
+                    <td class="col-md-1"><%=form.link_to_remove '<i class="fa  fa-trash-o"></i>'.html_safe, class: 'btn btn-danger'%></td>
+                  </tr>
+              <% end %>
+              </tbody>
+            </table>
+          </div>
+          <%=f.link_to_add '<i class="fa fa-plus"></i>'.html_safe, :rubro_material_details, class: 'btn btn-success'%>
+        </div>
+      </div>
+
+      <div class="col-md-8">
+        <div class="box box-success">
+          <div class="box-header with-border">
+            <h3 class="box-title">Servicios</h3>
+          </div>
+          <div class="box-body">
+            <table class="table table-bordered">
+              <tr>
+                <th class="col-md-4">Servicio</th>
+                <th class="col-md-3">Cantidad</th>
+                <th class="col-md-1"></th>
+              </tr>
+              <tbody>
+              <%= f.fields_for :rubro_service_details, :wrapper => false do |form| %>
+                  <tr class="fields">
+                    <td class="col-md-5"><%=form.collection_select(:service_id, Service.all, :id, :name, {prompt: 'Seleccionar'}, class: 'form-control')%></td>
+                    <td class="col-md-3"><%=form.number_field :quantity, class: 'form-control'%></td>
+                    <td class="col-md-1"><%=form.link_to_remove '<i class="fa  fa-trash-o"></i>'.html_safe, class: 'btn btn-danger'%></td>
+                  </tr>
+              <% end %>
+              </tbody>
+            </table>
+          </div>
+          <%=f.link_to_add '<i class="fa fa-plus"></i>'.html_safe, :rubro_service_details, class: 'btn btn-success'%>
+        </div>
+      </div>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :material_id %>
-    <%= f.text_field :material_id %>
-  </div>
-
-  <div class="field">
-    <%= f.label :service_id %>
-    <%= f.text_field :service_id %>
-  </div>
-
-  <div class="field">
-    <%= f.label :material_quantity %>
-    <%= f.number_field :material_quantity %>
-  </div>
-
-  <div class="field">
-    <%= f.label :service_quantity %>
-    <%= f.number_field :service_quantity %>
-  </div>
-
-  <div class="field">
-    <%= f.label :nombre %>
-    <%= f.text_field :nombre %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="box-footer">
+      <div class="pull-right">
+        <% if controller.action_name == 'edit'  %>
+            <%= f.submit 'Guardar', :class => "btn btn-primary active" %>
+        <% else %>
+            <%= f.submit 'Guardar', :class => 'btn btn-primary active'%>
+        <% end %>
+        <%= link_to 'Cancelar',  rubros_path , class: 'btn btn-default' %>
+      </div>
+    </div>
 <% end %>

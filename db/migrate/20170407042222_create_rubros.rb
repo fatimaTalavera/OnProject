@@ -5,7 +5,7 @@ class CreateRubros < ActiveRecord::Migration[5.0]
       t.references :service, foreign_key: true
       t.integer :material_quantity
       t.integer :service_quantity
-      t.string :nombre
+      t.string :name
 
       t.timestamps
     end

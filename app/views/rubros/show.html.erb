@@ -1,29 +1,62 @@
-<p id="notice"><%= notice %></p>
+<div class="box box-success">
+  <div class="box-header with-border">
+    <h3 class="box-title"><%= "Rubro" %></h3>
+  </div>
+  <div class="box-body">
+    <div class="col-md-12 form-group">
+      <div class="col-md-4">
+        <strong>Nombre:</strong>
+        <%= @rubro.name %>
+      </div>
+      <div class="col-md-4">
+        <strong>Utilidad:</strong>
+        <%= @rubro.utility %>
+      </div>
+      <div class="col-md-4">
+        <strong>Precio:</strong>
+        <%= @rubro.final_price %>
+      </div>
+    </div>
 
-<p>
-  <strong>Material:</strong>
-  <%= @rubro.material %>
-</p>
+    <div class="col-md-12 form-group">
+      <div class="col-md-8">
+        <table class="table table-bordered table-condensed", cellspacing="0" width="100%">
+          <thead>
+          <tr>
+            <th>Material</th>
+            <th>Cantidad</th>
+            <th>Subtotal</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @rubro.rubro_material_details.each do |detalle| %>
+              <td><%= detalle.material.name %></td>
+              <td><%= detalle.quantity %></td>
+              <td><%= detalle.subtotal %></td>
+          <% end %>
+          </tbody>
+          <thead>
+          <tr>
+            <th>Servicio</th>
+            <th>Cantidad</th>
+            <th>Subtotal</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @rubro.rubro_service_details.each do |detalle| %>
+              <td><%= detalle.service.name %></td>
+              <td><%= detalle.quantity %></td>
+              <td><%= detalle.subtotal %></td>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
 
-<p>
-  <strong>Service:</strong>
-  <%= @rubro.service %>
-</p>
-
-<p>
-  <strong>Material quantity:</strong>
-  <%= @rubro.material_quantity %>
-</p>
-
-<p>
-  <strong>Service quantity:</strong>
-  <%= @rubro.service_quantity %>
-</p>
-
-<p>
-  <strong>Nombre:</strong>
-  <%= @rubro.nombre %>
-</p>
-
-<%= link_to 'Edit', edit_rubro_path(@rubro) %> |
-<%= link_to 'Back', rubros_path %>
+  </div>
+  <div class="box-footer">
+    <div class="pull-right">
+      <%= link_to t('button.back'), url_for(:back), {:class => "btn btn-flat btn-default"} %>
+    </div>
+  </div>
+</div>

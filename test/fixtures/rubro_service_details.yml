@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  service: one
+  quantity: 1
+  subtotal: 1
+
+two:
+  service: two
+  quantity: 1
+  subtotal: 1

@@ -1,6 +1,6 @@
-<h1>Editing Rubro</h1>
-
-<%= render 'form', rubro: @rubro %>
-
-<%= link_to 'Show', @rubro %> |
-<%= link_to 'Back', rubros_path %>
+<div class="box box-success">
+  <div class="box-header with-border">
+    <h3 class="box-title"><%= "Editar Rubro" %></h3>
+  </div>
+  <%= render 'form', :rubro => @rubro %>
+</div>

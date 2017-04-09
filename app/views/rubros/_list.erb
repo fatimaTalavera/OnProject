@@ -1,0 +1,24 @@
+<table class="table table-bordered table-condensed">
+  <thead>
+  <tr>
+    <th>Nombre</th>
+    <th>Utilidad</th>
+    <th>Precio</th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% rubros.each do |rubro| %>
+      <tr>
+        <td><%= rubro.name %></td>
+        <td><%= rubro.utility %></td>
+        <td><%= rubro.price %></td>
+        <td>
+          <%= link_to "<i class=\"fa fa-eye\"></i>".html_safe, rubro_path(rubro), {:class => "btn btn-xs bg-teal btn-flat"} %>
+          <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_rubro_path(rubro), {:class => "btn btn-xs bg-orange btn-flat"} %>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

@@ -1,4 +1,6 @@
 class Material < ApplicationRecord
+  has_many :rubro_material_details
+  before_update :modify_subtotal_rubros
 
   #valida solo numeros
   VALID_LETTER_REGEX = /\A([a-zA-Z]|[a-zA-Z][\. ])+\z/
@@ -33,4 +35,12 @@ class Material < ApplicationRecord
             :format => {:multiline => true, with: VALID_NUMBER_REGEX, :message => "Solo permite numeros"},
             :numericality => {:greater_than_or_equal_to => 0, message: "No puede ser negativo"}
 
+  def modify_subtotal_rubros
+    if self.price_changed?
+      @diferencia = self.price - self.price_was
+      self.rubro_material_details.each do |detalle|
+        detalle.update(subtotal: self.price * detalle.quantity)
+      end
+    end
+  end
 end

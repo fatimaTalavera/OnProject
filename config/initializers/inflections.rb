@@ -17,4 +17,5 @@
 
 ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.irregular 'rubro', 'rubros'
+  inflect.irregular 'rubro_detail', 'rubro_details'
 end

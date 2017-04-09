@@ -1,4 +1,6 @@
 class Service < ApplicationRecord
+  has_many :rubro_service_details
+  before_update :modify_subtotal_rubros
 
   VALID_LETTER_REGEX = /\A([a-zA-Z]|[a-zA-Z][\. ])+\z/
   VALID_PRICE_REGEX  = /\A^-?([0-9]|(\.[0-9]+))*$\z/
@@ -17,4 +19,12 @@ class Service < ApplicationRecord
                     :format => {:multiline => true, with: VALID_PRICE_REGEX , :message => "Solo permite numeros"},
                     :numericality => {:greater_than_or_equal_to => 0, :message => "No puede ser negativo"}
 
+  def modify_subtotal_rubros
+    if self.price_changed?
+      @diferencia = self.price - self.price_was
+      self.rubro_service_details.each do |detalle|
+        detalle.update(subtotal: self.price * detalle.quantity)
+      end
+    end
+  end
 end

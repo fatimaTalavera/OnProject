@@ -69,6 +69,8 @@ class RubrosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def rubro_params
-      params.require(:rubro).permit(:material_id, :service_id, :material_quantity, :service_quantity, :nombre)
+      params.require(:rubro).permit(:name, :utility,
+                                    :rubro_material_details_attributes => [:id, :material_id, :quantity, :_destroy],
+                                    :rubro_service_details_attributes => [:id, :service_id, :quantity, :_destroy])
     end
 end
