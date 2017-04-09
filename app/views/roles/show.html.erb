@@ -1,0 +1,68 @@
+<%= nested_form_for(@role) do |f| %>
+<div class="box box-success">
+  <div class="box-header with-border">
+    <h3 class="box-title"><%= t('helpers.title.rol.show') %></h3>
+  </div>
+  <div class="box-body">
+    <div class="col-md-4">
+      <label class="control-label">Nombre</label>
+      <p> <%= @role.name.titleize %> </p>
+      <label class="control-label">Observación</label>
+      <p style="word-wrap:break-word;"><%= @role.description %></p>
+    </div>
+    <div class="col-md-5">
+      <p style="font-size: 30px;">Permisos Asignados</p>
+      <table class="table table-bordered table-condensed">
+        <thead>
+        <tr>
+          <th class="col-md-6">Nombre</th>
+          <th class="col-md-2"><center>Ver</center></th>
+          <th class="col-md-2"><center>Crear</center></th>
+          <th class="col-md-2"><center>Editar</center></th>
+        </tr>
+        </thead>
+        <tbody>
+          <%= f.fields_for :permissions do |permission| %>
+            <tr>
+              <td><%= Models.values[permission.index] %></td>
+              <% if not permission.object.subject_class.to_s == "CompanyConfig" %>
+                <td>
+                  <center>
+                  <%= (permission.object.action.include? 'read')?
+                    '<i class="fa fa-check" style="color: green;"></i>'.html_safe
+                    : '<i class="fa fa-close" style="color: red;"></i>'.html_safe %>
+                  </center>
+                </td>
+                <td>
+                  <center>
+                  <%= (permission.object.action.include? 'create')?
+                    '<i class="fa fa-check" style="color: green;"></i>'.html_safe
+                    : '<i class="fa fa-close" style="color: red;"></i>'.html_safe %>
+                  </center>
+                </td>
+              <% else %>
+                <td><center>---</center></td>
+                <td><center>---</center></td>
+              <% end %>
+              <td>
+                <center>
+                <%= (permission.object.action.include? 'edit')?
+                  '<i class="fa fa-check" style="color: green;"></i>'.html_safe
+                  : '<i class="fa fa-close" style="color: red;"></i>'.html_safe %>
+                </center>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+  <div class="box-footer">
+    <div class="pull-right">
+      <%= link_to t('button.edit'), edit_role_path(@role), {:class => "btn btn-flat bg-blue"} %>
+      <%= link_to t('button.back'), url_for(:back), {:class => "btn btn-flat btn-default"} %>
+    </div>
+  </div>
+</div>
+<% end %>

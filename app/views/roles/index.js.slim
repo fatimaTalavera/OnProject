@@ -1,0 +1,4 @@
+
+| $("#roles-table").html("#{escape_javascript(render 'list', format: 'html', :roles => @roles)}");
+| $('#paginate-container').html("#{escape_javascript(paginate(@roles, remote: true)) }");
+| $('.searchResult > .overlay').remove();
