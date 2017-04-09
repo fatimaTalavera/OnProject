@@ -9,6 +9,9 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   protect_from_forgery with: :exception
 
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to root_url, :alert => "No tienes permiso para acceder a la página solicitada"
+  end
 
   def layout_by_resource
   	if devise_controller?
@@ -17,4 +20,17 @@ class ApplicationController < ActionController::Base
   		"application"
   	end
   end
+
+  protected
+
+  #derive the model name from the controller. egs UsersController will return User
+  def self.permission
+    return name = self.name.gsub('Controller','').singularize.split('::').last.constantize.name rescue nil
+  end
+
+  #load the permissions for the current user so that UI can be manipulated
+  def load_permissions
+    @current_permissions = current_user.role.permissions.collect{|i| [i.subject_class, i.action]}
+  end
+
 end
