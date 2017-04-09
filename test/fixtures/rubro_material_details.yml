@@ -2,12 +2,10 @@
 
 one:
   material: one
-  service: one
   quantity: 1
   subtotal: 1
 
 two:
   material: two
-  service: two
   quantity: 1
   subtotal: 1

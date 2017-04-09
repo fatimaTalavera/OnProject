@@ -12,7 +12,7 @@
   <% rubros.each do |rubro| %>
       <tr>
         <td><%= rubro.name %></td>
-        <td><%= rubro.utility %></td>
+        <td><%= rubro.utility %> %</td>
         <td><%= rubro.price %></td>
         <td>
           <%= link_to "<i class=\"fa fa-eye\"></i>".html_safe, rubro_path(rubro), {:class => "btn btn-xs bg-teal btn-flat"} %>

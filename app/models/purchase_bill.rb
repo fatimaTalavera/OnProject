@@ -7,9 +7,10 @@ class PurchaseBill < ApplicationRecord
 
   validates :condition, :presence => {:message => "Debe seleccionar una condicion de pago"}
 
-  validates :number, :presence => {:message => "No puede estar en blanco"},
-            #valida que no sea negativo
-            :numericality => {inclusion: 1..2147483647, message: "Ingrese un número válido"}
+  validates_numericality_of :number, :presence => {:message => "Debe rellenar este campo"},
+                            :greater_than_or_equal_to => 1,
+                            :less_than_or_equal_to => 2147483647,
+                            :message => "Ingrese un número válido"
 
   validates :date, :presence => {:message => "No puede estar en blanco"}
 

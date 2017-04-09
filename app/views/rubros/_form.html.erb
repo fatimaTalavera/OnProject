@@ -6,12 +6,12 @@
             <%= f.label :name, 'Nombre:', :class => 'control-label tooltip_required' %>
           </div>
           <div class="col-md-6">
-            <%= f.text_field :name, :class => 'form-control' %>
+            <%= f.text_field :name, :maxlength => 50, :class => 'form-control' %>
           </div>
         </div>
         <div class="field col-md-6 form-group">
           <div class="col-md-3">
-            <%= f.label :utility, 'Utilidad:', :class => 'control-label tooltip_required' %>
+            <%= f.label :utility, 'Utilidad(%):', :class => 'control-label tooltip_required' %>
           </div>
           <div class="col-md-8">
             <%= f.number_field :utility, :class => 'form-control' %>

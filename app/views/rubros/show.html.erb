@@ -10,7 +10,7 @@
       </div>
       <div class="col-md-4">
         <strong>Utilidad:</strong>
-        <%= @rubro.utility %>
+        <%= @rubro.utility %> %
       </div>
       <div class="col-md-4">
         <strong>Precio:</strong>
@@ -30,9 +30,11 @@
           </thead>
           <tbody>
           <% @rubro.rubro_material_details.each do |detalle| %>
+          <tr>
               <td><%= detalle.material.name %></td>
               <td><%= detalle.quantity %></td>
               <td><%= detalle.subtotal %></td>
+          </tr>
           <% end %>
           </tbody>
           <thead>
@@ -44,9 +46,11 @@
           </thead>
           <tbody>
           <% @rubro.rubro_service_details.each do |detalle| %>
+          <tr>
               <td><%= detalle.service.name %></td>
               <td><%= detalle.quantity %></td>
               <td><%= detalle.subtotal %></td>
+          </tr>
           <% end %>
           </tbody>
         </table>

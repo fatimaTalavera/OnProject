@@ -1,5 +1,7 @@
 class RubrosController < ApplicationController
   before_action :set_rubro, only: [:show, :edit, :update, :destroy]
+  before_action :load_permissions
+  authorize_resource
 
   # GET /rubros
   # GET /rubros.json

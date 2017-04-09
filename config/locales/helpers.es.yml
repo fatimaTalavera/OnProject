@@ -15,6 +15,7 @@ es:
       company_config: Datos de la empresa
       client_certifications: Certificaciones Externas
       rol: Roles
+      rubros: Rubros
 
     breadcrumbs:
       dashboard: Inicio

@@ -4,6 +4,13 @@ class RubroServiceDetail < ApplicationRecord
   before_create :calculate_subtotal
   before_update :sum_to_price
 
+  validates_numericality_of :quantity, :presence => {:message => "Debe rellenar este campo"},
+                            :greater_than_or_equal_to => 1,
+                            :less_than_or_equal_to => 9999,
+                            :message => "Ingrese un número menor a 9999"
+
+  validates :service_id, :presence => {:message => "Debe seleccionar un servicio"}
+
   def calculate_subtotal
     self.subtotal = self.service.price * self.quantity
       self.rubro.update(price: self.rubro.price + self.subtotal)

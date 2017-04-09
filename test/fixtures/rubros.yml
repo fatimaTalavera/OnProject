@@ -5,11 +5,11 @@ one:
   service: one
   material_quantity: 1
   service_quantity: 1
-  nombre: 
+  name: one
 
 two:
   material: two
   service: two
   material_quantity: 1
   service_quantity: 1
-  nombre: 
+  name: two
