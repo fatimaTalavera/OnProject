@@ -19,6 +19,8 @@ gem 'ransack'
 gem 'slim'
 gem 'carrierwave'
 gem 'cloudinary'
+gem 'cancan'
+gem 'ruby-enum'
 group :development, :test do
   gem 'byebug', platform: :mri
   gem "mini_magick"

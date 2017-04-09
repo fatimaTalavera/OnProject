@@ -65,6 +65,7 @@ GEM
     breadcrumbs_on_rails (3.0.1)
     builder (3.2.3)
     byebug (9.0.6)
+    cancan (1.6.10)
     carrierwave (1.0.0)
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
@@ -408,6 +409,8 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
+    ruby-enum (0.7.1)
+      i18n
     ruby-progressbar (1.8.1)
     ruby_parser (3.8.4)
       sexp_processor (~> 4.1)
@@ -493,6 +496,7 @@ DEPENDENCIES
   brakeman
   breadcrumbs_on_rails
   byebug
+  cancan
   carrierwave
   client_side_validations
   cloudinary
@@ -514,6 +518,7 @@ DEPENDENCIES
   rails_best_practices
   rails_layout
   ransack
+  ruby-enum
   rubycritic
   sass-rails (~> 5.0)
   slim

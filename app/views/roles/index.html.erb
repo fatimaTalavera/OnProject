@@ -1,0 +1,30 @@
+<div class="box box-success">
+  <div class="box-header with-border box-success">
+    <h3 class="box-title"><%= t('helpers.title.rol.list') %></h3>
+    <%= link_to "<i class=\"fa fa-plus\"></i>".html_safe, new_role_path, {:class => "btn btn-sm btn-flat bg-green btn-title", :title => "Agregar Rol"} %>
+  </div>
+  <div class="box-body">
+    <div class="role-search searchList">
+      <%= search_form_for(@q, remote: true, :html => { class: 'remote-search' }) do |f| %>
+        <div class="input-group">
+          <%= f.text_field :name_cont, class: 'form-control', autocomplete: 'off', placeholder: 'Busca por nombre' %>
+          <div class="input-group-btn">
+            <button type="submit" name="button" class="btn btn-default">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="overlay-wrapper searchResult table-responsive" id="roles-table">
+      <%= render 'list', :roles => @roles %>
+    </div>
+  </div>
+  <div class="box-footer clearfix">
+    <div id="paginate-container">
+      <ul class="pagination pagination-sm no-margin pull-right">
+        <%= paginate @roles %>
+      </ul>
+    </div>
+  </div>
+</div>

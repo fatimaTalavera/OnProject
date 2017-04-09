@@ -25,6 +25,9 @@ es:
         celphone: Celular
         tel_fax: Tel/Fax
         avatar: Imágen
+      roles:
+        name: Nombre
+        description: Descripción
     success:
       messages:
         users:

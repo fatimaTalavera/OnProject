@@ -1,0 +1,64 @@
+<%= nested_form_for role, validate: true, :html => { class: 'form-horizontal' } do |f| %>
+  <div class="box-body">
+    <div class="col-md-12 col-sm-12">
+      <div class="row">
+        <div class="field col-md-6 form-group">
+          <div class="col-md-3">
+            <%= f.label :name, t('activerecord.attributes.roles.name'), class: 'control-label tooltip_required' %>
+          </div>
+          <div class="col-md-6">
+            <%= f.text_field :name, class: 'form-control', :maxlength => 35 %>
+          </div>
+        </div>
+        <div class="field col-md-6 form-group">
+          <div class="col-md-3">
+            <%= f.label :description, t('activerecord.attributes.roles.description'), class: 'control-label' %>
+          </div>
+          <div class="col-md-7">
+            <%= f.text_area :description, :class => 'form-control', rows: "3", :maxlength => 100  %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="permission-title">
+        <legend>Seleccionar permisos</legend>
+      </div>
+    </div>
+    <%= f.fields_for :permissions do |permission| %>
+      <%= permission.hidden_field :subject_class, value: Models.keys[permission.index]%>
+        <% if not Models.keys[permission.index].to_s == "CompanyConfig" %>
+          <div class="col-md-2 permission-subtitle" style="margin-bottom: 10px;">
+            <p><%= Models.values[permission.index] %></p>
+            <div class="checkbox">
+              <%= permission.check_box :action, {:id => "#{permission.index}_read", :multiple => true, :class =>'square'}, 'read', nil %>
+              <label>Ver</label>
+            </div>
+            <div class="checkbox">
+              <%= permission.check_box :action, {:id => "#{permission.index}_create", :multiple => true, :class =>'square'}, 'create', nil %>
+              <label>Crear</label>
+            </div>
+            <div class="checkbox">
+              <%= permission.check_box :action, {:id => "#{permission.index}_edit", :multiple => true, :class =>'square'}, 'edit', nil %>
+              <label>Editar</label>
+            </div>
+          </div>
+        <% else %>
+          <div class="col-md-2 permission-subtitle" style="margin-bottom: 10px;">
+            <p><%= Models.values[permission.index] %></p>
+            <div class="checkbox">
+              <%= permission.check_box :action, {:id => "#{permission.index}_edit", :multiple => true, :class =>'square'}, 'edit', nil %>
+              <label>Editar</label>
+            </div>
+          </div>
+        <% end %>
+    <% end %>
+
+  </div>
+  <div class="box-footer clearfix">
+    <div class="pull-right">
+      <%= f.submit t('button.save'), :class => "btn btn-flat bg-blue" %>
+      <%= link_to t('button.cancel'),  roles_path , class: 'btn btn-flat btn-default' %>
+    </div>
+  </div>
+<% end %>

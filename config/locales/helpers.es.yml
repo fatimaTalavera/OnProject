@@ -12,8 +12,9 @@ es:
       purchase_bills: Facturas de compra
       providers: Proveedores
       users: Usuarios
-      company_config: Congifuraciones de Empresa
+      company_config: Datos de la empresa
       client_certifications: Certificaciones Externas
+      rol: Roles
 
     breadcrumbs:
       dashboard: Inicio
@@ -53,16 +54,20 @@ es:
         edit: Editar
         show: Proveedor
       client_certifications:
-              index: Certificaciones
-              new: Agregar
-              edit: Editar
-              show: Certificación
+        index: Certificaciones
+        new: Agregar
+        edit: Editar
+        show: Certificación
       company_config:
         index: Datos de la Empresa
       profile:
         index: Perfil
         user: "%{user}"
-
+      roles:
+        index: Roles
+        new: Agregar
+        edit: Editar
+        show: "%{rol}"
       material_movements: Movimientos de Materiales
       purchase_bills: Facturas de Compras
 
@@ -125,3 +130,8 @@ es:
         edit: Editar Certificación
         list: Lista de Certificaciones
         show: Certificación
+      rol:
+        new: Agregar Rol
+        edit: Editar Rol
+        list: Lista de Roles
+        show: Rol

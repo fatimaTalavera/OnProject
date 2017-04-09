@@ -7,7 +7,11 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 #user = CreateAdminService.new.call
 #puts 'CREATED ADMIN USER: ' << user.email
+@rol = Role.create!(:name => "Administrador", :description => "Administrador")
+@permission = Permission.create!(:subject_class => "all", :action => ["manage"])
+@rol.permissions << @permission
 @superuser = User.new first_name: 'Super', last_name: 'Admin', email: 'admin@admin.com', password: '12341234'
+@superuser.role = @rol
 @superuser.skip_confirmation!
 @superuser.save!
 

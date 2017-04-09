@@ -1,6 +1,9 @@
 class InternalCertificationsController < ApplicationController
   add_breadcrumb I18n.t('helpers.breadcrumbs.internal_certifications.index'), :employees_path
+
   before_action :set_internal_certification, only: [:show, :edit, :update, :destroy]
+  before_action :load_permissions
+  authorize_resource
 
   # GET /internal_certifications
   # GET /internal_certifications.json

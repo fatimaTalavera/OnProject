@@ -1,7 +1,10 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
   add_breadcrumb I18n.t('helpers.breadcrumbs.users.index'), :users_path, :only => %w(index show new)
   add_breadcrumb I18n.t('helpers.breadcrumbs.profile.index'), :users_path, :only => %w(edit_profile)
+
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :load_permissions
+  authorize_resource except: [:edit_profile, :update_profile]
 
   def index
     get_users
@@ -62,14 +65,15 @@ class UsersController < ApplicationController
     def get_users
       @q = User.ransack(params[:q])
       @q.sorts = ['first_name asc', 'last_name asc'] if @q.sorts.empty?
-      @users = @q.result.page(params[:page])
+      @users = @q.result.where("id NOT IN(?)", 1).page(params[:page])
     end
     def set_user
       @user = User.find(params[:id])
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :avatar)
+      params.require(:user).permit(:role_id, :first_name, :last_name, :email, :password, :password_confirmation, :avatar,
+                                    :permissions_attributes => [:id, :subject_class, :_destroy, action:[]])
     end
 
 end

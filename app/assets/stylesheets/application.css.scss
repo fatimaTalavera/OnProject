@@ -91,3 +91,14 @@ th.table-actions{
   margin-top: -3px;
   margin-bottom: -10px;
 }
+
+.permission-title {
+  & legend {
+    color: #828282;
+    font-size: 30px;
+  }
+}
+
+.permission-subtitle {
+  & p { font-size: 20px; }
+}

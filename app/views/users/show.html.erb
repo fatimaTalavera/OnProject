@@ -3,17 +3,25 @@
     <h3 class="box-title"><%= t('helpers.title.user.show') %></h3>
   </div>
   <div class="box-body">
-    <div class="col-md-4">
-      <label class="control-label">Nombre</label>
-      <p> <%= @user.full_name.titleize %> </p>
-      <label class="control-label">Email</label>
-      <p><%= @user.email %></p>
+    <div class="row">
+      <div class="col-md-4">
+        <label class="control-label">Nombre</label>
+        <p><%= @user.full_name.titleize %></p>
+        <label class="control-label">Email</label>
+        <p><%= @user.email %></p>
+      </div>
+      <div class="col-md-4">
+        <label class="control-label">Fecha de Registro</label>
+        <p><%= l @user.created_at, format: :long %></p>
+        <label class="control-label">Fecha de Último Ingreso</label>
+        <p><%= @user.last_sign_in_at ? (l @user.last_sign_in_at, format: :long) : "No regista ingreso" %></p>
+      </div>
     </div>
-    <div class="col-md-4">
-      <label class="control-label">Fecha de Registro</label>
-      <p><%= l @user.created_at, format: :long %></p>
-      <label class="control-label">Fecha de Último Ingreso</label>
-      <p><%= @user.last_sign_in_at ? (l @user.last_sign_in_at, format: :long) : "No regista ingreso" %></p>
+    <div class="row">
+      <div class="col-md-4">
+        <label class="control-label">Rol</label>
+        <p><%= @user.role_name %></p>
+      </div>
     </div>
   </div>
   <div class="box-footer">

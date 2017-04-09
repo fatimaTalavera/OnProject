@@ -1,6 +1,9 @@
 class MaterialMovementsController < ApplicationController
   add_breadcrumb I18n.t('helpers.breadcrumbs.material_movements'), :material_movements_path
+
   before_action :set_material_movement, only: [:show, :edit, :update, :destroy]
+  before_action :load_permissions
+  authorize_resource
 
   # GET /material_movements
   # GET /material_movements.json

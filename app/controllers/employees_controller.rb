@@ -1,6 +1,9 @@
 class EmployeesController < ApplicationController
   add_breadcrumb I18n.t('helpers.breadcrumbs.employees.index'), :employees_path
+
   before_action :set_employee, only: [:show, :edit, :update, :destroy]
+  before_action :load_permissions
+  authorize_resource
 
   # GET /employees
   # GET /employees.json

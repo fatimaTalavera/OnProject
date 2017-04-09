@@ -36,6 +36,12 @@ OnProject = {
 
       $("#phone").inputmask("9999-999-999");
 
+      //iCheck for checkbox and radio inputs
+      $('input[type="checkbox"].square, input[type="radio"].square').iCheck({
+        checkboxClass: 'icheckbox_square-blue',
+        radioClass: 'iradio_square-blue'
+      });
+
       $('.remote-search').on('keyup change', 'input, select', function (event) {
         if(event.type === 'change' && this.type === 'text')
           return false;
