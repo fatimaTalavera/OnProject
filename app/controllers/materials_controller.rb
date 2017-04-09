@@ -1,6 +1,9 @@
 class MaterialsController < ApplicationController
   add_breadcrumb I18n.t('helpers.breadcrumbs.materials.index'), :materials_path
+
   before_action :set_material, only: [:show, :edit, :update, :destroy]
+  before_action :load_permissions
+  authorize_resource
 
   # GET /materials
   # GET /materials.json

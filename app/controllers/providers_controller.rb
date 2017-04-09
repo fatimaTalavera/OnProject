@@ -1,6 +1,9 @@
 class ProvidersController < ApplicationController
-  before_action :set_provider, only: [:show, :edit, :update, :destroy]
   add_breadcrumb I18n.t('helpers.breadcrumbs.providers.index'), :providers_path
+
+  before_action :set_provider, only: [:show, :edit, :update, :destroy]
+  before_action :load_permissions
+  authorize_resource
 
   # GET /providers
   # GET /providers.json

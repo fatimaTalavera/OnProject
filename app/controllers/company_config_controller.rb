@@ -1,6 +1,9 @@
 class CompanyConfigController < ApplicationController
-  before_action :set_company_config, only: [:edit, :update]
   add_breadcrumb I18n.t('helpers.breadcrumbs.company_config.index'), :edit_company_config_path
+
+  before_action :set_company_config, only: [:edit, :update]
+  before_action :load_permissions
+  authorize_resource
 
   def index
     redirect_to edit_company_config_path(CompanyConfig.first)

@@ -1,6 +1,9 @@
 class ContractsController < ApplicationController
   add_breadcrumb I18n.t('helpers.breadcrumbs.contracts.index'), :contracts_path
+
   before_action :set_contract, only: [:show, :edit, :update, :destroy]
+  before_action :load_permissions
+  authorize_resource
 
   # GET /contracts
   # GET /contracts.json

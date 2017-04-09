@@ -55,7 +55,9 @@
       <div class="icon">
         <i class="fa fa-user-plus"></i>
       </div>
+      <% if (can? :show_list, User) %>
       <a href="<%= users_path  %>" class="small-box-footer">Ver Detalles <i class="fa fa-arrow-circle-right"></i></a>
+      <% end %>
     </div>
   </div>
   <div class="col-lg-3 col-xs-6">

@@ -28,6 +28,14 @@
             <%= f.email_field :email, class: 'form-control uniqueUserEmail' %>
           </div>
         </div>
+        <div class="field col-md-6 form-group">
+          <div class="col-md-4">
+            <%= f.label :role, t('activerecord.attributes.user.rol'), class: 'control-label tooltip_required' %>
+          </div>
+          <div class="col-md-6">
+            <%= f.collection_select :role_id, Role.order(:name), :id, :name, options = {:prompt => 'Seleccione una opción'}, html_options = {class:"form-control", required: true} %>
+          </div>
+        </div>
       </div>
       <div class="row">
         <div class="field col-md-6 form-group">

@@ -1,6 +1,9 @@
 class ClientCertificationsController < ApplicationController
   add_breadcrumb I18n.t('helpers.breadcrumbs.client_certifications.index'), :client_certifications_path
+
   before_action :set_client_certification, only: [:show, :edit, :update, :destroy]
+  before_action :load_permissions
+  authorize_resource
 
   # GET /client_certifications
   # GET /client_certifications.json

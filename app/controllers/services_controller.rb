@@ -1,6 +1,9 @@
 class ServicesController < ApplicationController
-  before_action :set_service, only: [:show, :edit, :update, :destroy]
   add_breadcrumb I18n.t('helpers.breadcrumbs.services.index'), :services_path
+
+  before_action :set_service, only: [:show, :edit, :update, :destroy]
+  before_action :load_permissions
+  authorize_resource
 
   # GET /services
   # GET /services.json
