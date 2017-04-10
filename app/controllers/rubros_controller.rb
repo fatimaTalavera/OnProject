@@ -30,7 +30,7 @@ class RubrosController < ApplicationController
 
     respond_to do |format|
       if @rubro.save
-        format.html { redirect_to @rubro, notice: 'El rubro ha sido creado correctamente.' }
+        format.html { redirect_to @rubro, notice: 'El rubro ha sido creado correctamente' }
         format.json { render :show, status: :created, location: @rubro }
       else
         format.html { render :new }
@@ -44,7 +44,7 @@ class RubrosController < ApplicationController
   def update
     respond_to do |format|
       if @rubro.update(rubro_params)
-        format.html { redirect_to @rubro, notice: 'El rubro ha sido actualizado correctamente.' }
+        format.html { redirect_to @rubro, notice: 'El rubro ha sido actualizado correctamente' }
         format.json { render :show, status: :ok, location: @rubro }
       else
         format.html { render :edit }
@@ -58,7 +58,7 @@ class RubrosController < ApplicationController
   def destroy
     @rubro.destroy
     respond_to do |format|
-      format.html { redirect_to rubros_url, notice: 'El rubro ha sido eliminado correctamente' }
+      format.html { redirect_to rubros_url, notice: 'El rubro ha sido eliminado correctamente.' }
       format.json { head :no_content }
     end
   end
