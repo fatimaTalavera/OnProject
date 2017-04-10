@@ -8,7 +8,10 @@ class Rubro < ApplicationRecord
 
   validates :name, :presence => {:message => "Debe ingresar un nombre"}
 
-  validates :utility, :presence => {:message => "Debe ingresar la utilidad"}
+  validates_numericality_of :utility, :presence => {:message => "Debe rellenar este campo"},
+                            :greater_than_or_equal_to => 1,
+                            :less_than_or_equal_to => 9999,
+                            :message => "Ingrese un número menor a 9999"
 
   def final_price
     self.price * (1 + (self.utility/100))
