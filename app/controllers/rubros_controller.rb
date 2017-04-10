@@ -58,7 +58,7 @@ class RubrosController < ApplicationController
   def destroy
     @rubro.destroy
     respond_to do |format|
-      format.html { redirect_to rubros_url, notice: 'El rubro ha sido eliminado correctamente.' }
+      format.html { redirect_to rubros_url, notice: 'El rubro ha sido eliminado correctamente' }
       format.json { head :no_content }
     end
   end
