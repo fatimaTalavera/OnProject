@@ -120,7 +120,7 @@
         <% end %>
 
         <% if (can? :read, CompanyConfig) %>
-          <li><a href="<%= company_config_index_path %>"><i class="fa fa-bank"></i><span><%= t('helpers.menu.company_config') %></span></a></li>
+          <li><a href="<%= edit_company_path %>"><i class="fa fa-bank"></i><span><%= t('helpers.menu.company_config') %></span></a></li>
         <% end %>
       </ul>
     </section>

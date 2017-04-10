@@ -13,11 +13,12 @@ Rails.application.routes.draw do
   resources :material_movements
   resources :roles, except: [:destroy]
   resources :permissions, only: [:create, :update, :destroy]
+  devise_for :users
+  resources :users
   root to: 'welcome#index'
   get 'welcome/index'
-  devise_for :users
   get '/users/me', to: 'users#edit_profile', as: 'edit_profile'
   post '/users/me', to: 'users#update_profile', as: 'update_profile'
-  resources :users
-  resources :company_config, only: [:index, :edit, :update]
+  get 'company_config', to: 'company_config#edit_company', as: 'edit_company'
+  post 'company_config', to: 'company_config#update_company', as: 'update_company'
 end

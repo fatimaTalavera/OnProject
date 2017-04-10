@@ -61,6 +61,9 @@ OnProject = {
       DatepickerHelper.initDatepicker('.datepicker');
 
       BootstrapFilestyleHelper.filestyle('.file-style');
+
+      InputMaskHelper.tel_fax_mask('.tel-fax-mask');
+      InputMaskHelper.celphone_mask('.celphone-mask');
     }
   },
 

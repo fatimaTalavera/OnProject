@@ -21,9 +21,9 @@ gem 'carrierwave'
 gem 'cloudinary'
 gem 'cancan'
 gem 'ruby-enum'
+gem "mini_magick"
 group :development, :test do
   gem 'byebug', platform: :mri
-  gem "mini_magick"
 end
 group :development do
   gem 'fog'
