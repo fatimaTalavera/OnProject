@@ -46,7 +46,7 @@
               <% end %>
               <td>
                 <center>
-                <%= (permission.object.action.include? 'edit')?
+                <%= (permission.object.action.include? 'update')?
                   '<i class="fa fa-check" style="color: green;"></i>'.html_safe
                   : '<i class="fa fa-close" style="color: red;"></i>'.html_safe %>
                 </center>

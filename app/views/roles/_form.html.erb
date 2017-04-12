@@ -31,15 +31,15 @@
           <div class="col-md-2 permission-subtitle" style="margin-bottom: 10px;">
             <p><%= Models.values[permission.index] %></p>
             <div class="checkbox">
-              <%= permission.check_box :action, {:id => "#{permission.index}_read", :multiple => true, :class =>'square'}, 'read', nil %>
+              <%= permission.check_box :action, {:id => "#{permission.index}_read", :multiple => true, :class =>'square'}, 'read', '' %>
               <label>Ver</label>
             </div>
             <div class="checkbox">
-              <%= permission.check_box :action, {:id => "#{permission.index}_create", :multiple => true, :class =>'square'}, 'create', nil %>
+              <%= permission.check_box :action, {:id => "#{permission.index}_create", :multiple => true, :class =>'square'}, 'create', '' %>
               <label>Crear</label>
             </div>
             <div class="checkbox">
-              <%= permission.check_box :action, {:id => "#{permission.index}_update", :multiple => true, :class =>'square'}, 'update', nil %>
+              <%= permission.check_box :action, {:id => "#{permission.index}_update", :multiple => true, :class =>'square'}, 'update', '' %>
               <label>Editar</label>
             </div>
           </div>
@@ -47,7 +47,7 @@
           <div class="col-md-2 permission-subtitle" style="margin-bottom: 10px;">
             <p><%= Models.values[permission.index] %></p>
             <div class="checkbox">
-              <%= permission.check_box :action, {:id => "#{permission.index}_update", :multiple => true, :class =>'square'}, 'update', nil %>
+              <%= permission.check_box :action, {:id => "#{permission.index}_update", :multiple => true, :class =>'square'}, 'update', '' %>
               <label>Editar</label>
             </div>
           </div>
