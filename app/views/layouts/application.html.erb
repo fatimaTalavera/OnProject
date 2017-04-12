@@ -102,7 +102,11 @@
         <% if (can? :read, PurchaseBill) %>
           <li><a href="<%= purchase_bills_path %>"><i class="fa fa-list-alt"></i><span><%= t('helpers.menu.purchase_bills') %></span></a></li>
         <% end %>
-        <li><a href="<%= budgets_path %>"><i class="fa fa-calculator"></i><span><%= t('helpers.menu.budgets') %></span></a></li>
+
+        <% if (can? :read, Budget) %>
+          <li><a href="<%= budgets_path %>"><i class="fa fa-calculator"></i><span><%= t('helpers.menu.budgets') %></span></a></li>
+        <% end %>
+
         <% if (can? :read, Contract) %>
           <li><a href="<%= contracts_path %>"><i class="fa fa-file-text"></i><span><%= t('helpers.menu.contracts') %></span></a></li>
         <% end %>

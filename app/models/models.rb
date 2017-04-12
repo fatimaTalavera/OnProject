@@ -1,5 +1,6 @@
 class Models
   include Ruby::Enum
+  define :Budget, "Presupuestos"
   define :Client, "Clientes"
   define :ClientCertification, "Certificación Externa"
   define :CompanyConfig, "Datos de la empresa"
