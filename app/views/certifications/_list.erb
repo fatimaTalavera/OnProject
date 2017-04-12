@@ -1,0 +1,18 @@
+<table class="table table-bordered table-condensed">
+  <thead>
+  <tr>
+    <th>Contrato</th>
+    <th>Fecha</th>
+    <th class="table-actions"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% certifications.each do |certification| %>
+      <tr>
+        <td><%= certification.contract_name %></td>
+        <td><%= certification.date %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
