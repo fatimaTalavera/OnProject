@@ -1,0 +1,30 @@
+<div class="box box-success">
+  <div class="box-header with-border box-success">
+    <h3 class="box-title"><%= t('helpers.title.certification.list') %></h3>
+    <%= link_to "<i class=\"fa fa-plus\"></i>".html_safe, new_certification_path, {:class => "btn btn-sm btn-flat bg-green btn-title", :title => "Agregar Certificación"} %>
+  </div>
+  <div class="box-body">
+    <div class="certification-search searchList">
+      <%= search_form_for(@q, remote: true, :html => { class: 'remote-search' }) do |f| %>
+          <div class="input-group">
+            <%= f.text_field :contract_name, class: 'form-control', autocomplete: 'off', placeholder: 'Busca por obra' %>
+            <div class="input-group-btn">
+              <button type="submit" name="button" class="btn btn-default">
+                <i class="fa fa-search"></i>
+              </button>
+            </div>
+          </div>
+      <% end %>
+    </div>
+    <div class="overlay-wrapper searchResult table-responsive" id="certifications-table">
+      <%= render 'list', :certifications => @certifications %>
+    </div>
+  </div>
+  <div class="box-footer clearfix">
+    <div id="paginate-container">
+      <ul class="pagination pagination-sm no-margin pull-right">
+        <%= paginate @certifications %>
+      </ul>
+    </div>
+  </div>
+</div>

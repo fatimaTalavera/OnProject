@@ -1,0 +1,77 @@
+<%= nested_form_for certification, validate: true, :html => { class: 'form-horizontal' } do |f| %>
+
+    <div class="box-body box-success">
+      <div class="field col-md-12 form-group">
+        <div class="field col-md-6 form-group">
+          <div class="col-md-2">
+            <%= f.label :contract, 'Contrato:', :class => 'control-label  tooltip_required' %>
+          </div>
+          <div class="col-md-8">
+            <%= f.collection_select(:contract_id, Contract.all, :id, :name, {prompt: 'Selecciona un contrato'}, :class => 'select-two form-control') %>
+          </div>
+        </div>
+        <div class="field col-md-6 form-group">
+          <div class="col-md-3">
+            <%= f.label :date, 'Fecha:', :class => 'control-label tooltip_required' %>
+          </div>
+          <div class="input-group col-md-7">
+            <%= f.text_field :date, :id => 'datepickerFrom', :class => 'input-group date form-control datepicker', :value => Date.today %>
+            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <div class="box box-success">
+          <div class="box-body">
+              <table class="table table-bordered table-condensed">
+                <thead>
+                <tr>
+                  <th width="18%">Jornalero</th>
+                  <th width="9%">Días trabajados</th>
+                  <th width="9%">Jornal</th>
+                  <th width="9%">Descuento</th>
+                  <th>Observacion</th>
+                  <th width="9%">Subtotal</th>
+                  <th width="3%"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <%= f.fields_for :certification_details, :wrapper => false do |certification| %>
+                    <tr class="fields ">
+                      <td><%=certification.collection_select(:employee_id, Employee.all, :id, :name, {prompt: 'Selecciona un Jornalero'}, class: 'form-control')%></td>
+                      <td><%=certification.number_field :quantity, class: 'form-control', min:0 %></td>
+                      <td><%=certification.number_field :pay, class: 'form-control', min:0 %></td>
+                      <td><%=certification.number_field :discount, class: 'form-control', min:0 %></td>
+                      <td><%=certification.text_area :observation, class: 'form-control'%></td>
+                      <td><%=certification.number_field :subtotal, class: 'form-control', disabled:true %></td>
+                      <td><%=certification.link_to_remove '<i class="fa  fa-trash-o"></i>'.html_safe, class: 'btn btn-danger'%></td>
+                      <br>
+                    </tr>
+                <% end %>
+                <td>
+                  <%=f.link_to_add '<i class="fa fa-plus"></i>'.html_safe, :certification_details, class: ' insert_in_table btn btn-flat bg-green'%>
+                </td>
+                </tbody>
+              </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="box-footer">
+      <div class="pull-right">
+        <%= f.submit 'Guardar', :class => 'btn btn-primary' %>
+        <%= link_to 'Cancelar', certifications_path, :class => 'btn btn-default' %>
+      </div>
+    </div>
+<% end %>
+
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $(".select-two").select2({
+        language:'es'
+      });
+    });
+  </script>

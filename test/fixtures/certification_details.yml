@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  certification: one
+  employee: one
+  quantity: 1
+  pay: 9.99
+  discount: 9.99
+  observation: MyString
+  subtotal: 9.99
+
+two:
+  certification: two
+  employee: two
+  quantity: 1
+  pay: 9.99
+  discount: 9.99
+  observation: MyString
+  subtotal: 9.99

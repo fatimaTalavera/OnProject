@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2017-04-08
+  contract: one
+
+two:
+  date: 2017-04-08
+  contract: two
