@@ -12,7 +12,7 @@ class RolesController < ApplicationController
   def new
     add_breadcrumb I18n.t('helpers.breadcrumbs.roles.new')
     @role = Role.new
-    13.times {@role.permissions.build}
+    14.times {@role.permissions.build}
   end
 
   def create

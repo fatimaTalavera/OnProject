@@ -1,7 +1,10 @@
 class BudgetsController < ApplicationController
-  before_action :set_budget, only: [:show, :edit, :update, :destroy]
   add_breadcrumb I18n.t('helpers.breadcrumbs.budgets.index'), :budgets_path
 
+  before_action :set_budget, only: [:show, :edit, :update, :destroy]
+  before_action :load_permissions
+  authorize_resource
+  
   # GET /budgets
   # GET /budgets.json
   def index
