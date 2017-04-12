@@ -11,7 +11,7 @@
   </thead>
 
   <tbody>
-  <% @budgets.each do |budget| %>
+  <% budgets.each do |budget| %>
       <tr>
         <% client = Client.find(budget.client_id) %>
         <td><%= client.name%></td>
