@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  budget: one
+  rubro: one
+  price: 9.99
+  quantity: 9.99
+  subtotal: 9.99
+  utility: 9.99
+
+two:
+  budget: two
+  rubro: two
+  price: 9.99
+  quantity: 9.99
+  subtotal: 9.99
+  utility: 9.99

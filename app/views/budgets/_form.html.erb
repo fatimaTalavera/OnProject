@@ -1,0 +1,97 @@
+<%=nested_form_for budget, validate: true, :html => { class: 'form-horizontal' } do |f| %>
+
+    <div class="box-body">
+      <div class="field col-md-12 form-group">
+        <div class="field col-md-6 form-group">
+          <div class="col-sm-2 alineado">
+            <%= f.label :client_id,  'Cliente:', :class => 'control-label tooltip_required' %>
+          </div>
+          <div class="col-sm-7">
+            <%= f.collection_select(:client_id, Client.all.order('name'), :id, :name, {prompt: '< Seleccione Cliente >'}, :class => 'form-control') %>
+          </div>
+          <div col-sm-2>
+            <%= link_to "<i class=\"fa fa-plus\"></i>".html_safe, new_client_path, {:class => "btn btn-sm btn-flat bg-green ", :title => "Nuevo Cliente"} %>
+          </div>
+        </div>
+
+        <div class="field col-md-6 form-group">
+          <div class="col-sm-4 alineado">
+            <%= f.label :date, 'Fecha:', :class => 'control-label' %>
+          </div>
+          <div class="input-group col-sm-5" style="padding-left: 14px">
+            <%= f.text_field :date, :id => 'datepickerFrom', :class => ' date form-control datepicker', value:Time.now.strftime("%d/%m/%Y") %><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="field col-md-12 form-group">
+        <br>
+        <div class="field col-md-6 form-group ">
+          <div class="col-sm-4 alineado">
+            <%= f.label :description, 'Descripcion:', :class => 'control-label' %>
+          </div>
+          <div class="col-sm-8 ">
+            <%= f.text_area :description, :class => 'form-control', cols: "30", rows: "5", :maxlength => 200 %>
+          </div>
+        </div>
+
+        <div class="field col-md-6 form-group">
+          <div class="col-sm-2 alineado">
+            <%= f.label :state, 'Estado:', :class => 'control-label tooltip_required' %>
+          </div>
+          <div class="col-sm-5 ">
+            <%= f.select(:state, ["Pendiente", "Aprobado"], {prompt: '< Seleccionar >'}, :class => 'form-control') %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="box box-success">
+          <div class=" box-body">
+            <div class="col-sm-12">
+              <table class="table table-bordered table-condensed">
+                <thead>
+                <tr>
+                  <th class="col-md-3">Rubro</th>
+                  <th class="col-md-2">Precio</th>
+                  <th class="col-md-2">Cantidad</th>
+                  <th class="col-md-2">Sub Total</th>
+                  <th class="col-md-1">Utilidad</th>
+                  <th class="col-md-1"> </th>
+                </tr>
+                </thead>
+                <tbody>
+                <%= f.fields_for :budget_details, :wrapper => false do |form| %>
+                    <tr class="fields ">
+                      <td class="col-md-4">
+                        <div class="col-md-9"><%=form.collection_select(:rubro_id, Rubro.all, :id, :name, {prompt: 'Seleccionar'}, class: 'form-control tooltip-required', id:'collection_select')%></div>
+                        <div class="col-md-1"><%= link_to "<i class=\"fa fa-plus\"></i>".html_safe, new_rubro_path, {:class => "btn btn-sm btn-flat bg-green ", :title => "Nuevo Rubro"} %> </div></td>
+                      <td class="col-md-2"><%=form.number_field :price, class:'form-control', :readonly=> true %></td>
+                      <td class="col-md-2"><%=form.number_field :quantity, class: 'form-control tooltip-required'%></td>
+                      <td class="col-md-2"><%=form.number_field :subtotal, class: 'form-control', :readonly => true %></td>
+                      <td class="col-md-1"><%=form.number_field :utility, class: 'form-control'%> </td>
+                      <td class="col-md-1"><%=form.link_to_remove '<i class="fa fa-trash"></i>'.html_safe, class: 'btn btn-danger'%></td>
+                      <br>
+                    </tr>
+                <% end %>
+                <td>
+                  <%=f.link_to_add 'Agregar Rubro', :budget_details, class: ' insert_in_table btn btn-flat bg-green'%>
+                </td>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    <div class="box-footer clearfix">
+      <div class="pull-right">
+        <%= f.submit 'Guardar', :class => "btn btn-flat bg-blue" %>
+        <%= link_to 'Cancelar', budgets_path, class: 'btn btn-flat btn-default' %>
+      </div>
+    </div>
+
+<%end%>
+

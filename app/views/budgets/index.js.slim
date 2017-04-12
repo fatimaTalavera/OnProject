@@ -1,0 +1,3 @@
+| $("#budgets-table").html("#{escape_javascript(render 'list', format: 'html', :budgets => @budgets)}");
+| $('#paginate-container').html("#{escape_javascript(paginate(@budgets, remote: true)) }");
+| $('.searchResult > .overlay').remove();

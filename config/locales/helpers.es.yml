@@ -15,7 +15,7 @@ es:
       company_config: Datos de la empresa
       client_certifications: Certificaciones Externas
       rol: Roles
-      rubros: Rubros
+      budgets: Presupuestos
 
     breadcrumbs:
       dashboard: Inicio
@@ -71,6 +71,11 @@ es:
         show: "%{rol}"
       material_movements: Movimientos de Materiales
       purchase_bills: Facturas de Compras
+      budgets:
+        index: Presupuestos
+        new: Agregar
+        edit: Editar
+        show: Presupuesto
 
     login:
       messages:
@@ -136,3 +141,8 @@ es:
         edit: Editar Rol
         list: Lista de Roles
         show: Rol
+      budget:
+        new: Agregar Presupuesto
+        edit: Editar Presupuesto
+        list: Lista de Presupuestos
+        show: Presupuesto

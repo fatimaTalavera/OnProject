@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :budgets
   resources :rubros
   resources :internal_certifications, except: [:show]
   resources :client_certifications
