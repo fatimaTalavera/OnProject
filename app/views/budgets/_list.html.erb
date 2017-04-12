@@ -1,0 +1,29 @@
+<table class="table table-bordered table-condensed">
+  <thead>
+  <tr>
+    <th>Cliente</th>
+    <th>Fecha</th>
+    <th>Descripcion</th>
+    <th>Estado</th>
+    <th>Monto total</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @budgets.each do |budget| %>
+      <tr>
+        <% client = Client.find(budget.client_id) %>
+        <td><%= client.name%></td>
+        <td><%= budget.date %></td>
+        <td><%= budget.description %></td>
+        <td><%= budget.state %></td>
+        <td><%= budget.total_amount %></td>
+        <td>
+          <%= link_to "<i class=\"fa fa-eye\"></i>".html_safe, budget_path(budget), {:class => "btn btn-xs bg-teal btn-flat"} %>
+          <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_budget_path(budget), {:class => "btn btn-xs bg-orange btn-flat"} %>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
