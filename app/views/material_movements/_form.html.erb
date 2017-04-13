@@ -32,7 +32,7 @@
 
 
 
-      <div class="col-md-6">
+      <div class="col-md-8">
         <div class="box box-success">
           <div class="box-header with-border">
             <h3 class="box-title">Movimientos</h3>
@@ -41,23 +41,29 @@
               <table class="table table-bordered">
                 <thead>
                 <tr>
-                  <th class="col-md-6">Material</th>
-                  <th class="col-md-4">Cantidad</th>
-                  <th class="col-md-2"></th>
+                  <th class="col-md-3">Material</th>
+                  <th class="col-md-3">Costo</th>
+                  <th class="col-md-2">Cantidad</th>
+                  <th class="col-md-3">Total</th>
+                  <th class="col-md-1"></th>
                 </tr>
                 </thead>
                 <tbody>
                 <%= f.fields_for :movement_details, :wrapper => false do |form| %>
-                    <tr class="fields">
-                      <td class="col-md-7"><%=form.collection_select(:material_id, Material.all, :id, :name, {prompt: 'Seleccionar'}, class: 'form-control tooltip_required')%></td>
-                      <td class="col-md-4"><%=form.number_field :quantity, class: 'form-control tooltip_required'%></td>
-                      <td class="col-md-1"><%=form.link_to_remove '<i class="fa  fa-trash-o"></i>'.html_safe, class: 'btn btn-danger'%></td>
+                    <tr class="fields" onchange='getMovementTotal(this);'>
+                      <td><%=form.collection_select(:material_id, Material.all, :id, :name, {prompt: 'Seleccionar'}, :onchange => 'getMaterialPrice(this);', class: 'form-control tooltip_required')%></td>
+                      <td><%=form.number_field :price, class: 'form-control tooltip_required price'%></span></td>
+                      <td><%=form.number_field :quantity, class: 'form-control tooltip_required quantity'%></td>
+                      <td><span class='total'>0</span></td>
+                      <td><%=form.link_to_remove '<i class="fa  fa-trash-o"></i>'.html_safe, class: 'btn btn-danger'%></td>
                     </tr>
                 <% end %>
+                <tr>
+                  <td><%=f.link_to_add '<i class="fa fa-plus"></i>'.html_safe, :movement_details, class: 'btn btn-success insert_in_table'%></td>
+                </tr>
                 </tbody>
               </table>
             </div>
-            <%=f.link_to_add '<i class="fa fa-plus"></i>'.html_safe, :movement_details, class: 'btn btn-success'%>
         </div>
       </div>
     </div>

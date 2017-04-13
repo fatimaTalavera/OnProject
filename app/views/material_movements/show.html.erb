@@ -20,24 +20,30 @@
       </div>
     </div>
 
-    <div class="col-md-12 form-group">
-      <div class="col-md-8">
-          <table class="table table-bordered table-condensed", cellspacing="0" width="100%">
-            <thead>
-            <tr>
-              <th>Material</th>
-              <th>Cantidad</th>
-            </tr>
-            </thead>
-            <tbody>
-            <% @material_movement.movement_details.each do |detalle| %>
+
+    <div class="col-md-8">
+        <table class="table table-bordered table-condensed", cellspacing="0" width="100%">
+          <thead>
+          <tr>
+            <th>Material</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
+            <th>Total</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @material_movement.movement_details.each do |detalle| %>
+              <tr>
                 <td><%= detalle.material.name %></td>
+                <td><%= detalle.price %></td>
                 <td><%= detalle.quantity %></td>
-            <% end %>
-            </tbody>
-          </table>
-      </div>
+                <td><%= detalle.total %></td>
+              <tr>
+          <% end %>
+          </tbody>
+        </table>
     </div>
+
 
   </div>
   <div class="box-footer">

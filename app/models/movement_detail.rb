@@ -25,4 +25,8 @@ class MovementDetail < ApplicationRecord
     end
     self.errors.add(:quantity, "Seleccione una cantidad disponible") unless self.material.quantity >= self.quantity
   end
+
+  def total
+    return self.price * self.quantity
+  end
 end
