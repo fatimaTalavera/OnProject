@@ -6,7 +6,7 @@ class Models
   define :CompanyConfig, "Datos de la empresa"
   define :Contract, "Contratos"
   define :Employee, "Empleados"
-  define :InternalCertification, "Certificación Interna"
+  define :Certification, "Certificación Interna"
   define :Material, "Materiales"
   define :MaterialMovement, "Mov. de materiales"
   define :Provider, "Proveedores"
