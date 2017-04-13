@@ -80,9 +80,7 @@ end
 @purchaseDetail = PurchaseDetail.new(material_id: @cemento.id, quantity: 8, purchase_bill_id: @purchaseBill.id, price: 25000)
 @purchaseDetail.save!
 
-# Certificaciones internas
-@internalCertification = InternalCertification.new(employee_id: @employee.id, contract_id: @contract.id, date: '30-03-2017', amount: 300000)
-@internalCertification.save!
+
 
 # Servicios
 @service = Service.new(name: "Colocación de cables", description: "Se colocan cables en la forma que se desee", price: 50000, measurement_unit: "m")

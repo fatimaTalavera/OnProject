@@ -115,8 +115,8 @@
           <li><a href="<%= services_path %>"><i class="fa fa-file-text"></i> <span><%= t('helpers.menu.services') %></span></a></li>
         <% end %>
 
-        <% if (can? :read, InternalCertification) %>
-          <li><a href="<%= internal_certifications_path %>"><i class="fa fa-check"></i> <span><%= t('helpers.menu.internal_certifications') %></span></a></li>
+        <% if (can? :read, Certification) %>
+          <li><a href="<%= certifications_path %>"><i class="fa fa-check"></i> <span><%= t('helpers.menu.certifications') %></span></a></li>
         <% end %>
 
         <% if (can? :read, ClientCertification) %>
