@@ -16,7 +16,7 @@
 
         <div class="field col-md-6 form-group">
           <div class="col-sm-4 alineado">
-            <%= f.label :date, 'Fecha:', :class => 'control-label' %>
+            <%= f.label :date, 'Fecha:', :class => 'control-label tooltip-required' %>
           </div>
           <div class="input-group col-sm-5" style="padding-left: 14px">
             <%= f.text_field :date, :id => 'datepickerFrom', :class => ' date form-control datepicker', value:Time.now.strftime("%d/%m/%Y") %><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
@@ -65,7 +65,7 @@
                 <%= f.fields_for :budget_details, :wrapper => false do |form| %>
                     <tr class="fields ">
                       <td class="col-md-4">
-                        <div class="col-md-9"><%=form.collection_select(:rubro_id, Rubro.all, :id, :name, {prompt: 'Seleccionar'}, class: 'form-control tooltip-required', id:'collection_select')%></div>
+                        <div class="col-md-9"><%=form.collection_select(:rubro_id, Rubro.all, :id, :name, {prompt: 'Seleccionar'}, class: 'form-control tooltip-required')%></div>
                         <div class="col-md-1"><%= link_to "<i class=\"fa fa-plus\"></i>".html_safe, new_rubro_path, {:class => "btn btn-sm btn-flat bg-green ", :title => "Nuevo Rubro"} %> </div></td>
                       <td class="col-md-2"><%=form.number_field :price, class:'form-control', :readonly=> true %></td>
                       <td class="col-md-2"><%=form.number_field :quantity, class: 'form-control tooltip-required'%></td>

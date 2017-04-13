@@ -4,7 +4,6 @@ class BudgetsController < ApplicationController
   before_action :set_budget, only: [:show, :edit, :update, :destroy]
   before_action :load_permissions
   authorize_resource
-  
   # GET /budgets
   # GET /budgets.json
   def index
@@ -22,8 +21,6 @@ class BudgetsController < ApplicationController
   def new
     add_breadcrumb I18n.t('helpers.breadcrumbs.budgets.new')
     @budget = Budget.new
-
-
   end
 
   # GET /budgets/1/edit
