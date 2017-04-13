@@ -9,8 +9,7 @@
           <strong>Cliente:</strong>
         </div>
         <div class="col-sm-7 show-padding">
-          <% client = Client.find(@budget.client_id) %>
-          <%= client.name %>
+          <%= @budget.client_name %>
         </div>
       </div>
 
@@ -60,8 +59,8 @@
             </tr>
             <% @budget.budget_details.each do |budget_detail| %>
                 <tr class="fields ">
-                  <% rubro = Rubro.find(budget_detail.rubro_id) %>
-                  <td class="col-md-5"><%= rubro.name %></td>
+
+                  <td class="col-md-5"><%= budget_detail.rubro_name %></td>
                   <td class="col-md-3"><%= budget_detail.quantity %></td>
                   <td class="col-md-3"><%= budget_detail.subtotal %></td>
                 </tr>

@@ -13,8 +13,7 @@
   <tbody>
   <% budgets.each do |budget| %>
       <tr>
-        <% client = Client.find(budget.client_id) %>
-        <td><%= client.name%></td>
+        <td><%= budget.client_name%></td>
         <td><%= budget.date %></td>
         <td><%= budget.description %></td>
         <td><%= budget.state %></td>
