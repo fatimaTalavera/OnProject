@@ -16,6 +16,7 @@ es:
       client_certifications: Certificaciones Externas
       rol: Roles
       budgets: Presupuestos
+      certifications: Certificaciones Internas
 
     breadcrumbs:
       dashboard: Inicio
@@ -76,6 +77,11 @@ es:
         new: Agregar
         edit: Editar
         show: Presupuesto
+      certifications:
+        index: Certificaciones Internas
+        new: Agregar
+        edit: Editar
+        show: Certificación Interna
 
     login:
       messages:
@@ -146,3 +152,8 @@ es:
         edit: Editar Presupuesto
         list: Lista de Presupuestos
         show: Presupuesto
+      certification:
+        new: Agregar Certificación Interna
+        edit: Editar Certificación Interna
+        list: Lista de Certificaciones Internas
+        show: Certificación Interna
