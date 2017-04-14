@@ -1,5 +1,5 @@
 class CompanyConfigController < ApplicationController
-  add_breadcrumb I18n.t('helpers.breadcrumbs.company_config.index'), :edit_company_path
+  add_breadcrumb I18n.t('helpers.breadcrumbs.company_config.index')
 
   before_action :load_permissions
   authorize_resource
@@ -19,6 +19,6 @@ class CompanyConfigController < ApplicationController
 
   private
     def company_config_params
-      params.require(:company_config).permit(:name, :address, :email, :tel_fax, :celphone, :avatar)
+      params.require(:company_config).permit(:name, :address, :email, :tel_fax, :celphone, :avatar, :current_avatar)
     end
 end

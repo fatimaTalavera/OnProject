@@ -4,12 +4,12 @@ class User < ApplicationRecord
   belongs_to :role
   delegate :name, :to => :role, :prefix => true
 
-  if Rails.env.development?
-    mount_uploader :avatar, AvatarUploader # localhost
-  else
-    mount_uploader :avatar, CloudinaryUploader #Para produccion
-    validate :valid_content_type
-  end
+  #if Rails.env.development?
+  #  mount_uploader :avatar, AvatarUploader # localhost
+  #else
+  mount_uploader :avatar, CloudinaryUploader #Para produccion
+  validate :valid_content_type
+  #end
 
   devise :database_authenticatable, :confirmable,
          :recoverable, :rememberable, :trackable
@@ -35,7 +35,10 @@ class User < ApplicationRecord
     end
 
     def valid_content_type
-       errors[:avatar] << "El formato de la imagen es inválido" unless %w(image/jpeg image/png image/gif).include? avatar.sanitized_file.content_type
+      if (not avatar.filename == current_avatar) && (not avatar.filename == nil)
+        errors[:avatar] << "El formato de la imagen es inválido" unless %w(image/jpeg image/png image/gif).include? avatar.sanitized_file.content_type
+        self.current_avatar = avatar.filename
+      end
     end
 
 end

@@ -9,6 +9,8 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   protect_from_forgery with: :exception
 
+  helper_method :find_user
+
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_url, :alert => "No tienes permiso para acceder a la página solicitada"
   end
@@ -19,6 +21,10 @@ class ApplicationController < ActionController::Base
   	else
   		"application"
   	end
+  end
+
+  def find_user(id)
+    User.find(id)
   end
 
   protected

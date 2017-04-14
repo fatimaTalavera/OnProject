@@ -1,8 +1,8 @@
 <div class="box box-success">
   <div class="box-header with-border">
-    <h3 class="box-title"><%= current_user.full_name.titleize %></h3>
+    <h3 class="box-title"><%= @current_user.full_name.titleize %></h3>
   </div>
-  <%= form_for current_user, validate: true, :url => update_profile_path, :html => { :method => :post, class: 'form-horizontal' } do |f| %>
+  <%= form_for @current_user, validate: true, :url => update_profile_path, :html => { :method => :post, class: 'form-horizontal' } do |f| %>
     <div class="box-body">
       <div class="col-md-12 col-sm-12">
         <div class="row">
@@ -57,12 +57,13 @@
               <%= f.label :avatar, t('activerecord.attributes.company_config.avatar'), class: 'control-label' %>
             </div>
             <div class="col-md-6">
+              <%= f.hidden_field :current_avatar, :value => find_user(current_user.id).avatar.filename %>
               <%= f.file_field :avatar, :class => 'file-style' %>
               <p class="help-block">Se aceptan imágenes jpg, jpge, png y gif. Recomendado 300x300. Tamaño máximo 1mb.</p>
             </div>
           </div>
         </div>
-        <%= current_user.new_record? ? '' : t('helpers.not_change_passwd_html') %>
+        <%= @current_user.new_record? ? '' : t('helpers.not_change_passwd_html') %>
       </div>
     </div>
     <div class="box-footer clearfix">
