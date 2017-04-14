@@ -22,4 +22,7 @@ Rails.application.routes.draw do
   resources :users
   get 'company_config', to: 'company_config#edit_company', as: 'edit_company'
   post 'company_config', to: 'company_config#update_company', as: 'update_company'
+  resources :budgets do
+    resources :budgets_details
+  end
 end

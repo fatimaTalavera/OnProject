@@ -83,6 +83,6 @@ class ClientCertificationsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def client_certification_params
       params.require(:client_certification).permit(:contract_id, :date, :state, :observation, :received,
-                                                   :client_certification_details_attributes => [:id, :service_id, :_destroy])
+                                                   :client_certification_details_attributes => [:id, :rubro_id, :quantity, :price, :total, :_destroy])
     end
 end
