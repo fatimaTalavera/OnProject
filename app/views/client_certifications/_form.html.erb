@@ -9,7 +9,6 @@
           <div class="col-md-8">
             <%= f.collection_select(:contract_id, Contract.all.order('name'), :id, :name, {prompt: 'Ninguno'}, :class => 'form-control') %>
           </div>
-          <%= link_to "<i class=\"fa fa-plus\"></i>".html_safe, new_contract_path, {:class => "btn btn-sm btn-flat bg-green btn-margen", :title => "Agregar Certificación"} %>
         </div>
         <div class="field col-md-6 form-group">
           <div class="col-md-3">
@@ -27,7 +26,7 @@
             <%= f.label :date, 'Fecha:', :class => 'control-label tooltip_required' %>
           </div>
           <div class="input-group col-md-7">
-            <%= f.text_field :date, :id => 'datepickerFrom', :class => 'input-group date form-control datepicker' %><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+            <%= f.text_field :date, :id => 'datepickerFrom', :class => 'input-group date form-control datepicker', value:Time.now.strftime("%d/%m/%Y") %><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
           </div>
         </div>
         <div class="field col-md-6 form-group">
@@ -52,30 +51,38 @@
       </div>
 
 
-      <div class="col-md-4">
+      <div class="col-md-12">
         <div class="box box-success">
           <div class="box-header with-border">
-            <h3 class="box-title">Servicios</h3>
+            <h3 class="box-title">Rubros</h3>
           </div>
           <div class="box-body">
             <table class="table table-bordered">
               <theah>
                 <tr>
-                  <th class="col-md-10">Servicio</th>
-                  <th class="col-md-2"></th>
+                  <th class="col-md-5">Rubro</th>
+                  <th class="col-md-2">Cantidad</th>
+                  <th class="col-md-2">Precio</th>
+                  <th class="col-md-2">Total</th>
+                  <th class="col-md-1"></th>
                 </tr>
               </theah>
               <tbody>
               <%= f.fields_for :client_certification_details, :wrapper => false do |form| %>
-                  <tr class="fields">
-                    <td class="col-md-10"><%=form.collection_select(:service_id, Service.all, :id, :name, {prompt: 'Seleccionar'}, class: 'form-control')%></td>
-                    <td class="col-md-2"><%=form.link_to_remove '<i class="fa  fa-trash-o"></i>'.html_safe, class: 'btn btn-danger'%></td>
+                  <tr class="fields" onchange='getRubroTotal(this);'>
+                    <td class="col-md-5"><%=form.collection_select(:rubro_id, Rubro.all, :id, :name, {prompt: 'Seleccionar'}, :onchange => 'getRubroPrice(this);', class: 'form-control')%></td>
+                    <td class="col-md-2"><%=form.number_field :quantity, class: 'form-control quantity'%></td>
+                    <td class="col-md-2"><%=form.number_field :price, class: 'form-control price', :readonly => true%></td>
+                    <td class="col-md-2"><%=form.number_field :total, class: 'form-control total', :readonly => true%></td>
+                    <td class="col-md-1"><%=form.link_to_remove '<i class="fa  fa-trash-o"></i>'.html_safe, class: 'btn btn-danger'%></td>
                   </tr>
               <% end %>
-              </tbody>
-            </table>
+              <tr>
+                <td><%=f.link_to_add '<i class="fa fa-plus"></i>'.html_safe, :client_certification_details, class: 'btn btn-success insert_in_table'%></td>
+              </tr>
+            </tbody>
+           </table>
           </div>
-          <%=f.link_to_add '<i class="fa fa-plus"></i>'.html_safe, :client_certification_details, class: 'btn btn-success'%>
         </div>
       </div>
 

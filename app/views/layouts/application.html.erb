@@ -120,7 +120,7 @@
         <% end %>
 
         <% if (can? :read, ClientCertification) %>
-          <li><a href="<%= client_certifications_path %>"><i class="fa fa-file-text"></i><span><%= t('helpers.menu.client_certifications') %></span></a></li>
+          <li><a href="<%= client_certifications_path %>"><i class="fa fa-check"></i><span><%= t('helpers.menu.client_certifications') %></span></a></li>
         <% end %>
 
         <% if (can? :read, Rubro) %>
