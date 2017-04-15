@@ -10,9 +10,11 @@ class Certification < ApplicationRecord
   validates :date, :presence => {:message => "Seleccione una fecha"}
   validate :is_detail
 
+
   def is_detail
     if certification_details.empty?
       errors.add(:contract_id, "Debe agregar al menos un jornalero")
     end
   end
+
 end
