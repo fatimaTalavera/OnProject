@@ -3,12 +3,16 @@ class CertificationsController < ApplicationController
   before_action :set_certification, only: [:show, :edit, :update]
 
   def index
-    get_certification
+    get_certifications
   end
 
   def new
     add_breadcrumb I18n.t('helpers.breadcrumbs.certifications.new')
     @certification = Certification.new
+  end
+
+  def show
+    add_breadcrumb I18n.t('helpers.breadcrumbs.certifications.show')
   end
 
   def edit
@@ -41,7 +45,7 @@ class CertificationsController < ApplicationController
   end
 
   private
-    def get_certification
+    def get_certifications
       @q = Certification.ransack(params[:q])
       @q.sorts = ['contract_name asc'] if @q.sorts.empty?
       @certifications = @q.result.page(params[:page])
@@ -51,6 +55,6 @@ class CertificationsController < ApplicationController
     end
 
     def certification_params
-      params.require(:certification).permit(:contract_id, :date, :total, :certification_details_attributes => [:id, :employee_id, :quantity, :pay, :discount, :observation, :subtotal, :_destroy])
+      params.require(:certification).permit(:contract_id, :date, :certification_details_attributes => [:id, :employee_id, :quantity, :pay, :discount, :observation, :subtotal, :total, :_destroy])
     end
 end
