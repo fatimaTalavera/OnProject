@@ -26,7 +26,11 @@
             <%= f.label :quantity, 'Cantidad:', :class => 'control-label tooltip_required' %>
           </div>
           <div class="col-sm-6 ">
-            <%= f.text_field :quantity, :maxlength => 8, :class => 'form-control' %>
+            <% if action_name == "edit" %>
+                <%= f.label :quantity, material.quantity, :class => 'control-label' %>
+            <% else %>
+                <%= f.text_field :quantity, :maxlength => 8, :class => 'form-control' %>
+            <% end %>
           </div>
         </div>
         <div class="field col-md-3 form-group">
@@ -40,7 +44,7 @@
 
         <div class="field col-md-3 form-group">
           <div class="col-sm-3 alineado">
-            <%= f.label :price, 'Precio:', :class => 'control-label tooltip_required' %>
+            <%= f.label :price, 'Precio Unitario:', :class => 'control-label tooltip_required' %>
           </div>
           <div class="col-sm-6 ">
             <%= f.text_field :price, :maxlength => 10, :class => 'form-control' %>
