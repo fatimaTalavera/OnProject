@@ -9,12 +9,24 @@
             <%= f.text_field :name, :maxlength => 50, :class => 'form-control' %>
           </div>
         </div>
+
         <div class="field col-md-6 form-group">
           <div class="col-md-3">
             <%= f.label :utility, 'Utilidad(%):', :class => 'control-label tooltip_required' %>
           </div>
-          <div class="col-md-8">
+          <div class="col-md-6">
             <%= f.number_field :utility, :class => 'form-control' %>
+          </div>
+        </div>
+      </div>
+
+      <div class="field col-md-12 form-group">
+        <div class="field col-md-6 form-group">
+          <div class="col-md-3">
+            <%= f.label :measurement_unit, 'Unidad de medida:', :class => 'control-label tooltip_required' %>
+          </div>
+          <div class="col-md-6">
+            <%= f.text_field :measurement_unit, :maxlength => 50, :class => 'form-control' %>
           </div>
         </div>
       </div>

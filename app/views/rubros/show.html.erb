@@ -4,15 +4,19 @@
   </div>
   <div class="box-body">
     <div class="col-md-12 form-group">
-      <div class="col-md-4">
+      <div class="col-md-3">
         <strong>Nombre:</strong>
         <%= @rubro.name %>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-3">
+        <strong>Unidad de medida:</strong>
+        <%= @rubro.measurement_unit %>
+      </div>
+      <div class="col-md-3">
         <strong>Utilidad:</strong>
         <%= @rubro.utility %> %
       </div>
-      <div class="col-md-4">
+      <div class="col-md-3">
         <strong>Precio:</strong>
         <%= @rubro.final_price %>
       </div>
@@ -24,6 +28,7 @@
           <thead>
           <tr>
             <th>Material</th>
+            <th>Precio Unitario</th>
             <th>Cantidad</th>
             <th>Subtotal</th>
           </tr>
@@ -32,6 +37,7 @@
           <% @rubro.rubro_material_details.each do |detalle| %>
           <tr>
               <td><%= detalle.material.name %></td>
+              <td><%= detalle.material.price %></td>
               <td><%= detalle.quantity %></td>
               <td><%= detalle.subtotal %></td>
           </tr>
@@ -40,6 +46,7 @@
           <thead>
           <tr>
             <th>Servicio</th>
+            <th>Precio Unitario</th>
             <th>Cantidad</th>
             <th>Subtotal</th>
           </tr>
@@ -48,6 +55,7 @@
           <% @rubro.rubro_service_details.each do |detalle| %>
           <tr>
               <td><%= detalle.service.name %></td>
+              <td><%= detalle.service.price %></td>
               <td><%= detalle.quantity %></td>
               <td><%= detalle.subtotal %></td>
           </tr>

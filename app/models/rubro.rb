@@ -8,6 +8,8 @@ class Rubro < ApplicationRecord
 
   validates :name, :presence => {:message => "Debe ingresar un nombre"}
 
+  validates :measurement_unit, :presence => {:message => "Debe ingresar una unidad de medida"}
+
     validates_numericality_of :utility, :presence => {:message => "Debe rellenar este campo"},
                               :greater_than_or_equal_to => 1,
                               :less_than_or_equal_to => 9999,
