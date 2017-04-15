@@ -6,7 +6,7 @@ class RubrosController < ApplicationController
   # GET /rubros
   # GET /rubros.json
   def index
-    @rubros = Rubro.all
+    get_rubros
   end
 
   # GET /rubros/1
@@ -64,6 +64,11 @@ class RubrosController < ApplicationController
   end
 
   private
+    def get_rubros
+      @q = Rubro.ransack(params[:q])
+      @q.sorts = ['name asc'] if @q.sorts.empty?
+      @rubros = @q.result.page(params[:page])
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_rubro
       @rubro = Rubro.find(params[:id])
