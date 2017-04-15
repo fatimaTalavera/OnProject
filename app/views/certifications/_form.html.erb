@@ -30,22 +30,24 @@
                   <th width="18%">Jornalero</th>
                   <th width="9%">Días trabajados</th>
                   <th width="9%">Jornal</th>
-                  <th width="9%">Descuento</th>
-                  <th>Observacion</th>
-                  <th width="9%">Subtotal</th>
+                  <th width="9%">Descuento(%)</th>
+                  <th>Observación</th>
+                  <th width="9%">Subtotal(Gs)</th>
+                  <th width="9%">Total(Gs)</th>
                   <th width="3%"></th>
                 </tr>
                 </thead>
                 <tbody>
                 <%= f.fields_for :certification_details, :wrapper => false do |certification| %>
-                    <tr class="fields ">
+                    <tr class="fields" onchange='getCertificationTotal(this);'>
                       <td><%=certification.collection_select(:employee_id, Employee.all, :id, :name, {prompt: 'Selecciona un Jornalero'}, class: 'form-control')%></td>
-                      <td><%=certification.number_field :quantity, class: 'form-control', min:0 %></td>
-                      <td><%=certification.number_field :pay, class: 'form-control', min:0 %></td>
-                      <td><%=certification.number_field :discount, class: 'form-control', min:0 %></td>
+                      <td><%=certification.number_field :quantity, class: 'form-control quantity', min:0 %></td>
+                      <td><%=certification.number_field :pay, class: 'form-control pay', min:0 %></td>
+                      <td><%=certification.number_field :discount, class: 'form-control discount', min:0 %></td>
                       <td><%=certification.text_area :observation, class: 'form-control'%></td>
-                      <td><%=certification.number_field :subtotal, class: 'form-control', disabled:true %></td>
-                      <td><%=certification.link_to_remove '<i class="fa  fa-trash-o"></i>'.html_safe, class: 'btn btn-danger'%></td>
+                      <td class='subtotal'>0</td>
+                      <td class='total'>0</td>
+                      <td><%=certification.link_to_remove '<i class="fa  fa-trash-o"></i>'.html_safe, class: 'btn btn-danger' %></td>
                       <br>
                     </tr>
                 <% end %>
@@ -74,4 +76,5 @@
         language:'es'
       });
     });
+
   </script>
