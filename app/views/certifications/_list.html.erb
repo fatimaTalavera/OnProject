@@ -12,6 +12,9 @@
       <tr>
         <td><%= certification.contract_name %></td>
         <td><%= certification.date %></td>
+        <td>
+          <%= link_to "<i class=\"fa fa-eye\"></i>".html_safe, certification_path(certification), {:class => "btn btn-xs bg-teal btn-flat"} %>
+        </td>
       </tr>
   <% end %>
   </tbody>
