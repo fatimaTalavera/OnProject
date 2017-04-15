@@ -1,11 +1,30 @@
 <div class="box box-success">
   <div class="box-header with-border box-success">
     <h3 class="box-title">Rubros</h3>
-    <%= link_to "<i class=\"fa fa-plus\"></i>".html_safe, new_rubro_path, {:class => "btn btn-sm btn-flat bg-green btn-title", :title => "Agregar Rubro"} %>
+    <%= link_to "<i class=\"fa fa-plus\"></i>".html_safe, new_rubro_path, {:class => "btn btn-sm btn-flat bg-green btn-title", :title => "Agregar Certificación"} %>
   </div>
   <div class="box-body">
-    <div class="overlay-wrapper searchResult table-responsive" id="purchase-bills-table">
+    <div class="rubro-search searchList">
+      <%= search_form_for(@q, remote: true, :html => { class: 'remote-search' }) do |f| %>
+          <div class="input-group">
+            <%= f.text_field :name_cont, class: 'form-control', autocomplete: 'off', placeholder: 'Busca por nombre' %>
+            <div class="input-group-btn">
+              <button type="submit" name="button" class="btn btn-default">
+                <i class="fa fa-search"></i>
+              </button>
+            </div>
+          </div>
+      <% end %>
+    </div>
+    <div class="overlay-wrapper searchResult table-responsive" id="rubros-table">
       <%= render 'list', :rubros => @rubros %>
+    </div>
+  </div>
+  <div class="box-footer clearfix">
+    <div id="paginate-container">
+      <ul class="pagination pagination-sm no-margin pull-right">
+        <%= paginate @rubros %>
+      </ul>
     </div>
   </div>
 </div>
