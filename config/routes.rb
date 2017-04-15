@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :budgets
   resources :rubros
-  resources :certifications, except: [:show, :destroy]
+  resources :certifications, except: [:destroy]
   resources :client_certifications
   resources :employees
   resources :purchase_bills, except: [:edit, :update]
