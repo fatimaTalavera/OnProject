@@ -45,16 +45,19 @@
               </tr>
               <tbody>
               <%= f.fields_for :rubro_material_details, :wrapper => false do |form| %>
-                  <tr class="fields">
+                   <tr class="fields">
                     <td class="col-md-5"><%=form.collection_select(:material_id, Material.all, :id, :name, {prompt: 'Seleccionar'}, class: 'form-control')%></td>
                     <td class="col-md-3"><%=form.number_field :quantity, class: 'form-control'%></td>
                     <td class="col-md-1"><%=form.link_to_remove '<i class="fa  fa-trash-o"></i>'.html_safe, class: 'btn btn-danger'%></td>
                   </tr>
               <% end %>
+              <tr>
+                <td><%=f.link_to_add '<i class="fa fa-plus"></i>'.html_safe, :rubro_material_details, class: 'btn btn-success insert_in_table'%></td>
+              </tr>
               </tbody>
             </table>
           </div>
-          <%=f.link_to_add '<i class="fa fa-plus"></i>'.html_safe, :rubro_material_details, class: 'btn btn-success'%>
+
         </div>
       </div>
 
@@ -78,10 +81,13 @@
                     <td class="col-md-1"><%=form.link_to_remove '<i class="fa  fa-trash-o"></i>'.html_safe, class: 'btn btn-danger'%></td>
                   </tr>
               <% end %>
+              <tr>
+                <td><%=f.link_to_add '<i class="fa fa-plus"></i>'.html_safe, :rubro_service_details, class: 'btn btn-success insert_in_table'%></td>
+              </tr>
               </tbody>
             </table>
           </div>
-          <%=f.link_to_add '<i class="fa fa-plus"></i>'.html_safe, :rubro_service_details, class: 'btn btn-success'%>
+
         </div>
       </div>
     </div>

@@ -60,10 +60,13 @@
                       <td class="col-md-1"><%=form.link_to_remove '<i class="fa  fa-trash-o"></i>'.html_safe, class: 'btn btn-danger'%></td>
                     </tr>
                 <% end %>
+                <tr>
+                  <td><%=f.link_to_add '<i class="fa fa-plus"></i>'.html_safe, :purchase_details, class: 'btn btn-success insert_in_table'%></td>
+                </tr>
                 </tbody>
               </table>
             </div>
-            <%=f.link_to_add '<i class="fa fa-plus"></i>'.html_safe, :purchase_details, class: 'btn btn-success'%>
+
         </div>
       </div>
     </div>
