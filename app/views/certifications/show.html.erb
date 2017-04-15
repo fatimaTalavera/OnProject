@@ -1,0 +1,58 @@
+<div class="box box-success">
+  <div class="box-header with-border">
+    <h3 class="box-title"><%= t('helpers.title.certification.show') %></h3>
+  </div>
+  <div class="box-body">
+
+    <div class="field col-md-12 form-group">
+      <div class="field col-md-6 form-group">
+        <div class="col-md-6">
+          <strong>Obra:</strong>
+          <%= @certification.contract_name %>
+        </div>
+      </div>
+
+      <div class="field col-md-6 form-group">
+        <div class="col-md-6">
+          <strong>Fecha:</strong>
+          <%= @certification.date %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-12 form-group">
+      <table class="table table-bordered table-condensed">
+        <thead>
+        <tr>
+          <th width="18%">Jornalero</th>
+          <th width="9%">Dias trabajados</th>
+          <th width="9%">Jornal</th>
+          <th width="9%">Descuento(%)</th>
+          <th>Observación</th>
+          <th width="3%">Subtotal(Gs)</th>
+          <th width="3%">Total(Gs)</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @certification.certification_details.each do |detail| %>
+            <tr>
+              <td><%= detail.employee_name %>
+              <td><%= detail.quantity %>
+              <td><%= detail.pay %>
+              <td><%= detail.discount %>
+              <td><%= detail.observation %>
+              <td><%= detail.subtotal %></td>
+              <td><%= detail.total %>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+  <div class="box-footer">
+    <div class="pull-right">
+      <%= link_to 'Atrás', certifications_path, :class => 'btn btn-default' %>
+    </div>
+  </div>
+</div>
