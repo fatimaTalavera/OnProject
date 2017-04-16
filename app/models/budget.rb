@@ -27,9 +27,4 @@ class Budget < ApplicationRecord
     end
     self.update_column(:total_amount, total)
   end
-  #for PDF reports
-  def total_price
-    # convert to array so it doesn't try to do sum on database directly
-    budget_details.to_a.sum(&:full_price)
-  end
 end

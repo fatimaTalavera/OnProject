@@ -24,7 +24,7 @@
 
     </div>
     <div class="field col-md-12">
-      <br>
+
       <div class="field col-md-6">
         <div class="col-sm-3 label-pad ">
           <strong>Descripcion:</strong>
@@ -45,12 +45,6 @@
     </div>
     <div class="col-md-12">
       <br>
-      <br>
-      <div class="box box-success">
-        <div class="box-header with-border">
-          <h3 class="box-title">Lista de Rubros</h3></div>
-        <div class=" box-body">
-          <div class="col-sm-12">
             <table class="table table-bordered table-condensed">
               <tr>
                 <th class="col-md-4">Rubro</th>
@@ -64,28 +58,19 @@
 
                     <td class="col-md-4"><%= budget_detail.rubro_name %></td>
                     <td class="col-md-2"><%= budget_detail.quantity %></td>
-                    <td class="col-md-1"> - </td>
-                    <td class="col-md-2"><%= budget_detail.price %></td>
-                    <td class="col-md-2"><%= budget_detail.subtotal %></td>
+                    <td class="col-md-1"><%= budget_detail.rubro_measurement_unit %></td>
+                    <td class="col-md-2"><%= number_to_currency_py(budget_detail.price) %></td>
+                    <td class="col-md-2"><%= number_to_currency_py(budget_detail.subtotal) %></td>
                   </tr>
               <% end %>
+              <td>
+                  <strong>Monto Total:</strong>
+                  <%= number_to_currency_py(@budget.total_amount) %>
+              </td>
             </table>
-
-            <div class="col-md-12">
-              <div class="col-md-6">
-                <div class="col-sm-3 label-pad">
-                  <strong>Monto Total(Gs):</strong>
-                </div>
-                <div class="col-sm-4 show-padding">
-                  <%= @budget.total_amount %>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
 
   <div class="box-footer">
     <div class="pull-left">
@@ -94,7 +79,10 @@
       </div>
     </div>
     <div class="pull-right">
-      <%= link_to 'Editar', edit_budget_path(@budget), :class => 'btn btn-flat bg-blue' %>
+      <% if @budget.state == "Pendiente" %>
+      <%= link_to 'Editar', edit_budget_path(@budget), :class => 'btn btn-flat bg-blue'%>
+          <% elsif @budget.state == "Aprobado" %>
+      <% end %>
     </div>
   </div>
 </div>

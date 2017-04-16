@@ -40,13 +40,16 @@ class BudgetsController < ApplicationController
   # GET /budgets/1/edit
   def edit
     add_breadcrumb I18n.t('helpers.breadcrumbs.budgets.edit')
+    @client = Client.new
+    @clients = Client.all
   end
 
   # POST /budgets
   # POST /budgets.json
   def create
     @budget = Budget.new(budget_params)
-
+    @client = Client.new
+    @clients = Client.all
     respond_to do |format|
       if @budget.save
         format.html { redirect_to budgets_path, notice: 'El presupuesto se creo correctamente' }
