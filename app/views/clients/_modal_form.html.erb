@@ -1,0 +1,73 @@
+<div id="client-modal" class="modal fade">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title"><%= title %></h4>
+      </div>
+      <%= form_for @client, validate: true, remote: true do |f| %>
+          <form class="form-horizontal">
+            <div class="field col-md-12 form-group">
+              <div class="field col-md-9 form-group required">
+                <br>
+                <div class="col-md-4">
+                  <%= f.label :name, 'Nombre o Razón Social:', :class => 'control-label' %>
+                </div>
+                <div class="col-md-8">
+                  <%= f.text_field :name, :class => 'form-control', autofocus:true, :maxlength => 100 %>
+                </div>
+              </div>
+            </div>
+
+            <div class="field col-md-12 form-group">
+              <div class="field col-md-6 form-group required">
+                <div class="col-md-3">
+                  <%= f.label :ruc, 'RUC:', :class => 'control-label' %>
+                </div>
+                <div class="col-md-5">
+                  <%= f.text_field :ruc, :class => 'form-control', :maxlength => 12 %>
+                </div>
+              </div>
+
+              <div class="field col-md-6 form-group">
+                <div class="col-md-2">
+                  <%= f.label :email, 'Correo:', :class => 'control-label' %>
+                </div>
+                <div class="col-md-10">
+                  <%= f.text_field :email, :class => 'form-control', :maxlength => 50 %>
+                </div>
+              </div>
+            </div>
+
+            <div class="field col-md-12 form-group">
+              <div class="field col-md-6 form-group">
+                <div class="col-md-3">
+                  <%= f.label :adress, 'Direccion:', :class => 'control-label' %>
+                </div>
+                <div class="col-md-9">
+                  <%= f.text_area :adress, :class => 'form-control', cols: "20", rows: "2", :maxlength => 200  %>
+                </div>
+              </div>
+
+              <div class="field col-md-6 form-group">
+                <div class="col-md-2">
+                  <%= f.label :phone, 'Telefono:', :class => 'control-label' %>
+                </div>
+                <div class="col-md-6">
+                  <%= f.text_field :phone, id: 'phone', :class => 'form-control', :maxlength => 12 %>
+                </div>
+              </div>
+            </div>
+
+          <div class="modal-footer">
+            <div class="pull-right">
+              <%= f.submit 'Guardar', class: "btn btn-flat bg-blue" %>
+              <button type="button" class="btn btn-flat btn-default" data-dismiss="modal">Cancelar</button>
+
+            </div>
+          </div>
+          </form>
+      <% end %>
+    </div>
+  </div>
+</div>

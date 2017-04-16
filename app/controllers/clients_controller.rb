@@ -37,9 +37,11 @@ class ClientsController < ApplicationController
       if @client.save
         format.html { redirect_to clients_path, notice: 'El cliente se creo correctamente.' }
         format.json { render :show, status: :created, location: @client }
+        format.js   { render action: 'create', status: :created, location: @client }
       else
         format.html { render :new }
         format.json { render json: @client.errors, status: :unprocessable_entity }
+        format.js   { render json: @client.errors, status: :unprocessable_entity }
       end
     end
   end

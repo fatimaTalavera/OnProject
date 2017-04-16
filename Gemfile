@@ -41,6 +41,10 @@ gem 'rails_best_practices'
 gem "rubycritic", :require => false
 # gem para mascara en los inputs
 gem 'maskedinput-rails'
+# reportes en pdf
+gem "prawn"
+gem 'prawn-table'
+gem 'responders'
 group :development do
   gem 'better_errors'
   gem 'rails_apps_pages'

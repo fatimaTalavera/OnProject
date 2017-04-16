@@ -1,0 +1,5 @@
+<% if Client.last == client %>
+    <option value= <%= client.id %> selected="selected"><%= client.name %></option>
+<% else %>
+    <option value= <%= client.id %>><%= client.name %></option>
+<% end %>

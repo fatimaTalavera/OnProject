@@ -43,37 +43,42 @@
         </div>
       </div>
     </div>
-  <div class="col-md-12">
-    <br>
-    <br>
-    <div class="box box-success">
-      <div class="box-header with-border">
-        <h3 class="box-title">Lista de Rubros</h3></div>
-      <div class=" box-body">
-        <div class="col-sm-12">
-          <table class="table table-bordered table-condensed">
-            <tr>
-              <th class="col-md-5">Rubro</th>
-              <th class="col-md-3">Cantidad</th>
-              <th class="col-md-3">Sub Total</th>
-            </tr>
-            <% @budget.budget_details.each do |budget_detail| %>
-                <tr class="fields ">
+    <div class="col-md-12">
+      <br>
+      <br>
+      <div class="box box-success">
+        <div class="box-header with-border">
+          <h3 class="box-title">Lista de Rubros</h3></div>
+        <div class=" box-body">
+          <div class="col-sm-12">
+            <table class="table table-bordered table-condensed">
+              <tr>
+                <th class="col-md-4">Rubro</th>
+                <th class="col-md-2">Cantidad</th>
+                <th class="col-md-1">Ud. de Medidad</th>
+                <th class="col-md-2">Precio Unitario</th>
+                <th class="col-md-2">Sub Total</th>
+              </tr>
+              <% @budget.budget_details.each do |budget_detail| %>
+                  <tr class="fields ">
 
-                  <td class="col-md-5"><%= budget_detail.rubro_name %></td>
-                  <td class="col-md-3"><%= budget_detail.quantity %></td>
-                  <td class="col-md-3"><%= budget_detail.subtotal %></td>
-                </tr>
-            <% end %>
-          </table>
+                    <td class="col-md-4"><%= budget_detail.rubro_name %></td>
+                    <td class="col-md-2"><%= budget_detail.quantity %></td>
+                    <td class="col-md-1"> - </td>
+                    <td class="col-md-2"><%= budget_detail.price %></td>
+                    <td class="col-md-2"><%= budget_detail.subtotal %></td>
+                  </tr>
+              <% end %>
+            </table>
 
-          <div class="col-md-12">
-            <div class="col-md-6">
-              <div class="col-sm-3 label-pad">
-                <strong>Monto Total(Gs):</strong>
-              </div>
-              <div class="col-sm-4 show-padding">
-                <%= @budget.total_amount %>
+            <div class="col-md-12">
+              <div class="col-md-6">
+                <div class="col-sm-3 label-pad">
+                  <strong>Monto Total(Gs):</strong>
+                </div>
+                <div class="col-sm-4 show-padding">
+                  <%= @budget.total_amount %>
+                </div>
               </div>
             </div>
           </div>
@@ -81,17 +86,15 @@
       </div>
     </div>
   </div>
-</div>
 
-<div class="box-footer">
-  <div class="pull-left">
-    <button type="button" class=" btn btn-flat bg-red pull-right" style="margin-left: 15px;">
-      <i class="fa fa-download"></i> Descargar PDF
-    </button>
+  <div class="box-footer">
+    <div class="pull-left">
+      <div>
+        <%= link_to 'Generar PDF', budget_path(@budget, format: 'pdf'), class:'btn btn-flat bg-red pull-right' %>
+      </div>
+    </div>
+    <div class="pull-right">
+      <%= link_to 'Editar', edit_budget_path(@budget), :class => 'btn btn-flat bg-blue' %>
+    </div>
   </div>
-  <div class="pull-right">
-    <%= link_to 'Editar', edit_budget_path(@budget), :class => 'btn btn-flat bg-blue' %>
-    <%= link_to 'Atras', budgets_path, :class => 'btn btn-flat btn-default' %>
-  </div>
-</div>
 </div>
