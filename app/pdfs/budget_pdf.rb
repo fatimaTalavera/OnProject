@@ -17,9 +17,11 @@ class BudgetPdf < Prawn::Document
       #imagen = image open ("#{config.avatar}")
       #image imagen, height: 50, width: 100, at: [bounds.left, bounds.top+50]
       bounding_box([bounds.left+130, bounds.top+40], :width => 200, :height => 200) do
-        text "#{config.name}", :size => 10, :style => :italic
+        text "#{config.name}", :size => 20, :style => :italic
         text "Direccion: #{config.address}", :size => 10, :style => :italic
         text "Telefono: #{config.tel_fax}", :size => 10, :style => :italic
+      end
+      bounding_box([bounds.left+320, bounds.top+18], :width => 200, :height => 200) do
         text "Celular: #{config.celphone}", :size => 10, :style => :italic
         text "Email: #{config.email}", :size => 10, :style => :italic
       end
@@ -29,12 +31,9 @@ class BudgetPdf < Prawn::Document
         horizontal_line 0, 500, :at => 15
       end
 
-
       #footer
       number_pages "Pag. <page> de <total>", at: [200,-5]
       number_pages "Impreso el #{Time.now}", at: [bounds.right-200,0], width: 200, align: :right
-
-
     end
   end
 
@@ -65,7 +64,7 @@ class BudgetPdf < Prawn::Document
   def rubros_rows
     [["Rubro","Cantidad" , "Unid. Medida", "Precio Unitario", "Subtotal"]] +
         @budget.budget_details.map do |detail|
-          [detail.rubro_name, detail.quantity, " - ", price(detail.price), price(detail.subtotal)]
+          [detail.rubro_name, detail.quantity, detail.rubro_measurement_unit, price(detail.price), price(detail.subtotal)]
         end
   end
 

@@ -10,7 +10,7 @@
             <select id="client_entry" name="budget[client_id]" class=" form-control">
               <option value="">< Seleccione Cliente ></option>
               <% @clients.each do |client| %>
-                  <%= render partial: "clients/collection", locals: {client: client} %>
+                  <%= render "clients/collection", :client => client %>
 
               <% end %>
              </select>
@@ -59,7 +59,6 @@
                 <thead>
                 <tr>
                   <th class="col-md-3">Rubro</th>
-                  <th class="col-md-1"> </th>
                   <th class="col-md-2">Precio</th>
                   <th class="col-md-2">Cantidad</th>
                   <th class="col-md-2">Sub Total</th>
@@ -69,13 +68,12 @@
                 </thead>
                 <tbody>
                 <%= f.fields_for :budget_details, :wrapper => false do |form| %>
-                    <tr class="fields" onchange='getRubroTotal(this);'>
+                    <tr class="fields" onchange='getBudgetTotal(this);'>
                       <td><%=form.collection_select(:rubro_id, Rubro.all, :id, :name, {prompt: 'Seleccionar'}, :onchange => 'getRubroPrice(this);', class: 'form-control')%></td>
-                      <td> <%= link_to "<i class=\"fa fa-plus\"></i>".html_safe, new_rubro_path, {:class => "btn btn-sm btn-flat bg-green ", :title => "Nuevo Rubro"} %> </td>
-                      <td><%=form.number_field :price, class:'form-control price', :readonly=> true %></td>
+                      <td><%=form.number_field :price, class:'form-control price'%></td>
                       <td><%=form.number_field :quantity, class: 'form-control quantity'%></td>
                       <td><%=form.number_field :subtotal, class: 'form-control total', :readonly => true %></td>
-                      <td><%=form.number_field :utility, class: 'form-control'%> </td>
+                      <td><%=form.number_field :utility, class: 'form-control utility', :readonly=> true %> </td>
                       <td><%=form.link_to_remove '<i class="fa fa-trash"></i>'.html_safe, class: 'btn btn-danger'%></td>
                       <br>
                     </tr>
