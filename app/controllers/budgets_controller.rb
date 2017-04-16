@@ -15,12 +15,26 @@ class BudgetsController < ApplicationController
   def show
     add_breadcrumb I18n.t('helpers.breadcrumbs.budgets.show')
     @budget_details = BudgetDetail.all
+
+    @budget = Budget.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = BudgetPdf.new(@budget, view_context)
+        send_data pdf.render,
+                  filename: "budget_#{@budget.id}.pdf",
+                  type: 'application/pdf',
+                  disposition: 'inline'
+      end
+    end
   end
 
   # GET /budgets/new
   def new
     add_breadcrumb I18n.t('helpers.breadcrumbs.budgets.new')
     @budget = Budget.new
+    @client = Client.new
+    @clients = Client.all
   end
 
   # GET /budgets/1/edit

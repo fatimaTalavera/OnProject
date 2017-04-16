@@ -23,4 +23,10 @@ class BudgetDetail < ApplicationRecord
     subtotal = rubro.price * quantity
     self.update_attributes(subtotal: subtotal)
   end
+
+  #for pdf reports
+  def full_price
+    rubro = Rubro.find(self.rubro_id)
+    rubro.price * quantity
+  end
 end
