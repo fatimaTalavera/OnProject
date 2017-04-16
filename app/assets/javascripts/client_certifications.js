@@ -9,7 +9,9 @@ function getRubroPrice(currentElement) {
         },
         success: function (data) {
             var tr = $(currentElement).parent().parent();
-            tr.find('.price').val(data.price);
+            var precio = data.price*(1 + data.utility/100);
+            var formatPrice = precio.toFixed(2);
+            tr.find('.price').val(formatPrice);
             getRubroTotal(tr);
         }
     });
@@ -19,7 +21,8 @@ function getRubroTotal(currentElement) {
     var self = $(currentElement);
     var price = self.find('.price').val();
     var quantity = self.find('.quantity').val();
-    var total = (undefined !== price && undefined !== quantity)? price * quantity : 0;
+    var precioDos = price;
+    var total = (undefined !== price && undefined !== quantity)? precioDos * quantity : 0;
     self.find('.total').val(total);
 };
 
