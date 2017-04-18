@@ -21,16 +21,16 @@
     </div>
 
     <div class="col-md-12 form-group">
-      <table class="table table-bordered table-condensed">
+      <table style="table-layout: fixed; width: 100%" class="table table-bordered table-condensed">
         <thead>
-        <tr>
-          <th width="18%">Jornalero</th>
-          <th width="9%">Dias trabajados</th>
-          <th width="9%">Jornal</th>
-          <th width="9%">Descuento(%)</th>
-          <th>Observación</th>
-          <th width="3%">Subtotal(Gs)</th>
-          <th width="3%">Total(Gs)</th>
+        <tr  style="word-wrap: break-word">
+          <th width="20%">Jornalero</th>
+          <th width="10%">Dias trabajados</th>
+          <th width="10%">Jornal</th>
+          <th width="10%">Descuento(%)</th>
+          <th width="30%">Observación</th>
+          <th width="10%">Subtotal</th>
+          <th width="10%">Total</th>
         </tr>
         </thead>
         <tbody>
@@ -38,11 +38,11 @@
             <tr>
               <td><%= detail.employee_name %>
               <td><%= detail.quantity %>
-              <td><%= detail.pay %>
-              <td><%= detail.discount %>
-              <td><%= detail.observation %>
-              <td><%= detail.subtotal %></td>
-              <td><%= detail.total %>
+              <td><%= number_to_currency_py(detail.pay) %>
+              <td><%= eval(sprintf("%3.2f",detail.discount)) %>
+              <td><%= detail.observation%>
+              <td><%= number_to_currency_py(detail.subtotal) %></td>
+              <td><%= number_to_currency_py(detail.total) %>
             </tr>
         <% end %>
         </tbody>
@@ -56,3 +56,9 @@
     </div>
   </div>
 </div>
+<style>
+  td {
+    width: 11em;
+    word-wrap: break-word;
+  }
+</style>
