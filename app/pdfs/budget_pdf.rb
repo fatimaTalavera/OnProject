@@ -64,7 +64,7 @@ class BudgetPdf < Prawn::Document
   def rubros_rows
     [["Rubro","Cantidad" , "Unid. Medida", "Precio Unitario", "Subtotal"]] +
         @budget.budget_details.map do |detail|
-          [detail.rubro_name, detail.quantity, detail.rubro_measurement_unit, price(detail.price), price(detail.subtotal)]
+          [detail.rubro_name, detail.quantity, detail.measurement_unit, price(detail.price), price(detail.subtotal)]
         end
   end
 
