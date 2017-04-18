@@ -4,15 +4,10 @@ class CertificationDetail < ApplicationRecord
   delegate :name, to: :employee, prefix: true
   after_create :subtotal, :total
 
-  #valida solo numeros
-  VALID_LETTER_REGEX = /\A([a-zA-Z]|[a-zA-Z][\. ])+\z/
-  #cadena de letras con numeros
-  VALID_LETTER_NUMBER_REGEX = /\A^(?:[A-Za-z]+)(?:[A-Za-z0-9 _]*)$\z/
-
   validates :employee_id, :presence => {:message => "Seleccione un jornalero"}
   validates :quantity, :presence => {:message => "Ingrese cantidad"},
             :numericality => { :greater_than_or_equal_to => 0,
-                               :less_than_or_equal_to => 9999, message: "No puede ser negativo y debe ser menor o igual a 9.999"}
+                               :less_than_or_equal_to => 365, message: "No puede ser negativo y debe ser menor o igual a 365"}
 
   validates :pay,  :presence => {:message => "Ingrese jornal"},
             :numericality => { :greater_than_or_equal_to => 0,
