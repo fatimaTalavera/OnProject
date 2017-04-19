@@ -2,10 +2,10 @@
     <div class="box-body">
       <div class="field col-md-12 form-group">
         <div class="field col-md-6 form-group">
-          <div class="col-md-3">
+          <div class="col-md-2">
             <%= f.label :name, 'Nombre:', :class => 'control-label tooltip_required' %>
           </div>
-          <div class="col-md-5">
+          <div class="col-md-6">
             <%= f.text_field :name, :class => 'form-control', autofocus:true, :maxlength => 30 %>
           </div>
         </div>
@@ -14,7 +14,7 @@
           <div class="col-md-2">
             <%= f.label :last_name, 'Apellido:', :class => 'control-label tooltip_required' %>
           </div>
-          <div class="col-md-5">
+          <div class="col-md-7">
             <%= f.text_field :last_name, :class => 'form-control', autofocus:true, :maxlength => 30 %>
           </div>
         </div>
@@ -22,11 +22,11 @@
 
       <div class="field col-md-12 form-group">
         <div class="field col-md-6 form-group">
-          <div class="col-md-3">
+          <div class="col-md-2">
             <%= f.label :identification_document, 'CI:', :class => 'control-label tooltip_required' %>
           </div>
           <div class="col-md-5">
-            <%= f.number_field :identification_document, :class => 'form-control', :maxlength => 10 %>
+            <%= f.text_field :identification_document, id:'ci', :class => 'form-control' %>
           </div>
         </div>
 
@@ -34,7 +34,7 @@
           <div class="col-md-2">
             <%= f.label :email, 'Correo:', :class => 'control-label' %>
           </div>
-          <div class="col-md-5">
+          <div class="col-md-6">
             <%= f.text_field :email, :class => 'form-control', :maxlength => 30 %>
           </div>
         </div>
@@ -42,11 +42,11 @@
 
       <div class="field col-md-12 form-group">
         <div class="field col-md-6 form-group">
-          <div class="col-md-3">
+          <div class="col-md-2">
             <%= f.label :address, 'Direccion:', :class => 'control-label' %>
           </div>
           <div class="col-md-9">
-            <%= f.text_field :address, :class => 'form-control', :maxlength => 150 %>
+            <%= f.text_area :address, :class => 'form-control', :maxlength => 150 %>
           </div>
         </div>
 
