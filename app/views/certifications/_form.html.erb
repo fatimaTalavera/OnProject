@@ -19,6 +19,16 @@
             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
           </div>
         </div>
+        <div class="field col-md-12 form-group">
+          <div class="field col-md-6 form-group">
+            <div class="col-md-3">
+              <%= f.label :state, 'Estado:', :class => 'control-label tooltip_required' %>
+            </div>
+            <div class="col-md-7">
+              <%= f.select :state, Certification.states_types.keys, {prompt: 'Selecciona un estado'}, :class => 'form-control' %>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="col-md-12">
