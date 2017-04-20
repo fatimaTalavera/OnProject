@@ -1,0 +1,6 @@
+# version: es la versión actual de la aplicacion
+# vX.Y.Z - rev    X: Release estable
+#                 Y: Release de cada sprint
+#                 Z: Fixes
+#                 rev: Ultimo commmit
+version: 'v0.3.0 - '
