@@ -1,5 +1,5 @@
 class Employee < ApplicationRecord
-  has_many :internal_certifications
+  has_many :certifications
   VALID_LETTER_REGEX = /\A([a-zA-Z]|[a-zA-Z][\. ])+\z/
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]{1,4}\z/i
 
@@ -21,7 +21,7 @@ class Employee < ApplicationRecord
   validates :phone, :uniqueness => {:message => "El numero ya existe"}, :allow_blank => true
   before_validation :rem_guion_to_ci
 
-  def rem_guion_guion_to_ci
+  def rem_guion_to_ci
     self.identification_document = identification_document.to_s.gsub(/\D/, '')
   end
 end

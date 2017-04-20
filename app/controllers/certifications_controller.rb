@@ -55,6 +55,6 @@ class CertificationsController < ApplicationController
     end
 
     def certification_params
-      params.require(:certification).permit(:contract_id, :date, :certification_details_attributes => [:id, :employee_id, :quantity, :pay, :discount, :observation, :subtotal, :total, :_destroy])
+      params.require(:certification).permit(:contract_id, :date, :state, :certification_details_attributes => [:id, :employee_id, :quantity, :pay, :discount, :observation, :subtotal, :total, :_destroy])
     end
 end

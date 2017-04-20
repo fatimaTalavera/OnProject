@@ -1,7 +1,7 @@
 class Certification < ApplicationRecord
   belongs_to :contract
   has_many :certification_details
-
+  enum states_type: [:pendiente, :aprobado, :terminado, :rechazado]
   delegate :name, to: :contract, prefix: true
   accepts_nested_attributes_for :certification_details, allow_destroy: true
 
