@@ -11,7 +11,7 @@ class User < ApplicationRecord
   validate :valid_content_type
   #end
 
-  devise :database_authenticatable, :confirmable,
+  devise :database_authenticatable,
          :recoverable, :rememberable, :trackable
 
   validates :first_name, presence: true, length: {maximum: 40, minimum: 2}

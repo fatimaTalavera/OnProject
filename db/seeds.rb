@@ -12,7 +12,6 @@
 @rol.permissions << @permission
 @superuser = User.new first_name: 'Super', last_name: 'Admin', email: 'admin@admin.com', password: '12341234'
 @superuser.role = @rol
-@superuser.skip_confirmation!
 @superuser.save!
 
 # Datos por defecto para la empresa
