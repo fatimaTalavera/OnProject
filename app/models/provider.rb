@@ -8,7 +8,7 @@ class Provider < ApplicationRecord
   VALID_LETTER_NUMBER_REGEX = /\A^(?:[A-Za-z]+)(?:[A-Za-z0-9 _]*)$\z/
 
   validates :name,  :presence => {:message => "No puede estar en blanco"},
-            :length => { maximum:30, :message => "Permite hasta 30 caracteres"},
+            :length => { maximum:100, :message => "Permite hasta 100 caracteres"},
             format: { :with => VALID_LETTER_REGEX, message: "Solo permite letras"}
 
   validates :ruc, :presence => {:message => "No puede estar en blanco"},

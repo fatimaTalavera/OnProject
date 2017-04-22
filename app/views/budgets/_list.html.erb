@@ -16,7 +16,11 @@
         <td><%= budget.client_name%></td>
         <td><%= budget.date %></td>
         <td><%= budget.description %></td>
-        <td><%= budget.state %></td>
+        <% if budget.state == "Aprobado"%>
+        <td class="bg-green"><%= budget.state %></td>
+            <% else%>
+            <td><%= budget.state %></td>
+            <% end %>
         <td><%= number_to_currency_py(budget.total_amount) %></td>
         <td>
           <%= link_to "<i class=\"fa fa-eye\"></i>".html_safe, budget_path(budget), {:class => "btn btn-xs bg-teal btn-flat"} %>
