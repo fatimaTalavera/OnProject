@@ -102,6 +102,11 @@ es:
         new: Agregar cta. cte. jornalero
         edit: Editar cta. cte. jornalero
         show: Cta. cte. jornalero
+      purchase_bills:
+        index: Facturas de Compra
+        new: Agregar
+        edit: Editar
+        show: "Factura Nro. %{purchase}"
 
     login:
       messages:

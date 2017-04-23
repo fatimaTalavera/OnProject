@@ -1,58 +1,70 @@
 <div class="box box-success">
-  <div class="box-header with-border">
-    <h3 class="box-title"><%= t('helpers.title.purchase_bill.show') %></h3>
+  <div class="box-header">
+    <h3 class="box-title">Factura Nro. <%= @purchase_bill.number %></h3>
   </div>
   <div class="box-body">
-    <div class="col-md-12 form-group">
-      <div class="col-md-3">
-        <strong>Proveedor:</strong>
-        <%= @purchase_bill.provider_name %>
-      </div>
-      <div class="col-md-3">
-        <strong>Condicion:</strong>
-        <%= @purchase_bill.condition %>
-      </div>
-      <div class="col-md-3">
-        <strong>Numero:</strong>
-        <%= @purchase_bill.number %>
-      </div>
-      <div class="col-md-3">
-        <strong>Fecha:</strong>
-        <%= @purchase_bill.date.strftime("%d/%m/%Y") %>
+    <div class="row">
+      <div class="col-md-9">
+        <div class="row">
+          <div class="col-sm-4">
+            <label class="control-label">Fecha</label>
+            <p><%= l @purchase_bill.date, format: :default%></p>
+          </div>
+          <div class="col-sm-4">
+            <label class="control-label">Cliente</label>
+            <p><%= @purchase_bill.provider_name %></p>
+          </div>
+          <div class="col-sm-4">
+            <label class="control-label">Condición de compra</label>
+            <p><%= @purchase_bill.condition %></p>
+          </div>
+        </div>
       </div>
     </div>
-
-    <% @total = 0 %>
-    <div class="col-md-12 form-group">
-      <div class="col-md-8">
-        <table class="table table-bordered table-condensed", cellspacing="0" width="100%">
-          <thead>
-          <tr>
-            <th>Material</th>
-            <th>Cantidad</th>
-            <th>Subtotal</th>
-          </tr>
-          </thead>
-          <tbody>
-          <% @purchase_bill.purchase_details.each do |detalle| %>
-              <td><%= detalle.material.name %></td>
-              <td><%= detalle.quantity %></td>
-              <td><%= detalle.quantity * detalle.price %></td>
-              <% @total = @total +  (detalle.quantity * detalle.price)%>
-          <% end %>
-          </tbody>
-          <tfoot>
-          <td></td>
-          <td><b>Total:</b></td>
-          <td><%= @total %></td>
-          </tfoot>
-        </table>
+    <br><br>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="nav-tabs-custom">
+          <ul class="nav nav-tabs">
+            <li class="active"><a href="#tab_1" data-toggle="tab">Materiales</a></li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane active" id="tab_1">
+              <table class="table table-bordered table-condensed", cellspacing="0" width="100%">
+                <thead>
+                  <tr>
+                    <th>Material</th>
+                    <th>Cantidad</th>
+                    <th>Precio Unitario</th>
+                    <th>Subtotal</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @purchase_bill.purchase_details.each do |d| %>
+                      <tr>
+                        <td><%= d.material.name %></td>
+                        <td class="text-right"><%= d.quantity %></td>
+                        <td class="text-right"><%= d.price %></td>
+                        <td class="text-right"><%= d.total %></td>
+                      </tr>
+                  <% end %>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <td colspan="3" class="text-bold text-right">Total:</td>
+                    <td class="text-bold text-right"><%= @purchase_bill.total %></td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+        </div>
       </div>
-
     </div>
   </div>
   <div class="box-footer">
     <div class="pull-right">
+      <%= link_to t('button.edit'), edit_purchase_bill_path(@purchase_bill), {:class => "btn btn-flat bg-blue"} %>
       <%= link_to t('button.back'), url_for(:back), {:class => "btn btn-flat btn-default"} %>
     </div>
   </div>

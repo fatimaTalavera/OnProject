@@ -1,88 +1,82 @@
 <%= nested_form_for purchase_bill, validate: true, :html => { class: 'form-horizontal' } do |f| %>
-    <div class="box-body">
-      <div class="field col-md-12 form-group">
-        <div class="field col-md-6 form-group">
+  <div class="box-body">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="field col-md-4 form-group">
           <div class="col-md-3">
-            <%= f.label :number, 'Numero:', :class => 'control-label tooltip_required' %>
+            <%= f.label :date, 'Fecha:', :class => 'control-label  tooltip_required' %>
+          </div>
+          <div class="col-md-7">
+            <div class="input-group">
+              <%= f.text_field :date, :class => 'form-control datepicker' %>
+              <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+            </div>
+          </div>
+        </div>
+        <div class="field col-md-4 form-group">
+          <div class="col-md-3">
+            <%= f.label :provider, 'Proveedor:', :class => 'control-label  tooltip_required' %>
+          </div>
+          <div class="col-md-7">
+            <div class="input-group">
+              <%= f.collection_select(:provider_id, Provider.all, :id, :name, {prompt: 'Buscar Proveedor'}, :class => 'form-control select2 people-search') %>
+              <span class="input-group-btn">
+                <%= link_to "<i class=\"fa fa-plus\"></i>".html_safe, new_provider_path, {:class => "btn btn-flat bg-green", :title => "Agregar Proveedor"} %>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="field col-md-4 form-group">
+          <div class="col-md-3">
+            <%= f.label :condition, 'Condición:', :class => 'control-label  tooltip_required' %>
+          </div>
+          <div class="col-md-7">
+            <div class="btn-group" data-toggle="buttons">
+              <label class="btn btn-default">
+                <%= f.radio_button :condition, 'Contado', :class => 'radio_group_buttons required' %> Contado
+              </label>
+              <label class="btn btn-default">
+                <%= f.radio_button :condition, 'Crédito', :class => 'radio_group_buttons required' %> Crédito
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="field col-md-5 form-group">
+          <div class="col-md-4">
+            <%= f.label :number, 'Número de boleta:', :class => 'control-label tooltip_required' %>
           </div>
           <div class="col-md-6">
-            <%= f.number_field :number, :class => 'form-control' %>
+            <%= f.text_field :number, :class => 'form-control' %>
           </div>
         </div>
-          <div class="field col-md-6 form-group">
-            <div class="col-md-3">
-              <%= f.label :provider, 'Proveedor:', :class => 'control-label tooltip_required' %>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="box box-success">
+            <div class="box-header with-border">
+              <h3 class="box-title">Seleccionar Materiales</h3>
             </div>
-            <div class="col-md-8">
-              <%= f.collection_select(:provider_id, Provider.all, :id, :name, {prompt: 'Seleccionar'}, :class => 'form-control') %>
-            </div>
-          </div>
-       </div>
-
-        <div class="field col-md-12 form-group">
-          <div class="field col-md-6 form-group">
-            <div class="col-md-3">
-              <%= f.label :condition, 'Condicion:', :class => 'control-label tooltip_required' %>
-            </div>
-            <div class="col-md-6">
-              <%= f.select(:condition, ["Contado", "Credito"], {prompt: 'Seleccionar'}, :class => 'form-control') %>
-            </div>
-          </div>
-          <div class="field col-md-6 form-group">
-            <div class="col-md-3">
-              <%= f.label :date, 'Fecha:', :class => 'control-label tooltip_required' %>
-            </div>
-            <div class="input-group col-md-6">
-              <%= f.text_field :date, :id => 'datepickerFrom', :class => 'input-group date form-control datepicker', :value => Date.today.strftime("%d/%m/%Y") %><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-            </div>
-          </div>
-        </div>
-
-      <div class="col-md-8">
-        <div class="box box-success">
-          <div class="box-header with-border">
-            <h3 class="box-title">Detalles de factura</h3>
-          </div>
             <div class="box-body">
-              <table class="table table-bordered">
-                <tr>
-                  <th class="col-md-4">Material</th>
-                  <th class="col-md-3">Cantidad</th>
-                  <th class="col-md-4">Precio</th>
-                  <th class="col-md-1"></th>
-                </tr>
-                <tbody>
-                <%= f.fields_for :purchase_details, :wrapper => false do |form| %>
-                    <tr class="fields">
-                      <td class="col-md-5"><%=form.collection_select(:material_id, Material.all, :id, :name, {prompt: 'Seleccionar'}, class: 'form-control')%></td>
-                      <td class="col-md-3"><%=form.number_field :quantity, class: 'form-control'%></td>
-                      <td class="col-md-3"><%=form.number_field :price, class: 'form-control'%></td>
-                      <td class="col-md-1"><%=form.link_to_remove '<i class="fa  fa-trash-o"></i>'.html_safe, class: 'btn btn-danger'%></td>
-                    </tr>
-                <% end %>
-                <tr>
-                  <td><%=f.link_to_add '<i class="fa fa-plus"></i>'.html_safe, :purchase_details, class: 'btn btn-success insert_in_table'%></td>
-                </tr>
-                </tbody>
-              </table>
+              <%= render 'details_table', :f => f, :purchase_bill => @purchase_bill%>
             </div>
-
+          </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <div class="box-footer">
-      <div class="pull-right">
-        <% if controller.action_name == 'edit'  %>
-            <%= f.submit 'Guardar', :class => "btn btn-primary active" %>
-        <% else %>
-            <%= f.submit 'Guardar', :class => 'btn btn-primary active'%>
-        <% end %>
-        <%= link_to 'Cancelar',  purchase_bills_path , class: 'btn btn-default' %>
-      </div>
+  <div class="box-footer clearfix">
+    <div class="pull-right">
+      <%= f.submit t('button.save'), :class => "btn btn-flat bg-blue" %>
+      <%= link_to t('button.cancel'),  purchase_bills_path , class: 'btn btn-flat btn-default' %>
     </div>
+  </div>
 <% end %>
 
-
-
-
+<script type="text/javascript">
+  Purchase.setSearchProvider('<%= providers_search_path %>');
+  Purchase.setSearchMaterial('<%= materials_search_path %>');
+</script>

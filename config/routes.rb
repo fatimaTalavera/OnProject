@@ -5,11 +5,13 @@ Rails.application.routes.draw do
   resources :certifications, except: [:destroy]
   resources :client_certifications
   resources :employees
-  resources :purchase_bills, except: [:edit, :update]
+  resources :purchase_bills
+  get 'providers/search' => 'providers#search'
   resources :providers
   resources :services
   resources :contracts
   resources :clients
+  get 'materials/search' => 'materials#search'
   resources :materials
   resources :movement_details
   resources :material_movements

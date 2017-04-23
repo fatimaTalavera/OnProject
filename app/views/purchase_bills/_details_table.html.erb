@@ -1,0 +1,32 @@
+<table class="table table-bordered" id="purchase-table">
+  <thead>
+    <tr>
+      <th class="col-md-4">Material</th>
+      <th>Cantidad</th>
+      <th>Precio Unitario</th>
+      <th>Subtotal</th>
+      <th class="table-actions"></th>
+    </tr>
+  </thead>
+  <tbody id="details-body">
+    <%= f.fields_for :purchase_details, :wrapper => false do |form| %>
+      <tr class="fields">
+        <td class="col-md-4">
+          <%= form.collection_select :material_id, Material.all, :id, :name, {prompt: 'Buscar Material'}, {class: "form-control select2 material-search"} %>
+        </td>
+        <td><%=form.text_field :quantity, class: 'form-control qty text-right'%></td>
+        <td><%=form.text_field :price, class: 'form-control unit-price text-right'%></td>
+        <td class="subtotal text-right"><%= form.object.total ? form.object.total : 0 %></td>
+        <td><%=form.link_to_remove '<i class="fa fa-trash-o"></i>'.html_safe, class: 'btn btn-flat bg-red', title: 'Eliminar material'%></td>
+      </tr>
+    <% end %>
+    <tr>
+      <td colspan="2">
+        <%= f.link_to_add 'Agregar Material'.html_safe, :purchase_details, class: 'btn btn-flat bg-green insert_in_table', title: 'Agregar material' %>
+      </td>
+      <td class="text-right text-bold">Total:</td>
+      <td class="table-total text-right"><%= purchase_bill.total ? purchase_bill.total : 0 %></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>

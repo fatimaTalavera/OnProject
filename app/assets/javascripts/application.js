@@ -78,13 +78,13 @@ OnProject = {
 
       BootstrapFilestyleHelper.filestyle('.file-style');
 
-      InputMaskHelper.tel_fax_mask('.tel-fax-mask');
-      InputMaskHelper.celphone_mask('.celphone-mask');
     }
   },
 
   // Iniciar los modulos
-  company_config: CompanyConfig
+  company_config: CompanyConfig,
+  purchase_bills: Purchase
+
 };
 
 var delay = (function(){

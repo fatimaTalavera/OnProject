@@ -5,6 +5,11 @@ class MaterialsController < ApplicationController
   before_action :load_permissions
   authorize_resource
 
+  def search
+    @materilas = Material.where('name ILIKE ?', "%#{params[:q][:term]}%")
+    render json: {items: @materilas, total_count: @materilas.count}
+  end
+
   # GET /materials
   # GET /materials.json
   def index
