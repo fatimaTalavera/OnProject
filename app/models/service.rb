@@ -1,4 +1,5 @@
 class Service < ApplicationRecord
+  audited
   has_many :rubro_service_details
   before_update :modify_subtotal_rubros
 

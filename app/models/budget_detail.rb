@@ -1,4 +1,5 @@
 class BudgetDetail < ApplicationRecord
+  audited
   belongs_to :budget
   belongs_to :rubro
 

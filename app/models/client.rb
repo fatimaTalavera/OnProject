@@ -1,4 +1,5 @@
 class Client < ApplicationRecord
+  audited
   has_many :contracts
 
   VALID_LETTER_REGEX = /\A([a-zA-Z]|[a-zA-Z][\. ])+\z/

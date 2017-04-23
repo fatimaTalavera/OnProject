@@ -1,4 +1,5 @@
 class Certification < ApplicationRecord
+  audited
   belongs_to :contract
   has_many :certification_details
   enum states_type: [:pendiente, :aprobado, :terminado, :rechazado]

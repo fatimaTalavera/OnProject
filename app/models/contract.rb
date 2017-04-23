@@ -1,4 +1,5 @@
 class Contract < ApplicationRecord
+  audited
   belongs_to :client, required: true
   has_many :material_movements
   has_many :client_certifications

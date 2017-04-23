@@ -1,4 +1,5 @@
 class ClientCertificationDetail < ApplicationRecord
+  audited
   belongs_to :client_certification
   belongs_to :rubro
 

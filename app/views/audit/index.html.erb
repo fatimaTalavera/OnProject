@@ -1,0 +1,17 @@
+<div class="box box-success">
+  <div class="box-header with-border box-success">
+    <h3 class="box-title">Auditoría</h3>
+    </div>
+  <div class="box-body">
+    <div class="overlay-wrapper searchResult table-responsive" id="audits-table">
+      <%= render 'list', :audits => @audits %>
+    </div>
+  </div>
+  <div class="box-footer clearfix">
+    <div id="paginate-container">
+      <ul class="pagination pagination-sm no-margin pull-right">
+        <%= paginate @audits %>
+      </ul>
+    </div>
+  </div>
+</div>

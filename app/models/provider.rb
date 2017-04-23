@@ -1,5 +1,5 @@
 class Provider < ApplicationRecord
-
+  audited
   VALID_LETTER_REGEX = /\A([a-zA-Z]|[a-zA-Z][\. ])+\z/
   VALID_NUMBER_REGEX = /\A^-?([0-9]|(\-[0-9]))*$\z/
   VALID_RUC_REGEX = /\A\d{5,9}[-]?\d{1}\z/

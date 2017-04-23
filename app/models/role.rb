@@ -1,4 +1,5 @@
 class Role < ApplicationRecord
+  audited
   has_many :users
   has_many :permissions, :dependent => :delete_all
   accepts_nested_attributes_for :permissions, allow_destroy: true

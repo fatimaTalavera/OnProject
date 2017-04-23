@@ -1,4 +1,5 @@
 class RubroMaterialDetail < ApplicationRecord
+  audited
   belongs_to :material
   belongs_to :rubro, required: false
   before_create :calculate_subtotal
