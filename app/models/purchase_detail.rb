@@ -1,4 +1,5 @@
 class PurchaseDetail < ApplicationRecord
+  audited
   belongs_to :material
   belongs_to :purchase_bill, required: false
   before_create :add_material

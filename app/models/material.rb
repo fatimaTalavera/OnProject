@@ -1,4 +1,5 @@
 class Material < ApplicationRecord
+  audited
   has_many :rubro_material_details
   before_update :modify_subtotal_rubros
 

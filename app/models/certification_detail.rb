@@ -1,4 +1,5 @@
 class CertificationDetail < ApplicationRecord
+  audited
   belongs_to :certification
   belongs_to :employee
   delegate :name, to: :employee, prefix: true

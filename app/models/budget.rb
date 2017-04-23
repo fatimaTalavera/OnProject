@@ -1,4 +1,5 @@
 class Budget < ApplicationRecord
+  audited
   belongs_to :client
   belongs_to :contract
   has_many :budget_details

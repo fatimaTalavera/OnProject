@@ -1,0 +1,23 @@
+<table class="table table-bordered table-condensed">
+  <thead>
+  <tr>
+    <th>Modelo</th>
+    <th>id</th>
+    <th>Usuario</th>
+    <th>Acción</th>
+    <th>Cambios</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% audits.each do |audit| %>
+      <tr>
+        <td><%= audit.auditable_type%></td>
+        <td><%= audit.auditable_id %></td>
+        <td><%= audit.user_id %></td>
+        <td><%= audit.action %></td>
+        <td><%= audit.audited_changes %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

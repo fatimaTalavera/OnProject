@@ -1,4 +1,5 @@
 class PurchaseBill < ApplicationRecord
+  audited
   belongs_to :provider
   delegate :name, :ruc, to: :provider, prefix: true
 

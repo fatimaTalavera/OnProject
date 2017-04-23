@@ -1,4 +1,5 @@
 class Rubro < ApplicationRecord
+  audited
   belongs_to :material
   belongs_to :service
   has_many :rubro_material_details

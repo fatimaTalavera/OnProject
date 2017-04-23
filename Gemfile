@@ -22,6 +22,7 @@ gem 'cloudinary'
 gem 'cancan'
 gem 'ruby-enum'
 gem "mini_magick"
+gem "audited", "~> 4.4"
 group :development, :test do
   gem 'byebug', platform: :mri
 end

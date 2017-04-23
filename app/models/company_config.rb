@@ -1,4 +1,5 @@
 class CompanyConfig < ApplicationRecord
+  audited
   require 'carrierwave/orm/activerecord'
   #if Rails.env.development?
   #  mount_uploader :avatar, AvatarUploader # localhost

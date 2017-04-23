@@ -1,4 +1,5 @@
 class MovementDetail < ApplicationRecord
+  audited
   belongs_to :material_movement, required: false
   belongs_to :material
   before_create :withdraw_material

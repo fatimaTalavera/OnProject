@@ -1,4 +1,5 @@
 class RubroServiceDetail < ApplicationRecord
+  audited
   belongs_to :service
   belongs_to :rubro, required: false
   before_create :calculate_subtotal
