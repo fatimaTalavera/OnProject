@@ -45,7 +45,7 @@
             <%= f.label :state, 'Estado:', :class => 'control-label tooltip_required' %>
           </div>
           <div class="col-sm-5 ">
-            <%= f.select(:state, ["Pendiente", "Aprobado"], {prompt: '< Seleccionar >'}, :class => 'form-control') %>
+            <%= f.select(:state, ["Pendiente","En estudio", "Aprobado", "Cancelado"], {prompt: '< Seleccionar >'}, :class => 'form-control') %>
           </div>
         </div>
       </div>
