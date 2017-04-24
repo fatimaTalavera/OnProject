@@ -3,7 +3,11 @@
 
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><%= content_for?(:title) ? yield(:title) : "On Project" %></title>
+  <% action = '' %>
+  <% if action_name != 'index' %>
+      <% action = '/' + t('helpers.menu.' + (action_name)) %>
+  <% end %>
+  <title><%= content_for?(:title) ? yield(:title) : "On Project - " + t('helpers.menu.' + (controller_name)) + action %></title>
   <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "On Project" %>">
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
@@ -15,7 +19,7 @@
 
   <header class="main-header">
     <a href="
-      <% root_path %>" class="logo">
+      <%= root_path %>" class="logo">
       <span class="logo-mini"><%= cl_image_tag CompanyConfig.first.avatar_url(:thumb) if CompanyConfig.first.avatar? %></span>
       <span class="logo-lg"><%= CompanyConfig.first.name %></span>
     </a>
@@ -128,9 +132,9 @@
           <li><a href="<%= rubros_path %>"><i class="fa fa-check"></i> <span><%= t('helpers.menu.rubros') %></span></a></li>
         <% end %>
 
-
-            <li><a href="<%= audit_index_path %>"><i class="fa fa-bank"></i><span>Log de Auditoría</span></a></li>
-
+        <% if (can? :read, Audit) %>
+            <li><a href="<%= audit_index_path %>"><i class="fa fa-bars"></i><span><%= t('helpers.menu.audit') %></span></a></li>
+        <% end %>
 
         <% if (can? :edit_company, CompanyConfig) %>
           <li><a href="<%= edit_company_path %>"><i class="fa fa-bank"></i><span><%= t('helpers.menu.company_config') %></span></a></li>

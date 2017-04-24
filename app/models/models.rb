@@ -14,4 +14,5 @@ class Models
   define :Role, "Roles"
   define :Service, "Servicios"
   define :User, "Usuarios"
+  define :Audit, "Auditoría"
 end
