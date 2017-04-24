@@ -34,12 +34,12 @@ function getCertificationTotal(currentElement) {
     var subtotal = (undefined !== pay && undefined !== quantity)? pay * quantity : 0;
     var discount = (undefined !== discount && undefined !== subtotal)? discount/100 : 0;
     if(discount === 0){
-        self.find('.subtotal').text(Math.round(subtotal));
-        self.find('.total').text(Math.round(subtotal));
+        self.find('.subtotal').val(Math.round(subtotal));
+        self.find('.total').val(Math.round(subtotal));
     }else{
-        self.find('.subtotal').text(Math.round(subtotal));
+        self.find('.subtotal').val(Math.round(subtotal));
         subtotal = subtotal - (subtotal * discount);
-        self.find('.total').text(Math.round(subtotal));
+        self.find('.total').val(Math.round(subtotal));
     }
 
 };
