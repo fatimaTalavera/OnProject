@@ -54,34 +54,31 @@
       <div class="col-md-12">
         <div class="box box-success">
           <div class="box-header with-border">
-            <h3 class="box-title">Rubros</h3>
+            <h3 class="box-title">Rubros a certificar:</h3>
           </div>
           <div class="box-body">
             <table class="table table-bordered">
               <theah>
                 <tr>
-                  <th class="col-md-5">Rubro</th>
-                  <th class="col-md-2">Cantidad</th>
-                  <th class="col-md-2">Precio</th>
-                  <th class="col-md-2">Total</th>
-                  <th class="col-md-1"></th>
+                  <th class="col-md-3">Rubro</th>
+                  <th class="col-md-2">Cantidad hecha</th>
+                  <th class="col-md-2">Cantidad total</th>
+                  <th class="col-md-2">Precio(Gs)</th>
+                  <th class="col-md-2">Total(Gs)</th>
                 </tr>
               </theah>
               <tbody>
               <%= f.fields_for :client_certification_details, :wrapper => false do |form| %>
                   <tr class="fields" onchange='getRubroTotal(this);'>
-                    <td class="col-md-5"><%=form.collection_select(:rubro_id, Rubro.all, :id, :name, {prompt: 'Seleccionar'}, :onchange => 'getRubroPrice(this);', class: 'form-control')%></td>
-                    <td class="col-md-2"><%=form.number_field :quantity, class: 'form-control quantity'%></td>
+                    <td class="col-md-3"><%=form.collection_select(:rubro_id, Rubro.all, :id, :name, {prompt: 'Seleccionar'}, :onchange => 'getRubroPrice(this);', class: 'form-control')%></td>
+                    <td class="col-md-2"><%=form.number_field :quantity, class: 'form-control'%></td>
+                    <td class="col-md-2"><%=form.number_field :total_quantity, class: 'form-control quantity', :readonly => true%></td>
                     <td class="col-md-2"><%=form.number_field :price, class: 'form-control price', :readonly => true%></td>
                     <td class="col-md-2"><%=form.number_field :total, class: 'form-control total', :readonly => true%></td>
-                    <td class="col-md-1"><%=form.link_to_remove '<i class="fa  fa-trash-o"></i>'.html_safe, class: 'btn btn-danger'%></td>
                   </tr>
               <% end %>
-              <tr>
-                <td><%=f.link_to_add '<i class="fa fa-plus"></i>'.html_safe, :client_certification_details, class: 'btn btn-success insert_in_table'%></td>
-              </tr>
-            </tbody>
-           </table>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

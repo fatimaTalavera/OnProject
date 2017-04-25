@@ -35,7 +35,7 @@ class ClientCertificationsController < ApplicationController
 
     respond_to do |format|
       if @client_certification.save
-        format.html { redirect_to client_certifications_path, notice: 'Certificación de Cliente se creó correctamente' }
+        format.html { render :edit, notice: 'Certificación de Cliente se creó correctamente' }
         format.json { render :show, status: :created, location: @client_certification }
       else
         format.html { render :new }
@@ -69,20 +69,20 @@ class ClientCertificationsController < ApplicationController
   end
 
   private
-    def get_client_certifications
-      @q = ClientCertification.ransack(params[:q])
-      @q.sorts = ['contract_name asc', 'state asc'] if @q.sorts.empty?
-      @client_certifications = @q.result.page(params[:page])
-    end
+  def get_client_certifications
+    @q = ClientCertification.ransack(params[:q])
+    @q.sorts = ['contract_name asc', 'state asc'] if @q.sorts.empty?
+    @client_certifications = @q.result.page(params[:page])
+  end
 
-    # Use callbacks to share common setup or constraints between actions.
-    def set_client_certification
-      @client_certification = ClientCertification.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_client_certification
+    @client_certification = ClientCertification.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def client_certification_params
-      params.require(:client_certification).permit(:contract_id, :date, :state, :observation, :received,
-                                                   :client_certification_details_attributes => [:id, :rubro_id, :quantity, :price, :total, :_destroy])
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def client_certification_params
+    params.require(:client_certification).permit(:contract_id, :date, :state, :observation, :received,
+                                                 :client_certification_details_attributes => [:id, :rubro_id, :quantity, :total_quantity, :price, :total, :_destroy])
+  end
 end

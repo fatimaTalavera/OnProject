@@ -52,27 +52,33 @@
       </div>
     </div>
 
+    <div class="box-header with-border">
+      <h3 class="box-title">Rubros a certificar:</h3>
+    </div>
+
     <div class="col-md-12 form-group">
-        <table class="table table-bordered table-condensed">
-          <thead>
-          <tr>
-            <th class="col-md-4">Rubro</th>
-            <th class="col-md-3">Precio</th>
-            <th class="col-md-2">Cantidad</th>
-            <th class="col-md-3">Total</th>
-          </tr>
-          </thead>
-          <tbody>
-          <% @client_certification.client_certification_details.each do |detail| %>
-          <tr>
-            <td class="col-md-4"><%= detail.rubro.name %>
-            <td class="col-md-3"><%= detail.price %>
-            <td class="col-md-2"><%= detail.quantity %>
-            <td class="col-md-3"><%= detail.total %>
-          </tr>
-          <% end %>
-          </tbody>
-        </table>
+      <table class="table table-bordered table-condensed">
+        <thead>
+        <tr>
+          <th class="col-md-3">Rubro</th>
+          <th class="col-md-2">Precio</th>
+          <th class="col-md-2">Cantidad hecha</th>
+          <th class="col-md-2">Cantidad total</th>
+          <th class="col-md-3">Total</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @client_certification.client_certification_details.each do |detail| %>
+            <tr>
+              <td class="col-md-3"><%= detail.rubro.name %>
+              <td class="col-md-2"><%=  number_to_currency_py(detail.price) %>
+              <td class="col-md-2"><%= detail.quantity %>
+              <td class="col-md-2"><%= detail.total_quantity %>
+              <td class="col-md-3"><%= number_to_currency_py(detail.total) %>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
     </div>
 
   </div>
