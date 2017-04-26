@@ -1,5 +1,6 @@
 class Models
   include Ruby::Enum
+  define :Audit, "Auditoría"
   define :Budget, "Presupuestos"
   define :Certification, "Certificación Interna"
   define :Client, "Clientes"
@@ -14,5 +15,4 @@ class Models
   define :Role, "Roles"
   define :Service, "Servicios"
   define :User, "Usuarios"
-  define :Audit, "Auditoría"
 end
