@@ -55,8 +55,8 @@
                       <td><%=certification.number_field :pay, class: 'form-control pay', min:0, max:9999999999, id:'pay' %></td>
                       <td><%=certification.number_field :discount, class: 'form-control discount', min:0, max:100, id:'discount' %></td>
                       <td><%=certification.text_area :observation, class: 'form-control', maxlength: 200 %></td>
-                      <td class='subtotal'>0</td>
-                      <td class='total'>0</td>
+                      <td><%=certification.number_field :subtotal, class: 'form-control subtotal', readonly:true%></td>
+                      <td><%=certification.number_field :total, class: 'form-control total', readonly:true%></td>
                       <td><%=certification.link_to_remove '<i class="fa  fa-trash-o"></i>'.html_safe, class: 'btn btn-danger' %></td>
                       <br>
                     </tr>
