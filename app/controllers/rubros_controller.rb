@@ -2,6 +2,7 @@ class RubrosController < ApplicationController
   before_action :set_rubro, only: [:show, :edit, :update, :destroy]
   before_action :load_permissions
   authorize_resource
+  add_breadcrumb I18n.t('helpers.breadcrumbs.rubros.index'), :rubros_path
 
   # GET /rubros
   # GET /rubros.json
@@ -12,15 +13,18 @@ class RubrosController < ApplicationController
   # GET /rubros/1
   # GET /rubros/1.json
   def show
+    add_breadcrumb I18n.t('helpers.breadcrumbs.rubros.show')
   end
 
   # GET /rubros/new
   def new
+    add_breadcrumb I18n.t('helpers.breadcrumbs.rubros.new')
     @rubro = Rubro.new
   end
 
   # GET /rubros/1/edit
   def edit
+    add_breadcrumb I18n.t('helpers.breadcrumbs.rubros.edit')
   end
 
   # POST /rubros
