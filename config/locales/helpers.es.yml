@@ -91,6 +91,11 @@ es:
         new: Agregar
         edit: Editar
         show: Certificación Interna
+      rubros:
+        index: Rubros
+        new: Agregar
+        edit: Editar
+        show: Rubro
 
     login:
       messages:
