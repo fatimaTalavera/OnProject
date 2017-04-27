@@ -9,6 +9,7 @@ class Certification < ApplicationRecord
 
   validates :contract_id, :presence => {:message => "Seleccione una obra"}
   validates :date, :presence => {:message => "Seleccione una fecha"}
+  validates :state, :presence => {:message => "Seleccione una fecha"}
   validate :is_detail
 
 
