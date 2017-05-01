@@ -18,7 +18,9 @@
         <td><%= client_certification.received %></td>
         <td>
           <%= link_to "<i class=\"fa fa-eye\"></i>".html_safe, client_certification_path(client_certification), {:class => "btn btn-xs bg-teal btn-flat"} %>
+          <% if (can? :update, ClientCertification) %>
           <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_client_certification_path(client_certification), {:class => "btn btn-xs bg-orange btn-flat"} %>
+              <% end %>
         </td>
       </tr>
   <% end %>

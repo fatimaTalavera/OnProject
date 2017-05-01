@@ -21,7 +21,9 @@
         <td>
           <%= link_to "<i class=\"fa fa-eye\"></i>".html_safe, budget_path(budget), {:class => "btn btn-xs bg-teal btn-flat"} %>
           <% if budget.state == "Pendiente" %>
+              <% if (can? :update, Budget) %>
           <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_budget_path(budget), {:class => "btn btn-xs bg-orange btn-flat"} %>
+              <% end %>
         <% elsif budget.state == "Aprobado" %>
 
           <%end %>

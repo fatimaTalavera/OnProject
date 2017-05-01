@@ -17,7 +17,9 @@
           <td><%= l user.created_at, format: :long%></td>
           <td>
             <%= link_to "<i class=\"fa fa-eye\"></i>".html_safe, user_path(user), {:class => "btn btn-xs bg-teal btn-flat"} %>
+            <% if (can? :update, User) %>
             <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_user_path(user), {:class => "btn btn-xs bg-orange btn-flat"} %>
+                <% end %>
           </td>
         </tr>
       <% end %>

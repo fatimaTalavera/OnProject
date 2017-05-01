@@ -79,10 +79,12 @@
       </div>
     </div>
     <div class="pull-right">
+      <% if (can? :update, Budget) %>
       <% if @budget.state == "Pendiente" %>
       <%= link_to 'Editar', edit_budget_path(@budget), :class => 'btn btn-flat bg-blue'%>
           <% elsif @budget.state == "Aprobado" %>
       <% end %>
+          <% end %>
     </div>
   </div>
 </div>

@@ -55,7 +55,9 @@
       </div>
         <div class="box-footer">
           <div class="pull-right">
+            <% if (can? :update, Client) %>
             <%= link_to 'Editar', edit_client_path(@client), :class => 'btn btn-primary active' %>
+                <% end %>
             <%= link_to 'Atras', clients_path, :class => 'btn btn-default' %>
           </div>
         </div>

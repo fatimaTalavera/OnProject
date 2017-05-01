@@ -1,7 +1,9 @@
 <div class="box box-success">
   <div class="box-header with-border box-success">
     <h3 class="box-title"><%= t('helpers.title.user.list') %></h3>
-    <%= link_to "<i class=\"fa fa-plus\"></i>".html_safe, new_user_path, {:class => "btn btn-sm btn-flat bg-green btn-title", :title => "Agregar Usuario"} %>
+    <% if (can? :create, User) %>
+        <%= link_to "<i class=\"fa fa-plus\"></i>".html_safe, new_user_path, {:class => "btn btn-sm btn-flat bg-green btn-title", :title => "Agregar Usuario"} %>
+    <% end %>
   </div>
   <div class="box-body">
     <div class="user-search searchList">

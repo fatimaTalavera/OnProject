@@ -67,7 +67,9 @@
   </div>
   <div class="box-footer">
     <div class="pull-right">
+      <% if (can? :update, Role) %>
       <%= link_to t('button.edit'), edit_role_path(@role), {:class => "btn btn-flat bg-blue"} %>
+          <% end %>
       <%= link_to t('button.back'), url_for(:back), {:class => "btn btn-flat btn-default"} %>
     </div>
   </div>
