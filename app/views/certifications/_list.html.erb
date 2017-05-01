@@ -3,6 +3,7 @@
   <tr>
     <th>Contrato</th>
     <th>Fecha</th>
+    <th>Estado</th>
     <th class="table-actions"></th>
   </tr>
   </thead>
@@ -12,11 +13,22 @@
       <tr>
         <td><%= certification.contract_name %></td>
         <td><%= certification.date %></td>
+        <% if certification.state == "aprobado"%>
+            <td class="bg-green"><%= certification.state %></td>
+        <%elsif certification.state == "pendiente" %>
+            <td class="bg-orange"><%= certification.state %></td>
+        <%elsif certification.state == "rechazado" %>
+            <td class="bg-red"><%= certification.state %></td>
+        <% elsif certification.state == "terminado"%>
+            <td  class="bg-gray disable"><%= certification.state %></td>
+        <% end %>
         <td>
           <%= link_to "<i class=\"fa fa-eye\"></i>".html_safe, certification_path(certification), {:class => "btn btn-xs bg-teal btn-flat"} %>
-          <% if (can? :update, Certification) %>
-          <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_certification_path(certification), {:class => "btn btn-xs bg-orange btn-flat"} %>
-              <% end %>
+          <% if certification.state != "terminado"%>
+            <% if (can? :update, Certification) %>
+              <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_certification_path(certification), {:class => "btn btn-xs bg-orange btn-flat"} %>
+            <% end %>
+          <% end %>
         </td>
       </tr>
   <% end %>

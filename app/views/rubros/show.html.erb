@@ -18,7 +18,7 @@
       </div>
       <div class="col-md-3">
         <strong>Precio:</strong>
-        <%= @rubro.final_price.to_i %>
+        <%= number_to_currency_py(@rubro.final_price.to_i) %>
       </div>
     </div>
 
@@ -37,9 +37,9 @@
           <% @rubro.rubro_material_details.each do |detalle| %>
           <tr>
               <td><%= detalle.material.name %></td>
-              <td><%= detalle.material.price.to_i %></td>
+              <td><%= number_to_currency_py(detalle.material.price.to_i) %></td>
               <td><%= detalle.quantity %></td>
-              <td><%= detalle.subtotal.to_i %></td>
+              <td><%= number_to_currency_py(detalle.subtotal.to_i) %></td>
           </tr>
           <% end %>
           </tbody>
@@ -55,9 +55,9 @@
           <% @rubro.rubro_service_details.each do |detalle| %>
           <tr>
               <td><%= detalle.service.name %></td>
-              <td><%= detalle.service.price.to_i %></td>
+              <td><%= number_to_currency_py(detalle.service.price.to_i) %></td>
               <td><%= detalle.quantity %></td>
-              <td><%= detalle.subtotal.to_i %></td>
+              <td><%= number_to_currency_py(detalle.subtotal.to_i) %></td>
           </tr>
           <% end %>
           </tbody>

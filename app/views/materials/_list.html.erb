@@ -18,7 +18,7 @@
         <td><%= material.description %></td>
         <td><%= material.measurement_unit %></td>
         <td><%= material.quantity %></td>
-        <td><%= material.price %></td>
+        <td><%= number_to_currency_py(material.price) %></td>
 
         <td>
           <% if (can? :update, Material) %>

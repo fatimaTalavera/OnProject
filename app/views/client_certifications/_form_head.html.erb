@@ -1,0 +1,61 @@
+<%= nested_form_for client_certification, validate: true, :html => { class: 'form-horizontal' } do |f| %>
+
+    <div class="box-body box-success">
+      <div class="field col-md-12 form-group">
+        <div class="field col-md-6 form-group">
+          <div class="col-md-2">
+            <%= f.label :contract, 'Obra:', :class => 'control-label  tooltip_required' %>
+          </div>
+          <div class="col-md-8">
+            <%= f.collection_select(:contract_id, Contract.all.order('name'), :id, :name, {prompt: 'Ninguno'}, :class => 'form-control') %>
+          </div>
+        </div>
+        <div class="field col-md-6 form-group">
+          <div class="col-md-3">
+            <%= f.label :state, 'Estado:', :class => 'control-label tooltip_required' %>
+          </div>
+          <div class="col-md-8">
+            <%= f.select(:state, ["Pendiente", "Terminado", "Rechazado"], {prompt: 'Seleccionar'}, :class => 'form-control') %>
+          </div>
+        </div>
+      </div>
+
+      <div class="field col-md-12 form-group">
+        <div class="field col-md-6 form-group">
+          <div class="col-md-3">
+            <%= f.label :date, 'Fecha:', :class => 'control-label tooltip_required' %>
+          </div>
+          <div class="input-group col-md-7">
+            <%= f.text_field :date, :id => 'datepickerFrom', :class => 'input-group date form-control datepicker', value:Time.now.strftime("%d/%m/%Y") %><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+          </div>
+        </div>
+        <div class="field col-md-6 form-group">
+          <div class="col-md-3">
+            <%= f.label :received, 'Recibido por:', :class => 'control-label tooltip_required' %>
+          </div>
+          <div class="col-md-9">
+            <%= f.text_field :received, value: current_user.full_name.titleize, :class => 'form-control', :readonly => true %>
+          </div>
+        </div>
+      </div>
+
+      <div class="field col-md-12 form-group">
+        <div class="field col-md-6 form-group">
+          <div class="col-md-3">
+            <%= f.label :observation, 'Observación:', :class => 'control-label' %>
+          </div>
+          <div class="col-md-9">
+            <%= f.text_area :observation, :class => 'form-control', cols: '20', rows: '5', :maxlength => 200 %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="box-footer">
+      <div class="pull-right">
+        <%= f.submit 'Crear Certificación', :class => 'btn btn-success' %>
+        <%= link_to 'Cancelar', client_certifications_path, :class => 'btn btn-default' %>
+      </div>
+    </div>
+<% end %>

@@ -7,6 +7,8 @@ class ClientCertification < ApplicationRecord
 
   accepts_nested_attributes_for :client_certification_details, :allow_destroy => true
 
+  before_create :load_details
+
   VALID_LETTER_REGEX = /\A([a-zA-Z]|[a-zA-Z][\. ])+\z/
 
   validates :contract_id,  :presence => {:message => "Debe seleccionar una obra"}
@@ -20,5 +22,20 @@ class ClientCertification < ApplicationRecord
                         format: { :with => VALID_LETTER_REGEX, message: 'Solo permite letras'}
 
   validates :observation, :length => { maximum: 200, :message => "Permite hasta 200 caracteres"}
+
+  def load_details
+
+    #has_one or belong_to budget_id
+    budget = Budget.find(1)
+    # if contract
+    # contract.budget.budget_details
+    budget.budget_details.find_each do |detail|
+      client_certification_details.build(
+          rubro_id: detail.rubro_id,
+          total_quantity: detail.quantity,
+          price: detail.price,
+      )
+    end
+  end
 
 end

@@ -35,9 +35,9 @@
           <% @material_movement.movement_details.each do |detalle| %>
               <tr>
                 <td><%= detalle.material.name %></td>
-                <td><%= detalle.price %></td>
+                <td><%= number_to_currency_py(detalle.price) %></td>
                 <td><%= detalle.quantity %></td>
-                <td><%= detalle.total %></td>
+                <td><%= number_to_currency_py(detalle.total) %></td>
               <tr>
           <% end %>
           </tbody>

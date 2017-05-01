@@ -14,7 +14,7 @@
       <tr>
         <td><%= service.name %></td>
         <td><%= service.description %></td>
-        <td><%= service.price %></td>
+        <td><%= number_to_currency_py(service.price) %></td>
         <td><%= service.measurement_unit %></td>
         <td>
           <% if (can? :update, Service) %>

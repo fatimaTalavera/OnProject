@@ -44,7 +44,7 @@
             </div>
           </div>
         <% else %>
-          <div class="col-md-2 permission-subtitle" style="margin-bottom: 10px;">
+          <div class="col-md-2 permission-subtitle" style="margin-bottom: 10px; height: 130px;">
             <p><%= Models.values[permission.index] %></p>
             <div class="checkbox">
               <%= permission.check_box :action, {:id => "#{permission.index}_update", :multiple => true, :class =>'square'}, 'edit_company', 'update_company' %>

@@ -2,6 +2,7 @@ class AuditController < ApplicationController
   before_action :load_permissions
   authorize_resource
   def index
+    add_breadcrumb I18n.t('helpers.breadcrumbs.audits')
     get_audits
   end
 

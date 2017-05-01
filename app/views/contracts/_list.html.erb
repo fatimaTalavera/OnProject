@@ -17,7 +17,7 @@
         <td><%= contract.client_name %> </td>
         <td><%= contract.start_date %></td>
         <td><%= contract.end_date %></td>
-        <td><%= contract.amount %></td>
+        <td><%= number_to_currency_py(contract.amount) %></td>
         <td>
           <% if (can? :update, Contract) %>
           <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_contract_path(contract), {:class => "btn btn-xs bg-orange btn-flat"} %>
