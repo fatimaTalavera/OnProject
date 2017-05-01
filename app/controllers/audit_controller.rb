@@ -1,5 +1,6 @@
 class AuditController < ApplicationController
   def index
+    add_breadcrumb I18n.t('helpers.breadcrumbs.audits')
     get_audits
   end
 
