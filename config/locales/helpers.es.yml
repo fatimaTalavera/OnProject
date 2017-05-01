@@ -96,6 +96,7 @@ es:
         new: Agregar
         edit: Editar
         show: Rubro
+      audits: Auditoria
 
     login:
       messages:
