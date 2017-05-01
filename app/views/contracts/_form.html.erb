@@ -15,7 +15,7 @@
             <%= f.label :client, 'Cliente:', :class => 'control-label  tooltip_required' %>
           </div>
           <div class="col-md-5">
-            <%= f.collection_select :client_id, Client.all.order('name'), :id, :name, {prompt: "Ninguno"} ,:class => 'btn btn-default'%>
+            <%= f.collection_select :client_id, Client.all.order('name'), :id, :name, {prompt: "Ninguno"}, :value => params[:client_id] ,:class => 'btn btn-default'%>
           </div>
         </div>
       </div>
@@ -26,7 +26,7 @@
             <%= f.label :start_date, 'Inicio de ejecución:', :class => 'control-label  tooltip_required' %>
           </div>
           <div class="col-md-3">
-            <%= f.text_field :start_date, :id => 'datepickerFrom', :class => 'input-group date form-control datepicker', :readonly => true %>
+            <%= f.text_field :start_date, :id => 'datepickerFrom', :value => params[:date], :class => 'input-group date form-control datepicker', :readonly => true %>
           </div>
         </div>
 
@@ -46,7 +46,7 @@
             <%= f.label :amount, 'Monto:', :class => 'control-label  tooltip_required' %>
           </div>
           <div class="col-md-5">
-            <%= f.number_field :amount, :class => 'form-control' %>
+            <%= f.number_field :amount, :value => params[:total], :class => 'form-control' %>
           </div>
         </div>
       </div>

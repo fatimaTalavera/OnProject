@@ -47,20 +47,23 @@
       <br>
             <table class="table table-bordered table-condensed">
               <tr>
-                <th class="col-md-4">Rubro</th>
-                <th class="col-md-2">Cantidad</th>
-                <th class="col-md-1">Ud. de Medidad</th>
-                <th class="col-md-2">Precio Unitario</th>
+                <th class="col-md-3">Rubro</th>
+                <th class="col-md-1">Ud. Medidad</th>
+                <th class="col-md-2">Costo</th>
+                <th class="col-md-2">Precio</th>
+                <th class="col-md-1">Cantidad</th>
+                <th class="col-md-1">% Utilidad</th>
                 <th class="col-md-2">Sub Total</th>
               </tr>
               <% @budget.budget_details.each do |budget_detail| %>
                   <tr class="fields ">
-
-                    <td class="col-md-4"><%= budget_detail.rubro_name %></td>
-                    <td class="col-md-2"><%= budget_detail.quantity %></td>
-                    <td class="col-md-1"><%= budget_detail.rubro_measurement_unit %></td>
-                    <td class="col-md-2"><%= number_to_currency_py(budget_detail.price) %></td>
-                    <td class="col-md-2"><%= number_to_currency_py(budget_detail.subtotal) %></td>
+                    <td><%= budget_detail.rubro_name %></td>
+                    <td><%= budget_detail.rubro_measurement_unit %></td>
+                    <td><%= number_to_currency_py(budget_detail.cost) %></td>
+                    <td><%= number_to_currency_py(budget_detail.price) %></td>
+                    <td><%= budget_detail.quantity %></td>
+                    <td><%= budget_detail.utility %></td>
+                    <td><%= number_to_currency_py(budget_detail.subtotal) %></td>
                   </tr>
               <% end %>
               <td>

@@ -9,7 +9,7 @@ function getRubroPriceB(currentElement) {
         },
         success: function (data) {
             var tr = $(currentElement).parent().parent();
-            tr.find('.price').val(data.final_price);
+            tr.find('.cost').val(data.price);
             tr.find('.utility').val(data.utility);
             tr.find('.measurement_unit').val(data.measurement_unit);
             getBudgetTotal(tr);
@@ -20,10 +20,13 @@ function getRubroPriceB(currentElement) {
 
 function getBudgetTotal(currentElement) {
     var self = $(currentElement);
-    var price = self.find('.price').val();
+    var cost = self.find('.cost').val();
     var quantity = self.find('.quantity').val();
     var utility = self.find('.utility').val();
-    var measurement_unit = self.find('.utility').val();
+    var measurement_unit = self.find('.measurement_unit').val();
+
+    var price = cost * (1 + (utility/100));
+    self.find('.price').val(price);
     var total = (undefined !== price && undefined !== quantity)? price * quantity : 0;
     self.find('.total').val(total);
 };

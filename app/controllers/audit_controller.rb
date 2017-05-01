@@ -1,7 +1,6 @@
 class AuditController < ApplicationController
   before_action :load_permissions
   authorize_resource
-
   def index
     get_audits
   end
