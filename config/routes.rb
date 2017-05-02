@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :account_employees, except: [:destroy]
   resources :budgets
   resources :rubros
   resources :certifications, except: [:destroy]

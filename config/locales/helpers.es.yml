@@ -21,7 +21,7 @@ es:
       certifications: Certificaciones Internas
       rubros: Rubros
       audit: Log de Auditoría
-
+      account_employee: Cta. cte. jornalero
       index: Indice
       new: Agregar
       edit: Editar
@@ -97,6 +97,11 @@ es:
         edit: Editar
         show: Rubro
       audits: Auditoria
+      account_employee:
+        index: Listas cta. cte. jornalero
+        new: Agregar cta. cte. jornalero
+        edit: Editar cta. cte. jornalero
+        show: Cta. cte. jornalero
 
     login:
       messages:
@@ -172,3 +177,8 @@ es:
         edit: Editar Certificación Interna
         list: Lista de Certificaciones Internas
         show: Certificación Interna
+      account_employee:
+        new: Agregar cta. cte. jornalero
+        edit: Editar cta. cte. jornalero
+        list: Lista de cta. cte. jornalero
+        show: Cta. cte. jornalero
