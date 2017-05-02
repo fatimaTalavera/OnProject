@@ -68,6 +68,12 @@ class ClientCertificationsController < ApplicationController
     end
   end
 
+  def buscar_rubro
+    rubro = BudgetDetail.select(",, apellido").where(:legajo => params[:legajo]);
+    #Devuelve un json como salida al navegador.
+    render :json => empleado[0]
+  end
+
   private
   def get_client_certifications
     @q = ClientCertification.ransack(params[:q])
