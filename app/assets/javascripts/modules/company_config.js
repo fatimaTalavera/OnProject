@@ -15,9 +15,12 @@ var CompanyConfig = (function(){
     'create': function(){
     },
     'edit': function() {
-      initFormEvents();
     },
     'update': function(){
+      initFormEvents();
+    },
+    'edit_company': function(){
+      initFormEvents();
     }
   };
 

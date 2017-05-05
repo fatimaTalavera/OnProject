@@ -68,7 +68,7 @@ end
 #@movementDetail.save!
 
 # Facturas de compra
-@purchaseBill = PurchaseBill.new(number: 123, provider_id: @provider.id, date: '30/03/2017', condition: 'contado')
+@purchaseBill = PurchaseBill.new(number: 123, provider_id: @provider.id, date: '30/03/2017', condition: 'contado', total: 200000)
 @purchaseBill.save!
 
 # Facturas detalle
@@ -76,7 +76,7 @@ end
 #@purchaseDetail.save!
 #@purchaseDetail = PurchaseDetail.new(material_id: @cable.id, quantity: 30, purchase_bill_id: @purchaseBill.id, price: 6000)
 #@purchaseDetail.save!
-@purchaseDetail = PurchaseDetail.new(material_id: @cemento.id, quantity: 8, purchase_bill_id: @purchaseBill.id, price: 25000)
+@purchaseDetail = PurchaseDetail.new(material_id: @cemento.id, quantity: 8, purchase_bill_id: @purchaseBill.id, price: 25000, total: 200000)
 @purchaseDetail.save!
 
 

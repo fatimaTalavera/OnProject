@@ -34,6 +34,20 @@ OnProject = {
   common: {
     init: function() {
 
+        $('body').popover({
+            selector: '.on-hover[data-toggle=popover]',
+            trigger: 'hover',
+            placement: function(pop,ele){
+                if($(ele).parent().is('td:first-child')) {
+                    return 'right'
+                } else if($(ele).parents('tr').is(':first-child')){
+                    return 'bottom';
+                }else{
+                    return 'top'
+                }
+            }
+        });
+
       $("#phone").inputmask("9999-999-999");
 
       $("#ci").inputmask("9999999999");
@@ -64,13 +78,13 @@ OnProject = {
 
       BootstrapFilestyleHelper.filestyle('.file-style');
 
-      InputMaskHelper.tel_fax_mask('.tel-fax-mask');
-      InputMaskHelper.celphone_mask('.celphone-mask');
     }
   },
 
   // Iniciar los modulos
-  company_config: CompanyConfig
+  company_config: CompanyConfig,
+  purchase_bills: Purchase
+
 };
 
 var delay = (function(){

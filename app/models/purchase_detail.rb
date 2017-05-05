@@ -4,6 +4,7 @@ class PurchaseDetail < ApplicationRecord
   belongs_to :purchase_bill, required: false
   before_create :add_material
 
+  after_validation :set_total
   def add_material
     Material.update(self.material.id, quantity: self.material.quantity + self.quantity)
   end
@@ -19,5 +20,11 @@ class PurchaseDetail < ApplicationRecord
             :message => "Ingrese un número válido"
 
   validates :material_id, :presence => {:message => "Debe seleccionar un material"}
+
+  private
+
+  def set_total
+    self.total = self.price * self.quantity
+  end
 
 end

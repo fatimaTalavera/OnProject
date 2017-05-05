@@ -1,19 +1,17 @@
-<div class="row" style="margin-bottom: 20px;">
-  <div class="col-md-2">
-    <div class="avatar_company">
-      <%= cl_image_tag(CompanyConfig.first.avatar_url(:medium), :class => 'img-rounded')if CompanyConfig.first.avatar?%>
-    </div>
+<div class="row" >
+  <div class="avatar_company">
+    <%= cl_image_tag(CompanyConfig.first.avatar_url(:medium), :class => 'img-rounded')if CompanyConfig.first.avatar?%>
   </div>
-  <div class="col-md-6 info-company">
+  <div class="info-company">
     <div class="row">
-      <div class="col-md-12" style="margin-top: -15px;">
+      <div class="col-md-12">
         <h1><%= CompanyConfig.first.name %></h1>
       </div>
     </div>
 
     <div class="row">
       <div class="col-md-12">
-        <label class="control-label" style="text-size: 10px;">Dirección:</label>
+        <label class="control-label">Dirección:</label>
         <span><%= CompanyConfig.first.address %></span>
       </div>
     </div>

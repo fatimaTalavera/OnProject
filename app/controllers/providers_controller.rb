@@ -5,6 +5,10 @@ class ProvidersController < ApplicationController
   before_action :load_permissions
   authorize_resource
 
+  def search
+    @providers = Provider.where('name ILIKE ?', "%#{params[:q][:term]}%")
+    render json: {items: @providers, total_count: @providers.count}
+  end
   # GET /providers
   # GET /providers.json
   def index

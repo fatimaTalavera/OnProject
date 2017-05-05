@@ -68,7 +68,8 @@ th.table-actions{
 }
 
 .avatar_company {
-  padding: 10px 10px 10px 0;
+  float: left;
+  margin: 15px;
   text-align: left;
 }
 
@@ -82,9 +83,11 @@ th.table-actions{
 }
 
 .info-company {
-  margin-left: -60px;
-  & label { font-size: 20px; }
-  & span { font-size: 20px; }
+  float: left;
+  margin: 15px;
+  & h1 { margin-top: 0 }
+  & label { font-size: 15px; }
+  & span { font-size: 15px; }
 }
 
 .btn-margen {
@@ -100,5 +103,14 @@ th.table-actions{
 }
 
 .permission-subtitle {
+  float: left;
+  height: 150px;
+  margin-bottom: 20px;
+  width: 180px;
   & p { font-size: 20px; }
+}
+
+/*Estilo de popover*/
+.popover-content{
+  word-break: break-word;
 }

@@ -2,9 +2,10 @@
   <thead>
   <tr>
     <th>Fecha</th>
+    <th>Nro. Factura</th>
     <th>Proveedor</th>
     <th>Condicion</th>
-    <th>Numero</th>
+    <th>Monto</th>
     <th class="table-actions"></th>
   </tr>
   </thead>
@@ -13,15 +14,15 @@
   <% purchase_bills.each do |purchase_bill| %>
       <tr>
         <td><%= purchase_bill.date.strftime("%d/%m/%Y") %></td>
+        <td><%= purchase_bill.number %></td>
         <td><%= purchase_bill.provider_name %></td>
         <td><%= purchase_bill.condition %></td>
-        <td><%= purchase_bill.number %></td>
-
+        <td><%= purchase_bill.total %></td>
         <td>
-          <%= link_to "<i class=\"fa fa-eye\"></i>".html_safe, purchase_bill_path(purchase_bill), {:class => "btn btn-xs bg-teal btn-flat"} %>
+          <%= link_to "<i class=\"fa fa-eye\"></i>".html_safe, purchase_bill_path(purchase_bill), {:class => "btn btn-xs bg-teal btn-flat", :title => "Ver detalles"} %>
+            <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_purchase_bill_path(purchase_bill), {:class => "btn btn-xs bg-orange btn-flat"} %>
         </td>
       </tr>
   <% end %>
   </tbody>
 </table>
-

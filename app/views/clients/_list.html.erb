@@ -16,7 +16,7 @@
         <td><%= client.name %></td>
         <td><%= client.ruc %></td>
         <td><%= client.email %></td>
-        <td><%= client.adress %></td>
+        <td><%= disminuir(client.adress) %></td>
         <td><%= client.phone %></td>
         <td>
           <% if (can? :update, Client) %>

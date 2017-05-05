@@ -139,6 +139,10 @@
         <% if (can? :edit_company, CompanyConfig) %>
           <li><a href="<%= edit_company_path %>"><i class="fa fa-bank"></i><span><%= t('helpers.menu.company_config') %></span></a></li>
         <% end %>
+
+        <% if (can? :read, AccountEmployee) %>
+            <li><a href="<%= account_employees_path %>"><i class="fa fa-check"></i><span><%= t('helpers.menu.account_employee') %></span></a></li>
+        <% end %>
       </ul>
     </section>
   </aside>

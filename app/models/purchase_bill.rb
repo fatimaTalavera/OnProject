@@ -4,6 +4,9 @@ class PurchaseBill < ApplicationRecord
   delegate :name, :ruc, to: :provider, prefix: true
 
   has_many :purchase_details
+
+  after_validation :set_total
+
   accepts_nested_attributes_for :purchase_details, allow_destroy: true
 
   validates :condition, :presence => {:message => "Debe seleccionar una condicion de pago"}
@@ -15,6 +18,14 @@ class PurchaseBill < ApplicationRecord
 
   validates :date, :presence => {:message => "No puede estar en blanco"}
 
-  validates :provider, :presence => {:message => "Debe seleccionar un proveedor"}
+  validates :provider_id, :presence => {:message => "Debe seleccionar un proveedor"}
 
+  private
+
+  def set_total
+    self.total = 0
+    self.purchase_details.each do |d|
+      self.total += d.price * d.quantity unless d.marked_for_destruction?
+    end
+  end
 end
