@@ -19,7 +19,9 @@
         <td><%= provider.email %></td>
         <td><%= disminuir(provider.address) %></td>
         <td>
-          <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_provider_path(provider), {:class => "btn btn-xs bg-orange btn-flat"} %>
+          <% if (can? :update, Provider) %>
+              <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_provider_path(provider), {:class => "btn btn-xs bg-orange btn-flat"} %>
+          <% end %>
         </td>
       </tr>
   <% end %>

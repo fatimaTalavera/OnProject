@@ -29,9 +29,11 @@
         <td><%= number_to_currency_py(budget.total_amount) %></td>
         <td>
           <%= link_to "<i class=\"fa fa-eye\"></i>".html_safe, budget_path(budget), {:class => "btn btn-xs bg-teal btn-flat"} %>
-          <% if budget.state == "Pendiente" or budget.state == "Cancelado" %>
+          <% if budget.state == "Pendiente" %>
+              <% if (can? :update, Budget) %>
           <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_budget_path(budget), {:class => "btn btn-xs bg-orange btn-flat"} %>
-        <% elsif budget.state == "Aprobado" or budget.state == "En estudio" %>
+              <% end %>
+        <% elsif budget.state == "Aprobado" %>
 
           <%end %>
               </td>

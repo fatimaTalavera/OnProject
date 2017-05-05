@@ -30,7 +30,9 @@
       </div>
 
       <div class="panel-footer">
-        <%= link_to 'Editar', edit_contract_path(@contract), :class => 'btn btn-default' %> |
+        <% if (can? :update, Contract) %>
+        <%= link_to 'Editar', edit_contract_path(@contract), :class => 'btn btn-default' %>
+            <% end %>
         <%= link_to 'Atras', contracts_path %>
       </div>
     </div>

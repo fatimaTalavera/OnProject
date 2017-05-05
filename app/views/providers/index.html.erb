@@ -1,7 +1,9 @@
 <div class="box box-success">
   <div class="box-header with-border box-success">
     <h3 class="box-title"><%= t('helpers.title.provider.list') %></h3>
-    <%= link_to "<i class=\"fa fa-plus\"></i>".html_safe, new_provider_path, {:class => "btn btn-sm btn-flat bg-green btn-title", :title => "Agregar Proveedor"} %>
+    <% if (can? :create, Provider) %>
+        <%= link_to "<i class=\"fa fa-plus\"></i>".html_safe, new_provider_path, {:class => "btn btn-sm btn-flat bg-green btn-title", :title => "Agregar Proveedor"} %>
+    <% end %>
   </div>
   <div class="box-body">
     <div class="provider-search searchList">

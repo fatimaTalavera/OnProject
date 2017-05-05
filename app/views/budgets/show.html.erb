@@ -82,11 +82,12 @@
       </div>
     </div>
     <div class="pull-right">
-      <% if @budget.state == "Pendiente" or @budget.state == "Cancelado" %>
+      <% if (can? :update, Budget) %>
+      <% if @budget.state == "Pendiente" %>
       <%= link_to 'Editar', edit_budget_path(@budget), :class => 'btn btn-flat bg-blue'%>
-          <% elsif @budget.state == "Aprobado" or @budget.state == "En estudio" %>
-          <%= link_to 'Generar Contrato', new_contract_path({client_id: @budget.client_id , total: @budget.total_amount, date: Time.now.strftime("%d/%m/%Y")}), class:'btn btn-flat bg-blue' %>
-    <% end %>
+          <% elsif @budget.state == "Aprobado" %>
+      <% end %>
+          <% end %>
     </div>
   </div>
 </div>

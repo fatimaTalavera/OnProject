@@ -21,7 +21,9 @@
         <td><%= number_to_currency_py(material.price) %></td>
 
         <td>
-          <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_material_path(material), {:class => "btn btn-xs bg-orange btn-flat"} %>
+          <% if (can? :update, Material) %>
+              <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_material_path(material), {:class => "btn btn-xs bg-orange btn-flat"} %>
+          <% end %>
         </tr>
   <% end %>
   </tbody>
