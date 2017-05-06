@@ -22,6 +22,7 @@ es:
       rubros: Rubros
       audit: Log de Auditoría
       account_employee: Cta. cte. jornalero
+      account_employees: Cta. cte. jornalero
       index: Indice
       new: Agregar
       edit: Editar
@@ -123,67 +124,95 @@ es:
       employee:
         new: Agregar Empleado
         edit: Editar Empleado
-        list: Lista de Empleados
+        list: Empleados
         show: Empleado
       client:
         new: Agregar Cliente
         edit: Editar Cliente
-        list: Lista de Clientes
+        list: Clientes
         show: Cliente
       service:
         new: Agregar Servicio
         edit: Editar Servicio
-        list: Lista de Servicios
+        list: Servicios
         show: Servicio
       material:
         new: Agregar Material
         edit: Editar Material
-        list: Lista de Materiales
+        list: Materiales
         show: Material
       contract:
         new: Agregar Contrato
         edit: Editar Contrato
-        list: Lista de Contratos
+        list: Contratos
         show: Contrato
       provider:
         new: Agregar Proveedor
         edit: Editar Proveedor
-        list: Lista de Proveedores
+        list: Proveedores
         show: Proveedor
       company_config:
         index: Datos de la Empresa
       purchase_bill:
         new: Agregar Factura de Compra
         edit: Editar Factura de Compra
-        list: Lista de Facturas de Compra
+        list: Facturas de Compra
         show: Factura de Compra
       material_movement:
         new: Agregar Movimiento de Materiales
         edit: Editar Movimiento de Materiales
-        list: Lista de Movimientos de Materiales
+        list: Movimientos de Materiales
         show: Movimiento de Materiales
       client_certification:
         new: Agregar Certificación
         edit: Editar Certificación
-        list: Lista de Certificaciones
+        list: Certificaciones
         show: Certificación
       rol:
         new: Agregar Rol
         edit: Editar Rol
-        list: Lista de Roles
+        list: Roles
         show: Rol
       budget:
         new: Agregar Presupuesto
         edit: Editar Presupuesto
-        list: Lista de Presupuestos
+        list: Presupuestos
         show: Presupuesto
       certification:
         new: Agregar Certificación Interna
         edit: Editar Certificación Interna
-        list: Lista de Certificaciones Internas
+        list: Certificaciones Internas
         show: Certificación Interna
       account_employee:
         new: Agregar cta. cte. jornalero
         edit: Editar cta. cte. jornalero
-        list: Lista de cta. cte. jornalero
+        list: cta. cte. jornalero
         show: Cta. cte. jornalero
+
+    audit:
+      update: actualizar
+      create: crear
+      AccountEmployee: Cuenta del Jornalero
+      Budget: Presupuesto
+      BudgetDetail: Detalle de presupuesto
+      Certification: Certificación
+      CertificationDetail: Detalle de Certificación
+      Client: Cliente
+      ClientCertification: Certificacion del cliente
+      ClientCertificationDetail: Detalle de Certificación del cliente
+      CompanyConfig: Configuración de la Empresa
+      Contract: Contrato
+      Employee: Empleado
+      Material: Material
+      MaterialMovement: Movimiento de Materiales
+      MovementDetail: Detalle de Movimiento de Materiales
+      Permission: Permiso
+      Provider: Proveedor
+      PurchaseBill: Factura de compra
+      PurchaseDetail: Detalle de Factura de compra
+      Role: Rol
+      Rubro: Rubro
+      RubroMaterialDetail: Detalle de Rubro - Material
+      RubroServiceDetail: Detalle de Rubro - Servicio
+      Service: Servicio
+      User: Usuario

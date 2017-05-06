@@ -6,17 +6,19 @@
     <th>Usuario</th>
     <th>Acción</th>
     <th>Cambios</th>
+    <th>Fecha</th>
   </tr>
   </thead>
 
   <tbody>
   <% audits.each do |audit| %>
       <tr>
-        <td><%= audit.auditable_type%></td>
+        <td><%= t('helpers.audit.' + audit.auditable_type)%></td>
         <td><%= audit.auditable_id %></td>
         <td><%= audit.user.full_name %></td>
-        <td><%= audit.action %></td>
+        <td><%= t('helpers.audit.' + audit.action) %></td>
         <td><%= audit.audited_changes %></td>
+        <td><%= audit.created_at %></td>
       </tr>
   <% end %>
   </tbody>
