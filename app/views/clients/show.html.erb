@@ -6,50 +6,30 @@
 
         <div class="field col-md-12 form-group">
           <div class="field col-md-8 form-group">
-            <div class="col-md-4">
               <strong>Nombre o Razón Social:</strong>
-            </div>
-            <div class="col-md-8">
               <%= @client.name %>
-            </div>
           </div>
 
           <div class="field col-md-4 form-group">
-            <div class="col-md-4">
               <strong>RUC:</strong>
-            </div>
-            <div class="col-md-7">
               <%= @client.ruc %>
-            </div>
           </div>
         </div>
 
         <div class="field col-md-12 form-group">
           <div class="field col-md-4 form-group">
-            <div class="col-md-4">
               <strong>Correo:</strong>
-            </div>
-            <div class="col-md-7">
               <%= @client.email %>
-            </div>
           </div>
 
           <div class="field col-md-4 form-group">
-            <div class="col-md-4">
               <strong>Direccion:</strong>
-            </div>
-            <div class="col-md-7">
               <%= @client.adress %>
-            </div>
           </div>
 
           <div class="field col-md-4 form-group">
-            <div class="col-md-4">
               <strong>Telefono:</strong>
-            </div>
-            <div class="col-md-7">
               <%= @client.phone %>
-            </div>
           </div>
         </div>
       </div>
@@ -61,4 +41,10 @@
             <%= link_to 'Atras', clients_path, :class => 'btn btn-default' %>
           </div>
         </div>
+  </div>
+
+  <div class="box box-success">
+    <div class="box-header with-border">
+      <h3 class="box-title">Cuenta Corriente</h3>
+    </div>
   </div>
