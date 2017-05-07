@@ -1,5 +1,6 @@
 class Models
   include Ruby::Enum
+  define :AccountEmployee, "Cta. Cte. Jornalero"
   define :Audit, "Auditoría"
   define :Budget, "Presupuestos"
   define :Certification, "Certificación Interna"
@@ -13,6 +14,7 @@ class Models
   define :Provider, "Proveedores"
   define :PurchaseBill, "Factura de compras"
   define :Role, "Roles"
+  define :Rubro, "Rubros"
   define :Service, "Servicios"
   define :User, "Usuarios"
 end
