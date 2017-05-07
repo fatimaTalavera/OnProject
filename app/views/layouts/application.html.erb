@@ -64,72 +64,129 @@
     <section class="sidebar">
       <ul class="sidebar-menu">
         <li class="header">MENÚ</li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-dashboard"></i> <span><%= t('helpers.menu.dashboard') %></span>
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="<%= root_path %>"><i class="fa fa-circle-o"></i><%= t('helpers.menu.dashboard') %></a></li>
-          </ul>
-        </li>
 
-        <% if (can? :read, User) %>
-          <li><a href="<%= users_path %>"><i class="fa fa-users"></i> <span><%= t('helpers.menu.users') %></span></a></li>
+        <% if (can? :read, User or can? :read, Role) %>
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-users"></i> <span>Usuarios</span>
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                <% if (can? :read, User) %>
+                    <li><a href="<%= users_path %>"><i class="fa fa-users"></i> <span><%= t('helpers.menu.users') %></span></a></li>
+                <% end %>
+
+                <% if (can? :read, Role) %>
+                    <li><a href="<%= roles_path %>"><i class="fa fa-lock"></i><span><%= t('helpers.menu.rol') %></span></a></li>
+                <% end %>
+              </ul>
+            </li>
         <% end %>
 
-        <% if (can? :read, Role) %>
-          <li><a href="<%= roles_path %>"><i class="fa fa-lock"></i><span><%= t('helpers.menu.rol') %></span></a></li>
+        <% if (can? :read, Client or can? :read, Provider or can? :read, Employee or can? :read, AccountEmployee) %>
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-street-view"></i> <span>Personas</span>
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                <% if (can? :read, Client) %>
+                    <li><a href="<%= clients_path %>"><i class="fa fa-users"></i> <span><%= t('helpers.menu.clients') %></span></a></li>
+                <% end %>
+
+                <% if (can? :read, Provider) %>
+                    <li><a href="<%= providers_path %>"><i class="fa fa-truck"></i> <span><%= t('helpers.menu.providers') %></span></a></li>
+                <% end %>
+
+                <% if (can? :read, Employee) %>
+                    <li><a href="<%= employees_path %>"><i class="fa fa-male"></i> <span><%= t('helpers.menu.employees') %></span></a></li>
+                <% end %>
+
+                <% if (can? :read, AccountEmployee) %>
+                    <li><a href="<%= account_employees_path %>"><i class="fa fa-check"></i><span><%= t('helpers.menu.account_employee') %></span></a></li>
+                <% end %>
+              </ul>
+            </li>
         <% end %>
 
-        <% if (can? :read, Client) %>
-          <li><a href="<%= clients_path %>"><i class="fa fa-users"></i> <span><%= t('helpers.menu.clients') %></span></a></li>
-        <% end %>
+        <% if (can? :read, Rubro or can? :read, Service or can? :read, Material or can? :read, MaterialMovement) %>
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-book"></i> <span>Rubros y Stock</span>
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                <% if (can? :read, Rubro) %>
+                    <li><a href="<%= rubros_path %>"><i class="fa fa-check"></i> <span><%= t('helpers.menu.rubros') %></span></a></li>
+                <% end %>
 
-        <% if (can? :read, Provider) %>
-          <li><a href="<%= providers_path %>"><i class="fa fa-truck"></i> <span><%= t('helpers.menu.providers') %></span></a></li>
-        <% end %>
+                <% if (can? :read, Service) %>
+                    <li><a href="<%= services_path %>"><i class="fa fa-file-text"></i> <span><%= t('helpers.menu.services') %></span></a></li>
+                <% end %>
 
-        <% if (can? :read, Employee) %>
-          <li><a href="<%= employees_path %>"><i class="fa fa-male"></i> <span><%= t('helpers.menu.employees') %></span></a></li>
-        <% end %>
+                <% if (can? :read, Material) %>
+                    <li><a href="<%= materials_path %>"><i class="fa fa-book"></i> <span><%= t('helpers.menu.materials') %></span></a></li>
+                <% end %>
 
-        <% if (can? :read, Material) %>
-          <li><a href="<%= materials_path %>"><i class="fa fa-book"></i> <span><%= t('helpers.menu.materials') %></span></a></li>
-        <% end %>
-
-        <% if (can? :read, MaterialMovement) %>
-          <li><a href="<%= material_movements_path %>"><i class="fa fa-exchange"></i><span><%= t('helpers.menu.material_movements') %></span></a></li>
+                <% if (can? :read, MaterialMovement) %>
+                    <li><a href="<%= material_movements_path %>"><i class="fa fa-exchange"></i><span><%= t('helpers.menu.material_movements') %></span></a></li>
+                <% end %>
+              </ul>
+            </li>
         <% end %>
 
         <% if (can? :read, PurchaseBill) %>
-          <li><a href="<%= purchase_bills_path %>"><i class="fa fa-list-alt"></i><span><%= t('helpers.menu.purchase_bills') %></span></a></li>
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-list-alt"></i> <span>Facturación</span>
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                <% if (can? :read, PurchaseBill) %>
+                    <li><a href="<%= purchase_bills_path %>"><i class="fa fa-list-alt"></i><span><%= t('helpers.menu.purchase_bills') %></span></a></li>
+                <% end %>
+
+                <!--<% if (can? :read, PurchaseBill) %>-->
+                    <li><a href="<%= conceptos_path %>"><i class="fa fa-list-alt"></i><span>Conceptos</span></a></li>
+                    <!--<% end %>-->
+              </ul>
+            </li>
         <% end %>
 
-        <% if (can? :read, Budget) %>
-          <li><a href="<%= budgets_path %>"><i class="fa fa-calculator"></i><span><%= t('helpers.menu.budgets') %></span></a></li>
-        <% end %>
+        <% if (can? :read, Budget or can? :read, Contract or can? :read, Certification or can? :read, ClientCertification) %>
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-file-text"></i> <span>Contratos</span>
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                <% if (can? :read, Budget) %>
+                    <li><a href="<%= budgets_path %>"><i class="fa fa-calculator"></i><span><%= t('helpers.menu.budgets') %></span></a></li>
+                <% end %>
 
-        <% if (can? :read, Contract) %>
-          <li><a href="<%= contracts_path %>"><i class="fa fa-file-text"></i><span><%= t('helpers.menu.contracts') %></span></a></li>
-        <% end %>
+                <% if (can? :read, Contract) %>
+                    <li><a href="<%= contracts_path %>"><i class="fa fa-file-text"></i><span><%= t('helpers.menu.contracts') %></span></a></li>
+                <% end %>
 
-        <% if (can? :read, Service) %>
-          <li><a href="<%= services_path %>"><i class="fa fa-file-text"></i> <span><%= t('helpers.menu.services') %></span></a></li>
-        <% end %>
+                <% if (can? :read, Certification) %>
+                    <li><a href="<%= certifications_path %>"><i class="fa fa-check"></i> <span><%= t('helpers.menu.certifications') %></span></a></li>
+                <% end %>
 
-        <% if (can? :read, Certification) %>
-          <li><a href="<%= certifications_path %>"><i class="fa fa-check"></i> <span><%= t('helpers.menu.certifications') %></span></a></li>
-        <% end %>
-
-        <% if (can? :read, ClientCertification) %>
-          <li><a href="<%= client_certifications_path %>"><i class="fa fa-check"></i><span><%= t('helpers.menu.client_certifications') %></span></a></li>
-        <% end %>
-
-        <% if (can? :read, Rubro) %>
-          <li><a href="<%= rubros_path %>"><i class="fa fa-check"></i> <span><%= t('helpers.menu.rubros') %></span></a></li>
+                <% if (can? :read, ClientCertification) %>
+                    <li><a href="<%= client_certifications_path %>"><i class="fa fa-check"></i><span><%= t('helpers.menu.client_certifications') %></span></a></li>
+                <% end %>
+              </ul>
+            </li>
         <% end %>
 
         <% if (can? :read, Audit) %>
@@ -137,11 +194,7 @@
         <% end %>
 
         <% if (can? :edit_company, CompanyConfig) %>
-          <li><a href="<%= edit_company_path %>"><i class="fa fa-bank"></i><span><%= t('helpers.menu.company_config') %></span></a></li>
-        <% end %>
-
-        <% if (can? :read, AccountEmployee) %>
-            <li><a href="<%= account_employees_path %>"><i class="fa fa-check"></i><span><%= t('helpers.menu.account_employee') %></span></a></li>
+            <li><a href="<%= edit_company_path %>"><i class="fa fa-bank"></i><span><%= t('helpers.menu.company_config') %></span></a></li>
         <% end %>
       </ul>
     </section>
