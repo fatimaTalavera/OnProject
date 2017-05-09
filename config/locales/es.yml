@@ -244,7 +244,7 @@ es:
   time:
     am: am
     formats:
-      default: "%A, %d de %B de %Y %H:%M:%S %z"
+      default: "%d/%m/%Y"
       long: "%d de %B de %Y %H:%M:%S"
       short: "%d de %b %H:%M"
       pm: pm
