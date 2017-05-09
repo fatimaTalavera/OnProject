@@ -21,6 +21,7 @@ class ClientCertificationsController < ApplicationController
   def new
     add_breadcrumb I18n.t('helpers.breadcrumbs.client_certifications.new')
     @client_certification = ClientCertification.new
+    @client_certification.date = Time.now
   end
 
   # GET /client_certifications/1/edit

@@ -9,6 +9,7 @@ class CertificationsController < ApplicationController
   def new
     add_breadcrumb I18n.t('helpers.breadcrumbs.certifications.new')
     @certification = Certification.new
+    @certification.date = Time.now
   end
 
   def show
