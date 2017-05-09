@@ -33,6 +33,7 @@ class BudgetsController < ApplicationController
   def new
     add_breadcrumb I18n.t('helpers.breadcrumbs.budgets.new')
     @budget = Budget.new
+    @budget.date = Time.now
     @client = Client.new
     @clients = Client.all
   end

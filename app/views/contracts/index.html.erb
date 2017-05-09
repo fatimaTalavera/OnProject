@@ -1,9 +1,6 @@
 <div class="box box-success">
   <div class="box-header with-border box-success">
     <h3 class="box-title"><%= t('helpers.title.contract.list') %></h3>
-    <% if (can? :create, Contract) %>
-        <%= link_to "<i class=\"fa fa-plus\"></i>".html_safe, new_contract_path, {:class => "btn btn-sm btn-flat bg-green btn-title", :title => "Agregar Contrato"} %>
-    <% end %>
   </div>
   <div class="box-body">
     <div class="contract-search searchList">
