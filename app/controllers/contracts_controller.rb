@@ -14,7 +14,7 @@ class ContractsController < ApplicationController
   # GET /contracts/1
   # GET /contracts/1.json
   def show
-    add_breadcrumb I18n.t('helpers.breadcrumbs.clients.show')
+    add_breadcrumb I18n.t('helpers.breadcrumbs.contracts.show')
   end
 
   # GET /contracts/new
