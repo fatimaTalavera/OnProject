@@ -23,3 +23,32 @@ function getRubroTotal(currentElement) {
     var total = (undefined !== price && undefined !== quantity)? precioDos * quantity : 0;
     self.find('.total').val(total);
 };
+
+
+function buscarRub (currentElement){
+    $("#table tbody").html("");
+    var rub = $(currentElement).val();
+    if (rub !== ""){
+        $.ajax({
+            url: '/budgets/' + rub,
+            type: 'GET',
+            dataType: 'json',
+            success: function(res){
+                res.budget_details.forEach(function(obj) {
+                    var item;
+                    item += '<tr>';
+                    item += '<td> ' + obj.rubro_id + ' </td>';
+                    item += '<td>  </td>';
+                    item += '<td> ' + obj.quantity + ' </td>';
+                    item += '<td> ' + obj.price + ' </td>';
+                    item += '<td>  </td>';
+                    item += '</tr>';
+                    $("#table tbody").append(item);
+                });
+            }
+
+        })
+    }
+};
+
+
