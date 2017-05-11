@@ -26,10 +26,6 @@ class BudgetsController < ApplicationController
                   type: 'application/pdf',
                   disposition: 'inline'
       end
-    end
-
-    @budget = Budget.find(params[:id])
-    respond_to do |format|
       format.json {render json: @budget, include: :budget_details}
     end
   end

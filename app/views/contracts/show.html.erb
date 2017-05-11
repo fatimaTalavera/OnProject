@@ -1,39 +1,149 @@
 <div class="box box-success">
-  <div class="box-header with-header">
-    <h3 class="page-header">Contrato</h3>
-    <div class="box-body">
-        <p>
-          <strong>Obra:</strong>
-          <%= @contract.name %>
-        </p>
-
-        <p>
-          <strong>Cliente:</strong>
-          <%= @contract.client_name %>
-        </p>
-
-        <p>
-          <strong>Fecha de inicio:</strong>
-          <%= @contract.start_date %>
-        </p>
-
-        <p>
-          <strong>Fecha de cierre:</strong>
-          <%= @contract.end_date %>
-        </p>
-
-        <p>
-          <strong>Monto:</strong>
-          <%= @contract.amount %>
-        </p>
-
-      </div>
-
-      <div class="panel-footer">
-        <% if (can? :update, Contract) %>
-        <%= link_to 'Editar', edit_contract_path(@contract), :class => 'btn btn-default' %>
-            <% end %>
-        <%= link_to 'Atras', contracts_path %>
+  <div class="box-header">
+    <h3 class="box-title">Obra: <%= @contract.name %></h3>
+  </div>
+  <div class="box-body">
+    <div class="row">
+      <div class="col-md-9">
+        <div class="row">
+          <div class="col-sm-6">
+            <label class="control-label">Cliente: </label>
+            <span><%= @contract.client_name %></span>
+          </div>
+          <div class="col-sm-6">
+            <label class="control-label">Monto: </label>
+            <span><%= @contract.amount %></span>
+          </div>
+          <div class="col-sm-6">
+            <label class="control-label">Fecha de inicio: </label>
+            <span><%= @contract.start_date %></span>
+          </div>
+          <div class="col-sm-6">
+            <label class="control-label">Fecha de cierre: </label>
+            <span><%= @contract.end_date %></span>
+          </div>
+        </div>
       </div>
     </div>
+
+    <div class="box-footer">
+      <div class="pull-right">
+        <% if (can? :update, Contract) %>
+            <%= link_to t('button.edit'), edit_contract_path(@contract), {:class => "btn btn-flat bg-blue"} %>
+        <% end %>
+        <%= link_to t('button.back'), url_for(:back), {:class => "btn btn-flat btn-default"} %>
+      </div>
+    </div>
+
   </div>
+</div>
+
+<div class="box box-success">
+  <div class="box-body">
+    <div class="panel-body">
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs">
+        <li class="active"><a href="#budgets" data-toggle="tab" aria-expanded="true">Presupuesto</a>
+        </li>
+        <li class=""><a href="#material-movements" data-toggle="tab" aria-expanded="false">Movimientos de Materiales</a>
+        </li>
+        <li class=""><a href="#client-certifications" data-toggle="tab" aria-expanded="false">Certificaciones del cliente</a>
+        </li>
+        <li class=""><a href="#bills" data-toggle="tab" aria-expanded="false">Facturación</a>
+        </li>
+        <li class=""><a href="#employees" data-toggle="tab" aria-expanded="false">Empleados</a>
+        </li>
+      </ul>
+
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div class="tab-pane fade active in" id="budgets">
+          <br>
+          <table class="table table-bordered table-condensed col-md-12">
+            <thead>
+              <tr>
+                <th class="col-md-3">Rubro</th>
+                <th class="col-md-1">Ud. Medidad</th>
+                <th class="col-md-2">Costo</th>
+                <th class="col-md-2">Precio</th>
+                <th class="col-md-1">Cantidad</th>
+                <th class="col-md-1">% Utilidad</th>
+                <th class="col-md-2">Sub Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @contract.budget_details.each do |budget_detail| %>
+                  <tr class="fields ">
+                    <td><%= budget_detail.rubro_name %></td>
+                    <td><%= budget_detail.rubro_measurement_unit %></td>
+                    <td><%= number_to_currency_py(budget_detail.cost) %></td>
+                    <td><%= number_to_currency_py(budget_detail.price) %></td>
+                    <td><%= budget_detail.quantity %></td>
+                    <td><%= budget_detail.utility %></td>
+                    <td><%= number_to_currency_py(budget_detail.subtotal) %></td>
+                  </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+        <div class="tab-pane fade" id="material-movements">
+          <br>
+          <table class="table table-bordered table-condensed col-md-12">
+            <thead>
+            <tr>
+              <th>Fecha</th>
+              <th>Motivo</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @contract.material_movements.each do |material_movement| %>
+                <tr class="fields ">
+                  <td><%= material_movement.date %></td>
+                  <td><%= material_movement.reason %></td>
+                </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+        <div class="tab-pane fade" id="client-certifications">
+          <br>
+          <table class="table table-bordered table-condensed col-md-12">
+            <thead>
+            <tr>
+              <th>Fecha</th>
+              <th>Estado</th>
+              <th>Recibido</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @contract.client_certifications.each do |client_certification| %>
+                <tr class="fields ">
+                  <td><%= client_certification.date %></td>
+                  <% if client_certification.state == "Terminado"%>
+                      <td class="bg-green"><%= client_certification.state %></td>
+                  <%elsif client_certification.state == "Pendiente" %>
+                      <td class="bg-purple"><%= client_certification.state %></td>
+                  <% elsif client_certification.state == "Rechazado"%>
+                      <td  class="bg-gray disable"><%= client_certification.state %></td>
+                  <% end %>
+                  <td><%= client_certification.received %></td>
+                  <td>
+                </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+        <div class="tab-pane fade" id="bills">
+          <h4>En construccion :)</h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+        <div class="tab-pane fade" id="employees">
+          <h4>En construccion :)</h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
