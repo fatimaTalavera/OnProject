@@ -14,8 +14,14 @@
           <div class="col-md-3">
             <%= f.label :client, 'Cliente:', :class => 'control-label  tooltip_required' %>
           </div>
-          <div class="col-md-5">
-            <%= f.collection_select :client_id, Client.all.order('name'), :id, :name, {prompt: "Ninguno"}, :value => params[:client_id] ,:class => 'btn btn-default'%>
+
+          <div class="col-md-7">
+            <div class="input-group">
+              <%= f.collection_select(:client_id, Client.all, :id, :name, {prompt: 'Buscar Cliente'}, :class => 'form-control select2 people-search') %>
+              <span class="input-group-btn">
+                <%= link_to "<i class=\"fa fa-plus\"></i>".html_safe, new_client_path, {:class => "btn btn-flat bg-green", :title => "Agregar Cliente"} %>
+              </span>
+            </div>
           </div>
         </div>
       </div>
@@ -25,8 +31,8 @@
           <div class="col-md-3">
             <%= f.label :start_date, 'Inicio de ejecución:', :class => 'control-label  tooltip_required' %>
           </div>
-          <div class="col-md-3">
-            <%= f.text_field :start_date, :id => 'datepickerFrom', :value => params[:date], :class => 'input-group date form-control datepicker', :readonly => true %>
+          <div class="input-group col-sm-5" style="padding-left: 14px">
+            <%= f.text_field :start_date, :id => 'datepickerFrom', :class => ' date form-control datepicker' %><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
           </div>
         </div>
 
@@ -34,8 +40,8 @@
           <div class="col-md-3">
             <%= f.label :end_date, 'Fin de Ejecución:', :class => 'control-label  tooltip_required' %>
           </div>
-          <div class="col-md-3">
-            <%= f.text_field :end_date, :id => 'datepickerTo', :class => 'input-group date form-control datepicker', :readonly => true %>
+          <div class="input-group col-sm-5" style="padding-left: 14px">
+            <%= f.text_field :end_date, :id => 'datepickerTo', :class => ' date form-control datepicker' %><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
           </div>
         </div>
       </div>
@@ -46,10 +52,12 @@
             <%= f.label :amount, 'Monto:', :class => 'control-label  tooltip_required' %>
           </div>
           <div class="col-md-5">
-            <%= f.number_field :amount, :value => params[:total], :class => 'form-control' %>
+            <%= f.number_field :amount, :class => 'form-control' %>
           </div>
         </div>
       </div>
+
+      <%= f.hidden_field :budget_id, :class => 'form-control' %>
     </div>
 
     <div class="box-footer clearfix">
