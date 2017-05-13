@@ -19,4 +19,5 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.irregular 'rubro', 'rubros'
   inflect.irregular 'rubro_detail', 'rubro_details'
   inflect.irregular 'audit', 'audits'
+  inflect.irregular 'sale_bill', 'sale_bills'
 end

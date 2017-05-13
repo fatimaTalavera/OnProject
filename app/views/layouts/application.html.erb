@@ -154,6 +154,11 @@
                     <li><a href="<%= purchase_bills_path %>"><i class="fa fa-list-alt"></i><span><%= t('helpers.menu.purchase_bills') %></span></a></li>
                 <% end %>
 
+                <!--<% if (can? :read, PurchaseBill) %>-->
+                    <li><a href="<%= concepts_path %>"><i class="fa fa-list-alt"></i><span>Conceptos</span></a></li>
+                    <!--<% end %>-->
+
+                <li><a href="<%= sale_bills_path %>"><i class="fa fa-list-alt"></i><span><%= t('helpers.menu.sale_bills') %></span></a></li>
               </ul>
             </li>
         <% end %>

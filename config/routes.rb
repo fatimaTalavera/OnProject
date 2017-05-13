@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :sale_bills, except: [:destroy, :update]
+  resources :concepts
   resources :account_employees, except: [:destroy]
   resources :budgets
   resources :rubros
@@ -18,6 +20,7 @@ Rails.application.routes.draw do
   resources :roles, except: [:destroy]
   resources :permissions, only: [:create, :update, :destroy]
   resources :audit, only: [:index]
+  resources :installment_payment
   root to: 'welcome#index'
   get 'welcome/index'
   get 'profile', to: 'users#edit_profile', as: 'edit_profile'
@@ -29,4 +32,5 @@ Rails.application.routes.draw do
   resources :budgets do
     resources :budgets_details
   end
+
 end

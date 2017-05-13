@@ -1,0 +1,115 @@
+<div class="box box-success">
+  <div class="box-header">
+    <h3 class="box-title">Factura Nro. <%= @sale_bill.number %></h3>
+  </div>
+  <div class="box-body">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-sm-4">
+            <label class="control-label">Fecha</label>
+            <p><%= l @sale_bill.date, format: :default%></p>
+          </div>
+          <div class="col-sm-4">
+            <label class="control-label">Cliente</label>
+            <p><%= @sale_bill.client.name %></p>
+          </div>
+          <div class="col-sm-4">
+            <label class="control-label">Condición de compra</label>
+            <p><%= @sale_bill.condition %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br><br>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="nav-tabs-custom">
+          <ul class="nav nav-tabs">
+            <li class="active"><a href="#tab_1" data-toggle="tab">Materiales</a></li>
+            <li class=""><a href="#tab_2" data-toggle="tab">Cuotas</a></li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane active" id="tab_1">
+              <table class="table table-bordered table-condensed", cellspacing="0" width="100%">
+                <thead>
+                <tr>
+                  <th>Material</th>
+                  <th>Cantidad</th>
+                  <th>Precio Unitario</th>
+                  <th>Subtotal</th>
+                </tr>
+                </thead>
+                <tbody>
+                <% @sale_bill.sale_details.each do |d| %>
+                    <tr>
+                      <td><%= d.concept.name %></td>
+                      <td class="text-right"><%= d.quantity %></td>
+                      <td class="text-right"><%= d.price %></td>
+                      <td class="text-right"><%= d.total %></td>
+                    </tr>
+                <% end %>
+                </tbody>
+                <tfoot>
+                <tr>
+                  <td colspan="3" class="text-bold text-right">Total:</td>
+                  <td class="text-bold text-right"><%= @sale_bill.total %></td>
+                </tr>
+                </tfoot>
+              </table>
+            </div>
+
+            <div class="tab-pane" id="tab_2">
+              <table class="table table-bordered table-condensed", cellspacing="0" width="100%">
+                <thead>
+                <tr>
+                  <th>Vencimiento</th>
+                  <th>Monto</th>
+                  <th>Saldo</th>
+                  <th>Pagar</th>
+                </tr>
+                </thead>
+                <tbody>
+                <% first = true %>
+                <% @sale_bill.installments.order(due_date: 'asc').each_with_index do |installment| %>
+                    <tr>
+                      <td class="text-right"><%= installment.due_date.strftime('%d/%m/%Y') %></td>
+                      <td class="text-right"><%= installment.amount %></td>
+                      <td class="text-right"><%= installment.balance %></td>
+                      <td class="text-right">
+                        <% if not installment.balance == 0 %>
+                        <% if first %>
+                            <% installment_payment = InstallmentPayment.new %>
+                            <%= form_for installment_payment, url: url_for(:controller => 'installment_payment', :action => 'create') do |f| %>
+                                <%= f.number_field :amount, value: installment.balance%>
+                                <%= f.hidden_field :installment_id, value: installment.id %>
+                                <%= f.submit "Pagar", {:class => "btn btn-warning"} %>
+                            <% end %>
+                            <% first = false %>
+                        <% end %>
+                        <% end %>
+                      </td>
+                    </tr>
+                <% end %>
+                </tbody>
+                <tfoot>
+                <tr>
+                  <td colspan="2" class="text-bold text-right">Total:</td>
+                  <td class="text-bold text-right"><%= @sale_bill.total %></td>
+                  <td></td>
+                </tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="box-footer">
+    <div class="pull-right">
+      <!--<%= link_to t('button.edit'), edit_sale_bill_path(@sale_bill), {:class => "btn btn-flat bg-blue"} %>-->
+      <%= link_to t('button.back'), url_for(:back), {:class => "btn btn-flat btn-default"} %>
+    </div>
+  </div>
+</div>

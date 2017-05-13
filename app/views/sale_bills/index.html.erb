@@ -1,0 +1,18 @@
+<div class="box box-success">
+  <div class="box-header with-border box-success">
+    <h3 class="box-title"><%= t('helpers.title.sale_bill.list') %></h3>
+    <!--<% if (can? :create, PurchaseBill) %>-->
+        <%= link_to "<i class=\"fa fa-plus\"></i>".html_safe, new_sale_bill_path, {:class => "btn btn-sm btn-flat bg-green btn-title", :title => "Agregar Factura"} %>
+        <!--<% end %>-->
+  </div>
+  <div class="overlay-wrapper searchResult table-responsive" id="purchase-bills-table">
+    <%= render 'list', :sale_bills => @sale_bills %>
+  </div>
+</div>
+<div class="box-footer clearfix">
+  <div id="paginate-container">
+    <ul class="pagination pagination-sm no-margin pull-right">
+      <!--<%= paginate @sale_bills %>-->
+    </ul>
+  </div>
+</div>

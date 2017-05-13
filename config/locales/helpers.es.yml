@@ -23,6 +23,7 @@ es:
       audit: Log de Auditoría
       account_employee: Cta. cte. jornalero
       account_employees: Cta. cte. jornalero
+      sale_bills: Facturas de venta
       index: Indice
       new: Agregar
       edit: Editar
@@ -97,17 +98,22 @@ es:
         new: Agregar
         edit: Editar
         show: Rubro
-      audits: Auditoria
+      audits: Auditoría
       account_employee:
-        index: Listas cta. cte. jornalero
-        new: Agregar cta. cte. jornalero
-        edit: Editar cta. cte. jornalero
+        index: Cta. cte. jornalero
+        new: Agregar Cta. cte. jornalero
+        edit: Editar Cta. cte. jornalero
         show: Cta. cte. jornalero
       purchase_bills:
         index: Facturas de Compra
         new: Agregar
         edit: Editar
         show: "Factura Nro. %{purchase}"
+      concepts:
+        new: Agregar concepto
+        edit: Editar concepto
+        list: Conceptos
+        show: Ver Concepto
 
     login:
       messages:
@@ -188,7 +194,16 @@ es:
         edit: Editar cta. cte. jornalero
         list: cta. cte. jornalero
         show: Cta. cte. jornalero
-
+      concept:
+        new: Agregar concepto
+        edit: Editar concepto
+        list: Conceptos
+        show: Ver Concepto
+      sale_bill:
+        new: Agregar Factura de Venta
+        edit: Editar Factura de Venta
+        list: Facturas de Venta
+        show: Ver Factura de Venta
     audit:
       update: actualizar
       create: crear
@@ -201,6 +216,7 @@ es:
       ClientCertification: Certificacion del cliente
       ClientCertificationDetail: Detalle de Certificación del cliente
       CompanyConfig: Configuración de la Empresa
+      Concept: Concepto
       Contract: Contrato
       Employee: Empleado
       Material: Material
@@ -214,5 +230,7 @@ es:
       Rubro: Rubro
       RubroMaterialDetail: Detalle de Rubro - Material
       RubroServiceDetail: Detalle de Rubro - Servicio
+      SaleBill: Factura de Compra
+      SaleDetail: Detalle de Factura de venta
       Service: Servicio
       User: Usuario

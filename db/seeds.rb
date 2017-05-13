@@ -79,8 +79,12 @@ end
 @purchaseDetail = PurchaseDetail.new(material_id: @cemento.id, quantity: 8, purchase_bill_id: @purchaseBill.id, price: 25000, total: 200000)
 @purchaseDetail.save!
 
-
-
 # Servicios
 @service = Service.new(name: "Colocación de cables", description: "Se colocan cables en la forma que se desee", price: 50000, measurement_unit: "m")
 @service.save!
+
+@concepto = Concept.new(name: "Adelanto")
+@concepto.save!
+
+@concepto2 = Concept.new(name: "Pago por certificación")
+@concepto2.save!

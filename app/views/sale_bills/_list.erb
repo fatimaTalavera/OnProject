@@ -1,0 +1,27 @@
+<table class="table table-bordered table-condensed">
+  <thead>
+  <tr>
+    <th>Fecha</th>
+    <th>Nro. Factura</th>
+    <th>Proveedor</th>
+    <th>Condicion</th>
+    <th>Monto</th>
+    <th class="table-actions"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% sale_bills.each do |sale_bill| %>
+      <tr>
+        <td><%= sale_bill.date.strftime("%d/%m/%Y") %></td>
+        <td><%= sale_bill.number %></td>
+        <td><%= sale_bill.client.name %></td>
+        <td><%= sale_bill.condition %></td>
+        <td><%= sale_bill.total %></td>
+        <td>
+          <%= link_to "<i class=\"fa fa-eye\"></i>".html_safe, sale_bill_path(sale_bill), {:class => "btn btn-xs bg-teal btn-flat", :title => "Ver detalles"} %>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

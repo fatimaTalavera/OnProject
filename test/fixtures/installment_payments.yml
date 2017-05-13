@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  installment: one
+  amount: 1
+  date: 2017-05-11
+
+two:
+  installment: two
+  amount: 1
+  date: 2017-05-11

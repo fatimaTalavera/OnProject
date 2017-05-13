@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sale_bill: one
+  concept: one
+  certification: one
+  price: 1
+  quantity: 1
+
+two:
+  sale_bill: two
+  concept: two
+  certification: two
+  price: 1
+  quantity: 1
