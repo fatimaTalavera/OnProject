@@ -1,6 +1,6 @@
 es:
   helpers:
-    not_change_passwd_html: '<h5 style="color: #b5b5b5;"><b>Obs.</b> Dejar los campos de contraseña en blanco si no desea cambiar.</h5>'
+    not_change_passwd_html: '<h5><b>Obs.</b> Dejar los campos de contraseña en blanco si no desea cambiar.</h5>'
     menu:
       welcome: Inicio
       dashboard: Inicio

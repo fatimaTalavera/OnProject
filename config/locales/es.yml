@@ -14,17 +14,17 @@ es:
       user:
         first_name_html: Nombre(s)
         last_name_html: Apellido(s)
-        email_html: Email
+        email_html: Correo
         password_html: Contraseña
-        password_confirmation_html: Confirmar de contraseña
+        password_confirmation_html: Confirmar contraseña
         rol: "Rol"
       company_config:
         name: Nombre
-        email: Email
+        email: Correo
         address: Dirección
         celphone: Celular
         tel_fax: Tel/Fax
-        avatar: Imágen
+        avatar: Imagen
       roles:
         name: Nombre
         description: Descripción

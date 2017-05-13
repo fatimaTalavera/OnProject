@@ -63,7 +63,7 @@
           <div class="col-md-6">
             <%= user.new_record? ? (f.hidden_field :current_avatar, :value => user.avatar.filename) : (f.hidden_field :current_avatar, :value => find_user(user.id).avatar.filename) %>
             <%= f.file_field :avatar, :class => 'file-style' %>
-            <p class="help-block">Se aceptan imágenes jpg, jpge, png y gif. Recomendado 300x300. Tamaño máximo 1mb.</p>
+            <p class="help-block">Se aceptan imágenes jpg, jpeg, png y gif. Recomendado 300x300. Tamaño máximo 1mb.</p>
           </div>
         </div>
       </div>
