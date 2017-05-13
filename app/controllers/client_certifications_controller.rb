@@ -7,6 +7,7 @@ class ClientCertificationsController < ApplicationController
 
   # GET /client_certifications
   # GET /client_certifications.json
+
   def index
     get_client_certifications
   end
@@ -21,6 +22,7 @@ class ClientCertificationsController < ApplicationController
   def new
     add_breadcrumb I18n.t('helpers.breadcrumbs.client_certifications.new')
     @client_certification = ClientCertification.new
+    @client_certification.date = Time.now
   end
 
   # GET /client_certifications/1/edit
@@ -35,7 +37,7 @@ class ClientCertificationsController < ApplicationController
 
     respond_to do |format|
       if @client_certification.save
-        format.html { render :edit, notice: 'Certificación de Cliente se creó correctamente' }
+        format.html { render redirect_to client_certifications_path, notice: 'Certificación de Cliente se creó correctamente' }
         format.json { render :show, status: :created, location: @client_certification }
       else
         format.html { render :new }
@@ -66,12 +68,6 @@ class ClientCertificationsController < ApplicationController
       format.html { redirect_to client_certifications_url, notice: 'Certificación se eliminó correctamente' }
       format.json { head :no_content }
     end
-  end
-
-  def buscar_rubro
-    rubro = BudgetDetail.select(",, apellido").where(:legajo => params[:legajo]);
-    #Devuelve un json como salida al navegador.
-    render :json => empleado[0]
   end
 
   private

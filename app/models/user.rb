@@ -20,7 +20,7 @@ class User < ApplicationRecord
   validates :email, presence: true, length: {maximum: 40}, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, message: :email_format}
   validates :password, presence: true, length: {maximum: 30, minimum: 8}, confirmation: true, on: :create
   validates :password, length: {maximum: 30, minimum: 8}, on: :create
-  validates :password, length: {maximum: 30, minimum: 8}, on: :update, allow_blank: true
+  validates :password, length: {maximum: 30, minimum: 8}, allow_blank: true, confirmation: true, on: :update
   validates_uniqueness_of :email, allow_blank: false
   validates :role_id , presence: true
   validate :avatar_size_validation

@@ -16,6 +16,7 @@ class PurchaseBillsController < ApplicationController
   def new
     add_breadcrumb I18n.t('helpers.breadcrumbs.purchase_bills.new')
     @purchase_bill = PurchaseBill.new
+    @purchase_bill.date = Time.now
     @purchase_bill.purchase_details.build
   end
 
@@ -30,7 +31,7 @@ class PurchaseBillsController < ApplicationController
     if @purchase_bill.save
       redirect_to purchase_bills_path, notice: 'La factura de compra ha sido creada correctamente.'
     else
-      render :action => 'new'
+      render 'new'
     end
   end
 

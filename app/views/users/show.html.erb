@@ -3,24 +3,43 @@
     <h3 class="box-title"><%= t('helpers.title.user.show') %></h3>
   </div>
   <div class="box-body">
-    <div class="row">
-      <div class="col-md-4">
-        <label class="control-label">Nombre</label>
-        <p><%= @user.full_name.titleize %></p>
-        <label class="control-label">Email</label>
-        <p><%= @user.email %></p>
-      </div>
-      <div class="col-md-4">
-        <label class="control-label">Fecha de Registro</label>
-        <p><%= l @user.created_at, format: :long %></p>
-        <label class="control-label">Fecha de Último Ingreso</label>
-        <p><%= @user.last_sign_in_at ? (l @user.last_sign_in_at, format: :long) : "No regista ingreso" %></p>
+    <div class="col-md-2">
+      <div class="avatar_company">
+        <%= cl_image_tag find_user(current_user.id).avatar_url(:thumb), :class => 'img-circle' if find_user(current_user.id).avatar? %>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-4">
-        <label class="control-label">Rol</label>
-        <p><%= @user.role_name %></p>
+    <div class="col-md-10">
+      <div class="row">
+        <div class="field col-md-12 form-group">
+          <div class="field col-md-5 form-group">
+            <label class="control-label">Nombre: </label>
+            <%= @user.full_name.titleize %>
+          </div>
+          <div class="field col-md-5 form-group">
+            <label class="control-label">Correo: </label>
+            <%= @user.email %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="field col-md-12 form-group">
+          <div class="field col-md-5 form-group">
+            <label class="control-label">Fecha de Registro: </label>
+            <%= l @user.created_at, format: :long %>
+          </div>
+          <div class="field col-md-5 form-group">
+            <label class="control-label">Fecha de Último Ingreso: </label>
+            <%= @user.last_sign_in_at ? (l @user.last_sign_in_at, format: :long) : "No regista ingreso" %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="field col-md-12 form-group">
+          <div class="field col-md-5 form-group">
+            <label class="control-label">Rol. de Usuario: </label>
+            <%= @user.role_name %>
+          </div>
+        </div>
       </div>
     </div>
   </div>

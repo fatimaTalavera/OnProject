@@ -4,6 +4,7 @@ class Contract < ApplicationRecord
   has_many :material_movements
   has_many :client_certifications
   has_one :budget
+  has_many :budget_details, through: :budget
 
   delegate :name, :ruc, to: :client, prefix: true
 

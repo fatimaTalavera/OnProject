@@ -14,13 +14,16 @@ class ContractsController < ApplicationController
   # GET /contracts/1
   # GET /contracts/1.json
   def show
-    add_breadcrumb I18n.t('helpers.breadcrumbs.clients.show')
+    add_breadcrumb I18n.t('helpers.breadcrumbs.contracts.show')
   end
 
   # GET /contracts/new
   def new
     add_breadcrumb I18n.t('helpers.breadcrumbs.contracts.new')
     @contract = Contract.new
+    @contract.budget_id = params[:budget_id]
+    @contract.client = Client.find(params[:client_id])
+    @contract.amount = params[:total]
   end
 
   # GET /contracts/1/edit
@@ -32,9 +35,18 @@ class ContractsController < ApplicationController
   # POST /contracts.json
   def create
     @contract = Contract.new(contract_params)
+    saved = false
+    budget = Budget.find(contract_params[:budget_id])
+
+    if !budget.nil? && budget.contract.nil?
+      @contract.transaction do
+        saved = @contract.save
+        budget.update(state: 'Aprobado', contract: @contract)
+      end
+    end
 
     respond_to do |format|
-      if @contract.save
+      if saved
         format.html { redirect_to contracts_path, notice: 'El contrato se creo correctamente.' }
         format.json { render :show, status: :created, location: @contract }
       else

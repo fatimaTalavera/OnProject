@@ -6,8 +6,8 @@
           <div class="col-md-2">
             <%= f.label :contract, 'Obra:', :class => 'control-label  tooltip_required' %>
           </div>
-          <div class="col-md-8">
-            <%= f.collection_select(:contract_id, Contract.all.order('name'), :id, :name, {prompt: 'Ninguno'}, :class => 'form-control') %>
+          <div class="col-md-8 ">
+            <%= f.collection_select(:contract_id, Contract.all.order('name'), :id, :name, {prompt: 'Ninguno'}, :onchange => 'buscarRub(this);', :class => 'form-control') %>
           </div>
         </div>
         <div class="field col-md-6 form-group">
@@ -26,7 +26,7 @@
             <%= f.label :date, 'Fecha:', :class => 'control-label tooltip_required' %>
           </div>
           <div class="input-group col-md-7">
-            <%= f.text_field :date, :id => 'datepickerFrom', :class => 'input-group date form-control datepicker', value:Time.now.strftime("%d/%m/%Y") %><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+            <%= f.text_field :date, :id => 'datepickerFrom', :class => 'input-group date form-control datepicker'%><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
           </div>
         </div>
         <div class="field col-md-6 form-group">
@@ -57,8 +57,8 @@
             <h3 class="box-title">Rubros a certificar:</h3>
           </div>
           <div class="box-body">
-            <table class="table table-bordered">
-              <theah>
+            <table id="table" class="table table-bordered">
+              <thead>
                 <tr>
                   <th class="col-md-3">Rubro</th>
                   <th class="col-md-2">Cantidad hecha</th>
@@ -66,15 +66,15 @@
                   <th class="col-md-2">Precio(Gs)</th>
                   <th class="col-md-2">Total(Gs)</th>
                 </tr>
-              </theah>
+              </thead>
               <tbody>
               <%= f.fields_for :client_certification_details, :wrapper => false do |form| %>
                   <tr class="fields" onchange='getRubroTotal(this);'>
                     <td class="col-md-3"><%=form.collection_select(:rubro_id, Rubro.all, :id, :name, {prompt: 'Seleccionar'}, :onchange => 'getRubroPrice(this);', class: 'form-control', :readonly => true)%></td>
                     <td class="col-md-2"><%=form.number_field :quantity, class: 'form-control quantity'%></td>
                     <td class="col-md-2"><%=form.number_field :total_quantity, class: 'form-control', :readonly => true%></td>
-                    <td class="col-md-2"><%=form.number_field :price, class: 'form-control price', :readonly => true%></td>
-                    <td class="col-md-2"><%=form.number_field :total, class: 'form-control total', :readonly => true%></td>
+                    <td class="col-md-2"><%=form.number_field :price, class: 'form-control precio', :readonly => true%></td>
+                    <td class="col-md-2"><%=form.number_field :total, class: 'form-control ', :readonly => true%></td>
                   </tr>
               <% end %>
               </tbody>

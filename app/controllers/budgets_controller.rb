@@ -26,6 +26,7 @@ class BudgetsController < ApplicationController
                   type: 'application/pdf',
                   disposition: 'inline'
       end
+      format.json {render json: @budget, include: :budget_details}
     end
   end
 
@@ -33,6 +34,7 @@ class BudgetsController < ApplicationController
   def new
     add_breadcrumb I18n.t('helpers.breadcrumbs.budgets.new')
     @budget = Budget.new
+    @budget.date = Time.now
     @client = Client.new
     @clients = Client.all
   end
