@@ -2,11 +2,11 @@
   <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post, :role => 'form'}) do |f| %>
     <h3>Olvido su Contraseña?</h3>
     <p>Enviaremos instrucciones para reestablecer su contraseña.</p>
-    <%= devise_error_messages! %>
-    <div class="form-group">
-      <%= f.label :email, 'Correo:' %>
-      <%= f.email_field :email, :autofocus => true, class: 'form-control' %>
+    <p>Por favor, introduzca su correo electrónico.</p>
+    <div class="form-group has-feedback">
+      <%= f.email_field :email, :autofocus => true, class: 'form-control', :maxlength => 40 %>
+      <i class="fa fa-envelope-o form-control-feedback"></i>
     </div>
-     <%= f.submit 'Restablecer Contraseña', :class => 'button right' %>
+     <%= f.submit 'Restablecer Contraseña', :class => 'btn btn-primary btn-block btn-flat' %>
   <% end %>
 </div>

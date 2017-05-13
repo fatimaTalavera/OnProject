@@ -1,3 +1,4 @@
+<p class="login-box-msg" style="font-size: 30px;"><%= t('helpers.login.messages.title_login') %></p>
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :role => 'form'} ) do |f| %>
   <%= render "layouts/messages" %>
   <div class="form-group has-feedback">
@@ -10,7 +11,7 @@
   </div>
   <div class="row">
     <div class="col-md-7">
-      <a href="#"><%= t('helpers.login.labels.forgot_password') %></a><br>
+      <a href="<%= new_user_password_path %>"><%= t('helpers.login.labels.forgot_password') %></a><br>
     </div>
     <div class="col-md-5">
       <%= f.submit t('button.login.sign_in'), :class => 'btn btn-primary btn-block btn-flat'%>
