@@ -60,7 +60,7 @@ end
 @materialMovement.save!
 
 # Movimientos detalles
-@movementDetail = MovementDetail.new(quantity: 3, material_id: @cemento.id, material_movement_id: @materialMovement.id)
+@movementDetail = MovementDetail.new(quantity: 3, material_id: @cemento.id, material_movement_id: @materialMovement.id, price: 10000)
 @movementDetail.save!
 #@movementDetail = MovementDetail.new(cantidad: 1, material_id: @cable.id, material_movement_id: @materialMovement.id)
 #@movementDetail.save!

@@ -3,7 +3,7 @@
   <tr>
     <th>Fecha</th>
     <th>Nro. Factura</th>
-    <th>Proveedor</th>
+    <th>Contrato</th>
     <th>Condicion</th>
     <th>Monto</th>
     <th class="table-actions"></th>
@@ -15,7 +15,7 @@
       <tr>
         <td><%= sale_bill.date.strftime("%d/%m/%Y") %></td>
         <td><%= sale_bill.number %></td>
-        <td><%= sale_bill.client.name %></td>
+        <td><%= sale_bill.contract.name %></td>
         <td><%= sale_bill.condition %></td>
         <td><%= sale_bill.total %></td>
         <td>

@@ -10,6 +10,7 @@ class SaleBillsController < ApplicationController
   # GET /sale_bills/1
   # GET /sale_bills/1.json
   def show
+
   end
 
   # GET /sale_bills/new
@@ -65,7 +66,7 @@ class SaleBillsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sale_bill_params
-      params.require(:sale_bill).permit(:date, :condition, :number, :client_id, :contract_id, :total, :balance,
+      params.require(:sale_bill).permit(:date, :condition, :number, :contract_id, :total, :balance,
                                         :sale_details_attributes => [:id, :quantity, :concept_id, :certification_id, :price, :total, :_destroy],
                                         :installments_attributes => [:id, :amount, :balance, :due_date, :_destroy])
     end

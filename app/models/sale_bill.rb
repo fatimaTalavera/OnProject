@@ -1,5 +1,5 @@
 class SaleBill < ApplicationRecord
-  belongs_to :client
+  belongs_to :contract
   has_many :sale_details
   accepts_nested_attributes_for :sale_details, allow_destroy: true
   has_many :installments

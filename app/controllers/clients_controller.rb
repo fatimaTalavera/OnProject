@@ -15,6 +15,11 @@ class ClientsController < ApplicationController
   # GET /clients/1.json
   def show
     add_breadcrumb I18n.t('helpers.breadcrumbs.clients.show')
+    @balance = 0
+    @client.contracts.each do |contract|
+      @balance = @balance + contract.amount
+      @balance = @balance - contract.sale_bills.sum(:total)
+    end
   end
 
   # GET /clients/new

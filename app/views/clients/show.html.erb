@@ -1,50 +1,85 @@
-  <div class="box box-success">
-    <div class="box-header with-border">
-      <h3 class="box-title">Cliente</h3>
-    </div>
-      <div class="box-body">
+<div class="box box-success">
+  <div class="box-header with-border">
+    <h3 class="box-title">Cliente</h3>
+  </div>
+  <div class="box-body">
 
-        <div class="field col-md-12 form-group">
-          <div class="field col-md-8 form-group">
-              <strong>Nombre o Razón Social:</strong>
-              <%= @client.name %>
-          </div>
-
-          <div class="field col-md-4 form-group">
-              <strong>RUC:</strong>
-              <%= @client.ruc %>
-          </div>
-        </div>
-
-        <div class="field col-md-12 form-group">
-          <div class="field col-md-4 form-group">
-              <strong>Correo:</strong>
-              <%= @client.email %>
-          </div>
-
-          <div class="field col-md-4 form-group">
-              <strong>Direccion:</strong>
-              <%= @client.adress %>
-          </div>
-
-          <div class="field col-md-4 form-group">
-              <strong>Telefono:</strong>
-              <%= @client.phone %>
-          </div>
-        </div>
+    <div class="field col-md-12 form-group">
+      <div class="field col-md-8 form-group">
+        <strong>Nombre o Razón Social:</strong>
+        <%= @client.name %>
       </div>
-        <div class="box-footer">
-          <div class="pull-right">
-            <% if (can? :update, Client) %>
-            <%= link_to 'Editar', edit_client_path(@client), :class => 'btn btn-primary active' %>
-                <% end %>
-            <%= link_to 'Atras', clients_path, :class => 'btn btn-default' %>
-          </div>
-        </div>
-  </div>
 
-  <div class="box box-success">
-    <div class="box-header with-border">
-      <h3 class="box-title">Cuenta Corriente</h3>
+      <div class="field col-md-4 form-group">
+        <strong>RUC:</strong>
+        <%= @client.ruc %>
+      </div>
+    </div>
+
+    <div class="field col-md-12 form-group">
+      <div class="field col-md-4 form-group">
+        <strong>Correo:</strong>
+        <%= @client.email %>
+      </div>
+
+      <div class="field col-md-4 form-group">
+        <strong>Direccion:</strong>
+        <%= @client.adress %>
+      </div>
+
+      <div class="field col-md-4 form-group">
+        <strong>Telefono:</strong>
+        <%= @client.phone %>
+      </div>
     </div>
   </div>
+  <div class="box-footer">
+    <div class="pull-right">
+      <% if (can? :update, Client) %>
+          <%= link_to 'Editar', edit_client_path(@client), :class => 'btn btn-primary active' %>
+      <% end %>
+      <%= link_to 'Atras', clients_path, :class => 'btn btn-default' %>
+    </div>
+  </div>
+</div>
+
+<div class="box box-success">
+  <div class="box-header with-border">
+    <h3 class="box-title">Cuenta Corriente</h3>
+  </div>
+  <div class="box-body">
+    <div class="field col-md-12 form-group">
+      <div class="field col-md-8 form-group">
+        <strong>Balance Total:</strong>
+        <%= number_to_currency(@balance, unit: "Gs.", separator: ".", precision: 0) %>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <table class="table table-bordered table-condensed", cellspacing="0" width="100%">
+        <thead>
+        <tr>
+          <th>Nombre</th>
+
+          <th>Fecha de inicio</th>
+          <th>Fecha de finalización</th>
+          <th>Monto</th>
+          <th>Facturado</th>
+          <th>Balance</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @client.contracts.each do |contract| %>
+            <tr>
+              <td><%= contract.name %></td>
+              <td><%= contract.start_date %></td>
+              <td><%= contract.end_date %></td>
+              <td><%= number_to_currency(contract.amount, unit: "Gs.", separator: ".", precision: 0) %></td>
+              <td><%= number_to_currency(contract.sale_bills.sum(:total), unit: "Gs.", separator: ".", precision: 0)%></td>
+              <td><%= number_to_currency(contract.amount - contract.sale_bills.sum(:total), unit: "Gs.", separator: ".", precision: 0)%></td>
+            <tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -15,14 +15,11 @@
           </div>
           <div class="field col-md-4 form-group">
             <div class="col-md-3">
-              <%= f.label :client_id, 'Cliente:', :class => 'control-label  tooltip_required' %>
+              <%= f.label :contract_id, 'Contrato:', :class => 'control-label  tooltip_required' %>
             </div>
             <div class="col-md-7">
               <div class="input-group">
-                <%= f.collection_select(:client_id, Client.all, :id, :name, {prompt: 'Buscar Cliente'}, :class => 'form-control select2 people-search') %>
-                <span class="input-group-btn">
-                <%= link_to "<i class=\"fa fa-plus\"></i>".html_safe, new_client_path, {:class => "btn btn-flat bg-green", :title => "Agregar Cliente"} %>
-              </span>
+                <%= f.collection_select(:contract_id, Contract.all, :id, :name, {prompt: 'Buscar Contrato'}, :class => 'form-control select2 people-search') %>
               </div>
             </div>
           </div>
