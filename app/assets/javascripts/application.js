@@ -24,6 +24,7 @@
 //= require ./libs/data-tables/dataTables.bootstrap.min.js
 //= require ./libs/moment.js
 //= require ./libs/rails.validations
+//= require ./libs/daterangepicker.js
 //= require ./libs/defaults.configs.js
 //= require jquery_nested_form
 //= require_tree ./helpers

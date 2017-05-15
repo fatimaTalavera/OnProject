@@ -21,6 +21,7 @@ var Purchase = (function(){
         };
     },
     index: function() {
+      DatepickerHelper.initDateRangePicker('#date-range');
     },
     'new': function() {
       initFormEvents();
