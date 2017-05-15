@@ -12,7 +12,7 @@
 
         <div class="field col-md-6 form-group">
           <div class="col-sm-2 alineado">
-            <%= f.label :description, 'Descripcion:', :class => 'control-label' %>
+            <%= f.label :description, 'Descripción:', :class => 'control-label' %>
           </div>
           <div class="col-sm-7">
             <%= f.text_field :description, :maxlength => 30, :class => 'form-control' %>
@@ -22,10 +22,10 @@
       <div class="field col-md-12 form-group">
         <br>
         <div class="field col-md-3 form-group">
-          <div class="col-sm-5 alineado">
+          <div class="col-sm-3 alineado">
             <%= f.label :quantity, 'Cantidad:', :class => 'control-label tooltip_required' %>
           </div>
-          <div class="col-sm-6 ">
+          <div class="col-sm-5 ">
             <% if action_name == "edit" %>
                 <%= f.label :quantity, material.quantity, :class => 'control-label' %>
             <% else %>
@@ -34,7 +34,7 @@
           </div>
         </div>
         <div class="field col-md-3 form-group">
-          <div class="col-sm-3 alineado">
+          <div class="col-sm-6 ">
             <%= f.label :measurement_unit, 'Ud. medida:', :class => 'control-label tooltip_required' %>
           </div>
           <div class="col-sm-5">
@@ -43,8 +43,8 @@
         </div>
 
         <div class="field col-md-3 form-group">
-          <div class="col-sm-3 alineado">
-            <%= f.label :price, 'Precio Unitario:', :class => 'control-label tooltip_required' %>
+          <div class="col-sm-4 alineado">
+            <%= f.label :price, 'Precio:', :class => 'control-label tooltip_required' %>
           </div>
           <div class="col-sm-6 ">
             <%= f.text_field :price, :maxlength => 10, :class => 'form-control' %>
@@ -56,7 +56,7 @@
             <%= f.label :minimun_stock, 'Stock min:', :class => 'control-label' %>
           </div>
           <div class="col-sm-5 ">
-            <%= f.text_field :minimun_stock, value: 0 , :maxlength => 5, :class => 'form-control' %>
+            <%= f.text_field :minimun_stock, :maxlength => 5, :class => 'form-control' %>
           </div>
         </div>
       </div>

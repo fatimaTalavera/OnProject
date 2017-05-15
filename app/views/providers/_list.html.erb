@@ -1,11 +1,11 @@
 <table class="table table-bordered table-condensed">
   <thead>
   <tr>
-    <th>Nombre o Razon Social</th>
+    <th>Nombre o Razón Social</th>
     <th>RUC</th>
-    <th>Telefono</th>
+    <th>Teléfono</th>
     <th>Correo</th>
-    <th>Direccion</th>
+    <th>Dirección</th>
     <th></th>
   </tr>
   </thead>
@@ -13,10 +13,10 @@
   <tbody>
   <% providers.each do |provider| %>
       <tr>
-        <td><%= provider.name %></td>
+        <td><%= disminuir(provider.name) %></td>
         <td><%= provider.ruc %></td>
         <td><%= provider.phone %></td>
-        <td><%= provider.email %></td>
+        <td><%= disminuir(provider.email) %></td>
         <td><%= disminuir(provider.address) %></td>
         <td>
           <% if (can? :update, Provider) %>

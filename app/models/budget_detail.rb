@@ -10,13 +10,19 @@ class BudgetDetail < ApplicationRecord
   validates :quantity, presence: {message: "No puede estar vacio"}
   validates :utility, presence: {message: "No puede estar vacio"}
   validate 'valid_utility_num'
+  validate 'valid_quant_num'
 
   def valid_utility_num
-    if utility <= 0
-      errors.add(:utility, "Debe ser mayor a 0")
+    if utility < 0
+      errors.add(:utility, "Debe ser mayor o igual a 0")
     end
     if utility >= 9999
       errors.add(:utility, "Debe ser menor a 9999")
+    end
+  end
+  def valid_quant_num
+    if quantity <= 0
+      errors.add(:quantity, "Debe ser mayor a 0")
     end
   end
 
