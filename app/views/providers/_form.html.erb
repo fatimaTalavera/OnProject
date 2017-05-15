@@ -2,7 +2,7 @@
     <div class="box-body box-success">
       <div class="field col-md-12 form-group">
         <div class="field col-md-9 form-group">
-          <div class="col-md-2">
+          <div class="col-md-3">
             <%= f.label :name, 'Nombre o Razón Social:', :class => 'control-label tooltip_required' %>
           </div>
           <div class="col-md-9">
@@ -34,7 +34,7 @@
       <div class="field col-md-12 form-group">
         <div class="field col-md-6 form-group">
           <div class="col-md-2">
-            <%= f.label :address, 'Direccion:', :class => 'control-label' %>
+            <%= f.label :address, 'Dirección:', :class => 'control-label' %>
           </div>
           <div class="col-md-9">
             <%= f.text_area :address, :class => 'form-control', :maxlength => 200 %>
@@ -43,7 +43,7 @@
 
         <div class="field col-md-6 form-group">
           <div class="col-md-2">
-            <%= f.label :phone, 'Telefono:', :class => 'control-label' %>
+            <%= f.label :phone, 'Teléfono:', :class => 'control-label' %>
           </div>
           <div class="col-md-6">
             <%= f.text_field :phone, id: 'phone', :class => 'form-control', :maxlength => 12 %>
