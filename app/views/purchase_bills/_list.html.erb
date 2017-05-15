@@ -6,6 +6,7 @@
     <th>Proveedor</th>
     <th>Condicion</th>
     <th>Monto</th>
+    <th>Estado</th>
     <th class="table-actions"></th>
   </tr>
   </thead>
@@ -17,7 +18,10 @@
         <td><%= purchase_bill.number %></td>
         <td><%= purchase_bill.provider_name %></td>
         <td><%= purchase_bill.condition %></td>
-        <td><%= purchase_bill.total %></td>
+        <td><%= number_to_currency_py(purchase_bill.total) %></td>
+        <td>
+          <%= "<label class='label label-#{purchase_bill.state.pagado? ? 'success' : 'warning'}'>#{purchase_bill.state_text}</label>".html_safe %>
+        </td>
         <td>
           <%= link_to "<i class=\"fa fa-eye\"></i>".html_safe, purchase_bill_path(purchase_bill), {:class => "btn btn-xs bg-teal btn-flat", :title => "Ver detalles"} %>
             <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_purchase_bill_path(purchase_bill), {:class => "btn btn-xs bg-orange btn-flat"} %>

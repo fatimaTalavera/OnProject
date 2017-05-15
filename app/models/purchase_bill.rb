@@ -1,11 +1,17 @@
 class PurchaseBill < ApplicationRecord
+  extend Enumerize
   audited
   belongs_to :provider
   delegate :name, :ruc, to: :provider, prefix: true
 
   has_many :purchase_details
 
+  enumerize :condition, in: [:contado, :crédito], predicates: true
+  enumerize :state, in: [:pendiente, :pagado], predicates: true
+
   after_validation :set_total
+  after_validation :set_balance, if: :crédito?
+  after_validation :set_state
 
   accepts_nested_attributes_for :purchase_details, allow_destroy: true
 
@@ -28,4 +34,17 @@ class PurchaseBill < ApplicationRecord
       self.total += d.price * d.quantity unless d.marked_for_destruction?
     end
   end
+
+  def set_state
+    if self.balance == 0
+      self.state = :pagado
+    else
+      self.state = :pendiente
+    end
+  end
+
+  def set_balance
+    self.balance = self.total
+  end
+
 end

@@ -28,15 +28,15 @@
         </div>
         <div class="field col-md-4 form-group">
           <div class="col-md-3">
-            <%= f.label :condition, 'Condición:', :class => 'control-label  tooltip_required' %>
+            <%= f.label :condition, 'Condición:', :class => 'control-label tooltip_required' %>
           </div>
           <div class="col-md-7">
             <div class="btn-group" data-toggle="buttons">
               <label class="btn btn-default">
-                <%= f.radio_button :condition, 'Contado', :class => 'radio_group_buttons required' %> Contado
+                <%= f.radio_button :condition, 'contado', :class => 'radio_group_buttons required' %> Contado
               </label>
               <label class="btn btn-default">
-                <%= f.radio_button :condition, 'Crédito', :class => 'radio_group_buttons required' %> Crédito
+                <%= f.radio_button :condition, 'crédito', :class => 'radio_group_buttons required' %> Crédito
               </label>
             </div>
           </div>
