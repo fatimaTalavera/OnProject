@@ -23,6 +23,7 @@ gem 'cancan'
 gem 'ruby-enum'
 gem "mini_magick"
 gem "audited", "~> 4.4"
+gem 'enumerize'
 group :development, :test do
   gem 'byebug', platform: :mri
 end
