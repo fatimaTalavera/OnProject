@@ -4,6 +4,23 @@ class BudgetsController < ApplicationController
   before_action :set_budget, only: [:show, :edit, :update, :destroy]
   before_action :load_permissions
   authorize_resource
+
+  def cancel
+    budget = Budget.find(params[:id])
+    if budget.pending?
+      budget.cancelled!
+      redirect_to budgets_url
+    end
+  end
+
+  def deliver
+    budget = Budget.find(params[:id])
+    if budget.pending?
+      budget.studying!
+      redirect_to budgets_url
+    end
+  end
+
   # GET /budgets
   # GET /budgets.json
   def index
@@ -91,7 +108,7 @@ class BudgetsController < ApplicationController
   private
   def get_budgets
     @q = Budget.ransack(params[:q])
-    @q.sorts = ['client_name asc', 'state asc'] if @q.sorts.empty?
+    @q.sorts = ['state asc', 'name asc'] if @q.sorts.empty?
     @budgets = @q.result.page(params[:page])
   end
 
@@ -102,7 +119,7 @@ class BudgetsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def budget_params
-    params.require(:budget).permit(:client_id, :contract_id, :date, :description, :state,  :total_amount,
+    params.require(:budget).permit(:client_id, :contract_id, :date, :description, :state,  :total_amount, :name,
                                    budget_details_attributes: [:id, :rubro_id, :cost, :measurement_unit, :price, :quantity, :subtotal, :utility, :_destroy])
   end
 end

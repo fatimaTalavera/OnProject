@@ -1,6 +1,7 @@
 <table class="table table-bordered table-condensed">
   <thead>
   <tr>
+    <th>Nombre</th>
     <th>Cliente</th>
     <th>Fecha</th>
     <th>Descripción</th>
@@ -13,30 +14,28 @@
   <tbody>
   <% budgets.each do |budget| %>
       <tr>
-        <td><%= budget.client_name%></td>
+        <td><%= budget.name %></td>
+        <td><%= budget.client_name %></td>
         <td><%= budget.date %></td>
-        <td><%= budget.description %></td>
-
-        <% if budget.state == "Aprobado"%>
-            <td class="bg-green"><%= budget.state %></td>
-        <%elsif budget.state == "En estudio" %>
-            <td class="bg-aqua"><%= budget.state %></td>
-        <%elsif budget.state == "Pendiente" %>
-            <td class="bg-purple"><%= budget.state %></td>
-        <% elsif budget.state == "Cancelado"%>
-            <td  class="bg-gray disable"><%= budget.state %></td>
+        <td><%= disminuir(budget.description) %></td>
+        <% if budget.approved? %>
+            <td class="bg-green">Aprobado</td>
+        <% elsif budget.studying? %>
+            <td class="bg-aqua">En estudio</td>
+        <% elsif budget.pending? %>
+            <td class="bg-purple">Pendiente</td>
+        <% elsif budget.cancelled? %>
+            <td  class="bg-gray disable">Cancelado</td>
         <% end %>
         <td><%= number_to_currency_py(budget.total_amount) %></td>
         <td>
           <%= link_to "<i class=\"fa fa-eye\"></i>".html_safe, budget_path(budget), {:class => "btn btn-xs bg-teal btn-flat"} %>
-          <% if budget.state == "Pendiente" %>
+          <% if budget.pending? %>
               <% if (can? :update, Budget) %>
-          <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_budget_path(budget), {:class => "btn btn-xs bg-orange btn-flat"} %>
+                <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_budget_path(budget), {:class => "btn btn-xs bg-orange btn-flat"} %>
               <% end %>
-        <% elsif budget.state == "Aprobado" %>
-
           <%end %>
-              </td>
+        </td>
       </tr>
   <% end %>
   </tbody>

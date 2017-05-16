@@ -12,7 +12,7 @@ class Contract < ApplicationRecord
   validates :client,  :presence => {:message => "Debe seleccionar un cliente"}
 
   validates :name, :presence => {:message => "No puede estar en blanco"},
-            :length => {maximum:50, :message => "Permite hasta 50 caracteres"},
+            :length => {maximum:150, :message => "Permite hasta 150 caracteres"},
             #valida que no sea un nombre existente
             :uniqueness => {:message => "Este contrato ya existe, vuelva a intentarlo"}
 

@@ -2,7 +2,13 @@ Rails.application.routes.draw do
   resources :sale_bills, except: [:destroy, :update]
   resources :concepts
   resources :account_employees, except: [:destroy]
-  resources :budgets
+  resources :budgets do
+    member do
+      get :cancel
+      get :deliver
+    end
+  end
+  #resources :budgets
   resources :rubros
   resources :certifications, except: [:destroy]
   resources :client_certifications

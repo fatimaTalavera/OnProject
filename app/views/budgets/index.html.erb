@@ -9,7 +9,7 @@
     <div class="budget-search searchList">
       <%= search_form_for(@q, remote: true, :html => { class: 'remote-search' }) do |f| %>
           <div class="input-group">
-            <%= f.text_field :client_name_or_state_cont, class: 'form-control', autocomplete: 'off', placeholder: 'Busca por nombre o estado' %>
+            <%= f.text_field :name_or_client_name_cont, class: 'form-control', autocomplete: 'off', placeholder: 'Busca por nombre o cliente' %>
             <div class="input-group-btn">
               <button type="submit" name="button" class="btn btn-default">
                 <i class="fa fa-search"></i>
