@@ -15,6 +15,9 @@ class ContractsController < ApplicationController
   # GET /contracts/1.json
   def show
     add_breadcrumb I18n.t('helpers.breadcrumbs.contracts.show')
+    @budget_details = @contract.budget_details.page params[:page]
+    @material_movements = @contract.material_movements.page params[:page]
+    @client_certifications = @contract.client_certifications.page params[:page]
   end
 
   # GET /contracts/new

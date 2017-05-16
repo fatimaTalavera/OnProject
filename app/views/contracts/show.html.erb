@@ -12,7 +12,7 @@
           </div>
           <div class="col-sm-6">
             <label class="control-label">Monto: </label>
-            <span><%= @contract.amount %></span>
+            <span><%= number_to_currency_py(@contract.amount) %></span>
           </div>
           <div class="col-sm-6">
             <label class="control-label">Fecha de inicio: </label>
@@ -72,7 +72,7 @@
               </tr>
             </thead>
             <tbody>
-              <% @contract.budget_details.each do |budget_detail| %>
+              <% @budget_details.each do |budget_detail| %>
                   <tr class="fields ">
                     <td><%= budget_detail.rubro_name %></td>
                     <td><%= budget_detail.rubro_measurement_unit %></td>
@@ -85,6 +85,11 @@
               <% end %>
             </tbody>
           </table>
+          <div id="paginate-container">
+            <ul class="pagination pagination-sm no-margin pull-right">
+              <%= paginate @budget_details %>
+            </ul>
+          </div>
         </div>
         <div class="tab-pane fade" id="material-movements">
           <br>
@@ -96,7 +101,7 @@
             </tr>
             </thead>
             <tbody>
-            <% @contract.material_movements.each do |material_movement| %>
+            <% @material_movements.each do |material_movement| %>
                 <tr class="fields ">
                   <td><%= material_movement.date %></td>
                   <td><%= material_movement.reason %></td>
@@ -104,6 +109,11 @@
             <% end %>
             </tbody>
           </table>
+          <div id="paginate-container">
+            <ul class="pagination pagination-sm no-margin pull-right">
+              <%= paginate @material_movements %>
+            </ul>
+          </div>
         </div>
         <div class="tab-pane fade" id="client-certifications">
           <br>
@@ -116,7 +126,7 @@
             </tr>
             </thead>
             <tbody>
-            <% @contract.client_certifications.each do |client_certification| %>
+            <% @client_certifications.each do |client_certification| %>
                 <tr class="fields ">
                   <td><%= client_certification.date %></td>
                   <% if client_certification.state == "Terminado"%>
@@ -132,6 +142,11 @@
             <% end %>
             </tbody>
           </table>
+          <div id="paginate-container">
+            <ul class="pagination pagination-sm no-margin pull-right">
+              <%= paginate @client_certifications %>
+            </ul>
+          </div>
         </div>
         <div class="tab-pane fade" id="bills">
           <h4>En construccion :)</h4>
