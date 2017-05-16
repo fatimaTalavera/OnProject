@@ -3,7 +3,7 @@ class InstallmentPaymentController < ApplicationController
     @installment_payment = InstallmentPayment.new(installment_payment_params)
     @amount = installment_payment_params[:amount].to_i
     respond_to do |format|
-      if @amount > @installment_payment.installment.amount
+      if @amount > @installment_payment.installment_amount
         format.html { redirect_to :back, alert: 'El monto excede al saldo de la cuota cuota.' }
       else
         if @installment_payment.save

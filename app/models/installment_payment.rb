@@ -1,5 +1,6 @@
 class InstallmentPayment < ApplicationRecord
   belongs_to :installment
+  delegate :amount, to: :installment, prefix: true
   #hacer logica de restar a cuotas
   before_create :restar_a_cuotas
 
