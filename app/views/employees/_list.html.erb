@@ -5,8 +5,8 @@
     <th>Apellido</th>
     <th>Documento</th>
     <th>Correo</th>
-    <th>Direccion</th>
-    <th>Telefono</th>
+    <th>Dirección</th>
+    <th>Teléfono</th>
     <th class="table-actions"></th>
   </tr>
   </thead>
@@ -18,7 +18,7 @@
         <td><%= employee.last_name %></td>
         <td><%= employee.identification_document %></td>
         <td><%= employee.email %></td>
-        <td><%= employee.address %></td>
+        <td><%= disminuir(employee.address) %></td>
         <td><%= employee.phone %></td>
         <td>
           <% if (can? :update, Employee) %>
