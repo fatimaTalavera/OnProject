@@ -7,23 +7,27 @@ class BudgetDetail < ApplicationRecord
   delegate :measurement_unit, to: :rubro, prefix:true
 
   validates :rubro_id, presence: {message: "Seleccione un rubro"}
-  validates :quantity, presence: {message: "No puede estar vacio"}
-  validates :utility, presence: {message: "No puede estar vacio"}
+
   validate 'valid_utility_num'
   validate 'valid_quant_num'
 
   def valid_utility_num
-    if utility < 0
+    if utility.nil? == true
+      errors.add(:utility, "No puede estar vacío")
+    end
+    if (utility.nil? == false) and utility < 0
       errors.add(:utility, "Debe ser mayor o igual a 0")
     end
-    if utility >= 9999
+    if (utility.nil? == false) and utility >= 9999
       errors.add(:utility, "Debe ser menor a 9999")
     end
   end
   def valid_quant_num
-    if quantity <= 0
+    if quantity.nil? == true
+      errors.add(:quantity, "No puede estar vacío")
+    end
+    if (quantity.nil? == false) and quantity <= 0
       errors.add(:quantity, "Debe ser mayor a 0")
     end
   end
-
 end
