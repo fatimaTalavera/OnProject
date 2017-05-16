@@ -1,9 +1,20 @@
-<p id="notice"><%= notice %></p>
+<div class="box box-success">
+  <div class="box-header with-border">
+    <h3 class="box-title"><%= t('helpers.title.concept.show') %></h3>
+  </div>
+  <div class="box-body">
 
-<p>
-  <strong>Name:</strong>
-  <%= @concept.name %>
-</p>
-
-<%= link_to 'Edit', edit_concept_path(@concept) %> |
-<%= link_to 'Back', concepts_path %>
+    <div class="field col-md-12 form-group">
+      <div class="field col-md-6 form-group">
+        <strong>Concepto:</strong>
+        <%= @concept.name %>
+      </div>
+    </div>
+  </div>
+  <div class="box-footer">
+    <div class="pull-right">
+      <%= link_to 'Editar', edit_concept_path(@concept), :class => 'btn btn-primary active' %>
+      <%= link_to 'Atras', concepts_path, :class => 'btn btn-default' %>
+    </div>
+  </div>
+</div>

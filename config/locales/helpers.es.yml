@@ -24,6 +24,7 @@ es:
       account_employee: Cta. cte. jornalero
       account_employees: Cta. cte. jornalero
       sale_bills: Facturas de venta
+      concepts: Conceptos
       index: Indice
       new: Agregar
       edit: Editar
@@ -110,6 +111,7 @@ es:
         edit: Editar
         show: "Factura Nro. %{purchase}"
       concepts:
+        index: Conceptos
         new: Agregar concepto
         edit: Editar concepto
         list: Conceptos
@@ -204,6 +206,11 @@ es:
         edit: Editar Factura de Venta
         list: Facturas de Venta
         show: Ver Factura de Venta
+      concept:
+        new: Agregar Concepto
+        edit: Editar Concepto
+        list: Conceptos
+        show: Ver Concepto
     audit:
       update: actualizar
       create: crear

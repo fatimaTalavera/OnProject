@@ -1,6 +1,6 @@
-<h1>Editing Concept</h1>
-
-<%= render 'form', concept: @concept %>
-
-<%= link_to 'Show', @concept %> |
-<%= link_to 'Back', concepts_path %>
+<div class="box box-success">
+  <div class="box-header with-border">
+    <h3 class="box-title"><%= t('helpers.title.concept.edit') %></h3>
+  </div>
+  <%= render 'form', concept: @concept %>
+</div>

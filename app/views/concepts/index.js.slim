@@ -1,0 +1,3 @@
+| $("#concepts-table").html("#{escape_javascript(render 'list', format: 'html', :concepts => @concepts)}");
+| $('#paginate-container').html("#{escape_javascript(paginate(@concepts, remote: true)) }");
+| $('.searchResult > .overlay').remove();
