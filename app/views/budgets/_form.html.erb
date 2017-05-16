@@ -2,8 +2,16 @@
 
     <div class="box-body">
       <div class="field col-md-12 form-group">
-        <div class="field col-md-6 form-group">
-          <div class="col-sm-2 alineado">
+        <div class="field col-md-4 form-group ">
+          <div class="col-sm-4">
+            <%= f.label :name, 'Nombre:', :class => 'control-label  tooltip_required' %>
+          </div>
+          <div class="col-sm-8 ">
+            <%= f.text_field :name, :class => 'form-control', autofocus:true, :maxlength => 50 %>
+          </div>
+        </div>
+        <div class="field col-md-4 form-group">
+          <div class="col-sm-2">
             <%= f.label :client_id,  'Cliente:', :class => 'control-label tooltip_required' %>
           </div>
           <div class="col-sm-7">
@@ -19,8 +27,8 @@
             <%= link_to "<i class=\"fa fa-plus\"></i>".html_safe, new_client_path,  {:remote => true, :class => "btn btn-sm btn-flat bg-green", :title => "Nuevo Cliente"} %>
           </div>
         </div>
-        <div class="field col-md-6 form-group">
-          <div class="col-sm-4 alineado">
+        <div class="field col-md-4 form-group">
+          <div class="col-sm-4">
             <%= f.label :date, 'Fecha:', :class => 'control-label tooltip-required' %>
           </div>
           <div class="input-group col-sm-5" style="padding-left: 14px">
@@ -32,20 +40,11 @@
       <div class="field col-md-12 form-group">
         <br>
         <div class="field col-md-6 form-group ">
-          <div class="col-sm-4 alineado">
+          <div class="col-sm-4">
             <%= f.label :description, 'Descripcion:', :class => 'control-label' %>
           </div>
           <div class="col-sm-8 ">
             <%= f.text_area :description, :class => 'form-control', cols: "30", rows: "5", :maxlength => 200 %>
-          </div>
-        </div>
-
-        <div class="field col-md-6 form-group">
-          <div class="col-sm-2 alineado">
-            <%= f.label :state, 'Estado:', :class => 'control-label tooltip_required' %>
-          </div>
-          <div class="col-sm-5 ">
-            <%= f.select(:state, ["Pendiente","En estudio", "Aprobado", "Cancelado"], {prompt: '< Seleccionar >'}, :class => 'form-control') %>
           </div>
         </div>
       </div>

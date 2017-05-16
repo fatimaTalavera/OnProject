@@ -21,6 +21,7 @@ class ContractsController < ApplicationController
   def new
     add_breadcrumb I18n.t('helpers.breadcrumbs.contracts.new')
     @contract = Contract.new
+    @contract.name = params[:name]
     @contract.budget_id = params[:budget_id]
     @contract.client = Client.find(params[:client_id])
     @contract.amount = params[:total]
@@ -38,10 +39,10 @@ class ContractsController < ApplicationController
     saved = false
     budget = Budget.find(contract_params[:budget_id])
 
-    if !budget.nil? && budget.contract.nil?
+    if budget.studying? && budget.contract.nil?
       @contract.transaction do
         saved = @contract.save
-        budget.update(state: 'Aprobado', contract: @contract)
+        budget.update(state: Budget.states[:approved], contract: @contract)
       end
     end
 

@@ -1,5 +1,7 @@
 class Budget < ApplicationRecord
   audited
+  enum state: { pending: 0, studying: 1, approved: 2, cancelled: 3 }
+
   belongs_to :client
   belongs_to :contract
   has_many :budget_details
@@ -11,8 +13,10 @@ class Budget < ApplicationRecord
 
   after_save :as_total
 
+  validates :name, :presence => {:message => "No puede estar en blanco"},
+            :length => {maximum:150, :message => "Permite hasta 150 caracteres"},
+            :uniqueness => {:message => "Este nombre ya existe, vuelva a intentarlo"}
   validates :client_id, :presence => {:message => "Debe seleccionar un cliente"}
-  validates :state, :presence => {:message => "Debe seleccionar un estado"}
   validate :detalles_vacio
 
   def detalles_vacio

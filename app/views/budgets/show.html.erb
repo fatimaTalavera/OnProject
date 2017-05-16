@@ -4,8 +4,17 @@
   </div>
   <div class="box-body">
     <div class="field col-md-12 form-group">
-      <div class="field col-md-6 form-group">
-        <div class="col-sm-2 label-pad">
+      <div class="field col-md-4 form-group">
+        <div class="col-sm-3 label-pad">
+          <strong>Nombre:</strong>
+        </div>
+        <div class="col-sm-7 show-padding">
+          <%= @budget.name %>
+        </div>
+      </div>
+
+      <div class="field col-md-4 form-group">
+        <div class="col-sm-3 label-pad">
           <strong>Cliente:</strong>
         </div>
         <div class="col-sm-7 show-padding">
@@ -13,8 +22,8 @@
         </div>
       </div>
 
-      <div class="field col-md-6 form-group">
-        <div class="col-sm-2 label-pad">
+      <div class="field col-md-4 form-group">
+        <div class="col-sm-3 label-pad">
           <strong>Fecha:</strong>
         </div>
         <div class="col-sm-5 show-padding">
@@ -29,19 +38,11 @@
         <div class="col-sm-3 label-pad ">
           <strong>Descripción:</strong>
         </div>
-        <div class="col-sm-8 show-padding">
+        <div class="col-sm-7 show-padding">
           <%= @budget.description %>
         </div>
       </div>
 
-      <div class="field col-md-6">
-        <div class="col-sm-2 label-pad">
-          <strong>Estado:</strong>
-        </div>
-        <div class="col-sm-6 show-padding">
-          <%= @budget.state %>
-        </div>
-      </div>
     </div>
     <div class="col-md-12">
       <br>
@@ -82,13 +83,16 @@
       </div>
     </div>
     <div class="pull-right">
-      <% if (can? :update, Budget) && @budget.state == "Pendiente" %>
-          <%= link_to 'Editar', edit_budget_path(@budget), :class => 'btn btn-flat bg-blue'%>
+      <% if (can? :update, Budget) && @budget.pending? %>
+          <%= link_to 'Entregar', deliver_budget_path(@budget), :class => 'btn btn-flat bg-blue' %>
+          <%= link_to 'Cancelar', cancel_budget_path(@budget), :class => 'btn btn-flat bg-orange' %>
+          <%= link_to 'Editar', edit_budget_path(@budget), :class => 'btn btn-flat'%>
+
       <% end %>
-      <% if (can? :update, Budget) &&  (can? :create, Contract) && @budget.state == "En estudio" %>
-          <%= link_to 'Generar Contrato', new_contract_path({budget_id: @budget.id, client_id: @budget.client_id , total: @budget.total_amount}), class:'btn btn-flat bg-blue' %>
+      <% if (can? :update, Budget) &&  (can? :create, Contract) && @budget.studying? %>
+          <%= link_to 'Generar Contrato', new_contract_path({name:@budget.name, budget_id: @budget.id, client_id: @budget.client_id , total: @budget.total_amount}), class:'btn btn-flat bg-blue' %>
       <% end %>
-      <% if @budget.state == "Aprobado" && !@budget.contract.nil? && (can? :show, Contract) %>
+      <% if @budget.approved? && !@budget.contract.nil? && (can? :show, Contract) %>
           <%= link_to 'Ver Contrato', contract_path(@budget.contract.id), :class => 'btn btn-flat bg-blue'%>
       <% end %>
     </div>
