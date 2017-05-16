@@ -73,7 +73,7 @@
                     <td class="col-md-3"><%=form.collection_select(:rubro_id, Rubro.all, :id, :name, {prompt: 'Seleccionar'}, :onchange => 'getRubroPrice(this);', class: 'form-control', :readonly => true)%></td>
                     <td class="col-md-2"><%=form.number_field :quantity, class: 'form-control quantity'%></td>
                     <td class="col-md-2"><%=form.number_field :total_quantity, class: 'form-control', :readonly => true%></td>
-                    <td class="col-md-2"><%=form.number_field :price, class: 'form-control precio', :readonly => true%></td>
+                    <td class="col-md-2"><%=form.number_field :price, class: 'form-control price', :readonly => true%></td>
                     <td class="col-md-2"><%=form.number_field :total, class: 'form-control ', :readonly => true%></td>
                   </tr>
               <% end %>

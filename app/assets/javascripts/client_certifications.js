@@ -36,14 +36,18 @@ function buscarRub (currentElement){
             success: function(res){
                 res.budget_details.forEach(function(obj) {
                     var item;
+                    var rubro = obj.rubro_id;
+                    var quantity = obj.quantity;
+                    var price = obj.price ;
                     item += '<tr>';
-                    item += '<td> ' + obj.rubro_id + ' </td>';
+                    item += '<td> ' + rubro + ' </td>';
                     item += '<td>  </td>';
-                    item += '<td> ' + obj.quantity + ' </td>';
-                    item += '<td> ' + obj.price + ' </td>';
+                    item += '<td> ' + quantity + ' </td>';
+                    item += '<td> ' + price + ' </td>';
                     item += '<td>  </td>';
                     item += '</tr>';
                     $("#table tbody").append(item);
+                    self.find().val(price);
                 });
             }
 

@@ -37,7 +37,7 @@ class ClientCertificationsController < ApplicationController
 
     respond_to do |format|
       if @client_certification.save
-        format.html { render redirect_to client_certifications_path, notice: 'Certificación de Cliente se creó correctamente' }
+        format.html { redirect_to client_certifications_path, notice: 'Certificación de Cliente se creó correctamente' }
         format.json { render :show, status: :created, location: @client_certification }
       else
         format.html { render :new }

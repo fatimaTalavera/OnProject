@@ -1,0 +1,20 @@
+<table class="table table-bordered table-condensed">
+  <thead>
+  <tr>
+    <th>Concepto</th>
+    <th class="table-actions"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% concepts.each do |concept| %>
+      <tr>
+        <td><%= concept.name %></td>
+        <td>
+          <%= link_to "<i class=\"fa fa-eye\"></i>".html_safe, concept_path(concept), {:class => "btn btn-xs bg-teal btn-flat"} %>
+          <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_concept_path(concept), {:class => "btn btn-xs bg-orange btn-flat"} %>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

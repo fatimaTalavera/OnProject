@@ -1,27 +1,30 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Concepts</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @concepts.each do |concept| %>
-      <tr>
-        <td><%= concept.name %></td>
-        <td><%= link_to 'Show', concept %></td>
-        <td><%= link_to 'Edit', edit_concept_path(concept) %></td>
-        <td><%= link_to 'Destroy', concept, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Concept', new_concept_path %>
+<div class="box box-success">
+  <div class="box-header with-border box-success">
+    <h3 class="box-title"><%= t('helpers.title.concept.list') %></h3>
+        <%= link_to "<i class=\"fa fa-plus\"></i>".html_safe, new_concept_path, {:class => "btn btn-sm btn-flat bg-green btn-title", :title => "Agregar Concepto"} %>
+  </div>
+  <div class="box-body">
+    <div class="concept-search searchList">
+      <%= search_form_for(@q, remote: true, :html => { class: 'remote-search' }) do |f| %>
+          <div class="input-group">
+            <%= f.text_field :name_cont, class: 'form-control', autocomplete: 'off', placeholder: 'Busca por nombre' %>
+            <div class="input-group-btn">
+              <button type="submit" name="button" class="btn btn-default">
+                <i class="fa fa-search"></i>
+              </button>
+            </div>
+          </div>
+      <% end %>
+    </div>
+    <div class="overlay-wrapper searchResult table-responsive" id="concepts-table">
+      <%= render 'list', :concepts => @concepts %>
+    </div>
+  </div>
+  <div class="box-footer clearfix">
+    <div id="paginate-container">
+      <ul class="pagination pagination-sm no-margin pull-right">
+        <%= paginate @concepts %>
+      </ul>
+    </div>
+  </div>
+</div>
