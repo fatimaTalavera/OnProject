@@ -1,6 +1,7 @@
 class ClientCertification < ApplicationRecord
   audited
   belongs_to :contract
+  has_many :budget_details, through: :contract
   has_many :client_certification_details, dependent: :destroy
 
   delegate :name, to: :contract, prefix: true
