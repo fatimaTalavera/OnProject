@@ -30,7 +30,7 @@ end
 @jerson.save!
 
 # Contratos
-@contract = Contract.new(client_id: @alex.id, start_date: Date.today, end_date: Date.today, name: "Un mundo Feliz", amount: 5000 )
+@contract = Contract.new(client_id: @alex.id, start_date: Date.today, end_date: Date.today, name: "Un mundo Feliz", amount: 50000000 )
 @contract.save!
 
 # Materiales
