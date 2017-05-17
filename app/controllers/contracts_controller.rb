@@ -51,7 +51,7 @@ class ContractsController < ApplicationController
 
     respond_to do |format|
       if saved
-        format.html { redirect_to contracts_path, notice: 'El contrato se creo correctamente.' }
+        format.html { redirect_to @contract, notice: 'El contrato se creó correctamente.' }
         format.json { render :show, status: :created, location: @contract }
       else
         format.html { render :new }
@@ -65,7 +65,7 @@ class ContractsController < ApplicationController
   def update
     respond_to do |format|
       if @contract.update(contract_params)
-        format.html { redirect_to contracts_path, notice: 'El contrato se modifico correctamente.' }
+        format.html { redirect_to @contract, notice: 'El contrato se modificó correctamente.' }
         format.json { render :show, status: :ok, location: @contract }
       else
         format.html { render :edit }
@@ -79,7 +79,7 @@ class ContractsController < ApplicationController
   def destroy
     @contract.destroy
     respond_to do |format|
-      format.html { redirect_to contracts_url, notice: 'El contrato se elimino correctamente.' }
+      format.html { redirect_to contracts_url, notice: 'El contrato se eliminó correctamente.' }
       format.json { head :no_content }
     end
   end
