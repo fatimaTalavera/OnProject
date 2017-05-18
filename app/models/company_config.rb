@@ -13,6 +13,10 @@ class CompanyConfig < ApplicationRecord
 	validates :celphone, length: {maximum: 15}
   validates :tel_fax, length: {maximum: 14}
 	validates :email, length: {maximum: 30}, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, message: :email_format}
+  validates :letterhead, presence: true, length: {maximum: 40, minimum: 2}
+  validates :validity_of_letterhead, presence: true
+  validates :current_pay, presence: true
+  validates :default_utility, presence: true
   validate :avatar_size_validation
 
   private

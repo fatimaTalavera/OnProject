@@ -19,6 +19,6 @@ class CompanyConfigController < ApplicationController
 
   private
     def company_config_params
-      params.require(:company_config).permit(:name, :address, :email, :tel_fax, :celphone, :avatar, :current_avatar)
+      params.require(:company_config).permit(:name, :address, :email, :tel_fax, :celphone, :avatar, :current_avatar, :letterhead, :validity_of_letterhead, :current_pay, :default_utility)
     end
 end

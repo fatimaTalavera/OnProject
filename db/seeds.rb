@@ -16,7 +16,7 @@
 
 # Datos por defecto para la empresa
 if CompanyConfig.first.nil?
-  @company_config = CompanyConfig.new name: 'ON', address: 'Encarnación', tel_fax: '(000) 000 000', celphone: '(0000) 000 000', email: 'email@email.com', avatar: ''
+  @company_config = CompanyConfig.new name: 'ON', address: 'Encarnación', tel_fax: '(000) 000 000', celphone: '(0000) 000 000', email: 'email@email.com', avatar: '', letterhead: '100-100-100', validity_of_letterhead: DateTime.now
   @company_config.save!
 end
 

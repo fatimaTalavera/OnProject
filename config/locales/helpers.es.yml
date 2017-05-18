@@ -13,7 +13,7 @@ es:
       purchase_bills: Facturas de compra
       providers: Proveedores
       users: Usuarios
-      company_config: Datos de la empresa
+      company_config: Configuración
       client_certifications: Certificaciones Externas
       rol: Roles
       roles: Roles
@@ -73,7 +73,7 @@ es:
         edit: Editar
         show: Certificación
       company_config:
-        index: Datos de la Empresa
+        index: Configuración
       profile:
         index: Perfil
         user: "%{user}"
@@ -160,7 +160,7 @@ es:
         list: Proveedores
         show: Proveedor
       company_config:
-        index: Datos de la Empresa
+        index: Configuración
       purchase_bill:
         new: Agregar Factura de Compra
         edit: Editar Factura de Compra
