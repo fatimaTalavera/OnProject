@@ -25,7 +25,7 @@ function getRubroTotal(currentElement) {
 };
 
 
-function buscarRub (currentElement){
+/*function buscarRub (currentElement){
     $("#table tbody").html("");
     var rub = $(currentElement).val();
     if (rub !== ""){
@@ -53,6 +53,6 @@ function buscarRub (currentElement){
 
         })
     }
-};
+};*/
 
 

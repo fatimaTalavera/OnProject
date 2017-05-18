@@ -1,26 +1,32 @@
 <%= form_for contract, validate: true, :html => { class: 'form-horizontal' } do |f| %>
     <div class="box-body">
       <div class="field col-md-12 form-group">
-        <div class="col-sm-4">
-          <label class="control-label">Obra: </label>
-          <span><%= @contract.name %></span>
+        <div class="field col-md-6 form-group">
+          <div class="col-md-3">
+            <%= f.label :name, 'Obra:', :class => 'control-label  tooltip_required' %>
+          </div>
+          <div class="col-md-6">
+            <%= f.text_field :name, :class => 'form-control', autofocus:true, :maxlength => 150, :readonly => true %>
+          </div>
         </div>
-        <div class="col-sm-4">
-          <label class="control-label">Cliente: </label>
-          <span><%= @contract.client_name %></span>
-        </div>
-        <div class="col-sm-4">
-          <label class="control-label">Monto: </label>
-          <span><%= number_to_currency_py(@contract.amount) %></span>
+        <div class="field col-md-6 form-group">
+          <div class="col-md-3">
+            <%= f.label :client, 'Cliente:', :class => 'control-label  tooltip_required' %>
+          </div>
+          <div class="col-md-7">
+            <div class="input-group">
+              <%= f.collection_select(:client_id, Client.all, :id, :name, {prompt: 'Buscar Cliente'}, :class => 'form-control select2 people-search', :disabled => 'disabled')%>
+            </div>
+          </div>
         </div>
       </div>
 
       <div class="field col-md-12 form-group">
         <div class="field col-md-6 form-group">
-          <div class="col-md-4">
+          <div class="col-md-3">
             <%= f.label :start_date, 'Inicio de ejecución:', :class => 'control-label  tooltip_required' %>
           </div>
-          <div class="input-group col-sm-4" style="padding-left: 14px">
+          <div class="input-group col-sm-5" style="padding-left: 14px">
             <%= f.text_field :start_date, :id => 'datepickerFrom', :class => ' date form-control datepicker' %><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
           </div>
         </div>
@@ -29,8 +35,19 @@
           <div class="col-md-4">
             <%= f.label :end_date, 'Fin de Ejecución:', :class => 'control-label  tooltip_required' %>
           </div>
-          <div class="input-group col-sm-4" style="padding-left: 14px">
+          <div class="input-group col-sm-5" style="padding-left: 14px">
             <%= f.text_field :end_date, :id => 'datepickerTo', :class => ' date form-control datepicker' %><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="field col-md-12 form-group">
+        <div class="field col-md-6 form-group">
+          <div class="col-md-3">
+            <%= f.label :amount, 'Monto:', :class => 'control-label  tooltip_required' %>
+          </div>
+          <div class="col-md-5">
+            <%= f.number_field :amount, :class => 'form-control', :readonly => true%>
           </div>
         </div>
       </div>
