@@ -3,25 +3,18 @@
       <div class="field col-md-12 form-group">
         <div class="field col-md-6 form-group">
           <div class="col-md-3">
-            <%= f.label :name, 'Nombre de la obra:', :class => 'control-label  tooltip_required' %>
+            <%= f.label :name, 'Obra:', :class => 'control-label  tooltip_required' %>
           </div>
           <div class="col-md-6">
-            <%= f.text_field :name, :class => 'form-control', autofocus:true, :maxlength => 150 %>
+            <%= f.text_field :name, :class => 'form-control', autofocus:true, :maxlength => 150, :readonly => true %>
           </div>
         </div>
-
         <div class="field col-md-6 form-group">
           <div class="col-md-3">
-            <%= f.label :client, 'Cliente:', :class => 'control-label  tooltip_required' %>
+            <%= f.label :client, 'Cliente:', :class => 'control-label tooltip_required' %>
           </div>
-
           <div class="col-md-7">
-            <div class="input-group">
-              <%= f.collection_select(:client_id, Client.all, :id, :name, {prompt: 'Buscar Cliente'}, :class => 'form-control select2 people-search') %>
-              <span class="input-group-btn">
-                <%= link_to "<i class=\"fa fa-plus\"></i>".html_safe, new_client_path, {:class => "btn btn-flat bg-green", :title => "Agregar Cliente"} %>
-              </span>
-            </div>
+            <%= f.collection_select(:client_id, Client.all, :id, :name, {prompt: 'Seleccionar'}, :class => 'form-control', :disabled => 'disabled') %>
           </div>
         </div>
       </div>
@@ -37,7 +30,7 @@
         </div>
 
         <div class="field col-md-6 form-group">
-          <div class="col-md-3">
+          <div class="col-md-4">
             <%= f.label :end_date, 'Fin de Ejecución:', :class => 'control-label  tooltip_required' %>
           </div>
           <div class="input-group col-sm-5" style="padding-left: 14px">
@@ -52,11 +45,11 @@
             <%= f.label :amount, 'Monto:', :class => 'control-label  tooltip_required' %>
           </div>
           <div class="col-md-5">
-            <%= f.number_field :amount, :class => 'form-control' %>
+            <%= f.number_field :amount, :class => 'form-control', :readonly => true%>
           </div>
         </div>
       </div>
-
+      <%= f.hidden_field :client_id, :class => 'form-control' %>
       <%= f.hidden_field :budget_id, :class => 'form-control' %>
     </div>
 

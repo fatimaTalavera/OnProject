@@ -26,7 +26,8 @@ class ContractsController < ApplicationController
     @contract = Contract.new
     @contract.name = params[:name]
     @contract.budget_id = params[:budget_id]
-    @contract.client = Client.find(params[:client_id])
+    #@contract.client = Client.find(params[:client_id])
+    @contract.client_id = params[:client_id]
     @contract.amount = params[:total]
   end
 
@@ -39,19 +40,12 @@ class ContractsController < ApplicationController
   # POST /contracts.json
   def create
     @contract = Contract.new(contract_params)
-    saved = false
-    budget = Budget.find(contract_params[:budget_id])
-
-    if budget.studying? && budget.contract.nil?
-      @contract.transaction do
-        saved = @contract.save
-        budget.update(state: Budget.states[:approved], contract: @contract)
-      end
-    end
 
     respond_to do |format|
-      if saved
-        format.html { redirect_to contracts_path, notice: 'El contrato se creo correctamente.' }
+      if @contract.save
+        budget = Budget.find(contract_params[:budget_id])
+        budget.update(state: Budget.states[:approved], contract: @contract)
+        format.html { redirect_to @contract, notice: 'El contrato se creó correctamente.' }
         format.json { render :show, status: :created, location: @contract }
       else
         format.html { render :new }
@@ -65,7 +59,7 @@ class ContractsController < ApplicationController
   def update
     respond_to do |format|
       if @contract.update(contract_params)
-        format.html { redirect_to contracts_path, notice: 'El contrato se modifico correctamente.' }
+        format.html { redirect_to @contract, notice: 'El contrato se modificó correctamente.' }
         format.json { render :show, status: :ok, location: @contract }
       else
         format.html { render :edit }
@@ -79,7 +73,7 @@ class ContractsController < ApplicationController
   def destroy
     @contract.destroy
     respond_to do |format|
-      format.html { redirect_to contracts_url, notice: 'El contrato se elimino correctamente.' }
+      format.html { redirect_to contracts_url, notice: 'El contrato se eliminó correctamente.' }
       format.json { head :no_content }
     end
   end
@@ -97,6 +91,6 @@ class ContractsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def contract_params
-      params.require(:contract).permit(:client_id, :start_date, :end_date, :name, :amount, :budget_id)
+      params.require(:contract).permit(:client_id, :start_date, :end_date, :name, :amount, :budget_id, :client)
     end
 end

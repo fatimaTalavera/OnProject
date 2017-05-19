@@ -22,6 +22,7 @@ class ClientCertificationsController < ApplicationController
   def new
     add_breadcrumb I18n.t('helpers.breadcrumbs.client_certifications.new')
     @client_certification = ClientCertification.new
+    @client_certification.contract = Contract.find(params[:contract_id])
     @client_certification.date = Time.now
   end
 
@@ -37,7 +38,7 @@ class ClientCertificationsController < ApplicationController
 
     respond_to do |format|
       if @client_certification.save
-        format.html { render redirect_to client_certifications_path, notice: 'Certificación de Cliente se creó correctamente' }
+        format.html { redirect_to client_certifications_path, notice: 'Certificación de Cliente se creó correctamente' }
         format.json { render :show, status: :created, location: @client_certification }
       else
         format.html { render :new }

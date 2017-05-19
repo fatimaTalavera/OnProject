@@ -1,60 +1,126 @@
 <%= form_for company_config, validate: true, :url => update_company_path, :html => { :method => :post, multipart: true, class: 'form-horizontal' } do |f| %>
   <div class="box-body">
     <div class="col-md-12 col-sm-12">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <%= f.label :name, t('activerecord.attributes.company_config.name'), class: 'col-md-4 col-sm-3 control-label tooltip_required' %>
-            <div class="col-md-7 col-sm-12">
-              <%= f.text_field :name, class: 'form-control', :maxlength => 40 %>
+
+      <div class="panel-body">
+        <div class="panel-group" id="accordion">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><%= t('activerecord.attributes.company_config.company_data_panel') %></a>
+              </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse in">
+              <div class="panel-body">
+                <!-- Datos de la empresa -->
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <%= f.label :name, t('activerecord.attributes.company_config.name'), class: 'col-md-4 col-sm-3 control-label tooltip_required' %>
+                      <div class="col-md-7 col-sm-12">
+                        <%= f.text_field :name, class: 'form-control', :maxlength => 40 %>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <%= f.label :email, t('activerecord.attributes.company_config.email'), class: 'col-md-4 col-sm-3 control-label' %>
+                      <div class="col-md-7 col-sm-12">
+                        <%= f.text_field :email, class: 'form-control', :maxlength => 30 %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <%= f.label :tel_fax, t('activerecord.attributes.company_config.tel_fax'), class: 'col-md-4 col-sm-3 control-label' %>
+                      <div class="col-md-7 col-sm-12">
+                        <%= f.text_field :tel_fax, class: 'form-control tel-fax-mask' %>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <%= f.label :celphone, t('activerecord.attributes.company_config.celphone'), class: 'col-md-4 col-sm-3 control-label' %>
+                      <div class="col-md-7 col-sm-12">
+                        <%= f.text_field :celphone, class: 'form-control celphone-mask' %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <%= f.label :address, t('activerecord.attributes.company_config.address'), class: 'col-md-4 col-sm-3 control-label tooltip_required' %>
+                      <div class="col-md-8 col-sm-12">
+                        <%= f.text_area :address, :class => 'form-control', rows: "3", :maxlength => 200  %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <%= f.label :avatar, t('activerecord.attributes.company_config.avatar'), class: 'col-md-4 col-sm-3 control-label' %>
+                      <div class="col-md-8 col-sm-12">
+                        <%= f.hidden_field :current_avatar, :value => CompanyConfig.first.avatar.filename%>
+                        <%= f.file_field :avatar, :class => 'file-style' %>
+                        <p class="help-block">Se aceptan imágenes jpg, jpge, png y gif. Recomendado 300x300. Tamaño máximo 1mb.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <%= f.label :email, t('activerecord.attributes.company_config.email'), class: 'col-md-4 col-sm-3 control-label' %>
-            <div class="col-md-7 col-sm-12">
-              <%= f.text_field :email, class: 'form-control', :maxlength => 30 %>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><%= t('activerecord.attributes.company_config.bill_data_panel') %></a>
+              </h4>
             </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <%= f.label :tel_fax, t('activerecord.attributes.company_config.tel_fax'), class: 'col-md-4 col-sm-3 control-label' %>
-            <div class="col-md-7 col-sm-12">
-              <%= f.text_field :tel_fax, class: 'form-control tel-fax-mask' %>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <%= f.label :celphone, t('activerecord.attributes.company_config.celphone'), class: 'col-md-4 col-sm-3 control-label' %>
-            <div class="col-md-7 col-sm-12">
-              <%= f.text_field :celphone, class: 'form-control celphone-mask' %>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <%= f.label :address, t('activerecord.attributes.company_config.address'), class: 'col-md-4 col-sm-3 control-label tooltip_required' %>
-            <div class="col-md-8 col-sm-12">
-              <%= f.text_area :address, :class => 'form-control', rows: "3", :maxlength => 200  %>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <%= f.label :avatar, t('activerecord.attributes.company_config.avatar'), class: 'col-md-4 col-sm-3 control-label' %>
-            <div class="col-md-8 col-sm-12">
-              <%= f.hidden_field :current_avatar, :value => CompanyConfig.first.avatar.filename%>
-              <%= f.file_field :avatar, :class => 'file-style' %>
-              <p class="help-block">Se aceptan imágenes jpg, jpge, png y gif. Recomendado 300x300. Tamaño máximo 1mb.</p>
+            <div id="collapseTwo" class="panel-collapse collapse">
+              <div class="panel-body">
+                <!-- Valores por defecto -->
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <%= f.label :letterhead, t('activerecord.attributes.company_config.letterhead'), class: 'col-md-4 col-sm-3 control-label tooltip_required' %>
+                      <div class="col-md-7 col-sm-12">
+                        <%= f.text_field :letterhead, class: 'form-control', :maxlength => 40 %>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <%= f.label :validity_of_letterhead, t('activerecord.attributes.company_config.validity_of_letterhead'), class: 'col-md-4 col-sm-3 control-label tooltip_required' %>
+                      <div class="input-group col-sm-5" style="padding-left: 14px">
+                        <%= f.text_field :validity_of_letterhead, :id => 'datepickerTo', :class => ' date form-control datepicker' %><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <%= f.label :current_pay, t('activerecord.attributes.company_config.current_pay'), class: 'col-md-4 col-sm-3 control-label tooltip_required' %>
+                      <div class="col-md-7 col-sm-12">
+                        <%= f.number_field :current_pay, class: 'form-control' %>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <%= f.label :default_utility, t('activerecord.attributes.company_config.default_utility'), class: 'col-md-4 col-sm-3 control-label tooltip_required' %>
+                      <div class="col-md-7 col-sm-12">
+                        <%= f.number_field :default_utility, class: 'form-control', in: 1...100 %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -64,6 +130,7 @@
   <div class="box-footer clearfix">
     <div class="pull-right">
       <%= f.submit t('button.save'), :class => "btn btn-flat bg-blue" %>
+      <%= link_to t('button.cancel'),  welcome_index_url, class: 'btn btn-flat btn-default' %>
     </div>
   </div>
 <% end %>

@@ -19,12 +19,18 @@ es:
         password_confirmation_html: Confirmar contraseña
         rol: "Rol"
       company_config:
+        company_data_panel: Datos de la empresa
+        bill_data_panel: Facturación y Certificación
         name: Nombre
         email: Correo
         address: Dirección
         celphone: Celular
         tel_fax: Tel/Fax
         avatar: Imagen
+        letterhead: Timbrado
+        validity_of_letterhead: Validez del timbrado
+        current_pay: Jornal actual
+        default_utility: Utilidad por defecto
       roles:
         name: Nombre
         description: Descripción

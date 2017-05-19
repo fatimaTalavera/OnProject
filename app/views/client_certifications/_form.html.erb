@@ -70,13 +70,16 @@
               <tbody>
               <%= f.fields_for :client_certification_details, :wrapper => false do |form| %>
                   <tr class="fields" onchange='getRubroTotal(this);'>
-                    <td class="col-md-3"><%=form.collection_select(:rubro_id, Rubro.all, :id, :name, {prompt: 'Seleccionar'}, :onchange => 'getRubroPrice(this);', class: 'form-control', :readonly => true)%></td>
+                    <td class="col-md-3"><%=form.collection_select(:rubro_id, client_certification.budget_details, :id, :rubro_name, {prompt: 'Seleccionar'}, :onchange => 'getRubroPrice(this);', class: 'form-control', :readonly => true)%></td>
                     <td class="col-md-2"><%=form.number_field :quantity, class: 'form-control quantity'%></td>
                     <td class="col-md-2"><%=form.number_field :total_quantity, class: 'form-control', :readonly => true%></td>
                     <td class="col-md-2"><%=form.number_field :price, class: 'form-control price', :readonly => true%></td>
                     <td class="col-md-2"><%=form.number_field :total, class: 'form-control ', :readonly => true%></td>
                   </tr>
               <% end %>
+              <td>
+                <%=f.link_to_add '<i class="fa fa-plus"></i>'.html_safe, :client_certification_details, class: ' insert_in_table btn btn-flat bg-green'%>
+              </td>
               </tbody>
             </table>
           </div>

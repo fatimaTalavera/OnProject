@@ -1,6 +1,6 @@
 <div class="box box-success">
   <div class="box-header">
-    <h3 class="box-title">Obra: <%= @contract.name %></h3>
+    <h3 class="box-title"><strong><%= @contract.name %></strong></h3>
   </div>
   <div class="box-body">
     <div class="row">
@@ -116,6 +116,12 @@
           </div>
         </div>
         <div class="tab-pane fade" id="client-certifications">
+          <div class="box-header with-border box-success">
+            <h3 class="box-title"><%= t('helpers.title.client_certification.list') %></h3>
+            <% if (can? :create, ClientCertification) %>
+                <%= link_to "<i class=\"fa fa-plus\"></i>".html_safe, new_client_certification_path({contract_id: @contract.id}), {:class => "btn btn-sm btn-flat bg-green btn-title", :title => "Agregar Certificación"} %>
+            <% end %>
+          </div>
           <br>
           <table class="table table-bordered table-condensed col-md-12">
             <thead>

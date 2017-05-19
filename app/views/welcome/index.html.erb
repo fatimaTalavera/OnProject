@@ -1,3 +1,22 @@
+<% days = (CompanyConfig.first.validity_of_letterhead - DateTime.now).to_i %>
+<% if days < 0 %>
+    <div class="alert alert-danger alert-dismissable">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+      Tu timbrado está vencido, si ya tienes uno nuevo modificalo en <a href="<%= edit_company_path %>" class="alert-link">Configuraciones</a>.
+    </div>
+<% elsif days == 0 %>
+    <div class="alert alert-warning alert-dismissable">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+      Tu timbrado vence hoy, si ya tienes uno nuevo modificalo en <a href="<%= edit_company_path %>" class="alert-link">Configuraciones</a>.
+    </div>
+<% elsif days < 30 %>
+    <div class="alert alert-warning alert-dismissable">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+      Tu timbrado vencerá en <%= days %> días, si ya tienes uno nuevo modificalo en <a href="<%= edit_company_path %>" class="alert-link">Configuraciones</a>.
+    </div>
+<% end %>
+
+
 <div class="row" >
   <div class="avatar_company">
     <%= cl_image_tag(CompanyConfig.first.avatar_url(:medium), :class => 'img-rounded')if CompanyConfig.first.avatar?%>

@@ -9,7 +9,7 @@ class BudgetsController < ApplicationController
     budget = Budget.find(params[:id])
     if budget.pending?
       budget.cancelled!
-      redirect_to budgets_url
+      redirect_to budget_url(budget), flash: {notice: 'El presupuesto ha sido cancelado correctamente'}
     end
   end
 
@@ -17,7 +17,7 @@ class BudgetsController < ApplicationController
     budget = Budget.find(params[:id])
     if budget.pending?
       budget.studying!
-      redirect_to budgets_url
+      redirect_to budget_url(budget), flash: {notice: 'El cliente esta estudiando el presupuesto'}
     end
   end
 
@@ -71,7 +71,7 @@ class BudgetsController < ApplicationController
     @clients = Client.all
     respond_to do |format|
       if @budget.save
-        format.html { redirect_to budgets_path, notice: 'El presupuesto se creo correctamente' }
+        format.html { redirect_to @budget, notice: 'El presupuesto se creó correctamente' }
         format.json { render :show, status: :created, location: @budget }
       else
         format.html { render :new }
@@ -85,7 +85,7 @@ class BudgetsController < ApplicationController
   def update
     respond_to do |format|
       if @budget.update(budget_params)
-        format.html { redirect_to budgets_path, notice: 'El presupuesto se actualizo correctamente' }
+        format.html { redirect_to @budget, notice: 'El presupuesto se actualizó correctamente' }
         format.json { render :show, status: :ok, location: @budget }
       else
         format.html { render :edit }

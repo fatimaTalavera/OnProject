@@ -1,6 +1,6 @@
 class Contract < ApplicationRecord
   audited
-  belongs_to :client, required: true
+  belongs_to :client
   has_many :material_movements
   has_many :client_certifications
   has_one :budget
@@ -9,12 +9,10 @@ class Contract < ApplicationRecord
 
   delegate :name, :ruc, to: :client, prefix: true
 
-  validates :client,  :presence => {:message => "Debe seleccionar un cliente"}
+  validates :client_id, :presence => {:message => "Debe seleccionar un cliente"}
 
   validates :name, :presence => {:message => "No puede estar en blanco"},
-            :length => {maximum:150, :message => "Permite hasta 150 caracteres"},
-            #valida que no sea un nombre existente
-            :uniqueness => {:message => "Este contrato ya existe, vuelva a intentarlo"}
+            :length => {maximum:150, :message => "Permite hasta 150 caracteres"}
 
   validates :amount, :presence => {:message => "No puede estar en blanco"},
             #valida que no sea negativo
