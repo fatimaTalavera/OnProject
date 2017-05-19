@@ -16,5 +16,5 @@ class SaleBill < ApplicationRecord
 
   validates :date, :presence => {:message => "No puede estar en blanco"}
 
-  validates :client_id, :presence => {:message => "Debe seleccionar un cliente"}
+  validates :contract_id, :presence => {:message => "Debe seleccionar un contrato"}
 end

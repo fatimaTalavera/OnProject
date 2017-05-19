@@ -28,7 +28,7 @@ class SaleBillsController < ApplicationController
     @sale_bill = SaleBill.new(sale_bill_params)
 
     respond_to do |format|
-      if @sale_bill.save
+      if @sale_bill.save!
         format.html { redirect_to @sale_bill, notice: 'Sale bill was successfully created.' }
         format.json { render :show, status: :created, location: @sale_bill }
       else
