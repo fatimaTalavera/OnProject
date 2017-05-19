@@ -11,12 +11,10 @@
         </div>
         <div class="field col-md-6 form-group">
           <div class="col-md-3">
-            <%= f.label :client, 'Cliente:', :class => 'control-label  tooltip_required' %>
+            <%= f.label :client, 'Cliente:', :class => 'control-label tooltip_required' %>
           </div>
           <div class="col-md-7">
-            <div class="input-group">
-              <%= f.collection_select(:client_id, Client.all, :id, :name, {prompt: 'Buscar Cliente'}, :class => 'form-control select2 people-search', :disabled => 'disabled')%>
-            </div>
+            <%= f.collection_select(:client_id, Client.all, :id, :name, {prompt: 'Seleccionar'}, :class => 'form-control', :disabled => 'disabled') %>
           </div>
         </div>
       </div>
@@ -51,7 +49,7 @@
           </div>
         </div>
       </div>
-
+      <%= f.hidden_field :client_id, :class => 'form-control' %>
       <%= f.hidden_field :budget_id, :class => 'form-control' %>
     </div>
 
