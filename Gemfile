@@ -23,6 +23,8 @@ gem 'cancan'
 gem 'ruby-enum'
 gem "mini_magick"
 gem "audited", "~> 4.4"
+gem 'enumerize'
+gem "i18n-js"
 group :development, :test do
   gem 'byebug', platform: :mri
 end

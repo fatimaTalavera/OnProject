@@ -15,7 +15,7 @@
           <%= form.collection_select :material_id, Material.all, :id, :name, {prompt: 'Buscar Material'}, {class: "form-control select2 material-search"} %>
         </td>
         <td><%=form.text_field :quantity, class: 'form-control qty text-right'%></td>
-        <td><%=form.text_field :price, class: 'form-control unit-price text-right'%></td>
+        <td><%=form.text_field :price, class: 'form-control maskMoneda unit-price text-right'%></td>
         <td class="subtotal text-right"><%= form.object.total ? form.object.total : 0 %></td>
         <td><%=form.link_to_remove '<i class="fa fa-trash-o"></i>'.html_safe, class: 'btn btn-flat bg-red', title: 'Eliminar material'%></td>
       </tr>

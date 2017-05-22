@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     member do
       get :cancel
       get :deliver
+      get :get_detail
     end
   end
   #resources :budgets
@@ -27,6 +28,7 @@ Rails.application.routes.draw do
   resources :permissions, only: [:create, :update, :destroy]
   resources :audit, only: [:index]
   resources :installment_payment
+  resources :installment_payment_purchase
   root to: 'welcome#index'
   get 'welcome/index'
   get 'profile', to: 'users#edit_profile', as: 'edit_profile'

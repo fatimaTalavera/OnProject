@@ -22,7 +22,8 @@ class ClientCertificationsController < ApplicationController
   def new
     add_breadcrumb I18n.t('helpers.breadcrumbs.client_certifications.new')
     @client_certification = ClientCertification.new
-    @client_certification.contract = Contract.find(params[:contract_id])
+    #@client_certification.contract = Contract.find(params[:contract_id])
+    @client_certification.contract_id = params[:contract_id]
     @client_certification.date = Time.now
   end
 
@@ -38,7 +39,7 @@ class ClientCertificationsController < ApplicationController
 
     respond_to do |format|
       if @client_certification.save
-        format.html { redirect_to client_certifications_path, notice: 'Certificación de Cliente se creó correctamente' }
+        format.html { redirect_to @client_certification.contract, notice: 'La Certificación se creó correctamente' }
         format.json { render :show, status: :created, location: @client_certification }
       else
         format.html { render :new }
@@ -52,7 +53,7 @@ class ClientCertificationsController < ApplicationController
   def update
     respond_to do |format|
       if @client_certification.update(client_certification_params)
-        format.html { redirect_to client_certifications_path, notice: 'Certificación de Cliente se actualizó correctamente.' }
+        format.html { redirect_to client_certifications_path, notice: 'La Certificación se actualizó correctamente.' }
         format.json { render :show, status: :ok, location: @client_certification }
       else
         format.html { render :edit }
@@ -66,7 +67,7 @@ class ClientCertificationsController < ApplicationController
   def destroy
     @client_certification.destroy
     respond_to do |format|
-      format.html { redirect_to client_certifications_url, notice: 'Certificación se eliminó correctamente' }
+      format.html { redirect_to client_certifications_url, notice: 'La Certificación se eliminó correctamente' }
       format.json { head :no_content }
     end
   end
@@ -85,7 +86,7 @@ class ClientCertificationsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def client_certification_params
-    params.require(:client_certification).permit(:contract_id, :date, :state, :observation, :received,
-                                                 :client_certification_details_attributes => [:id, :rubro_id, :quantity, :total_quantity, :price, :total, :_destroy])
+    params.require(:client_certification).permit(:contract_id, :date, :state, :observation, :received, :contract,
+                                                 :client_certification_details_attributes => [:id, :budget_detail_id, :quantity, :total_quantity, :price, :total, :_destroy])
   end
 end

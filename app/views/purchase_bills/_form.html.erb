@@ -1,67 +1,104 @@
 <%= nested_form_for purchase_bill, validate: true, :html => { class: 'form-horizontal' } do |f| %>
   <div class="box-body">
-    <div class="col-md-12">
-      <div class="row">
-        <div class="field col-md-4 form-group">
-          <div class="col-md-3">
-            <%= f.label :date, 'Fecha:', :class => 'control-label  tooltip_required' %>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="col-md-8">
+          <div class="field col-md-6 form-group">
+            <div class="col-md-3">
+              <%= f.label :date, 'Fecha:', :class => 'control-label  tooltip_required' %>
+            </div>
+            <div class="col-md-7">
+              <div class="input-group">
+                <%= f.text_field :date, :class => 'form-control datepicker' %>
+                <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+              </div>
+            </div>
           </div>
-          <div class="col-md-7">
-            <div class="input-group">
-              <%= f.text_field :date, :class => 'form-control datepicker' %>
-              <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+          <div class="field col-md-6 form-group">
+            <div class="col-md-3">
+              <%= f.label :provider, 'Proveedor:', :class => 'control-label  tooltip_required' %>
+            </div>
+            <div class="col-md-7">
+              <div class="input-group">
+                <%= f.collection_select(:provider_id, Provider.all, :id, :name, {prompt: 'Buscar Proveedor'}, :class => 'form-control select2 people-search') %>
+                <span class="input-group-btn">
+                  <%= link_to "<i class=\"fa fa-plus\"></i>".html_safe, new_provider_path, {:class => "btn btn-flat bg-green", :title => "Agregar Proveedor"} %>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="field col-md-6 form-group">
+            <div class="col-md-5">
+              <%= f.label :number, 'Número de boleta:', :class => 'control-label tooltip_required' %>
+            </div>
+            <div class="col-md-5">
+              <%= f.text_field :number, :class => 'form-control' %>
+            </div>
+          </div>
+          <div class="field col-md-6 form-group">
+            <div class="col-md-3">
+              <%= f.label :condition, 'Condición:', :class => 'control-label tooltip_required' %>
+            </div>
+            <div class="col-md-7">
+              <div class="btn-group" data-toggle="buttons">
+                <label class="btn btn-default">
+                  <%= f.radio_button :condition, 'contado', :class => 'radio_group_buttons required condition' %> Contado
+                </label>
+                <label class="btn btn-default">
+                  <%= f.radio_button :condition, 'crédito', :class => 'radio_group_buttons required condition' %> Crédito
+                </label>
+              </div>
             </div>
           </div>
         </div>
-        <div class="field col-md-4 form-group">
-          <div class="col-md-3">
-            <%= f.label :provider, 'Proveedor:', :class => 'control-label  tooltip_required' %>
-          </div>
-          <div class="col-md-7">
-            <div class="input-group">
-              <%= f.collection_select(:provider_id, Provider.all, :id, :name, {prompt: 'Buscar Proveedor'}, :class => 'form-control select2 people-search') %>
-              <span class="input-group-btn">
-                <%= link_to "<i class=\"fa fa-plus\"></i>".html_safe, new_provider_path, {:class => "btn btn-flat bg-green", :title => "Agregar Proveedor"} %>
-              </span>
+        <div class="col-md-4">
+          <div class="panel-group accordion" id="accordion" style="display: none;">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Establecer Cuotas</a>
+                </h4>
+              </div>
+              <div id="collapseOne" class="panel-collapse collapse in">
+                <table class="table table-bordered table-condensed" id="puarchase-table">
+                  <thead>
+                    <tr>
+                      <th class="col-md-6">Fecha de vencimiento</th>
+                      <th class="col-md-5">Monto</th>
+                      <th class="col-md-1"></th>
+                    </tr>
+                  </thead>
+                  <tbody id="details-body">
+                    <%= f.fields_for :installment_purchases, :wrapper => false do |form| %>
+                      <tr class="fields">
+                        <td class="col-md-6"><%=form.text_field :due_date, :class => 'form-control datepicker input-sm' %></td>
+                        <td class="col-md-5"><%=form.number_field :amount, class: 'form-control unit-praice text-right input-sm'%></td>
+                        <td class="col-md-1"><%=form.link_to_remove '<i class="fa fa-trash-o"></i>'.html_safe, class: 'btn btn-flat bg-red btn-sm', title: 'Eliminar material'%></td>
+                      </tr>
+                    <% end %>
+                    <tr>
+                      <td>
+                        <%= f.link_to_add "<i class=\"fa fa-plus\"></i>".html_safe.html_safe, :installment_purchases, class: 'btn btn-flat bg-green btn-sm insert_in_table', title: 'Agregar Cuota' %>
+                      </td>
+                      <td class="table-total text-right"><b>Total:</b> 0</td>
+                      <td></td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div class="field col-md-4 form-group">
-          <div class="col-md-3">
-            <%= f.label :condition, 'Condición:', :class => 'control-label  tooltip_required' %>
-          </div>
-          <div class="col-md-7">
-            <div class="btn-group" data-toggle="buttons">
-              <label class="btn btn-default">
-                <%= f.radio_button :condition, 'Contado', :class => 'radio_group_buttons required' %> Contado
-              </label>
-              <label class="btn btn-default">
-                <%= f.radio_button :condition, 'Crédito', :class => 'radio_group_buttons required' %> Crédito
-              </label>
-            </div>
-          </div>
         </div>
       </div>
-      <div class="row">
-        <div class="field col-md-5 form-group">
-          <div class="col-md-4">
-            <%= f.label :number, 'Número de boleta:', :class => 'control-label tooltip_required' %>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="box box-success">
+          <div class="box-header with-border">
+            <h3 class="box-title">Seleccionar Materiales</h3>
           </div>
-          <div class="col-md-6">
-            <%= f.text_field :number, :class => 'form-control' %>
-          </div>
-        </div>
-      </div>
-      <br>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="box box-success">
-            <div class="box-header with-border">
-              <h3 class="box-title">Seleccionar Materiales</h3>
-            </div>
-            <div class="box-body">
-              <%= render 'details_table', :f => f, :purchase_bill => purchase_bill%>
-            </div>
+          <div class="box-body">
+            <%= render 'details_table', :f => f, :purchase_bill => purchase_bill%>
           </div>
         </div>
       </div>

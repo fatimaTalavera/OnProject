@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require i18n
+//= require i18n/translations
 //= require ./adminLTE/app.js
 //= require ./libs/slimScroll/jquery.slimscroll.min.js
 //= require ./libs/iCheck/icheck.js
@@ -24,6 +26,7 @@
 //= require ./libs/data-tables/dataTables.bootstrap.min.js
 //= require ./libs/moment.js
 //= require ./libs/rails.validations
+//= require ./libs/daterangepicker.js
 //= require ./libs/defaults.configs.js
 //= require jquery_nested_form
 //= require_tree ./helpers
@@ -77,6 +80,8 @@ OnProject = {
       DatepickerHelper.initDatepicker('.datepicker');
 
       BootstrapFilestyleHelper.filestyle('.file-style');
+
+      I18n.locale = 'es';
 
     }
   },

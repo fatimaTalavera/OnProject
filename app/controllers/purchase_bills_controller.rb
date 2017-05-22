@@ -57,7 +57,7 @@ class PurchaseBillsController < ApplicationController
   private
     def get_purchases
       @q = PurchaseBill.ransack(params[:q])
-      @q.sorts = ['date desc'] if @q.sorts.empty?
+      @q.sorts = ['created_at desc'] if @q.sorts.empty?
       @purchase_bills = @q.result.page(params[:page])
     end
 
@@ -68,7 +68,8 @@ class PurchaseBillsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def purchase_bill_params
-      params.require(:purchase_bill).permit(:date, :condition, :number, :total, :provider_id,
-                                            :purchase_details_attributes => [:id, :quantity, :material_id, :price, :total, :_destroy])
+      params.require(:purchase_bill).permit(:date, :condition, :number, :total, :balance, :provider_id,
+                                            :purchase_details_attributes => [:id, :quantity, :material_id, :price, :total, :_destroy],
+                                            :installment_purchases_attributes => [:id, :amount, :balance, :due_date, :_destroy])
     end
 end
