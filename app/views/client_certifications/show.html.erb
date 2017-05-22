@@ -70,7 +70,7 @@
         <tbody>
         <% @client_certification.client_certification_details.each do |detail| %>
             <tr>
-              <td class="col-md-3"><%= detail.rubro.name %>
+              <td class="col-md-3"><%= detail.budget_detail.rubro_name %>
               <td class="col-md-2"><%=  number_to_currency_py(detail.price) %>
               <td class="col-md-2"><%= detail.quantity %>
               <td class="col-md-2"><%= detail.total_quantity %>

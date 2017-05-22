@@ -5,6 +5,10 @@ class BudgetsController < ApplicationController
   before_action :load_permissions
   authorize_resource
 
+  def get_detail
+    render :json => BudgetDetail.find(params[:id])
+  end
+
   def cancel
     budget = Budget.find(params[:id])
     if budget.pending?

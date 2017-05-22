@@ -115,6 +115,7 @@
             </ul>
           </div>
         </div>
+
         <div class="tab-pane fade" id="client-certifications">
           <div class="box-header with-border box-success">
             <h3 class="box-title"><%= t('helpers.title.client_certification.list') %></h3>
@@ -127,7 +128,6 @@
             <thead>
             <tr>
               <th>Fecha</th>
-              <th>Estado</th>
               <th>Recibido</th>
             </tr>
             </thead>
@@ -135,13 +135,6 @@
             <% @client_certifications.each do |client_certification| %>
                 <tr class="fields ">
                   <td><%= client_certification.date %></td>
-                  <% if client_certification.state == "Terminado"%>
-                      <td class="bg-green"><%= client_certification.state %></td>
-                  <%elsif client_certification.state == "Pendiente" %>
-                      <td class="bg-purple"><%= client_certification.state %></td>
-                  <% elsif client_certification.state == "Rechazado"%>
-                      <td  class="bg-gray disable"><%= client_certification.state %></td>
-                  <% end %>
                   <td><%= client_certification.received %></td>
                   <td>
                 </tr>
