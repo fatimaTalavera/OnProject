@@ -1,7 +1,8 @@
 function getRubroPrice(currentElement) {
     var rubro_id = $(currentElement).val();
+    if (rubro_id !== ""){
     $.ajax({
-        url: "/rubros/" + rubro_id,
+        url: "/budgets/" + rubro_id + "/get_detail",
         type: "GET",
         dataType: "json",
         data: {
@@ -9,50 +10,28 @@ function getRubroPrice(currentElement) {
         },
         success: function (data) {
             var tr = $(currentElement).parent().parent();
-            tr.find('.price').val(formatPrice);
+            var price = data.price;
+            var quantity = data.certified_quantity;
+            tr.find('.price').val(price);
+            tr.find('.quantity').val(quantity);
             getRubroTotal(tr);
+            console.log(data);
         }
     });
+    }
 };
 
 function getRubroTotal(currentElement) {
     var self = $(currentElement);
+    var amount_made = self.find('.quantity').val();
     var price = self.find('.price').val();
-    var quantity = self.find('.quantity').val();
-    var precioDos = price;
-    var total = (undefined !== price && undefined !== quantity)? precioDos * quantity : 0;
+    var quantity = self.find('.amount_to_certify').val();
+    if (quantity > amount_made){
+        alert("No debe sobrepasar la cantidad faltante");
+    }else{
+    var total = (undefined !== price && undefined !== quantity)? price * quantity : 0;
+    }
     self.find('.total').val(total);
 };
-
-
-/*function buscarRub (currentElement){
-    $("#table tbody").html("");
-    var rub = $(currentElement).val();
-    if (rub !== ""){
-        $.ajax({
-            url: '/budgets/' + rub,
-            type: 'GET',
-            dataType: 'json',
-            success: function(res){
-                res.budget_details.forEach(function(obj) {
-                    var item;
-                    var rubro = obj.rubro_id;
-                    var quantity = obj.quantity;
-                    var price = obj.price ;
-                    item += '<tr>';
-                    item += '<td> ' + rubro + ' </td>';
-                    item += '<td>  </td>';
-                    item += '<td> ' + quantity + ' </td>';
-                    item += '<td> ' + price + ' </td>';
-                    item += '<td>  </td>';
-                    item += '</tr>';
-                    $("#table tbody").append(item);
-                    self.find().val(price);
-                });
-            }
-
-        })
-    }
-};*/
 
 
