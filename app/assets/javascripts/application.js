@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require i18n
+//= require i18n/translations
 //= require ./adminLTE/app.js
 //= require ./libs/slimScroll/jquery.slimscroll.min.js
 //= require ./libs/iCheck/icheck.js
@@ -78,6 +80,8 @@ OnProject = {
       DatepickerHelper.initDatepicker('.datepicker');
 
       BootstrapFilestyleHelper.filestyle('.file-style');
+
+      I18n.locale = 'es';
 
     }
   },

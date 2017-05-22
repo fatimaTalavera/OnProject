@@ -5,6 +5,9 @@ class PurchaseBill < ApplicationRecord
   delegate :name, :ruc, to: :provider, prefix: true
 
   has_many :purchase_details
+  has_many :payments
+  has_many :installment_purchases
+  accepts_nested_attributes_for :installment_purchases
 
   enumerize :condition, in: [:contado, :crédito], predicates: true
   enumerize :state, in: [:pendiente, :pagado], predicates: true
@@ -12,6 +15,7 @@ class PurchaseBill < ApplicationRecord
   after_validation :set_total
   after_validation :set_balance, if: :crédito?
   after_validation :set_state
+  after_save :set_payment, if: :contado?
 
   accepts_nested_attributes_for :purchase_details, allow_destroy: true
 
@@ -45,6 +49,15 @@ class PurchaseBill < ApplicationRecord
 
   def set_balance
     self.balance = self.total
+  end
+
+  def set_payment
+    payment = Payment.new
+    payment.date = Time.zone.now
+    payment.amount = self.total
+    payment.balance = 0
+    payment.purchase_bill_id = self.id
+    payment.save()
   end
 
 end
