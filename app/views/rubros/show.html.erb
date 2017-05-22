@@ -4,19 +4,19 @@
   </div>
   <div class="box-body">
     <div class="col-md-12 form-group">
-      <div class="col-md-3">
+      <div class="col-sm-3">
         <strong>Nombre:</strong>
         <%= @rubro.name %>
       </div>
-      <div class="col-md-3">
+      <div class="col-sm-3">
         <strong>Unidad de medida:</strong>
         <%= @rubro.measurement_unit %>
       </div>
-      <div class="col-md-3">
+      <div class="col-sm-3">
         <strong>Utilidad:</strong>
         <%= @rubro.utility %> %
       </div>
-      <div class="col-md-3">
+      <div class="col-sm-3">
         <strong>Precio:</strong>
         <%= number_to_currency_py(@rubro.final_price.to_i) %>
       </div>
@@ -68,6 +68,9 @@
   </div>
   <div class="box-footer">
     <div class="pull-right">
+      <% if (can? :update, Rubro) %>
+          <%= link_to t('button.edit'), edit_rubro_path(@rubro), {:class => "btn btn-flat bg-blue"} %>
+      <% end %>
       <%= link_to t('button.back'), url_for(:back), {:class => "btn btn-flat btn-default"} %>
     </div>
   </div>

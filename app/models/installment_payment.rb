@@ -1,4 +1,5 @@
 class InstallmentPayment < ApplicationRecord
+  audited
   belongs_to :installment
   delegate :amount, to: :installment, prefix: true
   #hacer logica de restar a cuotas

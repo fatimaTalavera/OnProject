@@ -70,7 +70,7 @@
                   <tbody id="details-body">
                   <%= f.fields_for :sale_details, :wrapper => false do |form| %>
                       <tr class="fields">
-                        <td><%= form.collection_select :concept_id, Concept.all, :id, :name, {prompt: 'Buscar Concepto'}, {class: "form-control"} %></td>
+                        <td><%= form.text_field :concept, class: "form-control" %></td>
                         <td><%=form.number_field :quantity, value: 1, class: 'form-control qty text-right'%></td>
                         <td><%=form.number_field :price, class: 'form-control unit-price text-right'%></td>
                         <td class="subtotal text-right"><%= form.object.total ? form.object.total : 0 %></td>

@@ -20,7 +20,9 @@
         <td><%= purchase_bill.total %></td>
         <td>
           <%= link_to "<i class=\"fa fa-eye\"></i>".html_safe, purchase_bill_path(purchase_bill), {:class => "btn btn-xs bg-teal btn-flat", :title => "Ver detalles"} %>
-            <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_purchase_bill_path(purchase_bill), {:class => "btn btn-xs bg-orange btn-flat"} %>
+          <% if (can? :update, PurchaseBill) %>
+              <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_purchase_bill_path(purchase_bill), {:class => "btn btn-xs bg-orange btn-flat"} %>
+          <% end %>
         </td>
       </tr>
   <% end %>

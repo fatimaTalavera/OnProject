@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  audited
   require 'carrierwave/orm/activerecord'
 
   belongs_to :role

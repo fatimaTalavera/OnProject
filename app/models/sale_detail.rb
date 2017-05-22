@@ -1,6 +1,6 @@
 class SaleDetail < ApplicationRecord
+  audited
   belongs_to :sale_bill, required: false
-  belongs_to :concept
   before_create :set_total
 
   #Validaciones
@@ -14,7 +14,7 @@ class SaleDetail < ApplicationRecord
                             :less_than_or_equal_to => 2147483647,
                             :message => "Ingrese un número válido"
 
-  validates :concept_id, :presence => {:message => "Debe seleccionar un concepto"}
+  validates :concept, :presence => {:message => "Debe rellenar este campo"}
 
   private
   def set_total

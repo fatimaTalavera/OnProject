@@ -1,4 +1,5 @@
 class Installment < ApplicationRecord
+  audited
   belongs_to :sale_bill
 
   before_create :set_balance

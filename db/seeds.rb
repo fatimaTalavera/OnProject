@@ -34,12 +34,12 @@ end
 @contract.save!
 
 # Materiales
-@cemento = Material.new(name: "Cemento", description: "Bolsas de cemento", price: 50000, quantity: 10, minimun_stock: 1, measurement_unit: "Kg")
+@cemento = Material.new(name: "Cemento", description: "Bolsas 50 kg", price: 50000, quantity: 10, minimun_stock: 1, measurement_unit: "Kg")
 @cemento.save!
-#@cable = Material.new(name: "Cable", description: "50 mm", price: 10000, quantity: 10, minimun_stock: 1, measurement_unit: "m")
-#@cable.save!
-#@clavo = Material.new(name: "Clavo", description: "10 cm", price: 1000, quantity: 200, minimun_stock: 20, measurement_unit: "u")
-#@clavo.save!
+@cable = Material.new(name: "Cable", description: "50 mm", price: 10000, quantity: 10, minimun_stock: 1, measurement_unit: "m")
+@cable.save!
+@clavo = Material.new(name: "Clavo", description: "10 cm", price: 1000, quantity: 200, minimun_stock: 20, measurement_unit: "u")
+@clavo.save!
 
 # Proveedores
 @provider = Provider.new(name: "Inpaco", address: "Avenida Irrazabal", phone: "205012", ruc: "1234456-1", email: "inpaco@test.com", state: TRUE, balance: 0)
@@ -48,6 +48,10 @@ end
 @provider2.save!
 
 # Jornaleros
+@employee = Employee.new(name: "Jorge", last_name: "Esquivel", address: "San Juan del Parana", phone: "0985222333", identification_document: "4393032", email: "jorgenoob123@gmail.com")
+@employee.save!
+
+# Cuenta corriente Jornaleros
 @employee = Employee.new(name: "Jorge", last_name: "Esquivel", address: "San Juan del Parana", phone: "0985222333", identification_document: "4393032", email: "jorgenoob123@gmail.com")
 @employee.save!
 
@@ -62,29 +66,26 @@ end
 # Movimientos detalles
 @movementDetail = MovementDetail.new(quantity: 3, material_id: @cemento.id, material_movement_id: @materialMovement.id, price: 10000)
 @movementDetail.save!
-#@movementDetail = MovementDetail.new(cantidad: 1, material_id: @cable.id, material_movement_id: @materialMovement.id)
-#@movementDetail.save!
-#@movementDetail = MovementDetail.new(cantidad: 150, material_id: @clavo.id, material_movement_id: @materialMovement.id)
-#@movementDetail.save!
+@movementDetail = MovementDetail.new(quantity: 1, material_id: @cable.id, material_movement_id: @materialMovement.id)
+@movementDetail.save!
+@movementDetail = MovementDetail.new(quantity: 150, material_id: @clavo.id, material_movement_id: @materialMovement.id)
+@movementDetail.save!
 
 # Facturas de compra
 @purchaseBill = PurchaseBill.new(number: 123, provider_id: @provider.id, date: '30/03/2017', condition: 'contado', total: 200000)
 @purchaseBill.save!
 
 # Facturas detalle
-#@purchaseDetail = PurchaseDetail.new(material_id: @clavo.id, quantity: 300, purchase_bill_id: @purchaseBill.id, price: 100)
-#@purchaseDetail.save!
-#@purchaseDetail = PurchaseDetail.new(material_id: @cable.id, quantity: 30, purchase_bill_id: @purchaseBill.id, price: 6000)
-#@purchaseDetail.save!
+@purchaseDetail = PurchaseDetail.new(material_id: @clavo.id, quantity: 300, purchase_bill_id: @purchaseBill.id, price: 100)
+@purchaseDetail.save!
+@purchaseDetail = PurchaseDetail.new(material_id: @cable.id, quantity: 30, purchase_bill_id: @purchaseBill.id, price: 6000)
+@purchaseDetail.save!
 @purchaseDetail = PurchaseDetail.new(material_id: @cemento.id, quantity: 8, purchase_bill_id: @purchaseBill.id, price: 25000, total: 200000)
 @purchaseDetail.save!
+
+# Rubros
+
 
 # Servicios
 @service = Service.new(name: "Colocación de cables", description: "Se colocan cables en la forma que se desee", price: 50000, measurement_unit: "m")
 @service.save!
-
-@concepto = Concept.new(name: "Adelanto")
-@concepto.save!
-
-@concepto2 = Concept.new(name: "Pago por certificación")
-@concepto2.save!

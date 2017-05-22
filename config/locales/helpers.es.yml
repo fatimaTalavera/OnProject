@@ -217,15 +217,17 @@ es:
       AccountEmployee: Cuenta del Jornalero
       Budget: Presupuesto
       BudgetDetail: Detalle de presupuesto
-      Certification: Certificación
+      Certification: Certificación Interna
       CertificationDetail: Detalle de Certificación
       Client: Cliente
-      ClientCertification: Certificacion del cliente
+      ClientCertification: Certificación del cliente
       ClientCertificationDetail: Detalle de Certificación del cliente
       CompanyConfig: Configuración de la Empresa
       Concept: Concepto
       Contract: Contrato
       Employee: Empleado
+      Installment: Cuota
+      InstallmentPayment: Pago de Cuota
       Material: Material
       MaterialMovement: Movimiento de Materiales
       MovementDetail: Detalle de Movimiento de Materiales

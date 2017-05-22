@@ -67,7 +67,7 @@ class SaleBillsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def sale_bill_params
       params.require(:sale_bill).permit(:date, :condition, :number, :contract_id, :total, :balance,
-                                        :sale_details_attributes => [:id, :quantity, :concept_id, :certification_id, :price, :total, :_destroy],
+                                        :sale_details_attributes => [:id, :quantity, :concept, :certification_id, :price, :total, :_destroy],
                                         :installments_attributes => [:id, :amount, :balance, :due_date, :_destroy])
     end
 end

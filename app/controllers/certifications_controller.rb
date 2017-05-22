@@ -1,6 +1,8 @@
 class CertificationsController < ApplicationController
   add_breadcrumb I18n.t('helpers.breadcrumbs.certifications.index'), :certifications_path
   before_action :set_certification, only: [:show, :edit, :update]
+  before_action :load_permissions
+  authorize_resource
 
   def index
     get_certifications

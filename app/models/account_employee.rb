@@ -1,4 +1,5 @@
 class AccountEmployee < ApplicationRecord
+  audited
   belongs_to :employee
   belongs_to :certification
 

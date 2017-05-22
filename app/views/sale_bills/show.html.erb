@@ -43,7 +43,7 @@
                 <tbody>
                 <% @sale_bill.sale_details.each do |d| %>
                     <tr>
-                      <td><%= d.concept.name %></td>
+                      <td><%= d.concept %></td>
                       <td class="text-right"><%= d.quantity %></td>
                       <td class="text-right"><%= d.price %></td>
                       <td class="text-right"><%= d.total %></td>
@@ -79,14 +79,15 @@
                       <td class="text-right">
                         <% if not installment.balance == 0 %>
                         <% if first %>
-                            <% installment_payment = InstallmentPayment.new %>
-                            <%= form_for installment_payment, url: url_for(:controller => 'installment_payment', :action => 'create') do |f| %>
-                                <%= f.number_field :amount, value: installment.balance%>
-                                <%= f.hidden_field :installment_id, value: installment.id %>
-                                <%= f.submit "Pagar", {:class => "btn btn-warning"} %>
+                                <% installment_payment = InstallmentPayment.new %>
+                                <%= form_for installment_payment, url: url_for(:controller => 'installment_payment', :action => 'create') do |f| %>
+                                    <%= f.label :date, 'Monto:', :class => 'control-label  tooltip_required' %>
+                                    <%= f.number_field :amount, value: installment.balance%>
+                                    <%= f.hidden_field :installment_id, value: installment.id %>
+                                    <%= f.submit "Pagar", {:class => "btn btn-warning"} %>
+                                <% end %>
+                                <% first = false %>
                             <% end %>
-                            <% first = false %>
-                        <% end %>
                         <% end %>
                       </td>
                     </tr>

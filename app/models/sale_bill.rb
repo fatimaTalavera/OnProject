@@ -1,4 +1,5 @@
 class SaleBill < ApplicationRecord
+  audited
   belongs_to :contract
   delegate :name, to: :contract, prefix: true
   has_many :sale_details
