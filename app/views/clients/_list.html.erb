@@ -1,11 +1,11 @@
 <table class="table table-bordered table-condensed">
   <thead>
   <tr>
-    <th>Nombre o Razón Social</th>
-    <th>RUC</th>
-    <th>Correo</th>
-    <th>Direccion</th>
-    <th>Telefono</th>
+    <th class="col-md-3">Nombre o Razón Social</th>
+    <th class="col-md-2">RUC</th>
+    <th class="col-md-2">Correo</th>
+    <th class="col-md-2">Dirección</th>
+    <th class="col-md-2">Teléfono</th>
     <th class="table-actions"></th>
   </tr>
   </thead>
@@ -13,11 +13,11 @@
   <tbody>
   <% clients.each do |client| %>
       <tr>
-        <td><%= client.name %></td>
-        <td><%= client.ruc %></td>
-        <td><%= client.email %></td>
-        <td><%= disminuir(client.adress) %></td>
-        <td><%= client.phone %></td>
+        <td class="col-md-3"><%= client.name %></td>
+        <td class="col-md-2"><%= client.ruc %></td>
+        <td class="col-md-2"><%= client.email %></td>
+        <td class="col-md-2"><%= client.adress %></td>
+        <td class="col-md-2"><%= client.phone %></td>
         <td>
           <%= link_to "<i class=\"fa fa-eye\"></i>".html_safe, client_path(client), {:class => "btn btn-xs bg-teal btn-flat"} %>
           <% if (can? :update, Client) %>

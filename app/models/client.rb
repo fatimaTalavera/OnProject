@@ -3,7 +3,7 @@ class Client < ApplicationRecord
   has_many :contracts
 
   VALID_LETTER_REGEX = /\A([a-zA-Z]|[a-zA-Z][\. ])+\z/
-  VALID_RUC_REGEX = /\A\d{5,9}[-]?\d{1}\z/
+  VALID_RUC_REGEX = /\A\d{4,9}[-]?\d{1}\z/
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   validates :name,  :presence => {:message => "No puede estar en blanco"},
