@@ -119,8 +119,16 @@
         <div class="tab-pane fade" id="client-certifications">
           <div class="box-header with-border box-success">
             <h3 class="box-title"><%= t('helpers.title.client_certification.list') %></h3>
-            <% if (can? :create, ClientCertification) %>
-                <%= link_to "<i class=\"fa fa-plus\"></i>".html_safe, new_client_certification_path({contract_id: @contract.id}), {:class => "btn btn-sm btn-flat bg-green btn-title", :title => "Agregar Certificación"} %>
+            <% @contract.budget.budget_details.each do |bu| %>
+                <% if bu.state == 'pending' %>
+                    <% if (can? :create, ClientCertification) %>
+                        <%= link_to "<i class=\"fa fa-plus\"></i>".html_safe, new_client_certification_path({contract_id: @contract.id}), {:class => "btn btn-sm btn-flat bg-green btn-title", :title => "Agregar Certificación"} %>
+                    <% end %>
+                <% break %>
+                <% else %>
+                    <span class="fa fa-check" style="color:green"></span>
+                    <% break %>
+                <% end %>
             <% end %>
           </div>
           <br>
