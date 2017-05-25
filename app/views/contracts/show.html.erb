@@ -6,19 +6,19 @@
     <div class="row">
       <div class="col-md-9">
         <div class="row">
-          <div class="col-sm-6">
+          <div class="col-sm-6 show-padding">
             <label class="control-label">Cliente: </label>
             <span><%= @contract.client_name %></span>
           </div>
-          <div class="col-sm-6">
+          <div class="col-sm-6 show-padding">
             <label class="control-label">Monto: </label>
             <span><%= number_to_currency_py(@contract.amount) %></span>
           </div>
-          <div class="col-sm-6">
+          <div class="col-sm-6 show-padding">
             <label class="control-label">Fecha de inicio: </label>
             <span><%= @contract.start_date %></span>
           </div>
-          <div class="col-sm-6">
+          <div class="col-sm-6 show-padding">
             <label class="control-label">Fecha de cierre: </label>
             <span><%= @contract.end_date %></span>
           </div>
@@ -59,7 +59,7 @@
       <div class="tab-content">
         <div class="tab-pane fade active in" id="budgets">
           <br>
-          <table class="table table-bordered table-condensed col-md-12">
+          <table class="table table-bordered table-condensed table-list col-md-12">
             <thead>
               <tr>
                 <th class="col-md-3">Rubro</th>
@@ -93,7 +93,7 @@
         </div>
         <div class="tab-pane fade" id="material-movements">
           <br>
-          <table class="table table-bordered table-condensed col-md-12">
+          <table class="table table-bordered table-condensed table-list col-md-12">
             <thead>
             <tr>
               <th>Fecha</th>
@@ -132,7 +132,7 @@
             <% end %>
           </div>
           <br>
-          <table class="table table-bordered table-condensed col-md-12">
+          <table class="table table-bordered table-condensed table-list col-md-12">
             <thead>
             <tr>
               <th>Fecha</th>

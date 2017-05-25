@@ -4,19 +4,19 @@
   </div>
   <div class="box-body">
     <div class="col-md-12 form-group">
-      <div class="col-sm-3">
+      <div class="col-sm-3 show-padding">
         <strong>Nombre:</strong>
         <%= @rubro.name %>
       </div>
-      <div class="col-sm-3">
+      <div class="col-sm-3 show-padding">
         <strong>Unidad de medida:</strong>
         <%= @rubro.measurement_unit %>
       </div>
-      <div class="col-sm-3">
+      <div class="col-sm-3 show-padding">
         <strong>Utilidad:</strong>
         <%= @rubro.utility %> %
       </div>
-      <div class="col-sm-3">
+      <div class="col-sm-3 show-padding">
         <strong>Precio:</strong>
         <%= number_to_currency_py(@rubro.final_price.to_i) %>
       </div>
@@ -24,7 +24,7 @@
 
     <div class="col-md-12 form-group">
       <div class="col-md-8">
-        <table class="table table-bordered table-condensed", cellspacing="0" width="100%">
+        <table class="table table-bordered table-condensed table-list">
           <thead>
           <tr>
             <th>Material</th>

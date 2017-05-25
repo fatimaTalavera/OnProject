@@ -1,10 +1,10 @@
-<table class="table table-bordered table-condensed">
+<table class="table table-bordered table-condensed table-list">
   <thead>
   <tr>
-    <th class="col-md-3">Nombre</th>
-    <th class="col-md-3">Descripción</th>
-    <th class="col-md-3">Precio</th>
-    <th class="col-md-3">Ud. de Medida</th>
+    <th>Nombre</th>
+    <th>Descripción</th>
+    <th>Precio</th>
+    <th>Ud. de Medida</th>
     <th class="table-actions"></th>
   </tr>
   </thead>
@@ -12,10 +12,10 @@
   <tbody>
   <% services.each do |service| %>
       <tr>
-        <td class="col-md-3"><%= service.name %></td>
-        <td class="col-md-3"><%= service.description %></td>
-        <td class="col-md-3"><%= number_to_currency_py(service.price) %></td>
-        <td class="col-md-3"><%= service.measurement_unit %></td>
+        <td><%= service.name %></td>
+        <td><%= service.description %></td>
+        <td><%= number_to_currency_py(service.price) %></td>
+        <td><%= service.measurement_unit %></td>
         <td>
           <% if (can? :update, Service) %>
           <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_service_path(service), {:class => "btn btn-xs bg-orange btn-flat"} %>

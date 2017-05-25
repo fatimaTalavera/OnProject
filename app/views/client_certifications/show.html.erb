@@ -9,7 +9,7 @@
         <div class="col-md-3">
           <strong>Obra:</strong>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-8 show-padding">
           <%= @client_certification.contract_name %>
         </div>
       </div>
@@ -18,7 +18,7 @@
         <div class="col-md-4">
           <strong>Fecha:</strong>
         </div>
-        <div class="col-md-7">
+        <div class="col-md-7 show-padding">
           <%= @client_certification.date %>
         </div>
       </div>
@@ -38,7 +38,7 @@
         <div class="col-md-3">
           <strong>Observaciones:</strong>
         </div>
-        <div class="col-md-7">
+        <div class="col-md-7 show-padding">
           <%= @client_certification.observation %>
         </div>
       </div>
@@ -46,7 +46,7 @@
         <div class="col-md-3">
           <strong>Recibido por:</strong>
         </div>
-        <div class="col-md-7">
+        <div class="col-md-7 show-padding">
           <%= @client_certification.received %>
         </div>
       </div>
@@ -57,24 +57,24 @@
     </div>
 
     <div class="col-md-12 form-group">
-      <table class="table table-bordered table-condensed">
+      <table class="table table-bordered table-condensed table-list">
         <thead>
         <tr>
-          <th class="col-md-3">Rubro</th>
-          <th class="col-md-2">Precio</th>
-          <th class="col-md-2">Cantidad hecha</th>
-          <th class="col-md-2">Cantidad total</th>
-          <th class="col-md-3">Total</th>
+          <th>Rubro</th>
+          <th>Precio</th>
+          <th>Cantidad hecha</th>
+          <th>Cantidad total</th>
+          <th>Total</th>
         </tr>
         </thead>
         <tbody>
         <% @client_certification.client_certification_details.each do |detail| %>
             <tr>
-              <td class="col-md-3"><%= detail.budget_detail.rubro_name %>
-              <td class="col-md-2"><%=  number_to_currency_py(detail.price) %>
-              <td class="col-md-2"><%= detail.quantity %>
-              <td class="col-md-2"><%= detail.total_quantity %>
-              <td class="col-md-3"><%= number_to_currency_py(detail.total) %>
+              <td><%= detail.budget_detail.rubro_name %>
+              <td><%=  number_to_currency_py(detail.price) %>
+              <td><%= detail.quantity %>
+              <td><%= detail.total_quantity %>
+              <td><%= number_to_currency_py(detail.total) %>
             </tr>
         <% end %>
         </tbody>

@@ -1,4 +1,4 @@
-<table class="table table-bordered table-condensed">
+<table class="table table-bordered table-condensed table-list">
   <thead>
   <tr>
     <th>Nombre o Razón Social</th>
@@ -6,18 +6,18 @@
     <th>Teléfono</th>
     <th>Correo</th>
     <th>Dirección</th>
-    <th></th>
+    <th class="table-actions"></th>
   </tr>
   </thead>
 
   <tbody>
   <% providers.each do |provider| %>
       <tr>
-        <td><%= disminuir(provider.name) %></td>
+        <td><%= provider.name %></td>
         <td><%= provider.ruc %></td>
         <td><%= provider.phone %></td>
-        <td><%= disminuir(provider.email) %></td>
-        <td><%= disminuir(provider.address) %></td>
+        <td><%= provider.email %></td>
+        <td><%= provider.address %></td>
         <td>
           <% if (can? :update, Provider) %>
               <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_provider_path(provider), {:class => "btn btn-xs bg-orange btn-flat"} %>

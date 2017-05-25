@@ -1,4 +1,4 @@
-<table class="table table-bordered table-condensed">
+<table class="table table-bordered table-condensed table-list">
   <thead>
   <tr>
     <th>Nombre</th>
@@ -18,7 +18,7 @@
         <td><%= employee.last_name %></td>
         <td><%= employee.identification_document %></td>
         <td><%= employee.email %></td>
-        <td><%= disminuir(employee.address) %></td>
+        <td><%= employee.address %></td>
         <td><%= employee.phone %></td>
         <td>
           <% if (can? :update, Employee) %>

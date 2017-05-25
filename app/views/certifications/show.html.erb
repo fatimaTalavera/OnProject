@@ -6,14 +6,14 @@
 
     <div class="field col-md-12 form-group">
       <div class="field col-md-6 form-group">
-        <div class="col-md-6">
+        <div class="col-md-6 show-padding">
           <strong>Obra:</strong>
           <%= @certification.contract_name %>
         </div>
       </div>
 
       <div class="field col-md-6 form-group">
-        <div class="col-md-6">
+        <div class="col-md-6 show-padding">
           <strong>Fecha:</strong>
           <%= @certification.date %>
         </div>
@@ -21,7 +21,7 @@
     </div>
     <div class="field col-md-12 form-group">
       <div class="field col-md-6 form-group">
-        <div class="col-md-6">
+        <div class="col-md-6 show-padding">
           <strong>Estado:</strong>
           <%= @certification.state %>
         </div>
@@ -29,9 +29,9 @@
     </div>
 
     <div class="col-md-12 form-group">
-      <table style="table-layout: fixed; width: 100%" class="table table-bordered table-condensed">
+      <table class="table table-bordered table-condensed table-list">
         <thead>
-        <tr  style="word-wrap: break-word">
+        <tr>
           <th width="20%">Jornalero</th>
           <th width="10%">Dias trabajados</th>
           <th width="10%">Jornal</th>

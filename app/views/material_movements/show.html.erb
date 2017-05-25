@@ -4,17 +4,17 @@
   </div>
   <div class="box-body">
     <div class="col-md-12 form-group">
-      <div class="col-md-4">
+      <div class="col-md-4 show-padding">
         <strong>Contrato:</strong>
         <%= @material_movement.contract_name %>
       </div>
 
-      <div class="col-md-4">
+      <div class="col-md-4 show-padding">
         <strong>Motivo:</strong>
         <%= @material_movement.reason %>
       </div>
 
-      <div class="col-md-4">
+      <div class="col-md-4 show-padding">
         <strong>Fecha:</strong>
         <%= @material_movement.date %>
       </div>
@@ -22,7 +22,7 @@
 
 
     <div class="col-md-8">
-        <table class="table table-bordered table-condensed", cellspacing="0" width="100%">
+        <table class="table table-bordered table-condensed table-list">
           <thead>
           <tr>
             <th>Material</th>
