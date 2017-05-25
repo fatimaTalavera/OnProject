@@ -15,7 +15,6 @@ function getRubroPrice(currentElement) {
             tr.find('.price').val(price);
             tr.find('.quantity').val(quantity);
             getRubroTotal(tr);
-            console.log(data);
         }
     });
     }
@@ -27,7 +26,7 @@ function getRubroTotal(currentElement) {
     var price = self.find('.price').val();
     var quantity = self.find('.amount_to_certify').val();
     if (quantity > amount_made){
-        alert("No debe sobrepasar la cantidad faltante");
+                $("#myModal").modal();
     }else{
     var total = (undefined !== price && undefined !== quantity)? price * quantity : 0;
     }
