@@ -1,4 +1,13 @@
 @import "common";
+
+table.table-list {
+  border-collapse:collapse;
+  table-layout:fixed;
+  td {
+    word-wrap:break-word;
+  }
+}
+
 /*Configuracion para los mensajes en las validaciones*/
 .field_with_errors .message {
   color: #D00;
@@ -14,10 +23,6 @@
   margin-left: -15px;
 }
 
-th.table-actions{
-  min-width: 90px;
-}
-
 .buscador-listado{
   margin-bottom: 15px;
 }
@@ -29,7 +34,7 @@ th.table-actions{
 }
 
 th.table-actions{
-  width: 50px;
+  width: 70px;
 }
 
 .btn-title {
@@ -45,6 +50,7 @@ th.table-actions{
 
 .show-padding {
   padding-left: 1px;
+  word-wrap:break-word;
 }
 
 .label-pad {

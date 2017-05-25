@@ -9,7 +9,7 @@
         <div class="field col-md-4">
           <strong>Nombre o Razón Social:</strong>
         </div>
-        <div class="field col-md-8">
+        <div class="field col-md-8 show-padding">
           <%= @client.name %>
         </div>
       </div>
@@ -18,7 +18,7 @@
         <div class="field col-md-2">
           <strong>RUC:</strong>
         </div>
-        <div class="field col-md-10">
+        <div class="field col-md-10 show-padding">
           <%= @client.ruc %>
         </div>
       </div>
@@ -29,7 +29,7 @@
         <div class="field col-md-2">
           <strong>Dirección:</strong>
         </div>
-        <div class="field col-md-10">
+        <div class="field col-md-10 show-padding">
             <%= @client.adress %>
         </div>
       </div>
@@ -38,7 +38,7 @@
         <div class="field col-md-3">
           <strong>Teléfono:</strong>
         </div>
-        <div class="field col-md-9">
+        <div class="field col-md-9 show-padding">
           <%= @client.phone %>
         </div>
       </div>
@@ -49,7 +49,7 @@
         <div class="field col-md-2">
           <strong>Correo:</strong>
         </div>
-        <div class="field col-md-10">
+        <div class="field col-md-10 show-padding">
           <%= @client.email %>
         </div>
       </div>
@@ -78,7 +78,7 @@
       </div>
     </div>
     <div class="col-md-12">
-      <table class="table table-bordered table-condensed", cellspacing="0" width="100%">
+      <table class="table table-bordered table-condensed table-list">
         <thead>
         <tr>
           <th>Nombre</th>
@@ -96,9 +96,9 @@
               <td><%= contract.name %></td>
               <td><%= contract.start_date %></td>
               <td><%= contract.end_date %></td>
-              <td><%= number_to_currency(contract.amount, unit: "Gs.", separator: ".", precision: 0) %></td>
-              <td><%= number_to_currency(contract.sale_bills.sum(:total), unit: "Gs.", separator: ".", precision: 0)%></td>
-              <td><%= number_to_currency(contract.amount - contract.sale_bills.sum(:total), unit: "Gs.", separator: ".", precision: 0)%></td>
+              <td><%= number_to_currency_py(contract.amount) %></td>
+              <td><%= number_to_currency_py(contract.sale_bills.sum(:total))%></td>
+              <td><%= number_to_currency_py(contract.amount - contract.sale_bills.sum(:total))%></td>
             <tr>
         <% end %>
         </tbody>
