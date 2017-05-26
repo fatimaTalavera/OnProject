@@ -1,60 +1,87 @@
-<%= form_for account_employee, validate: true, :html => { class: 'form-horizontal' } do |f| %>
+<%= nested_form_for account_employee, validate: true, :html => { class: 'form-horizontal' } do |f| %>
     <div class="box-body box-success">
       <div class="field col-md-12 form-group">
         <div class="field col-md-6 form-group">
           <div class="col-md-2">
-            <%= f.label :certification, 'Certificación:', :class => 'control-label  tooltip_required' %>
+            <%= f.label :contract, 'Contrato:', :class => 'control-label  tooltip_required' %>
           </div>
-          <div class="col-md-4">
-            <%= f.collection_select(:certification_id, Certification.all, :id, :contract_name, {prompt: 'Selecciona una certificación'}, :class => 'form-control') %>
+          <div class="col-md-8">
+            <%= f.collection_select(:contract_id, Contract.all, :id, :name, {prompt: 'Selecciona un contrato'}, :class => 'form-control', :disabled => 'true') %>
           </div>
         </div>
         <div class="field col-md-6 form-group">
           <div class="col-md-2">
             <%= f.label :date, 'Fecha:', :class => 'control-label  tooltip_required' %>
           </div>
-          <div class="input-group col-md-4">
-            <%= f.text_field :date, :id => 'datepickerFrom', :class => 'input-group date form-control datepicker', :value => Date.today %>
+          <div class="input-group col-md-8">
+            <%= f.text_field :date, :id => 'datepickerFrom', :class => 'input-group date form-control datepicker', :value => Date.today, :disabled => 'true' %>
             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
           </div>
         </div>
       </div>
-
+      <div id="demo"></div>
       <div class="field col-md-12 form-group">
         <div class="field col-md-6 form-group">
           <div class="col-md-2">
-            <%= f.label :employee, 'Empleado:', :class => 'control-label  tooltip_required' %>
+            <%= f.label :pay, 'Total:', :class => 'control-label' %>
           </div>
-          <div class="col-md-4">
-            <%= f.collection_select(:employee_id, Employee.all.order('name'), :id, :name, {prompt: 'Selecciona un jornalero'}, :class => 'form-control') %>
-          </div>
-        </div>
-        <div class="field col-md-6 form-group">
-          <div class="col-md-3">
-            <%= f.label :number_bill, 'N. factura/recibo:', :class => 'control-label  tooltip_required' %>
-          </div>
-          <div class="col-md-3">
-            <%= f.text_field :number_bill, :class => 'form-control'%>
-          </div>
-        </div>
-      </div>
-      <div class="field col-md-12 form-group">
-        <div class="field col-md-6 form-group">
-          <div class="col-md-2">
-            <%= f.label :pay, 'Monto:', :class => 'control-label  tooltip_required' %>
-          </div>
-          <div class="col-md-4">
-            <%= f.text_field :pay, :class => 'form-control'%>
+          <div class="col-md-8">
+            <%= f.text_field :pay, :class => 'form-control', readonly:true%>
           </div>
         </div>
       </div>
      </div>
 
+    <div class="col-md-12">
+      <div class="box box-success">
+        <div class="box-header with-border">
+          <h3 class="box-title">Certificaciones a pagar:</h3>
+        </div>
+        <div class="box-body">
+          <table id="table" class="table table-bordered">
+            <thead>
+            <tr>
+              <th width="15%">Empleado</th>
+              <th width="15%">Monto Certificado</th>
+              <th width="15%">Fecha de Aprobación</th>
+              <th width="15%">Recibo N°</th>
+              <th width="15%">Selecciona</th>
+              <th width="15%">Fecha de Pago</th>
+              <th width="15%">Estado del Pago</th>
+            </tr>
+            </thead>
+            <tbody>
+
+                <%= f.fields_for :account_employee_details, :wrapper => false do |detail| %>
+                    <tr class="fields">
+                      <td><%=detail.collection_select(:employee_id, Employee.all, :id, :name_with_initial, {prompt: 'Selecciona un Jornalero'}, class: 'form-control', disabled: true)%></td>
+                      <td><%=detail.number_field :total, class: 'form-control total', disabled: true %></td>
+                      <td><%=detail.text_field :created_at, class: 'form-control', disabled: true%></td>
+                      <td><%=detail.number_field :number_bill, class: 'form-control' %></td>
+                      <td><%= detail.check_box :pay, checked:"checked" %></td>
+                      <td><%=detail.text_field :date, :id => 'datepickerFrom', :class => 'input-group date form-control datepicker', :value => Date.today %></td>
+                      <td><%=detail.text_field :state, class: 'form-control', disabled:true%></td>
+                      <br>
+                    </tr>
+                <% end %>
+
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
 
     <div class="box-footer">
       <div class="pull-right">
-        <%= f.submit 'Guardar', :class => "btn btn-primary" %>
-        <%= link_to 'Cancelar', account_employees_path, :class => 'btn btn-default' %>
+        <%= f.submit 'Pagar', :class => "btn btn-success" %>
+        <%= link_to 'Cancelar', account_employee.contract, :class => 'btn btn-default' %>
       </div>
     </div>
+
 <% end %>
+<script>
+  $( document ).ready(function() {
+    $(".pay").val($(".total").val());
+  });
+</script>

@@ -1,36 +1,87 @@
-<p id="notice"><%= notice %></p>
+<div class="box box-success">
+  <div class="box-header with-border">
+    <h3 class="box-title"><%= t('helpers.title.employee.list') %></h3>
+  </div>
+  <div class="box-body">
 
-<p>
-  <strong>Name:</strong>
-  <%= @employee.name %>
-</p>
+    <div class="field col-md-12 form-group">
+      <div class="field col-md-4 form-group">
+        <strong>Nombre:</strong>
+        <%= @employee.name %>
+      </div>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @employee.last_name %>
-</p>
+      <div class="field col-md-4 form-group">
+        <strong>Apellido:</strong>
+        <%= @employee.last_name %>
+      </div>
 
-<p>
-  <strong>Address:</strong>
-  <%= @employee.address %>
-</p>
+      <div class="field col-md-4 form-group">
+        <strong>Documento:</strong>
+        <%= @employee.identification_document %>
+      </div>
+    </div>
 
-<p>
-  <strong>Email:</strong>
-  <%= @employee.email %>
-</p>
+    <div class="field col-md-12 form-group">
+      <div class="field col-md-4 form-group">
+        <strong>Correo:</strong>
+        <%= @employee.email %>
+      </div>
 
-<p>
-  <strong>Phone:</strong>
-  <%= @employee.phone %>
-</p>
+      <div class="field col-md-4 form-group">
+        <strong>Dirección:</strong>
+        <%= @employee.address %>
+      </div>
 
-<p>
-  <strong>Identification document:</strong>
-  <%= @employee.identification_document %>
-</p>
+      <div class="field col-md-4 form-group">
+        <strong>Teléfono:</strong>
+        <%= @employee.phone %>
+      </div>
+    </div>
+  </div>
+  <div class="box-footer">
+    <div class="pull-right">
+      <% if (can? :update, Employee) %>
+          <%= link_to 'Editar', edit_employee_path(@employee), :class => 'btn btn-primary active' %>
+      <% end %>
+      <%= link_to 'Atras', employees_path, :class => 'btn btn-default' %>
+    </div>
+  </div>
+</div>
 
-<% if (can? :update, Employee) %>
-  <%= link_to 'Edit', edit_employee_path(@employee) %>
-<% end %>
-<%= link_to 'Back', employees_path %>
+<div class="box box-success">
+  <div class="box-header with-border">
+    <h3 class="box-title">Cuenta Corriente</h3>
+  </div>
+  <div class="box-body">
+    <div class="field col-md-12 form-group">
+      <div class="field col-md-8 form-group">
+        <strong>Saldo Total:</strong>
+        <%= number_to_currency(@employee.balance, unit: "Gs.", separator: ".", precision: 0) %>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <table class="table table-bordered table-condensed", cellspacing="0" width="100%">
+        <thead>
+        <tr>
+          <th>Monto Certificado</th>
+          <th>Fecha de certificación</th>
+          <th>Estado</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @account_employee.each do |a| %>
+            <tr><strong>Obra:</strong> <%= a.contract_name %></tr>
+            <% @account_details.each do |account| %>
+                <tr>
+                  <td><%= number_to_currency(account.total, unit: "Gs.", separator: ".", precision: 0) %></td>
+                  <td><%= account.created_at %></td>
+                  <td><%= account.state %></td>
+                <tr>
+            <% end %>
+        <% end %>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

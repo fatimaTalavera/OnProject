@@ -7,7 +7,7 @@
     <div class="account_employee-search searchList">
       <%= search_form_for(@q, remote: true, :html => { class: 'remote-search' }) do |f| %>
           <div class="input-group">
-            <%= f.text_field :employee_name_cont, class: 'form-control', autocomplete: 'off', placeholder: 'Busca por nombre del contrato o por nombre del jornalero' %>
+            <%= f.text_field :certification_contract_name_cont, class: 'form-control', autocomplete: 'off', placeholder: 'Busca por nombre del contrato o por nombre del jornalero' %>
             <div class="input-group-btn">
               <button type="submit" name="button" class="btn btn-default">
                 <i class="fa fa-search"></i>
