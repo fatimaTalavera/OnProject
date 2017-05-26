@@ -3,15 +3,19 @@
  */
 
 
-function getCertificationTotal(currentElement) {
+function getCertificationTotal(currentElement, pay) {
     var max_digits = 9999999999;
     var max_discount = 100;
     var max_quantity = 365;
     var self = $(currentElement);
     var pay, quantity, discount;
+    if($('.pay').val() == '' || $('.pay').val() < pay ){
+        $('.pay').val(pay);
+    }
     var aux_quantity = self.find('.quantity').val();
     var aux_pay = self.find('.pay').val();
     var aux_discount = self.find('.discount').val();
+
 
     if(aux_quantity < 0 || aux_quantity > max_quantity){
         quantity = 0;
@@ -44,6 +48,9 @@ function getCertificationTotal(currentElement) {
 
 };
 
+function getPayDefault(){
+
+}
 
 
 

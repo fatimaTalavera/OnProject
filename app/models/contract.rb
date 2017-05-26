@@ -6,6 +6,8 @@ class Contract < ApplicationRecord
   has_one :budget
   has_many :budget_details, through: :budget
   has_many :sale_bills
+  has_many :certifications
+  has_many :account_employees
 
   delegate :name, :ruc, to: :client, prefix: true
 

@@ -7,7 +7,7 @@
             <%= f.label :contract, 'Contrato:', :class => 'control-label  tooltip_required' %>
           </div>
           <div class="col-md-8">
-            <%= f.collection_select(:contract_id, Contract.all, :id, :name, {prompt: 'Selecciona un contrato'}, :class => 'select-two form-control') %>
+            <%= f.collection_select(:contract_id, Contract.all, :id, :name, {prompt: 'Selecciona un contrato'}, :class => 'form-control', readonly:true) %>
           </div>
         </div>
         <div class="field col-md-6 form-group">
@@ -30,7 +30,6 @@
           </div>
         </div>
       </div>
-
       <div class="col-md-12">
         <div class="box box-success">
           <div class="box-body">
@@ -49,10 +48,10 @@
                 </thead>
                 <tbody>
                 <%= f.fields_for :certification_details, :wrapper => false do |certification| %>
-                    <tr class="fields" onchange='getCertificationTotal(this);'>
-                      <td><%=certification.collection_select(:employee_id, Employee.all, :id, :name, {prompt: 'Selecciona un Jornalero'}, class: 'form-control')%></td>
+                    <tr class="fields" onchange='getCertificationTotal(this,"<%= @pay %>");'>
+                      <td><%=certification.collection_select(:employee_id, Employee.all, :id, :name_with_initial, {prompt: 'Selecciona un Jornalero'}, class: 'form-control')%></td>
                       <td><%=certification.number_field :quantity, class: 'form-control quantity numeric', min:0, max:365, id:'quantity' %></td>
-                      <td><%=certification.number_field :pay, class: 'form-control pay', min:0, max:9999999999, id:'pay' %></td>
+                      <td><%=certification.number_field :pay, class: 'form-control pay', min:0, max:9999999999 %></td>
                       <td><%=certification.number_field :discount, class: 'form-control discount', min:0, max:100, id:'discount' %></td>
                       <td><%=certification.text_area :observation, class: 'form-control', maxlength: 200 %></td>
                       <td><%=certification.number_field :subtotal, class: 'form-control subtotal', readonly:true%></td>
@@ -74,17 +73,11 @@
     <div class="box-footer">
       <div class="pull-right">
         <%= f.submit 'Guardar', :class => 'btn btn-primary' %>
-        <%= link_to 'Cancelar', certifications_path, :class => 'btn btn-default' %>
+        <%= link_to 'Cancelar', certification.contract, :class => 'btn btn-default' %>
       </div>
     </div>
 <% end %>
 
 
-  <script type="text/javascript">
-    $(document).ready(function() {
-      $(".select-two").select2({
-        language:'es'
-      });
-    });
 
-  </script>
+
