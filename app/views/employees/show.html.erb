@@ -69,8 +69,6 @@
         </tr>
         </thead>
         <tbody>
-        <% @account_employee.each do |a| %>
-            <tr><strong>Obra:</strong> <%= a.contract_name %></tr>
             <% @account_details.each do |account| %>
                 <tr>
                   <td><%= number_to_currency(account.total, unit: "Gs.", separator: ".", precision: 0) %></td>
@@ -78,7 +76,7 @@
                   <td><%= account.state %></td>
                 <tr>
             <% end %>
-        <% end %>
+
 
         </tbody>
       </table>

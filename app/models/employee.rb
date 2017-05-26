@@ -29,4 +29,5 @@ class Employee < ApplicationRecord
   def name_with_initial
     "#{name} #{last_name}"
   end
+
 end

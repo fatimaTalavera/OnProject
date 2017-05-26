@@ -59,5 +59,4 @@ class Certification < ApplicationRecord
     end
   end
 
-
 end

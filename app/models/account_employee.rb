@@ -20,15 +20,19 @@ class AccountEmployee < ApplicationRecord
       d.update_attribute(:state, AccountEmployee.states_types.keys[1])
     end
 
-    certifications = account_employee_details.where(pay: 1).where(state: AccountEmployee.states_types.keys[1])
+    account_completed = AccountEmployeeDetail.where(state: AccountEmployee.states_types.keys[1])
     list_certification = []
-    certifications.each do |c|
-      list_certification << c.certification_id
+    account_completed.each do |a|
+      list_certification << a.certification_id
     end
 
-    list_certification.uniq
-    list_certification.each do |lc|
-      Certification.find(lc).update_attribute(:state, AccountEmployee.states_types.keys[1])
+    list = list_certification.uniq
+    list.each do |l|
+      amount_detail_certification = CertificationDetail.where(certification_id: l).count
+      amount_certification_completed = AccountEmployeeDetail.where(certification_id: l).where(state: AccountEmployee.states_types.keys[1]).count
+      if(amount_detail_certification == amount_certification_completed)
+        Certification.find(l).update_attribute(:state, Certification.states_types.keys[3])
+      end
     end
 
   end
