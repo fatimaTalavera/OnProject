@@ -21,9 +21,10 @@
         <td><%= employee.address %></td>
         <td><%= employee.phone %></td>
         <td>
+          <%= link_to "<i class=\"fa fa-eye\"></i>".html_safe, employee_path(employee), {:class => "btn btn-xs bg-teal btn-flat"} %>
           <% if (can? :update, Employee) %>
-          <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_employee_path(employee), {:class => "btn btn-xs bg-orange btn-flat"} %>
-              <% end %>
+              <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_employee_path(employee), {:class => "btn btn-xs bg-orange btn-flat"} %>
+          <% end %>
         </td>
       </tr>
   <% end %>
