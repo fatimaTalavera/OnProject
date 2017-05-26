@@ -16,11 +16,6 @@ class EmployeesController < ApplicationController
   def show
     add_breadcrumb I18n.t('helpers.breadcrumbs.employees.show')
     @account_details = AccountEmployeeDetail.where(employee_id: @employee.id)
-    @accounts = []
-    @account_details.each do |ad|
-      @accounts << AccountEmployee.find(ad.account_employee_id)
-    end
-    @account_employee = @accounts.uniq
 
   end
 

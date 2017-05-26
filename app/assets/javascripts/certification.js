@@ -9,8 +9,8 @@ function getCertificationTotal(currentElement, pay) {
     var max_quantity = 365;
     var self = $(currentElement);
     var pay, quantity, discount;
-    if($('.pay').val() == '' || $('.pay').val() < pay ){
-        $('.pay').val(pay);
+    if(self.find('.pay').val() == '' || self.find('.pay').val() < pay ){
+        self.find('.pay').val(pay);
     }
     var aux_quantity = self.find('.quantity').val();
     var aux_pay = self.find('.pay').val();
@@ -24,7 +24,7 @@ function getCertificationTotal(currentElement, pay) {
         quantity = aux_quantity;
     }
     if(aux_pay < 0 || aux_pay > max_digits){
-        pay = 75558;
+        pay = 0;
         self.find('.pay').val(pay.toFixed(2));
     }else{
         pay = aux_pay;
@@ -48,9 +48,7 @@ function getCertificationTotal(currentElement, pay) {
 
 };
 
-function getPayDefault(){
 
-}
 
 
 

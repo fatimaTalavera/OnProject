@@ -57,7 +57,7 @@
                       <td><%=detail.collection_select(:employee_id, Employee.all, :id, :name_with_initial, {prompt: 'Selecciona un Jornalero'}, class: 'form-control', disabled: true)%></td>
                       <td><%=detail.number_field :total, class: 'form-control total', disabled: true %></td>
                       <td><%=detail.text_field :created_at, class: 'form-control', disabled: true%></td>
-                      <td><%=detail.number_field :number_bill, class: 'form-control' %></td>
+                      <td><%=detail.text_field :number_bill, class: 'form-control',minlength:1, maxlength:10 %></td>
                       <td><%= detail.check_box :pay, checked:"checked" %></td>
                       <td><%=detail.text_field :date, :id => 'datepickerFrom', :class => 'input-group date form-control datepicker', :value => Date.today %></td>
                       <td><%=detail.text_field :state, class: 'form-control', disabled:true%></td>
