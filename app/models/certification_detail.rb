@@ -2,7 +2,7 @@ class CertificationDetail < ApplicationRecord
   audited
   belongs_to :certification
   belongs_to :employee
-  delegate :name, to: :employee, prefix: true
+  delegate :name, :last_name, :identification_document, to: :employee, prefix: true
 
   validates :employee_id, :presence => {:message => "Seleccione un jornalero"}
   validates :quantity, :presence => {:message => "Ingrese cantidad"},

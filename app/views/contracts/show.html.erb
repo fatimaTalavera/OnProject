@@ -49,6 +49,8 @@
         </li>
         <li class=""><a href="#client-certifications" data-toggle="tab" aria-expanded="false">Certificaciones del cliente</a>
         </li>
+        <li class=""><a href="#certifications" data-toggle="tab" aria-expanded="true">Certificaciones Internas</a>
+        </li>
         <li class=""><a href="#bills" data-toggle="tab" aria-expanded="false">Facturación</a>
         </li>
         <li class=""><a href="#employees" data-toggle="tab" aria-expanded="false">Empleados</a>
@@ -152,6 +154,28 @@
           <div id="paginate-container">
             <ul class="pagination pagination-sm no-margin pull-right">
               <%= paginate @client_certifications %>
+            </ul>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="certifications">
+          <div class="box-header with-border box-success">
+            <div class="form-group">
+              <h3 class="box-title"><%= t('helpers.title.certification.list') %></h3>
+
+              <% if (can? :create, Certification) %>
+                  <%= link_to "<i class=\"fa fa-plus\"></i>".html_safe, new_certification_path({contract_id: @contract.id}), {:class => 'btn btn-sm btn-flat bg-green btn-title', :title => "Agregar Certificación"} %>
+              <% end %>
+
+              <% if @approved.any? { |element| element == Certification.states_types.keys[1]} %>
+                  <%= link_to 'Generar Pago', edit_account_employee_path(@account_employee.first), class:'btn btn-sm btn-flat bg-blue' %>
+              <% end %>
+            </div>
+          </div>
+          <br>
+          <%= render 'certifications/list', :certifications => @internal_certifications %>
+          <div id="paginate-container">
+            <ul class="pagination pagination-sm no-margin pull-right">
+              <%= paginate @internal_certifications %>
             </ul>
           </div>
         </div>

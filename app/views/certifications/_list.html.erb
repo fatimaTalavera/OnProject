@@ -13,24 +13,21 @@
       <tr>
         <td><%= certification.contract_name %></td>
         <td><%= certification.date %></td>
-        <% if certification.state == "aprobado"%>
+        <% if certification.state == Certification.states_types.keys[1]%>
             <td class="bg-green"><%= certification.state %></td>
-        <%elsif certification.state == "pendiente" %>
+        <%elsif certification.state == Certification.states_types.keys[0] %>
             <td class="bg-orange"><%= certification.state %></td>
-        <%elsif certification.state == "rechazado" %>
+        <%elsif certification.state == Certification.states_types.keys[2] %>
             <td class="bg-red"><%= certification.state %></td>
-        <% elsif certification.state == "terminado"%>
+        <% elsif certification.state == Certification.states_types.keys[3]%>
             <td  class="bg-gray disable"><%= certification.state %></td>
         <% end %>
         <td>
           <%= link_to "<i class=\"fa fa-eye\"></i>".html_safe, certification_path(certification), {:class => "btn btn-xs bg-teal btn-flat"} %>
-          <% if certification.state != "terminado"%>
-            <% if (can? :update, Certification) %>
-              <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_certification_path(certification), {:class => "btn btn-xs bg-orange btn-flat"} %>
-            <% end %>
-          <% end %>
-          <% if certification.state == "terminado"%>
-              <%= link_to "<i class=\"fa fa-money\"></i>".html_safe, account_employees_path, {:class => "btn btn-xs bg-green btn-flat"} %>
+          <% if certification.state == Certification.states_types.keys[0] || certification.state == Certification.states_types.keys[2] %>
+              <% if (can? :update, Certification) %>
+                  <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_certification_path(certification), {:class => "btn btn-xs bg-orange btn-flat"} %>
+              <% end %>
           <% end %>
         </td>
       </tr>
