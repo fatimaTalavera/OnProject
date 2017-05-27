@@ -6,39 +6,62 @@
 
     <div class="field col-md-12 form-group">
       <div class="field col-md-8 form-group">
-        <strong>Nombre o Razón Social:</strong>
-        <%= @client.name %>
+        <div class="field col-md-4">
+          <strong>Nombre o Razón Social:</strong>
+        </div>
+        <div class="field col-md-8 show-padding">
+          <%= @client.name %>
+        </div>
       </div>
 
       <div class="field col-md-4 form-group">
-        <strong>RUC:</strong>
-        <%= @client.ruc %>
+        <div class="field col-md-2">
+          <strong>RUC:</strong>
+        </div>
+        <div class="field col-md-10 show-padding">
+          <%= @client.ruc %>
+        </div>
       </div>
     </div>
 
     <div class="field col-md-12 form-group">
-      <div class="field col-md-4 form-group">
-        <strong>Correo:</strong>
-        <%= @client.email %>
+      <div class="field col-md-8 form-group">
+        <div class="field col-md-2">
+          <strong>Dirección:</strong>
+        </div>
+        <div class="field col-md-10 show-padding">
+            <%= @client.adress %>
+        </div>
       </div>
 
       <div class="field col-md-4 form-group">
-        <strong>Direccion:</strong>
-        <%= @client.adress %>
+        <div class="field col-md-3">
+          <strong>Teléfono:</strong>
+        </div>
+        <div class="field col-md-9 show-padding">
+          <%= @client.phone %>
+        </div>
       </div>
+    </div>
 
-      <div class="field col-md-4 form-group">
-        <strong>Telefono:</strong>
-        <%= @client.phone %>
+    <div class="field col-md-12 form-group">
+      <div class="field col-md-8 form-group">
+        <div class="field col-md-2">
+          <strong>Correo:</strong>
+        </div>
+        <div class="field col-md-10 show-padding">
+          <%= @client.email %>
+        </div>
       </div>
     </div>
   </div>
+
   <div class="box-footer">
     <div class="pull-right">
       <% if (can? :update, Client) %>
           <%= link_to 'Editar', edit_client_path(@client), :class => 'btn btn-primary active' %>
       <% end %>
-      <%= link_to 'Atras', clients_path, :class => 'btn btn-default' %>
+      <%= link_to 'Atrás', clients_path, :class => 'btn btn-default' %>
     </div>
   </div>
 </div>
@@ -55,7 +78,7 @@
       </div>
     </div>
     <div class="col-md-12">
-      <table class="table table-bordered table-condensed", cellspacing="0" width="100%">
+      <table class="table table-bordered table-condensed table-list">
         <thead>
         <tr>
           <th>Nombre</th>
@@ -73,9 +96,9 @@
               <td><%= contract.name %></td>
               <td><%= contract.start_date %></td>
               <td><%= contract.end_date %></td>
-              <td><%= number_to_currency(contract.amount, unit: "Gs.", separator: ".", precision: 0) %></td>
-              <td><%= number_to_currency(contract.sale_bills.sum(:total), unit: "Gs.", separator: ".", precision: 0)%></td>
-              <td><%= number_to_currency(contract.amount - contract.sale_bills.sum(:total), unit: "Gs.", separator: ".", precision: 0)%></td>
+              <td><%= number_to_currency_py(contract.amount) %></td>
+              <td><%= number_to_currency_py(contract.sale_bills.sum(:total))%></td>
+              <td><%= number_to_currency_py(contract.amount - contract.sale_bills.sum(:total))%></td>
             <tr>
         <% end %>
         </tbody>

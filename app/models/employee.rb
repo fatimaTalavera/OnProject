@@ -25,4 +25,9 @@ class Employee < ApplicationRecord
   def rem_guion_to_ci
     self.identification_document = identification_document.to_s.gsub(/\D/, '')
   end
+
+  def name_with_initial
+    "#{name} #{last_name}"
+  end
+
 end

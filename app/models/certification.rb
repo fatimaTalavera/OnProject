@@ -2,7 +2,7 @@ class Certification < ApplicationRecord
   audited
   belongs_to :contract
   has_many :certification_details
-  enum states_type: [:pendiente, :aprobado, :rechazado]
+  enum states_type: [:Pendiente, :Aprobado, :Rechazado, :Pagado]
   delegate :name, to: :contract, prefix: true
   accepts_nested_attributes_for :certification_details, allow_destroy: true
   after_commit :update_balance
@@ -18,17 +18,45 @@ class Certification < ApplicationRecord
     end
   end
 
-
   def update_balance
     aproved_certification = Certification.find(id)
-    if(aproved_certification.state == "aprobado")
-      certification_details.each do |detail|
-        before_balance = Employee.find(detail.employee_id).balance
-        Employee.find(detail.employee_id).update_attribute(:balance, before_balance+detail.total)
+    if(aproved_certification.state == Certification.states_types.keys[1])
+
+      account = AccountEmployee.where(contract_id: aproved_certification.contract_id)
+      if(account.blank?)
+        #crea movimiento en cta. cte. empleado
+        AccountEmployee.transaction do
+          begin
+            new_account = AccountEmployee.new(contract_id: aproved_certification.contract_id, date: Time.now)
+            if new_account.save
+              certification_details.each do |d|
+                new_account_detail = AccountEmployeeDetail.new(account_employee_id: new_account.id, certification_id: aproved_certification.id, employee_id: d.employee_id, total: d.total, state:AccountEmployee.states_types.keys[0])
+                if new_account_detail.save
+                  #actualiza saldo empleado
+                  before_balance = Employee.find(d.employee_id).balance
+                  Employee.find(d.employee_id).update_attribute(:balance, before_balance + d.total)
+                end
+              end
+            end
+            true
+          rescue => e
+            false
+          end
+        end
+
+      else
+        certification_details.each do |d|
+          new_account_detail = AccountEmployeeDetail.new(account_employee_id: account.pluck(:id).first, certification_id: aproved_certification.id, employee_id: d.employee_id, total: d.total,state:AccountEmployee.states_types.keys[0])
+          if new_account_detail.save
+            #actualiza saldo empleado
+            before_balance = Employee.find(d.employee_id).balance
+            Employee.find(d.employee_id).update_attribute(:balance, before_balance + d.total)
+          end
+        end
+
       end
-      aproved_certification.update_attribute(:state,"terminado")
+
     end
   end
-
 
 end

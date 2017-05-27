@@ -18,6 +18,12 @@ class ContractsController < ApplicationController
     @budget_details = @contract.budget_details.page params[:page]
     @material_movements = @contract.material_movements.page params[:page]
     @client_certifications = @contract.client_certifications.page params[:page]
+    @internal_certifications = @contract.certifications.page params[:page]
+    @approved = []
+    Certification.where(contract_id: @contract.id).each do |c|
+      @approved << Certification.find(c.id).state
+    end
+    @account_employee = @contract.account_employees.page params[:page]
   end
 
   # GET /contracts/new

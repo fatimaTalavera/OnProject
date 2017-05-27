@@ -6,19 +6,19 @@
     <div class="row">
       <div class="col-md-9">
         <div class="row">
-          <div class="col-sm-6">
+          <div class="col-sm-6 show-padding">
             <label class="control-label">Cliente: </label>
             <span><%= @contract.client_name %></span>
           </div>
-          <div class="col-sm-6">
+          <div class="col-sm-6 show-padding">
             <label class="control-label">Monto: </label>
             <span><%= number_to_currency_py(@contract.amount) %></span>
           </div>
-          <div class="col-sm-6">
+          <div class="col-sm-6 show-padding">
             <label class="control-label">Fecha de inicio: </label>
             <span><%= @contract.start_date %></span>
           </div>
-          <div class="col-sm-6">
+          <div class="col-sm-6 show-padding">
             <label class="control-label">Fecha de cierre: </label>
             <span><%= @contract.end_date %></span>
           </div>
@@ -49,6 +49,8 @@
         </li>
         <li class=""><a href="#client-certifications" data-toggle="tab" aria-expanded="false">Certificaciones del cliente</a>
         </li>
+        <li class=""><a href="#certifications" data-toggle="tab" aria-expanded="true">Certificaciones Internas</a>
+        </li>
         <li class=""><a href="#bills" data-toggle="tab" aria-expanded="false">Facturación</a>
         </li>
         <li class=""><a href="#employees" data-toggle="tab" aria-expanded="false">Empleados</a>
@@ -59,7 +61,7 @@
       <div class="tab-content">
         <div class="tab-pane fade active in" id="budgets">
           <br>
-          <table class="table table-bordered table-condensed col-md-12">
+          <table class="table table-bordered table-condensed table-list col-md-12">
             <thead>
               <tr>
                 <th class="col-md-3">Rubro</th>
@@ -93,7 +95,7 @@
         </div>
         <div class="tab-pane fade" id="material-movements">
           <br>
-          <table class="table table-bordered table-condensed col-md-12">
+          <table class="table table-bordered table-condensed table-list col-md-12">
             <thead>
             <tr>
               <th>Fecha</th>
@@ -119,12 +121,20 @@
         <div class="tab-pane fade" id="client-certifications">
           <div class="box-header with-border box-success">
             <h3 class="box-title"><%= t('helpers.title.client_certification.list') %></h3>
-            <% if (can? :create, ClientCertification) %>
-                <%= link_to "<i class=\"fa fa-plus\"></i>".html_safe, new_client_certification_path({contract_id: @contract.id}), {:class => "btn btn-sm btn-flat bg-green btn-title", :title => "Agregar Certificación"} %>
+            <% @contract.budget.budget_details.each do |bu| %>
+                <% if bu.state == 'pending' %>
+                    <% if (can? :create, ClientCertification) %>
+                        <%= link_to "<i class=\"fa fa-plus\"></i>".html_safe, new_client_certification_path({contract_id: @contract.id}), {:class => "btn btn-sm btn-flat bg-green btn-title", :title => "Agregar Certificación"} %>
+                    <% end %>
+                <% break %>
+                <% else %>
+                    <span class="fa fa-check" style="color:green"></span>
+                    <% break %>
+                <% end %>
             <% end %>
           </div>
           <br>
-          <table class="table table-bordered table-condensed col-md-12">
+          <table class="table table-bordered table-condensed table-list col-md-12">
             <thead>
             <tr>
               <th>Fecha</th>
@@ -144,6 +154,28 @@
           <div id="paginate-container">
             <ul class="pagination pagination-sm no-margin pull-right">
               <%= paginate @client_certifications %>
+            </ul>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="certifications">
+          <div class="box-header with-border box-success">
+            <div class="form-group">
+              <h3 class="box-title"><%= t('helpers.title.certification.list') %></h3>
+
+              <% if (can? :create, Certification) %>
+                  <%= link_to "<i class=\"fa fa-plus\"></i>".html_safe, new_certification_path({contract_id: @contract.id}), {:class => 'btn btn-sm btn-flat bg-green btn-title', :title => "Agregar Certificación"} %>
+              <% end %>
+
+              <% if @approved.any? { |element| element == Certification.states_types.keys[1]} %>
+                  <%= link_to 'Generar Pago', edit_account_employee_path(@account_employee.first), class:'btn btn-sm btn-flat bg-blue' %>
+              <% end %>
+            </div>
+          </div>
+          <br>
+          <%= render 'certifications/list', :certifications => @internal_certifications %>
+          <div id="paginate-container">
+            <ul class="pagination pagination-sm no-margin pull-right">
+              <%= paginate @internal_certifications %>
             </ul>
           </div>
         </div>

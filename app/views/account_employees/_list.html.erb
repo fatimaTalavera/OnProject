@@ -1,10 +1,7 @@
-<table class="table table-bordered table-condensed">
+<table class="table table-bordered table-condensed table-list">
   <thead>
   <tr>
-    <th>Certificación</th>
-    <th>Empleado</th>
-    <th>Numero de factura/recibo</th>
-    <th>Monto pagado</th>
+    <th>Total Pagado</th>
     <th>Fecha</th>
     <th colspan="3"></th>
   </tr>
@@ -13,12 +10,11 @@
   <tbody>
   <% account_employees.each do |account_employee| %>
       <tr>
-        <td><%= account_employee.certification.contract_name %></td>
-        <td><%= account_employee.employee_name %>&nbsp;<%= account_employee.employee_last_name %>&nbsp;<strong>Ci:</strong><%= account_employee.employee_identification_document %></td>
-        <td><%= account_employee.number_bill %></td>
         <td><%= account_employee.pay %></td>
         <td><%= account_employee.date %></td>
         <td><%= link_to "<i class=\"fa fa-eye\"></i>".html_safe, account_employee_path(account_employee), {:class => "btn btn-xs bg-teal btn-flat"} %></td>
+        <td><%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_account_employee_path(account_employee), {:class => "btn btn-xs bg-orange btn-flat"} %>
+        </td>
       </tr>
   <% end %>
   </tbody>

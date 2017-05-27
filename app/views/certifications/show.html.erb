@@ -6,14 +6,14 @@
 
     <div class="field col-md-12 form-group">
       <div class="field col-md-6 form-group">
-        <div class="col-md-6">
+        <div class="col-md-6 show-padding">
           <strong>Obra:</strong>
           <%= @certification.contract_name %>
         </div>
       </div>
 
       <div class="field col-md-6 form-group">
-        <div class="col-md-6">
+        <div class="col-md-6 show-padding">
           <strong>Fecha:</strong>
           <%= @certification.date %>
         </div>
@@ -21,7 +21,7 @@
     </div>
     <div class="field col-md-12 form-group">
       <div class="field col-md-6 form-group">
-        <div class="col-md-6">
+        <div class="col-md-6 show-padding">
           <strong>Estado:</strong>
           <%= @certification.state %>
         </div>
@@ -29,7 +29,7 @@
     </div>
 
     <div class="col-md-12 form-group">
-      <table style="table-layout: fixed; width: 100%" class="table table-bordered table-condensed">
+      <table class="table table-bordered table-condensed table-list">
         <thead>
         <tr  style="word-wrap: break-word">
           <th width="20%">Jornalero</th>
@@ -60,18 +60,13 @@
   </div>
   <div class="box-footer">
     <div class="pull-right">
-      <% if @certification.state != "terminado"%>
-        <% if (can? :update, Certification) %>
-          <%= link_to 'Editar', edit_certification_path(@certification), :class => 'btn btn-primary active' %>
-        <% end %>
+      <% if @certification.state == Certification.states_types.keys[0] || @certification.state == Certification.states_types.keys[2] %>
+          <% if (can? :update, Certification) %>
+              <%= link_to 'Editar', edit_certification_path(@certification), :class => 'btn btn-primary active' %>
+          <% end %>
       <% end %>
-      <%= link_to 'Atrás', certifications_path, :class => 'btn btn-default' %>
+      <%= link_to 'Atrás', @certification.contract, :class => 'btn btn-default' %>
     </div>
   </div>
 </div>
-<style>
-  td {
-    width: 11em;
-    word-wrap: break-word;
-  }
-</style>
+

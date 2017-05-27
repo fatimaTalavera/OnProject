@@ -15,6 +15,8 @@ class EmployeesController < ApplicationController
   # GET /employees/1.json
   def show
     add_breadcrumb I18n.t('helpers.breadcrumbs.employees.show')
+    @account_details = AccountEmployeeDetail.where(employee_id: @employee.id)
+
   end
 
   # GET /employees/new

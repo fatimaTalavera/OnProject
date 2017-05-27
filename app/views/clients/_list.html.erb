@@ -1,11 +1,11 @@
-<table class="table table-bordered table-condensed">
+<table class="table table-bordered table-condensed table-list">
   <thead>
   <tr>
     <th>Nombre o Razón Social</th>
     <th>RUC</th>
     <th>Correo</th>
-    <th>Direccion</th>
-    <th>Telefono</th>
+    <th>Dirección</th>
+    <th>Teléfono</th>
     <th class="table-actions"></th>
   </tr>
   </thead>
@@ -16,7 +16,7 @@
         <td><%= client.name %></td>
         <td><%= client.ruc %></td>
         <td><%= client.email %></td>
-        <td><%= disminuir(client.adress) %></td>
+        <td><%= client.adress %></td>
         <td><%= client.phone %></td>
         <td>
           <%= link_to "<i class=\"fa fa-eye\"></i>".html_safe, client_path(client), {:class => "btn btn-xs bg-teal btn-flat"} %>

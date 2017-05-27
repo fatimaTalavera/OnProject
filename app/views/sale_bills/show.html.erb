@@ -6,15 +6,15 @@
     <div class="row">
       <div class="col-md-12">
         <div class="row">
-          <div class="col-sm-4">
+          <div class="col-sm-4 show-padding">
             <label class="control-label">Fecha</label>
             <p><%= l @sale_bill.date, format: :default%></p>
           </div>
-          <div class="col-sm-4">
+          <div class="col-sm-4 show-padding">
             <label class="control-label">Contrato</label>
             <p><%= @sale_bill.contract_name %></p>
           </div>
-          <div class="col-sm-4">
+          <div class="col-sm-4 show-padding">
             <label class="control-label">Condición de compra</label>
             <p><%= @sale_bill.condition %></p>
           </div>
@@ -31,7 +31,7 @@
           </ul>
           <div class="tab-content">
             <div class="tab-pane active" id="tab_1">
-              <table class="table table-bordered table-condensed", cellspacing="0" width="100%">
+              <table class="table table-bordered table-condensed table-list">
                 <thead>
                 <tr>
                   <th>Concepto</th>
@@ -60,7 +60,7 @@
             </div>
 
             <div class="tab-pane" id="tab_2">
-              <table class="table table-bordered table-condensed", cellspacing="0" width="100%">
+              <table class="table table-bordered table-condensed table-list">
                 <thead>
                 <tr>
                   <th>Vencimiento</th>
