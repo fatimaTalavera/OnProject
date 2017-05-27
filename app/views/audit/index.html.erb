@@ -3,6 +3,15 @@
     <h3 class="box-title">Auditoría</h3>
     </div>
   <div class="box-body">
+    <%= form_tag(audit_index_path, :method=>'get') do %>
+        <p>
+          <b>Inicio:</b>
+          <%= text_field_tag "inicio", "", :class => 'datepicker', value: params[:inicio] %>
+          <b>Fin:</b>
+          <%= text_field_tag "fin", "", :class => 'datepicker', value: params[:fin] %>
+          <%= submit_tag 'filtrar' %>
+        </p>
+    <% end %>
     <div class="overlay-wrapper searchResult table-responsive" id="audits-table">
       <%= render 'list', :audits => @audits %>
     </div>

@@ -18,7 +18,7 @@
         <td><%= !audit.user.nil? ? audit.user.full_name : 'ninguno' %></td>
         <td><%= t('helpers.audit.' + audit.action) %></td>
         <td><%= audit.audited_changes %></td>
-        <td><%= audit.created_at %></td>
+        <td><%= audit.created_at.strftime("%d/%m/%Y") %></td>
       </tr>
   <% end %>
   </tbody>

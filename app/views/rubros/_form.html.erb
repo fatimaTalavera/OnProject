@@ -52,7 +52,7 @@
                     <td class="col-md-3"><%=form.collection_select(:material_id, Material.all, :id, :name, {prompt: 'Seleccionar'}, :onchange => 'getMaterialPrice(this);', class: 'form-control')%></td>
                      <td class="col-md-2"><input type="text" class="form-control measurement_unit" readonly></td>
                      <td class="col-md-2"><input type="text" class="form-control price" readonly></td>
-                     <td class="col-md-2"><%=form.number_field :quantity, class: 'form-control quantity'%></td>
+                     <td class="col-md-2"><%=form.number_field :quantity, class: 'form-control quantity', value: 1%></td>
                      <td class="col-md-2"><%=form.number_field :subtotal, class: 'form-control total', readonly: true%></td>
                     <td class="col-md-1"><%=form.link_to_remove '<i class="fa  fa-trash-o"></i>'.html_safe, class: 'btn btn-danger'%></td>
                   </tr>
@@ -88,7 +88,7 @@
                     <td class="col-md-3"><%=form.collection_select(:service_id, Service.all, :id, :name, {prompt: 'Seleccionar'}, :onchange => 'getServicePrice(this);', class: 'form-control')%></td>
                     <td class="col-md-2"><input type="text" class="form-control measurement_unit" readonly></td>
                     <td class="col-md-2"><input type="text" class="form-control price" readonly></td>
-                    <td class="col-md-2"><%=form.number_field :quantity, class: 'form-control quantity'%></td>
+                    <td class="col-md-2"><%=form.number_field :quantity, class: 'form-control quantity', value: 1%></td>
                     <td class="col-md-2"><%=form.number_field :subtotal, class: 'form-control total', readonly: true%></td>
                     <td class="col-md-1"><%=form.link_to_remove '<i class="fa  fa-trash-o"></i>'.html_safe, class: 'btn btn-danger'%></td>
                   </tr>
