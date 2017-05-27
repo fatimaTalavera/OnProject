@@ -4,8 +4,8 @@ class CreateClientCertificationDetails < ActiveRecord::Migration[5.0]
       t.references :client_certification, foreign_key: true
       t.references :rubro, foreign_key: true
       t.float :quantity
-      t.float :price
-      t.float :total
+      t.integer :price
+      t.integer :total
 
       t.timestamps
     end

@@ -51,10 +51,6 @@ end
 @employee = Employee.new(name: "Jorge", last_name: "Esquivel", address: "San Juan del Parana", phone: "0985222333", identification_document: "4393032", email: "jorgenoob123@gmail.com")
 @employee.save!
 
-# Cuenta corriente Jornaleros
-@employee = Employee.new(name: "Jorge", last_name: "Esquivel", address: "San Juan del Parana", phone: "0985222333", identification_document: "4393032", email: "jorgenoob123@gmail.com")
-@employee.save!
-
 # Servicios
 @service = Service.new(name: "Instalacion de cables", price: 1000000, description: "Se instalan los cables", measurement_unit: "m")
 @service.save!

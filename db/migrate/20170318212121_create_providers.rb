@@ -7,7 +7,7 @@ class CreateProviders < ActiveRecord::Migration[5.0]
       t.string :phone
       t.string :email
       t.boolean :state
-      t.decimal :balance, default: 0
+      t.integer :balance, default: 0, limit: 8
 
       t.timestamps
     end

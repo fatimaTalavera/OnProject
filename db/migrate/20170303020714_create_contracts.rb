@@ -5,7 +5,7 @@ class CreateContracts < ActiveRecord::Migration[5.0]
       t.date :start_date
       t.date :end_date
       t.string :name
-      t.decimal :amount
+      t.integer :amount, limit: 8
 
       t.timestamps
     end

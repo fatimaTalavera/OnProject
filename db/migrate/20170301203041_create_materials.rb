@@ -3,8 +3,8 @@ class CreateMaterials < ActiveRecord::Migration[5.0]
     create_table :materials do |t|
       t.string :name
       t.string :description
-      t.decimal :price
-      t.decimal :quantity
+      t.integer :price
+      t.integer :quantity
       t.integer :minimun_stock, default: 0
 
       t.timestamps

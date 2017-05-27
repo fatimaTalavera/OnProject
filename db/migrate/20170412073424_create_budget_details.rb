@@ -3,9 +3,9 @@ class CreateBudgetDetails < ActiveRecord::Migration[5.0]
     create_table :budget_details do |t|
       t.references :budget, foreign_key: true
       t.references :rubro, foreign_key: true
-      t.decimal :price, default: 0.0
-      t.decimal :quantity, default: 0.0
-      t.decimal :subtotal, default: 0.0
+      t.integer :price, default: 0
+      t.float :quantity, default: 0
+      t.integer :subtotal, default: 0
       t.integer :utility, default: 0
 
       t.timestamps

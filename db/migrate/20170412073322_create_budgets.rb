@@ -6,7 +6,7 @@ class CreateBudgets < ActiveRecord::Migration[5.0]
       t.date :date
       t.string :description
       t.string :state
-      t.decimal :total_amount, default: 0.0
+      t.integer :total_amount, default: 0.0, limit: 8
 
       t.timestamps
     end

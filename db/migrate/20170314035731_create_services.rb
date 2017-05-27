@@ -4,7 +4,7 @@ class CreateServices < ActiveRecord::Migration[5.0]
       t.string :name
       t.string :description
       t.string :measurement_unit
-      t.decimal :price
+      t.integer :price
 
       t.timestamps
     end
