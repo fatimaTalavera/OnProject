@@ -5,12 +5,13 @@ class RubroMaterialDetail < ApplicationRecord
   before_create :calculate_subtotal
   before_update :sum_to_price
 
-  validates_numericality_of :quantity, :presence => {:message => "Debe rellenar este campo"},
-                            :greater_than_or_equal_to => 1,
-                            :less_than_or_equal_to => 9999,
-                            :message => "Ingrese un número positivo menor a 9999"
-
+  validates :quantity, :presence => {:message => "No puede estar vacío"}
   validates :material_id, :presence => {:message => "Debe seleccionar un material"}
+  validates :measurement_unit, :presence => {:message => "No puede estar vacío"}
+  validates :quantity, :presence => {:message => "No puede estar vacío"}
+  validates :price, :presence => {:message => "No puede estar vacío"}
+
+  validate :valid_quant_num
 
   def calculate_subtotal
     self.subtotal = self.material.price * self.quantity
@@ -24,6 +25,15 @@ class RubroMaterialDetail < ApplicationRecord
     if self.subtotal_changed?
       @diferencia = self.subtotal - self.subtotal_was
       self.rubro.update(price: self.rubro.price + @diferencia)
+    end
+  end
+
+  def valid_quant_num
+    if quantity.nil? == true
+      errors.add(:quantity, "No puede estar vacío")
+    end
+    if (quantity.nil? == false) and quantity <= 0
+      errors.add(:quantity, "Debe ser mayor a 0")
     end
   end
 end
