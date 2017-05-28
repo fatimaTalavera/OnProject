@@ -18,12 +18,12 @@ class BudgetPdf < Prawn::Document
       #image imagen, height: 50, width: 100, at: [bounds.left, bounds.top+50]
       bounding_box([bounds.left+130, bounds.top+40], :width => 200, :height => 200) do
         text "#{config.name}", :size => 20, :style => :italic
-        text "Direccion: #{config.address}", :size => 10, :style => :italic
-        text "Telefono: #{config.tel_fax}", :size => 10, :style => :italic
+        text "Dirección: #{config.address}", :size => 10, :style => :italic
+        text "Teléfono: #{config.tel_fax}", :size => 10, :style => :italic
       end
       bounding_box([bounds.left+320, bounds.top+18], :width => 200, :height => 200) do
         text "Celular: #{config.celphone}", :size => 10, :style => :italic
-        text "Email: #{config.email}", :size => 10, :style => :italic
+        text "Correo electrónico: #{config.email}", :size => 10, :style => :italic
       end
 
       stroke do
