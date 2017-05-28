@@ -45,24 +45,29 @@ class BudgetPdf < Prawn::Document
   def rubros
     move_down 30
     table rubros_rows do
-      cells.padding = 10
+      cells.padding = 6
       cells.borders = []
       row(0).borders = [:bottom]
       row(0).border_width = 1
       row(0).font_style = :bold
 
     #  row(0).font_style = :bold
-      columns(0..3).align = :right
-      columns(0..3).borders = [:right]
+      columns(0..4).align = :right
+      columns(0..4).borders = [:right]
 
       self.row_colors = ['DDDDDD', 'FFFFFF']
       self.header = true
-   #   row(0).columns(0..5).borders = [:bottom, :right]
+      row(0).columns(0..5).borders = [:bottom, :left]
+      columns(0).width = 140
+      columns(1).width = 80
+      columns(2).width = 95
+      columns(3).width = 110
+      columns(4).width = 100
     end
   end
 
   def rubros_rows
-    [["Rubro","Cantidad" , "Unid. Medida", "Precio Unitario", "Subtotal"]] +
+    [["Rubro","Cantidad" , "Ud. Medida", "Precio Unitario", "Subtotal"]] +
         @budget.budget_details.map do |detail|
           [detail.rubro_name, detail.quantity, detail.measurement_unit, price(detail.price), price(detail.subtotal)]
         end
@@ -76,7 +81,7 @@ class BudgetPdf < Prawn::Document
   def datos
     move_down(20)
     text "Cliente: #{@budget.client_name}", size: 12, style: :bold
-    text "Obra: - ", size: 12, style: :bold
+    text "Obra: #{@budget.name}", size: 12, style: :bold
   end
 
  private
