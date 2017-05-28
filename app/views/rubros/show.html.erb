@@ -38,7 +38,7 @@
           <tr>
               <td><%= detalle.material.name %></td>
               <td><%= number_to_currency_py(detalle.material.price.to_i) %></td>
-              <td><%= detalle.quantity %></td>
+              <td><%= eval(sprintf("%3.2f",detalle.quantity)) %></td>
               <td><%= number_to_currency_py(detalle.subtotal.to_i) %></td>
           </tr>
           <% end %>

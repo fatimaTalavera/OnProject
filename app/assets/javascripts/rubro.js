@@ -40,7 +40,7 @@ function getMaterialTotal(currentElement) {
     var measurement_unit = self.find('.measurement_unit').val();
     var quantity = self.find('.quantity').val();
     var total = (undefined !== price && undefined !== quantity)? price * quantity : 0;
-    self.find('.total').val(total);
+    self.find('.total').val(Math.round(total));
 };
 
 function getServiceTotal(currentElement) {
@@ -49,5 +49,5 @@ function getServiceTotal(currentElement) {
     var measurement_unit = self.find('.measurement_unit').val();
     var quantity = self.find('.quantity').val();
     var total = (undefined !== price && undefined !== quantity)? price * quantity : 0;
-    self.find('.total').val(total);
+    self.find('.total').val(Math.round(total));
 };

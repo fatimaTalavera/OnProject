@@ -28,5 +28,5 @@ function getBudgetTotal(currentElement) {
     var price = cost * (1 + (utility/100));
     self.find('.price').val(price);
     var total = (undefined !== price && undefined !== quantity)? price * quantity : 0;
-    self.find('.total').val(total);
+    self.find('.total').val(Math.round(total))
 };
