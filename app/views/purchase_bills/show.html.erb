@@ -20,7 +20,11 @@
         <div class="col-md-3">
           <label class="control-label">Estado</label>
           <p>
-            <%= "<label class='label label-#{@purchase_bill.state.pagado? ? 'success' : 'warning'}'>#{@purchase_bill.state_text}</label>".html_safe %>
+            <% if @purchase_bill.state.pagado? %>
+              <label class="label label-success"><%= @purchase_bill.state_text %></label>
+            <% else %>
+              <label class="label label-warning"><%= @purchase_bill.state_text %></label>
+            <% end %>
           </p>
         </div>
       </div>
