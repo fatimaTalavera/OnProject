@@ -15,16 +15,12 @@
             <%= f.label :client_id,  'Cliente:', :class => 'control-label tooltip_required' %>
           </div>
           <div class="col-sm-7">
-            <select id="client_entry" name="budget[client_id]" class=" form-control">
-              <option value="">< Seleccione Cliente ></option>
-              <% Budget.clients.each do |client| %>
-                  <%= render "clients/collection", :client => client %>
-
-              <% end %>
-             </select>
-          </div>
-          <div col-sm-2>
-            <%= link_to "<i class=\"fa fa-plus\"></i>".html_safe, new_client_path,  {:remote => true, :class => "btn btn-sm btn-flat bg-green", :title => "Nuevo Cliente"} %>
+            <div class="input-group">
+              <%= f.collection_select(:client_id, Client.all, :id, :name, {prompt: 'Buscar Cliente'}, :class => 'form-control select2 people-search') %>
+              <span class="input-group-btn">
+                <%= link_to "<i class=\"fa fa-plus\"></i>".html_safe, new_client_path, {:class => "btn btn-flat bg-green", :title => "Agregar Cliente"} %>
+              </span>
+            </div>
           </div>
         </div>
         <div class="field col-md-4 form-group">
@@ -54,7 +50,7 @@
         <div class="box box-success">
           <div class=" box-body">
             <div class="col-sm-12">
-              <table class="table table-bordered table-condensed">
+              <table class="table table-bordered table-condensed" id="rubro-table">
                 <thead>
                 <tr>
                   <th class="col-md-2">Rubro</th>
@@ -67,10 +63,12 @@
                   <th class="col-md-1"> </th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody id="details-body">
                 <%= f.fields_for :budget_details, :wrapper => false do |form| %>
                     <tr class="fields" onchange='getBudgetTotal(this);'>
-                      <td><%=form.collection_select(:rubro_id, Rubro.all, :id, :name, {prompt: 'Seleccionar'}, :onchange => 'getRubroPriceB(this);', class: 'form-control')%></td>
+                      <td>
+                        <%= form.collection_select :rubro_id, Rubro.all, :id, :name, {prompt: 'Buscar Rubro'}, :onchange => 'getRubroPriceB(this);', class: "form-control select2 rubro-search" %>
+                      </td>
                       <td><%=form.text_field :measurement_unit, class:'form-control measurement_unit', readonly: true %> </td>
                       <td><%=form.text_field :cost, class:'form-control cost', readonly: true %></td>
                       <td><%=form.number_field :price, class:'form-control price', readonly: true%></td>
@@ -100,3 +98,7 @@
 
 <%end%>
 
+<script type="text/javascript">
+  Budget.setSearchClient('<%= clients_search_path %>');
+  Budget.setSearchRubro('<%= rubros_search_path %>');
+</script>

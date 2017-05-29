@@ -5,6 +5,11 @@ class ClientsController < ApplicationController
   before_action :load_permissions
   authorize_resource
 
+  def search
+    @clients = Client.where('name ILIKE ?', "%#{params[:q][:term]}%")
+    render json: {items: @clients, total_count: @clients.count}
+  end
+
   # GET /clients
   # GET /clients.json
   def index

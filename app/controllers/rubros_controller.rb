@@ -4,6 +4,10 @@ class RubrosController < ApplicationController
   authorize_resource
   add_breadcrumb I18n.t('helpers.breadcrumbs.rubros.index'), :rubros_path
 
+  def search
+    @rubros = Rubro.where('name ILIKE ?', "%#{params[:q][:term]}%")
+    render json: {items: @rubros, total_count: @rubros.count}
+  end
   # GET /rubros
   # GET /rubros.json
   def index

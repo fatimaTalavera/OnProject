@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     end
   end
   #resources :budgets
+  get 'rubros/search' => 'rubros#search'
   resources :rubros
   resources :certifications, except: [:destroy]
   resources :client_certifications
@@ -19,6 +20,7 @@ Rails.application.routes.draw do
   resources :providers
   resources :services
   resources :contracts
+  get 'clients/search' => 'clients#search'
   resources :clients
   get 'materials/search' => 'materials#search'
   resources :materials

@@ -88,7 +88,8 @@ OnProject = {
 
   // Iniciar los modulos
   company_config: CompanyConfig,
-  purchase_bills: Purchase
+  purchase_bills: Purchase,
+  budgets: Budget
 
 };
 
