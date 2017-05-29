@@ -7,15 +7,18 @@
             <%= f.label :contract, 'Contrato:', :class => 'control-label  tooltip_required' %>
           </div>
           <div class="col-md-8">
-            <%= f.collection_select(:contract_id, Contract.all, :id, :name, {prompt: 'Selecciona un contrato'}, :class => 'form-control', readonly:true) %>
+            <%= f.collection_select(:contract_id, Contract.all, :id, :name, {prompt: 'Selecciona un contrato'}, :class => 'form-control', disabled:true) %>
+            <%= f.hidden_field :contract_id, :class => 'form-control' %>
           </div>
         </div>
         <div class="field col-md-6 form-group">
           <div class="col-md-3">
-            <%= f.label :date, 'Fecha:', :class => 'control-label tooltip_required' %>
+            <%= f.label :date, 'Fecha:', :class => 'control-label tooltip_required', disabled:true %>
+
           </div>
           <div class="input-group col-md-7">
-            <%= f.text_field :date, :id => 'datepickerFrom', :class => 'input-group date form-control datepicker'%>
+            <%= f.text_field :date, :id => 'datepickerFrom', :class => 'input-group date form-control datepicker', disabled:true%>
+            <%= f.hidden_field :date, :class => 'form-control' %>
             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
           </div>
         </div>
@@ -50,7 +53,7 @@
                 <%= f.fields_for :certification_details, :wrapper => false do |certification| %>
                     <tr class="fields" onchange='getCertificationTotal(this,"<%= Certification.pay_current %>");'>
                       <td>
-                        <%= certification.collection_select :employee_id, Employee.all, :id, :name, {prompt: 'Buscar Jornalero'}, {class: "form-control select2 people-search"} %>
+                        <%= certification.collection_select :employee_id, Employee.all, :id, :name_with_initial, {prompt: 'Buscar Jornalero'}, {class: "form-control select2 people-search"} %>
                       </td>
                       <td><%=certification.number_field :quantity, class: 'form-control quantity numeric', min:0, max:365, id:'quantity' %></td>
                       <td><%=certification.number_field :pay, class: 'form-control pay', min:0, max:9999999999 %></td>
