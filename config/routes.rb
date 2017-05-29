@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :rubros
   resources :certifications, except: [:destroy]
   resources :client_certifications
+  get 'employees/search' => 'employees#search'
   resources :employees
   resources :purchase_bills
   get 'providers/search' => 'providers#search'

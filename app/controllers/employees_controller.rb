@@ -5,6 +5,11 @@ class EmployeesController < ApplicationController
   before_action :load_permissions
   authorize_resource
 
+  def search
+    @employees = Employee.where('name ILIKE ?', "%#{params[:q][:term]}%")
+    render json: {items: @employees, total_count: @employees.count}
+  end
+
   # GET /employees
   # GET /employees.json
   def index

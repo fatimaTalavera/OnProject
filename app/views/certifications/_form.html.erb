@@ -33,7 +33,7 @@
       <div class="col-md-12">
         <div class="box box-success">
           <div class="box-body">
-              <table class="table table-bordered table-condensed">
+              <table class="table table-bordered table-condensed" id="certification-table">
                 <thead>
                 <tr>
                   <th width="18%">Jornalero</th>
@@ -46,10 +46,12 @@
                   <th width="3%"></th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody id="details-body">
                 <%= f.fields_for :certification_details, :wrapper => false do |certification| %>
                     <tr class="fields" onchange='getCertificationTotal(this,"<%= Certification.pay_current %>");'>
-                      <td><%=certification.collection_select(:employee_id, Employee.all, :id, :name_with_initial, {prompt: 'Selecciona un Jornalero'}, class: 'form-control')%></td>
+                      <td>
+                        <%= certification.collection_select :employee_id, Employee.all, :id, :name, {prompt: 'Buscar Jornalero'}, {class: "form-control select2 people-search"} %>
+                      </td>
                       <td><%=certification.number_field :quantity, class: 'form-control quantity numeric', min:0, max:365, id:'quantity' %></td>
                       <td><%=certification.number_field :pay, class: 'form-control pay', min:0, max:9999999999 %></td>
                       <td><%=certification.number_field :discount, class: 'form-control discount', min:0, max:100, id:'discount' %></td>
@@ -78,6 +80,6 @@
     </div>
 <% end %>
 
-
-
-
+<script type="text/javascript">
+  Certification.setSearchEmployee('<%= employees_search_path %>');
+</script>
