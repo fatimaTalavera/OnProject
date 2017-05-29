@@ -90,7 +90,8 @@ OnProject = {
   company_config: CompanyConfig,
   purchase_bills: Purchase,
   budgets: Budget,
-  certifications: Certification
+  certifications: Certification,
+  material_movements: Movement
 
 };
 
