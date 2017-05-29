@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   resources :providers
   get 'services/search' => 'services#search'
   resources :services
+  get 'contracts/search' => 'contracts#search'
   resources :contracts
   get 'clients/search' => 'clients#search'
   resources :clients

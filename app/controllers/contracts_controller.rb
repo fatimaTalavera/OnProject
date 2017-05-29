@@ -5,6 +5,11 @@ class ContractsController < ApplicationController
   before_action :load_permissions
   authorize_resource
 
+  def search
+    @contracts = Contract.where('name ILIKE ?', "%#{params[:q][:term]}%")
+    render json: {items: @contracts, total_count: @contracts.count}
+  end
+
   # GET /contracts
   # GET /contracts.json
   def index

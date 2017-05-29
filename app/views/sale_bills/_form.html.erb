@@ -19,7 +19,7 @@
             </div>
             <div class="col-md-7">
               <div class="input-group">
-                <%= f.collection_select(:contract_id, Contract.all, :id, :name, {prompt: 'Buscar Contrato'}, :class => 'form-control select2 people-search') %>
+                <%= f.collection_select(:contract_id, Contract.all, :id, :name, {prompt: 'Buscar Contrato'}, :class => 'form-control select2 contract-search') %>
               </div>
             </div>
           </div>
@@ -57,7 +57,7 @@
                 <h3 class="box-title">Seleccionar Concepto</h3>
               </div>
               <div class="box-body">
-                <table class="table table-bordered" id="purchase-table">
+                <table class="table table-bordered" id="sale-table">
                   <thead>
                   <tr>
                     <th>Concepto</th>
@@ -138,3 +138,7 @@
       </div>
     </div>
 <% end %>
+
+<script type="text/javascript">
+  Sale.setSearchContract('<%= contracts_search_path %>');
+</script>
