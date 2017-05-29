@@ -31,7 +31,7 @@ class AccountEmployee < ApplicationRecord
       amount_detail_certification = CertificationDetail.where(certification_id: l).count
       amount_certification_completed = AccountEmployeeDetail.where(certification_id: l).where(state: AccountEmployee.states_types.keys[1]).count
       if(amount_detail_certification == amount_certification_completed)
-        Certification.find(l).update_attribute(:state, Certification.states_types.keys[3])
+        Certification.find(l).update_attribute(:state, AccountEmployee.states_types.keys[1])
       end
     end
 

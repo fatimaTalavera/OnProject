@@ -57,7 +57,6 @@ class BudgetsController < ApplicationController
     @budget = Budget.new
     @budget.date = Time.now
     @client = Client.new
-    @clients = Client.all
   end
 
   # GET /budgets/1/edit

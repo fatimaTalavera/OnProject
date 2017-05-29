@@ -2,10 +2,12 @@ class Certification < ApplicationRecord
   audited
   belongs_to :contract
   has_many :certification_details
-  enum states_type: [:Pendiente, :Aprobado, :Rechazado, :Pagado]
+  enum states_type: [:Pendiente, :Aprobado, :Rechazado]
   delegate :name, to: :contract, prefix: true
   accepts_nested_attributes_for :certification_details, allow_destroy: true
   after_commit :update_balance
+
+  scope :pay_current, -> { CompanyConfig.all.pluck(:current_pay).first }
 
   validates :contract_id, :presence => {:message => "Seleccione una obra"}
   validates :date, :presence => {:message => "Seleccione una fecha"}

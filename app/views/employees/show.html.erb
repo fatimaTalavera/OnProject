@@ -5,14 +5,9 @@
   <div class="box-body">
 
     <div class="field col-md-12 form-group">
-      <div class="field col-md-4 form-group">
-        <strong>Nombre:</strong>
-        <%= @employee.name %>
-      </div>
-
-      <div class="field col-md-4 form-group">
-        <strong>Apellido:</strong>
-        <%= @employee.last_name %>
+      <div class="field col-md-8 form-group">
+        <strong>Nombre y Apellido:</strong>
+        <%= @employee.name_with_initial%>
       </div>
 
       <div class="field col-md-4 form-group">

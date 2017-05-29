@@ -19,7 +19,7 @@
             <td class="bg-orange"><%= certification.state %></td>
         <%elsif certification.state == Certification.states_types.keys[2] %>
             <td class="bg-red"><%= certification.state %></td>
-        <% elsif certification.state == Certification.states_types.keys[3]%>
+        <% elsif certification.state == AccountEmployee.states_types.keys[1]%>
             <td  class="bg-gray disable"><%= certification.state %></td>
         <% end %>
         <td>
