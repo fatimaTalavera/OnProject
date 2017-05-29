@@ -91,7 +91,8 @@ OnProject = {
   purchase_bills: Purchase,
   budgets: Budget,
   certifications: Certification,
-  material_movements: Movement
+  material_movements: Movement,
+  rubros: Rubro
 
 };
 

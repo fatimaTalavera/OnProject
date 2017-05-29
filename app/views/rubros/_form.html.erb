@@ -46,10 +46,10 @@
                 <th class="col-md-2">Subtotal</th>
                 <th class="col-md-1"></th>
               </tr>
-              <tbody>
+              <tbody id="material-details-body">
               <%= f.fields_for :rubro_material_details, :wrapper => false do |form| %>
                    <tr class="fields" onchange='getMaterialTotal(this);'>
-                    <td class="col-md-3"><%=form.collection_select(:material_id, Material.all, :id, :name, {prompt: 'Seleccionar'}, :onchange => 'getMaterialPrice(this);', class: 'form-control')%></td>
+                    <td class="col-md-3"><%=form.collection_select(:material_id, Material.all, :id, :name, {prompt: 'Seleccionar'}, :onchange => 'getMaterialPrice(this);', class: 'form-control select2 material-search')%></td>
                      <td class="col-md-2"><%=form.text_field :measurement_unit, class: 'form-control measurement_unit', readonly: true%></td>
                      <td class="col-md-2"><%=form.number_field :price, class: 'form-control price', readonly: true%></td>
                      <td class="col-md-2"><%=form.number_field :quantity, class: 'form-control quantity'%></td>
@@ -82,10 +82,10 @@
                 <th class="col-md-2">Subtotal</th>
                 <th class="col-md-1"></th>
               </tr>
-              <tbody>
+              <tbody id="service-details-body">
               <%= f.fields_for :rubro_service_details, :wrapper => false do |form| %>
                   <tr class="fields" onchange='getServiceTotal(this);'>
-                    <td class="col-md-3"><%=form.collection_select(:service_id, Service.all, :id, :name, {prompt: 'Seleccionar'}, :onchange => 'getServicePrice(this);', class: 'form-control')%></td>
+                    <td class="col-md-3"><%=form.collection_select(:service_id, Service.all, :id, :name, {prompt: 'Seleccionar'}, :onchange => 'getServicePrice(this);', class: 'form-control select2 service-search')%></td>
                     <td class="col-md-2"><%=form.text_field :measurement_unit, class: 'form-control measurement_unit', readonly: true%></td>
                     <td class="col-md-2"><%=form.number_field :price, class: 'form-control price', readonly: true%></td>
                     <td class="col-md-2"><%=form.number_field :quantity, class: 'form-control quantity'%></td>
@@ -115,3 +115,8 @@
       </div>
     </div>
 <% end %>
+
+<script type="text/javascript">
+  Rubro.setSearchMaterial('<%= materials_search_path %>');
+  Rubro.setSearchService('<%= services_search_path %>');
+</script>

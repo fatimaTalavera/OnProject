@@ -5,6 +5,11 @@ class ServicesController < ApplicationController
   before_action :load_permissions
   authorize_resource
 
+  def search
+    @services = Service.where('name ILIKE ?', "%#{params[:q][:term]}%")
+    render json: {items: @services, total_count: @services.count}
+  end
+
   # GET /services
   # GET /services.json
   def index

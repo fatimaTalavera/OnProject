@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   resources :purchase_bills
   get 'providers/search' => 'providers#search'
   resources :providers
+  get 'services/search' => 'services#search'
   resources :services
   resources :contracts
   get 'clients/search' => 'clients#search'
