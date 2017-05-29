@@ -6,6 +6,8 @@ one:
   total: 1
   pay: 1
   number_bill: 1
+  state: "Pendiente"
+  certification: one
 
 two:
   account_employee: two
@@ -13,3 +15,5 @@ two:
   total: 1
   pay: 1
   number_bill: 1
+  state: "Pendiente"
+  certification: two
