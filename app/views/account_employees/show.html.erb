@@ -1,0 +1,68 @@
+<div class="box box-success">
+  <div class="box-header with-border">
+    <h3 class="box-title"><%= t('helpers.title.account_employee.show') %></h3>
+  </div>
+  <div class="box-body">
+
+    <div class="field col-md-12 form-group">
+      <div class="field col-md-6 form-group">
+        <div class="col-md-6 show-padding">
+          <strong>Obra:</strong>
+          <%= @account_employee.contract_name %>
+        </div>
+      </div>
+
+      <div class="field col-md-6 form-group">
+        <div class="col-md-6 show-padding">
+          <strong>Fecha:</strong>
+          <%= @account_employee.date %>
+        </div>
+      </div>
+    </div>
+    <div class="field col-md-12 form-group">
+      <div class="field col-md-6 form-group">
+        <div class="col-md-6 show-padding">
+          <strong>Total:</strong>
+          <%= @account_employee.pay %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-12 form-group">
+      <table class="table table-bordered table-condensed table-list">
+        <thead>
+        <tr  style="word-wrap: break-word">
+          <th width="20%">Jornalero</th>
+          <th width="10%">Total a pagar</th>
+          <th width="10%">Pagar</th>
+          <th width="10%">N° de recibo</th>
+          <th width="30%">Fecha de pago</th>
+          <th width="10%">Estado del pago</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @account_employee.account_employee_details.each do |detail| %>
+            <tr>
+              <td><%= detail.employee_name_with_initial %> C.I: <%= detail.employee_identification_document %>
+              <td><%= number_to_currency_py(detail.total) %>
+              <td><%= check_box_tag 'done', '1', detail.pay %>
+              <td><%= detail.number_bill%>
+              <td><%= detail.date %></td>
+              <td><%= detail.state %>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+  <div class="box-footer">
+    <div class="pull-right">
+          <% if (can? :update, AccountEmployee) %>
+              <%= link_to 'Editar', edit_account_employee_path(@account_employee), :class => 'btn btn-primary active' %>
+          <% end %>
+      <%= link_to 'Atrás', @account_employee.contract, :class => 'btn btn-default' %>
+    </div>
+  </div>
+</div>
+
