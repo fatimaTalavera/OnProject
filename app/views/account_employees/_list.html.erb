@@ -1,19 +1,21 @@
 <table class="table table-bordered table-condensed table-list">
   <thead>
   <tr>
-    <th>Total Pagado</th>
-    <th>Fecha</th>
-    <th colspan="3"></th>
+    <th width="55%">Contrato</th>
+    <th width="20%">Fecha de creación</th>
+    <th width="20%">Total a pagar de certificaciones</th>
+    <th width="5%"></th>
   </tr>
   </thead>
 
   <tbody>
   <% account_employees.each do |account_employee| %>
       <tr>
-        <td><%= account_employee.pay %></td>
+        <td><%= account_employee.contract_name %></td>
         <td><%= account_employee.date %></td>
-        <td><%= link_to "<i class=\"fa fa-eye\"></i>".html_safe, account_employee_path(account_employee), {:class => "btn btn-xs bg-teal btn-flat"} %></td>
-        <td><%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_account_employee_path(account_employee), {:class => "btn btn-xs bg-orange btn-flat"} %>
+        <td><%= account_employee.pay %></td>
+        <td><%= link_to "<i class=\"fa fa-eye\"></i>".html_safe, account_employee_path(account_employee), {:class => "btn btn-xs bg-teal btn-flat"} %>
+        <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_account_employee_path(account_employee), {:class => "btn btn-xs bg-orange btn-flat"} %>
         </td>
       </tr>
   <% end %>

@@ -1,0 +1,3 @@
+| $("#account_employees-table").html("#{escape_javascript(render 'list', format: 'html', :account_employees => @account_employees)}");
+| $('#paginate-container').html("#{escape_javascript(paginate(@account_employees, remote: true)) }");
+| $('.searchResult > .overlay').remove();
