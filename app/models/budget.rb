@@ -35,4 +35,9 @@ class Budget < ApplicationRecord
     end
     self.update_column(:total_amount, total)
   end
+
+  def self.clients
+    Client.all
+  end
+
 end

@@ -17,7 +17,7 @@
           <div class="col-sm-7">
             <select id="client_entry" name="budget[client_id]" class=" form-control">
               <option value="">< Seleccione Cliente ></option>
-              <% @clients.each do |client| %>
+              <% Budget.clients.each do |client| %>
                   <%= render "clients/collection", :client => client %>
 
               <% end %>

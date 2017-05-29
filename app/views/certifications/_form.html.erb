@@ -48,7 +48,7 @@
                 </thead>
                 <tbody>
                 <%= f.fields_for :certification_details, :wrapper => false do |certification| %>
-                    <tr class="fields" onchange='getCertificationTotal(this,"<%= @pay %>");'>
+                    <tr class="fields" onchange='getCertificationTotal(this,"<%= Certification.pay_current %>");'>
                       <td><%=certification.collection_select(:employee_id, Employee.all, :id, :name_with_initial, {prompt: 'Selecciona un Jornalero'}, class: 'form-control')%></td>
                       <td><%=certification.number_field :quantity, class: 'form-control quantity numeric', min:0, max:365, id:'quantity' %></td>
                       <td><%=certification.number_field :pay, class: 'form-control pay', min:0, max:9999999999 %></td>

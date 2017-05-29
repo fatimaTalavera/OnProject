@@ -11,7 +11,6 @@ class CertificationsController < ApplicationController
     @certification = Certification.new
     @certification.date = Time.now
     @certification.contract_id = params[:contract_id]
-    @pay = CompanyConfig.all.pluck(:current_pay).first
   end
 
   def show
