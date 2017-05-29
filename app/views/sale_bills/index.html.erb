@@ -5,14 +5,41 @@
         <%= link_to "<i class=\"fa fa-plus\"></i>".html_safe, new_sale_bill_path, {:class => "btn btn-sm btn-flat bg-green btn-title", :title => "Agregar Factura"} %>
         <!--<% end %>-->
   </div>
-  <div class="overlay-wrapper searchResult table-responsive" id="purchase-bills-table">
-    <%= render 'list', :sale_bills => @sale_bills %>
+  <div class="box-body">
+    <div class="sale_bill-search searchList">
+      <%= search_form_for(@q, remote: true, :html => { class: 'remote-search' }) do |f| %>
+        <div class="row">
+          <div class="col-md-3">
+            <div class="form-group has-feedback">
+              <%= f.text_field :contract_name_cont, class: 'form-control', autocomplete: 'off', placeholder: 'Busca por Contrato' %>
+              <i class="fa fa-search form-control-feedback"></i>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="btn btn-default daterange btn-block" id="date-range">
+              <%= f.hidden_field :date_gteq, class: 'fecha-desde' %>
+              <%= f.hidden_field :date_gteq, class: 'fecha-hasta' %>
+              <i class="fa fa-calendar"></i>&nbsp;<span>Fecha</span>&nbsp;<b class="caret"></b>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <%= f.select :condition_eq ,PurchaseBill.condition.options, {include_blank: 'Todas las condiciones...'}, class: 'form-control'%>
+          </div>
+          <div class="col-md-3">
+
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="overlay-wrapper searchResult table-responsive" id="sale-bills-table">
+      <%= render 'list', :sale_bills => @sale_bills %>
+    </div>
   </div>
-</div>
-<div class="box-footer clearfix">
-  <div id="paginate-container">
-    <ul class="pagination pagination-sm no-margin pull-right">
-      <!--<%= paginate @sale_bills %>-->
-    </ul>
+  <div class="box-footer clearfix">
+    <div id="paginate-container">
+      <ul class="pagination pagination-sm no-margin pull-right">
+        <%= paginate @sale_bills %>
+      </ul>
+    </div>
   </div>
 </div>

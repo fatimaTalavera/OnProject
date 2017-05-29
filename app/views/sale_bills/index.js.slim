@@ -1,0 +1,3 @@
+| $("#sale-bills-table").html("#{escape_javascript(render 'list', format: 'html', :sale_bills => @sale_bills)}");
+| $('#paginate-container').html("#{escape_javascript(paginate(@sale_bills, remote: true)) }");
+| $('.searchResult > .overlay').remove();
