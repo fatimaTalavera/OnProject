@@ -45,7 +45,7 @@
               <%= f.label :number, 'Número de boleta:', :class => 'control-label tooltip_required' %>
             </div>
             <div class="col-md-6">
-              <%= f.text_field :number, :class => 'form-control' %>
+              <%= f.number_field :number, :class => 'form-control' %>
             </div>
           </div>
         </div>
@@ -63,17 +63,17 @@
                     <th>Concepto</th>
                     <th>Cantidad</th>
                     <th>Precio Unitario</th>
-                    <th>Subtotal</th>
+                    <!--<th>Subtotal</th>-->
                     <th class="table-actions"></th>
                   </tr>
                   </thead>
                   <tbody id="details-body">
                   <%= f.fields_for :sale_details, :wrapper => false do |form| %>
                       <tr class="fields">
-                        <td><%= form.text_field :concept, class: "form-control" %></td>
-                        <td><%=form.number_field :quantity, value: 1, class: 'form-control qty text-right'%></td>
+                        <td><%= form.text_field :concept, class: "form-control", :maxlength => 80 %></td>
+                        <td><%=form.number_field :quantity, class: 'form-control qty text-right'%></td>
                         <td><%=form.number_field :price, class: 'form-control unit-price text-right'%></td>
-                        <td class="subtotal text-right"><%= form.object.total ? form.object.total : 0 %></td>
+                        <!--<td class="subtotal text-right"><%= form.object.total ? form.object.total : 0 %></td>-->
                         <td><%=form.link_to_remove '<i class="fa fa-trash-o"></i>'.html_safe, class: 'btn btn-flat bg-red', title: 'Eliminar material'%></td>
                       </tr>
                   <% end %>
@@ -81,8 +81,9 @@
                     <td colspan="2">
                       <%= f.link_to_add "<i class=\"fa fa-plus\"></i>".html_safe, :sale_details, class: 'btn btn-flat bg-green insert_in_table', title: 'Agregar Concepto' %>
                     </td>
-                    <td class="text-right text-bold">Total:</td>
-                    <td class="table-total text-right"><%= sale_bill.total ? sale_bill.total : 0 %></td>
+                    <!--<td class="text-right text-bold">Total:</td>
+                    <td class="table-total text-right"><%= sale_bill.total ? sale_bill.total : 0 %></td>-->
+                    <td></td>
                     <td></td>
                   </tr>
                   </tbody>
@@ -119,7 +120,7 @@
                     <td>
                       <%= f.link_to_add "<i class=\"fa fa-plus\"></i>".html_safe.html_safe, :installments, class: 'btn btn-flat bg-green insert_in_table', title: 'Agregar Cuota' %>
                     </td>
-                    <td class="table-total text-right"><b>Total:</b> 0</td>
+                    <td class="table-total text-right"></td>
                     <td></td>
                   </tr>
                   </tbody>
