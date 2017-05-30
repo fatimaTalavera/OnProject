@@ -93,7 +93,8 @@ OnProject = {
   certifications: Certification,
   material_movements: Movement,
   rubros: Rubro,
-  sale_bills: Sale
+  sale_bills: Sale,
+  client_certifications: ClientCertification
 
 };
 
