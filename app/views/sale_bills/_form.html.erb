@@ -18,9 +18,14 @@
               <%= f.label :contract_id, 'Contrato:', :class => 'control-label  tooltip_required' %>
             </div>
             <div class="col-md-7">
-              <div class="input-group">
-                <%= f.collection_select(:contract_id, Contract.all, :id, :name, {prompt: 'Buscar Contrato'}, :class => 'form-control select2 contract-search') %>
-              </div>
+              <% if sale_bill.contract.nil? %>
+                <div class="input-group">
+                  <%= f.collection_select(:contract_id, Contract.all, :id, :name, {prompt: 'Buscar Contrato'}, :class => 'form-control select2 contract-search') %>
+                </div>
+              <% else %>
+                  <%= f.collection_select(:contract_id, Contract.all, :id, :name, {prompt: 'Selecciona un contrato'}, :class => 'form-control', disabled:true) %>
+                  <%= f.hidden_field :contract_id, :class => 'form-control' %>
+              <% end %>
             </div>
           </div>
           <div class="field col-md-4 form-group">
