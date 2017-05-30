@@ -29,6 +29,7 @@ var TableHelper = {
           row.find('.subtotal').text(I18n.toCurrency(subtotal, {unit: ''}));
           total += parseFloat(subtotal);
           last_row.text(NumberHelper.aMoneda(total));
+          $('.input_total').val(total);
         }).fail(function() {
           alert("Ha ocurrido un error inesperado.");
         });
@@ -53,6 +54,7 @@ var TableHelper = {
           row.find('.subtotal').text(I18n.toCurrency(subtotal, {unit: ''}));
           total += parseFloat(subtotal);
           last_row.text(NumberHelper.aMoneda(total));
+          $('.input_total').val(total);
         }).fail(function() {
           alert("Ha ocurrido un error inesperado.");
         });
@@ -65,6 +67,7 @@ var TableHelper = {
         var subtotal = parseFloat(NumberHelper.aNumero(row.find('.subtotal').text()));
         total -= subtotal;
         last_row.text(NumberHelper.aMoneda(total));
+        $('.input_total').val(total);
       });
 
     }

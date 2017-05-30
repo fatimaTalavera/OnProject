@@ -12,7 +12,7 @@ class PurchaseBill < ApplicationRecord
   enumerize :condition, in: [:contado, :crédito], predicates: true
   enumerize :state, in: [:pendiente, :pagado], predicates: true
 
-  after_validation :set_total
+  #after_validation :set_total
   after_validation :set_balance, if: :crédito?
   after_validation :set_state
   after_save :set_payment, if: :contado?
@@ -32,12 +32,12 @@ class PurchaseBill < ApplicationRecord
 
   private
 
-  def set_total
-    self.total = 0
-    self.purchase_details.each do |d|
-      self.total += d.price * d.quantity unless d.marked_for_destruction?
-    end
-  end
+  #def set_total
+  #  self.total = 0
+  #  self.purchase_details.each do |d|
+  #    self.total += d.price * d.quantity unless d.marked_for_destruction?
+  #  end
+  #end
 
   def set_state
     if self.balance == 0
