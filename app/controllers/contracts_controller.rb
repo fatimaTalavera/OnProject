@@ -24,7 +24,7 @@ class ContractsController < ApplicationController
     @material_movements = @contract.material_movements.page params[:page]
     @client_certifications = @contract.client_certifications.page params[:page]
     @internal_certifications = @contract.certifications.page params[:page]
-    @sale_bills = @contract.sale_bills.page params[:page]
+    @sale_bills = @contract.certifications.page params[:page]
     @approved = []
     Certification.where(contract_id: @contract.id).each do |c|
       @approved << Certification.find(c.id).state
@@ -52,8 +52,9 @@ class ContractsController < ApplicationController
     @contract = Contract.new_by_budget(contract_params, budget)
     respond_to do |format|
       if @contract.save
+        contract = Contract.find(@contract.id)
         budget.update(state: Budget.states[:approved], contract: @contract)
-        format.html { redirect_to @contract, notice: 'El contrato se creó correctamente.' }
+        format.html { redirect_to contract, notice: 'El contrato se creó correctamente.' }
         format.json { render :show, status: :created, location: @contract }
       else
         format.html { render :new }
