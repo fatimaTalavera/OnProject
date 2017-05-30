@@ -30,7 +30,7 @@ function getRubroTotal(currentElement) {
     }else{
     var total = (undefined !== price && undefined !== quantity)? price * quantity : 0;
     }
-    self.find('.total').val(total);
+    self.find('.total').val(Math.round(total));
 };
 
 
