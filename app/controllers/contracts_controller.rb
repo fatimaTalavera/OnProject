@@ -35,11 +35,8 @@ class ContractsController < ApplicationController
   def new
     add_breadcrumb I18n.t('helpers.breadcrumbs.contracts.new')
     @contract = Contract.new
-    @contract.name = params[:name]
+    @contract.budget = Budget.find(params[:budget_id])
     @contract.budget_id = params[:budget_id]
-    #@contract.client = Client.find(params[:client_id])
-    @contract.client_id = params[:client_id]
-    @contract.amount = params[:total]
   end
 
   # GET /contracts/1/edit
@@ -50,11 +47,10 @@ class ContractsController < ApplicationController
   # POST /contracts
   # POST /contracts.json
   def create
-    @contract = Contract.new(contract_params)
-
+    budget = Budget.find(contract_params[:budget_id])
+    @contract = Contract.new_by_budget(contract_params, budget)
     respond_to do |format|
       if @contract.save
-        budget = Budget.find(contract_params[:budget_id])
         budget.update(state: Budget.states[:approved], contract: @contract)
         format.html { redirect_to @contract, notice: 'El contrato se creó correctamente.' }
         format.json { render :show, status: :created, location: @contract }
@@ -102,6 +98,6 @@ class ContractsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def contract_params
-      params.require(:contract).permit(:client_id, :start_date, :end_date, :name, :amount, :budget_id, :client)
+      params.require(:contract).permit(:start_date, :end_date, :budget_id)
     end
 end
