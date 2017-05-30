@@ -68,13 +68,18 @@
         </li>
         <li class=""><a href="#client-certifications" data-toggle="tab" aria-expanded="false">Certificaciones del cliente</a>
         </li>
-        <li class=""><a href="#certifications" data-toggle="tab" aria-expanded="true">Certificaciones Internas</a>
+        <li class=""><a href="#certifications" data-toggle="tab" aria-expanded="false">Certificaciones Internas</a>
+        </li>
+        <li class=""><a href="#bills" data-toggle="tab" aria-expanded="false">Facturación</a>
         </li>
       </ul>
 
       <!-- Tab panes -->
       <div class="tab-content">
         <div class="tab-pane fade active in" id="budgets">
+          <div class="box-header with-border box-success">
+            <h3 class="box-title"><%= t('helpers.title.budget.list') %></h3>
+          </div>
           <br>
           <table class="table table-bordered table-condensed table-list col-md-12">
             <thead>
@@ -109,19 +114,29 @@
           </div>
         </div>
         <div class="tab-pane fade" id="material-movements">
+          <div class="box-header with-border box-success">
+            <h3 class="box-title"><%= t('helpers.title.material_movement.list') %></h3>
+          </div>
           <br>
           <table class="table table-bordered table-condensed table-list col-md-12">
             <thead>
             <tr>
               <th>Fecha</th>
               <th>Motivo</th>
+              <th class="table-actions"></th>
             </tr>
             </thead>
             <tbody>
             <% @material_movements.each do |material_movement| %>
-                <tr class="fields ">
+                <tr class="fields">
                   <td><%= material_movement.date %></td>
                   <td><%= material_movement.reason %></td>
+                  <td>
+                    <%= link_to "<i class=\"fa fa-eye\"></i>".html_safe, material_movement_path(material_movement), {:class => "btn btn-xs bg-teal btn-flat"} %>
+                    <% if (can? :update, MaterialMovement) %>
+                        <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_material_movement_path(material_movement), {:class => "btn btn-xs bg-orange btn-flat"} %>
+                    <% end %>
+                  </td>
                 </tr>
             <% end %>
             </tbody>
@@ -160,6 +175,7 @@
             <tr>
               <th>Fecha</th>
               <th>Recibido</th>
+              <th class="table-actions"></th>
             </tr>
             </thead>
             <tbody>
@@ -167,7 +183,6 @@
                 <tr class="fields ">
                   <td><%= client_certification.date %></td>
                   <td><%= client_certification.received %></td>
-                  <td>
                 </tr>
             <% end %>
             </tbody>
@@ -182,7 +197,6 @@
           <div class="box-header with-border box-success">
             <div class="form-group">
               <h3 class="box-title"><%= t('helpers.title.certification.list') %></h3>
-
               <% if (can? :create, Certification) %>
                   <%= link_to "<i class=\"fa fa-plus\"></i>".html_safe, new_certification_path({contract_id: @contract.id}), {:class => 'btn btn-sm btn-flat bg-green btn-title', :title => "Agregar Certificación"} %>
               <% end %>
@@ -192,11 +206,46 @@
               <% end %>
             </div>
           </div>
-          <br>
+
           <%= render 'certifications/list', :certifications => @internal_certifications %>
           <div id="paginate-container">
             <ul class="pagination pagination-sm no-margin pull-right">
               <%= paginate @internal_certifications %>
+            </ul>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="bills">
+          <div class="box-header with-border box-success">
+            <h3 class="box-title"><%= t('helpers.title.sale_bill.list') %></h3>
+          </div>
+          <br>
+          <table class="table table-bordered table-condensed table-list col-md-12">
+            <thead>
+            <tr>
+              <th>Fecha</th>
+              <th>Nro. Factura</th>
+              <th>Condicion</th>
+              <th>Monto</th>
+              <th class="table-actions"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @sale_bills.each do |sale_bill| %>
+                <tr class="fields ">
+                  <td><%= sale_bill.date %></td>
+                  <td><%= sale_bill.number %></td>
+                  <td><%= sale_bill.condition %></td>
+                  <td><%= number_to_currency_py(sale_bill.total) %></td>
+                  <td>
+                    <%= link_to "<i class=\"fa fa-eye\"></i>".html_safe, sale_bill_path(sale_bill), {:class => "btn btn-xs bg-teal btn-flat", :title => "Ver detalles"} %>
+                  </td>
+                </tr>
+            <% end %>
+            </tbody>
+          </table>
+          <div id="paginate-container">
+            <ul class="pagination pagination-sm no-margin pull-right">
+              <%= paginate @client_certifications %>
             </ul>
           </div>
         </div>
