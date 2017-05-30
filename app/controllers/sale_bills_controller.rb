@@ -16,6 +16,10 @@ class SaleBillsController < ApplicationController
   # GET /sale_bills/new
   def new
     @sale_bill = SaleBill.new
+    unless params[:contract_id].nil?
+      @sale_bill.contract = Contract.find(params[:contract_id])
+      @sale_bill.contract_id = params[:contract_id]
+    end
   end
 
   # GET /sale_bills/1/edit

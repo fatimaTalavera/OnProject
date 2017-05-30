@@ -22,6 +22,10 @@ class MaterialMovementsController < ApplicationController
     @material_movement = MaterialMovement.new
     @material_movement.date = Time.now
     @material_movement.movement_details.build
+    unless params[:contract_id].nil?
+      @material_movement.contract = Contract.find(params[:contract_id])
+      @material_movement.contract_id = params[:contract_id]
+    end
   end
 
   # GET /material_movements/1/edit

@@ -6,7 +6,12 @@
             <%= f.label :contract, 'Contrato:', :class => 'control-label tooltip_required' %>
           </div>
           <div class="col-md-7">
-            <%= f.collection_select(:contract_id, Contract.all, :id, :name, {prompt: 'Seleccionar'}, :class => 'form-control') %>
+            <% if material_movement.contract.nil? %>
+                <%= f.collection_select(:contract_id, Contract.all, :id, :name, {prompt: 'Seleccionar'}, :class => 'form-control') %>
+            <% else %>
+                <%= f.collection_select(:contract_id, Contract.all, :id, :name, {prompt: 'Selecciona un contrato'}, :class => 'form-control', disabled:true) %>
+                <%= f.hidden_field :contract_id, :class => 'form-control' %>
+            <% end %>
           </div>
         </div>
         <div class="field col-md-6 form-group">
