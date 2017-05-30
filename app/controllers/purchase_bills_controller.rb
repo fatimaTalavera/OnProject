@@ -27,11 +27,15 @@ class PurchaseBillsController < ApplicationController
   def create
     add_breadcrumb I18n.t('helpers.breadcrumbs.purchase_bills.new')
     @purchase_bill = PurchaseBill.new(purchase_bill_params)
-
-    if @purchase_bill.save
-      redirect_to purchase_bills_path, notice: 'La factura de compra ha sido creada correctamente.'
-    else
+    if total_cuotas != @purchase_bill.total && @purchase_bill.condition.crédito?
+      flash[:alert] = 'La suma de las cuotas deben ser igual al monto total de la factura.'
       render 'new'
+    else
+      if @purchase_bill.save
+        redirect_to purchase_bills_path, notice: 'La factura de compra ha sido creada correctamente.'
+      else
+        render 'new'
+      end
     end
   end
 
@@ -71,5 +75,13 @@ class PurchaseBillsController < ApplicationController
       params.require(:purchase_bill).permit(:date, :condition, :number, :total, :balance, :provider_id,
                                             :purchase_details_attributes => [:id, :quantity, :material_id, :price, :total, :_destroy],
                                             :installment_purchases_attributes => [:id, :amount, :balance, :due_date, :_destroy])
+    end
+
+    def total_cuotas
+      total = 0
+      @purchase_bill.installment_purchases.each do |i|
+        total += (i.amount ? i.amount : 0)
+      end
+      return total
     end
 end

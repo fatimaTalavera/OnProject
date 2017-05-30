@@ -25,7 +25,7 @@
         <%= f.link_to_add 'Agregar Material'.html_safe, :purchase_details, class: 'btn btn-flat bg-green insert_in_table', title: 'Agregar material' %>
       </td>
       <td class="text-right text-bold">Total:</td>
-      <td class="table-total text-right"><%= purchase_bill.total ? purchase_bill.total : 0 %></td>
+      <td class="text-right">Gs. <span class="table-total"><%= purchase_bill.total ? purchase_bill.total : 0 %></span></td>
       <td></td>
     </tr>
   </tbody>

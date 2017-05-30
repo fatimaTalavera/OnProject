@@ -199,7 +199,7 @@ es:
         separator: ","
         significant: false
         strip_insignificant_zeros: false
-        unit: "Gs."
+        unit: ""
     format:
       delimiter: "."
       precision: 3

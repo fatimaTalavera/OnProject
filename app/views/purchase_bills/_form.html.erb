@@ -60,7 +60,7 @@
                 </h4>
               </div>
               <div id="collapseOne" class="panel-collapse collapse in">
-                <table class="table table-bordered table-condensed" id="puarchase-table">
+                <table class="table table-bordered table-condensed" id="">
                   <thead>
                     <tr>
                       <th class="col-md-6">Fecha de vencimiento</th>
@@ -68,20 +68,18 @@
                       <th class="col-md-1"></th>
                     </tr>
                   </thead>
-                  <tbody id="details-body">
+                  <tbody id="details-body-cuota">
                     <%= f.fields_for :installment_purchases, :wrapper => false do |form| %>
                       <tr class="fields">
                         <td class="col-md-6"><%=form.text_field :due_date, :class => 'form-control datepicker input-sm' %></td>
-                        <td class="col-md-5"><%=form.number_field :amount, class: 'form-control unit-praice text-right input-sm'%></td>
+                        <td class="col-md-5"><%=form.text_field :amount, class: 'form-control maskMoneda text-right input-sm', :maxlength => 19%></td>
                         <td class="col-md-1"><%=form.link_to_remove '<i class="fa fa-trash-o"></i>'.html_safe, class: 'btn btn-flat bg-red btn-sm', title: 'Eliminar material'%></td>
                       </tr>
                     <% end %>
                     <tr>
-                      <td>
-                        <%= f.link_to_add "<i class=\"fa fa-plus\"></i>".html_safe.html_safe, :installment_purchases, class: 'btn btn-flat bg-green btn-sm insert_in_table', title: 'Agregar Cuota' %>
+                      <td colspan="3">
+                        <%= f.link_to_add 'Agregar Cuota'.html_safe.html_safe, :installment_purchases, class: 'btn btn-flat bg-green btn-sm insert_in_table', title: 'Agregar Cuota' %>
                       </td>
-                      <td class="table-total text-right"><b>Total:</b> 0</td>
-                      <td></td>
                     </tr>
                     </tbody>
                   </table>
