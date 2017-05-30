@@ -3,7 +3,6 @@ class Service < ApplicationRecord
   has_many :rubro_service_details
   before_update :modify_subtotal_rubros
 
-  VALID_LETTER_REGEX = /\A([a-zA-Z]|[a-zA-Z][\. ])+\z/
   VALID_PRICE_REGEX  = /\A^-?([0-9]|(\.[0-9]+))*$\z/
 
   validates :name,  :presence => {:message => "No puede estar en blanco"},

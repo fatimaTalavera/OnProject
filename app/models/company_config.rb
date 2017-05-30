@@ -12,11 +12,11 @@ class CompanyConfig < ApplicationRecord
 	validates :address, presence: true, length: {maximum: 200}
 	validates :celphone, length: {maximum: 15}
   validates :tel_fax, length: {maximum: 14}
-	validates :email, length: {maximum: 30}, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, message: :email_format}
-  validates :letterhead, presence: true, length: {maximum: 40, minimum: 2}
+	validates :email, length: {maximum: 30}, format: { with: VALID_EMAIL_REGEX, message: :email_format}
+  validates :letterhead, presence: true, format: { with: VALID_LETTER_HEAD_REGEX, message: "Debe ser un número de 8 dígitos"}
   validates :validity_of_letterhead, presence: true
-  validates :current_pay, presence: true
-  validates :default_utility, presence: true
+  validates :current_pay, presence: true, numericality: {less_than: 1000000, :greater_than => 0}
+  validates :default_utility, presence: true, numericality: {less_than: 100}
   validate :avatar_size_validation
 
   private

@@ -88,7 +88,7 @@
                     <div class="form-group">
                       <%= f.label :letterhead, t('activerecord.attributes.company_config.letterhead'), class: 'col-md-4 col-sm-3 control-label tooltip_required' %>
                       <div class="col-md-7 col-sm-12">
-                        <%= f.text_field :letterhead, class: 'form-control', :maxlength => 40 %>
+                        <%= f.text_field :letterhead, class: 'form-control', :maxlength => 8 %>
                       </div>
                     </div>
                   </div>
@@ -107,7 +107,7 @@
                     <div class="form-group">
                       <%= f.label :current_pay, t('activerecord.attributes.company_config.current_pay'), class: 'col-md-4 col-sm-3 control-label tooltip_required' %>
                       <div class="col-md-7 col-sm-12">
-                        <%= f.number_field :current_pay, class: 'form-control' %>
+                        <%= f.number_field :current_pay, class: 'form-control', max: 1000000 %>
                       </div>
                     </div>
                   </div>
@@ -115,7 +115,7 @@
                     <div class="form-group">
                       <%= f.label :default_utility, t('activerecord.attributes.company_config.default_utility'), class: 'col-md-4 col-sm-3 control-label tooltip_required' %>
                       <div class="col-md-7 col-sm-12">
-                        <%= f.number_field :default_utility, class: 'form-control', in: 1...100 %>
+                        <%= f.number_field :default_utility, class: 'form-control', max: 100 %>
                       </div>
                     </div>
                   </div>
