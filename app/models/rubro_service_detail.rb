@@ -21,14 +21,11 @@ class RubroServiceDetail < ApplicationRecord
 
   def calculate_price
     self.rubro.update(price: self.rubro.price + self.subtotal)
-    p "calculate_subtotals" + self.rubro.price.to_s
   end
 
   def sum_to_price_quantity
-    p "entra por lo menos?" + quantity_changed?.to_s
     if quantity_changed?
       self.subtotal = self.service.price * self.quantity
-      p "quantity changed" + self.subtotal.to_s
     end
   end
 

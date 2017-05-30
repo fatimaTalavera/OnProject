@@ -13,7 +13,6 @@ class SaleBill < ApplicationRecord
 
   after_validation :set_balance, if: :crédito?
   after_validation :set_state
-  
   #Validaciones
   validates :condition, :presence => {:message => "Debe seleccionar una condicion de pago"}
 

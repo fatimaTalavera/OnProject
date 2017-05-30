@@ -21,7 +21,6 @@ class RubroMaterialDetail < ApplicationRecord
 
   def calculate_price
     self.rubro.update(price: self.rubro.price + self.subtotal)
-    p "calculate_subtotalm" + self.rubro.price.to_s
   end
 
   def sum_to_price_quantity
