@@ -226,8 +226,10 @@ es:
       Concept: Concepto
       Contract: Contrato
       Employee: Empleado
-      Installment: Cuota
-      InstallmentPayment: Pago de Cuota
+      Installment: Cuota de venta
+      InstallmentPayment: Pago de Cuota de venta
+      InstallmentPurchase: Cuota de compra
+      InstallmentPaymentPurchase: Pago de cuota de compra
       Material: Material
       MaterialMovement: Movimiento de Materiales
       MovementDetail: Detalle de Movimiento de Materiales

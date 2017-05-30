@@ -1,13 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  sale: one
   due_date: 2017-05-11
-  total: 1
+  amount: 1
   balance: 1
 
 two:
-  sale: two
   due_date: 2017-05-11
-  total: 1
+  amount: 1
   balance: 1

@@ -2,14 +2,12 @@
 
 one:
   client_certification: one
-  rubro: one
   quantity: 1.5
   price: 1.5
   total: 1.5
 
 two:
   client_certification: two
-  rubro: two
   quantity: 1.5
   price: 1.5
   total: 1.5

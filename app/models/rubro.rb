@@ -17,9 +17,9 @@ class Rubro < ApplicationRecord
                             :message => "Ingrese un número positivo menor a 9999"
   validate :is_empty_details
 
-#  def final_price
-#   self.price * (1 + (self.utility/100))
-# end
+  def final_price
+    self.price * (1 + (self.utility/100))
+  end
 #end
 
   def is_empty_details
@@ -30,18 +30,6 @@ class Rubro < ApplicationRecord
     if rubro_service_details.empty?
       errors.add(:measurement_unit, "Debe agregar al menos un servicio")
     end
-  end
-  def final_price
-    total_material = 0
-    total_service = 0
-    self.rubro_material_details.each do |material_detail|
-      total_material = total_material + material_detail.subtotal
-    end
-    self.rubro_service_details.each do |service_detail|
-      total_service = total_service + service_detail.subtotal
-    end
-    (total_material + total_service) * (1 + (self.utility/100))
-
   end
 
 end

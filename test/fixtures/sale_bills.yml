@@ -4,12 +4,10 @@ one:
   date: 2017-05-07
   condition: MyString
   number: 1
-  client: one
   total: 1
 
 two:
   date: 2017-05-07
   condition: MyString
   number: 1
-  client: two
   total: 1
