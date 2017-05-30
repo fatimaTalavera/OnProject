@@ -5,7 +5,7 @@ class MovementDetail < ApplicationRecord
   before_create :withdraw_material
 
   def withdraw_material
-      Material.update(self.material.id, quantity: self.material.quantity - self.quantity)
+    Material.update(self.material.id, quantity: self.material.quantity - self.quantity)
   end
 
   validates_numericality_of :quantity, :presence => {:message => "Debe rellenar este campo"},
@@ -14,6 +14,10 @@ class MovementDetail < ApplicationRecord
                             :message => "Ingrese un número menor a 9999"
 
   validates :material_id, :presence => {:message => "Debe seleccionar un material"}
+
+  validates :price, :presence => {:message => "No puede estar en blanco"},
+            :format => {:multiline => true, with: VALID_NUMBER_REGEX, :message => "Solo permite numeros"},
+            :numericality => {:greater_than_or_equal_to => 0, message: "No puede ser negativo"}
 
   validate :quantity_is_available
 
@@ -31,3 +35,4 @@ class MovementDetail < ApplicationRecord
     return self.price * self.quantity
   end
 end
+
