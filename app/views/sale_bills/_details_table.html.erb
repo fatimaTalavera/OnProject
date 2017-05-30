@@ -1,0 +1,32 @@
+<table class="table table-bordered" id="sale-table">
+  <thead>
+    <tr>
+      <th class="col-md-4">Concepto</th>
+      <th>Cantidad</th>
+      <th>Precio Unitario</th>
+      <th>Subtotal</th>
+      <th class="table-actions"></th>
+    </tr>
+  </thead>
+  <tbody id="details-body">
+    <%= f.fields_for :sale_details, :wrapper => false do |form| %>
+      <tr class="fields">
+        <td class="col-md-4"><%=form.text_field :concept, class: 'form-control'%></td>
+        <td><%=form.text_field :quantity, class: 'form-control qty text-right'%></td>
+        <td><%=form.text_field :price, class: 'form-control maskMoneda unit-price text-right'%></td>
+        <td class="subtotal text-right"><%= form.object.total ? form.object.total : 0 %></td>
+        <td><%=form.link_to_remove '<i class="fa fa-trash-o"></i>'.html_safe, class: 'btn btn-flat bg-red', title: 'Eliminar Concepto'%></td>
+      </tr>
+    <% end %>
+    <tr>
+      <td colspan="2">
+        <%= f.link_to_add 'Agregar Concepto'.html_safe, :sale_details, class: 'btn btn-flat bg-green insert_in_table', title: 'Agregar Concepto' %>
+      </td>
+      <td class="text-right text-bold">Total:</td>
+      <td class="text-right">Gs. <span class="table-total"><%= sale_bill.total ? sale_bill.total : 0 %></span>
+        <%= f.hidden_field :total, :class => 'maskMonedaa form-control input_total' %>
+      </td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>

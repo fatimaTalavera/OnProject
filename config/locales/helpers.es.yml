@@ -110,6 +110,11 @@ es:
         new: Agregar
         edit: Editar
         show: "Factura Nro. %{purchase}"
+      sale_bills:
+        index: Facturas de Venta
+        new: Agregar
+        edit: Editar
+        show: "Factura Nro. %{sale}"
       concepts:
         index: Conceptos
         new: Agregar concepto

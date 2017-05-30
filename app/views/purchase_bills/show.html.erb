@@ -106,8 +106,8 @@
                     <% @purchase_bill.installment_purchases.each do |i| %>
                       <tr>
                         <td><%= i.due_date %></td>
-                        <td><%= number_to_currency_py(i.amount) %></td>
-                        <td><%= number_to_currency_py(i.balance) %></td>
+                        <td class="text-right"><%= number_to_currency_py(i.amount) %></td>
+                        <td class="text-right"><%= number_to_currency_py(i.balance) %></td>
                         <td>
                           <% if not i.balance == 0 %>
                             <% payment = InstallmentPaymentPurchase.new %>

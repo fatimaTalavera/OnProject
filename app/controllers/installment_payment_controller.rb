@@ -1,16 +1,14 @@
 class InstallmentPaymentController < ApplicationController
   def create
-    @installment_payment = InstallmentPayment.new(installment_payment_params)
+    @payment = InstallmentPayment.new(installment_payment_params)
     @amount = installment_payment_params[:amount].to_i
-    respond_to do |format|
-      if @amount > @installment_payment.installment_amount
-        format.html { redirect_to :back, alert: 'El monto excede al saldo de la cuota cuota.' }
+    if @amount > @payment.installment_amount
+      redirect_to :back, alert: 'El monto excede al saldo de la cuota.'
+    else
+      if @payment.save
+        redirect_to :back, notice: 'Se ha pagado la cuota correctamente.'
       else
-        if @installment_payment.save
-          format.html { redirect_to :back, notice: 'Se ha pagado la cuota correctamente.' }
-        else
-          format.html { render root_url }
-        end
+        render root_url
       end
     end
   end

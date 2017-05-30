@@ -1,19 +1,20 @@
 <%= nested_form_for sale_bill, validate: true, :html => { class: 'form-horizontal' } do |f| %>
-    <div class="box-body">
+  <div class="box-body">
+    <div class="row">
       <div class="col-md-12">
-        <div class="row">
-          <div class="field col-md-4 form-group">
+        <div class="col-md-8">
+          <div class="field col-md-6 form-group">
             <div class="col-md-3">
               <%= f.label :date, 'Fecha:', :class => 'control-label  tooltip_required' %>
             </div>
             <div class="col-md-7">
               <div class="input-group">
-                <%= f.text_field :date, value: Date.today.strftime('%d/%m/%y'), :class => 'form-control datepicker' %>
+                <%= f.text_field :date, :class => 'form-control datepicker' %>
                 <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
               </div>
             </div>
           </div>
-          <div class="field col-md-4 form-group">
+          <div class="field col-md-6 form-group">
             <div class="col-md-3">
               <%= f.label :contract_id, 'Contrato:', :class => 'control-label  tooltip_required' %>
             </div>
@@ -28,121 +29,89 @@
               <% end %>
             </div>
           </div>
-          <div class="field col-md-4 form-group">
+          <div class="field col-md-6 form-group">
+            <div class="col-md-5">
+              <%= f.label :number, 'Número de boleta:', :class => 'control-label tooltip_required' %>
+            </div>
+            <div class="col-md-5">
+              <%= f.text_field :number, :class => 'form-control' %>
+            </div>
+          </div>
+          <div class="field col-md-6 form-group">
             <div class="col-md-3">
-              <%= f.label :condition, 'Condición:', :class => 'control-label  tooltip_required' %>
+              <%= f.label :condition, 'Condición:', :class => 'control-label tooltip_required' %>
             </div>
             <div class="col-md-7">
               <div class="btn-group" data-toggle="buttons">
                 <label class="btn btn-default">
-                  <%= f.radio_button :condition, 'Contado', :class => 'radio_group_buttons required' %> Contado
+                  <%= f.radio_button :condition, 'contado', :class => 'radio_group_buttons required condition' %> Contado
                 </label>
                 <label class="btn btn-default">
-                  <%= f.radio_button :condition, 'Crédito', :class => 'radio_group_buttons required' %> Crédito
+                  <%= f.radio_button :condition, 'crédito', :class => 'radio_group_buttons required condition' %> Crédito
                 </label>
               </div>
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="field col-md-5 form-group">
-            <div class="col-md-4">
-              <%= f.label :number, 'Número de boleta:', :class => 'control-label tooltip_required' %>
+      </div>
+      <div class="col-md-4">
+        <div class="panel-group accordion" id="accordion" style="display: none;">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Establecer Cuotas</a>
+              </h4>
             </div>
-            <div class="col-md-6">
-              <%= f.number_field :number, :class => 'form-control' %>
-            </div>
-          </div>
-        </div>
-        <br>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="box box-success">
-              <div class="box-header with-border">
-                <h3 class="box-title">Seleccionar Concepto</h3>
-              </div>
-              <div class="box-body">
-                <table class="table table-bordered" id="sale-table">
-                  <thead>
-                  <tr>
-                    <th>Concepto</th>
-                    <th>Cantidad</th>
-                    <th>Precio Unitario</th>
-                    <!--<th>Subtotal</th>-->
-                    <th class="table-actions"></th>
-                  </tr>
-                  </thead>
-                  <tbody id="details-body">
-                  <%= f.fields_for :sale_details, :wrapper => false do |form| %>
-                      <tr class="fields">
-                        <td><%= form.text_field :concept, class: "form-control", :maxlength => 80 %></td>
-                        <td><%=form.number_field :quantity, class: 'form-control qty text-right'%></td>
-                        <td><%=form.number_field :price, class: 'form-control unit-price text-right'%></td>
-                        <!--<td class="subtotal text-right"><%= form.object.total ? form.object.total : 0 %></td>-->
-                        <td><%=form.link_to_remove '<i class="fa fa-trash-o"></i>'.html_safe, class: 'btn btn-flat bg-red', title: 'Eliminar material'%></td>
-                      </tr>
-                  <% end %>
-                  <tr>
-                    <td colspan="2">
-                      <%= f.link_to_add "<i class=\"fa fa-plus\"></i>".html_safe, :sale_details, class: 'btn btn-flat bg-green insert_in_table', title: 'Agregar Concepto' %>
-                    </td>
-                    <!--<td class="text-right text-bold">Total:</td>
-                    <td class="table-total text-right"><%= sale_bill.total ? sale_bill.total : 0 %></td>-->
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-md-12">
-            <div class="box box-success">
-              <div class="box-header with-border">
-                <h3 class="box-title">Cuotas</h3>
-              </div>
-              <div class="box-body">
-                <table class="table table-bordered" id="purchase-table">
-                  <thead>
+            <div id="collapseOne" class="panel-collapse collapse in">
+              <table class="table table-bordered" id="cuota-sale-table">
+                <thead>
                   <tr>
                     <th>Fecha de vencimiento</th>
                     <th>Monto</th>
                     <th class="table-actions"></th>
                   </tr>
-                  </thead>
-                  <tbody id="details-body">
+                </thead>
+                <tbody id="cuota-details-body">
                   <%= f.fields_for :installments, :wrapper => false do |form| %>
-                      <tr class="fields">
-                        <td><%=form.text_field :due_date, value: Date.today.strftime('%d/%m/%y'), :class => 'form-control datepicker'%></td>
-                        <td><%=form.number_field :amount, class: 'form-control unit-price text-right'%></td>
-                        <td><%=form.link_to_remove '<i class="fa fa-trash-o"></i>'.html_safe, class: 'btn btn-flat bg-red', title: 'Eliminar material'%></td>
-                      </tr>
+                    <tr class="fields">
+                      <td><%=form.text_field :due_date, :class => 'form-control datepicker'%></td>
+                      <td><%=form.number_field :amount, class: 'fform-control maskMoneda text-right input-sm'%></td>
+                      <td><%=form.link_to_remove '<i class="fa fa-trash-o"></i>'.html_safe, class: 'btn btn-flat bg-red btn-sm', title: 'Eliminar concepto'%></td>
+                    </tr>
                   <% end %>
                   <tr>
                     <td>
-                      <%= f.link_to_add "<i class=\"fa fa-plus\"></i>".html_safe.html_safe, :installments, class: 'btn btn-flat bg-green insert_in_table', title: 'Agregar Cuota' %>
+                      <%= f.link_to_add 'Agregar Cuota'.html_safe.html_safe, :installments, class: 'btn btn-flat bg-green insert_in_table', title: 'Agregar Cuota' %>
                     </td>
                     <td class="table-total text-right"></td>
                     <td></td>
                   </tr>
-                  </tbody>
-                </table>
-              </div>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="box box-success">
+            <div class="box-header with-border">
+              <h3 class="box-title">Seleccionar Conceptos</h3>
+            </div>
+            <div class="box-body">
+              <%= render 'details_table', :f => f, :sale_bill => sale_bill%>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <div class="box-footer clearfix">
-      <div class="pull-right">
-        <%= f.submit t('button.save'), :class => "btn btn-flat bg-blue" %>
-        <%= link_to t('button.cancel'),  sale_bills_path , class: 'btn btn-flat btn-default' %>
-      </div>
+  <div class="box-footer clearfix">
+    <div class="pull-right">
+      <%= f.submit t('button.save'), :class => "btn btn-flat bg-blue" %>
+      <%= link_to t('button.cancel'),  sale_bills_path , class: 'btn btn-flat btn-default' %>
     </div>
+  </div>
 <% end %>
 
 <script type="text/javascript">

@@ -5,6 +5,7 @@
     <th>Nro. Factura</th>
     <th>Contrato</th>
     <th>Condicion</th>
+    <th>Estado</th>
     <th>Monto</th>
     <th class="table-actions"></th>
   </tr>
@@ -17,7 +18,10 @@
         <td><%= sale_bill.number %></td>
         <td><%= sale_bill.contract_name %></td>
         <td><%= sale_bill.condition %></td>
-        <td><%= sale_bill.total %></td>
+        <td>
+          <%= "<label class='label label-#{sale_bill.state.pagado? ? 'success' : 'warning'}'>#{sale_bill.state_text}</label>".html_safe %>
+        </td>
+        <td><%= number_to_currency_py(sale_bill.total) %></td>
         <td>
           <%= link_to "<i class=\"fa fa-eye\"></i>".html_safe, sale_bill_path(sale_bill), {:class => "btn btn-xs bg-teal btn-flat", :title => "Ver detalles"} %>
         </td>

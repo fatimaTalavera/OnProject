@@ -5,30 +5,36 @@
   <div class="box-body">
     <div class="row">
       <div class="col-md-12">
-          <div class="col-sm-4 show-padding">
-            <label class="control-label">Fecha</label>
-            <p><%= l @sale_bill.date, format: :default%></p>
-          </div>
-          <div class="col-sm-4 show-padding">
-            <label class="control-label">Contrato</label>
-            <p><%= @sale_bill.contract_name %></p>
-          </div>
-          <div class="col-sm-4 show-padding">
-            <label class="control-label">Condición de compra</label>
-            <p><%= @sale_bill.condition %></p>
-          </div>
+        <div class="col-md-3">
+          <label class="control-label">Fecha</label>
+          <p><%= l @sale_bill.date, format: :default%></p>
+        </div>
+        <div class="col-md-3">
+          <label class="control-label">Cliente</label>
+          <p><%= @sale_bill.contract_name %></p>
+        </div>
+        <div class="col-md-3">
+          <label class="control-label">Condición de compra</label>
+          <p><%= @sale_bill.condition %></p>
+        </div>
+        <div class="col-md-3">
+          <label class="control-label">Estado</label>
+          <p>
+            <% if @sale_bill.state.pagado? %>
+              <label class="label label-success"><%= @sale_bill.state_text %></label>
+            <% else %>
+              <label class="label label-warning"><%= @sale_bill.state_text %></label>
+            <% end %>
+          </p>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-
-  <div class="box box-success">
     <div class="row">
       <div class="col-md-12">
         <div class="nav-tabs-custom">
           <ul class="nav nav-tabs">
             <li class="active"><a href="#tab_1" data-toggle="tab">Conceptos</a></li>
-            <li class=""><a href="#tab_2" data-toggle="tab">Cuotas</a></li>
+            <li class=""><a href="#tab_2" data-toggle="tab">Cobros Pendientes</a></li>
           </ul>
           <div class="tab-content">
             <div class="tab-pane active" id="tab_1">
@@ -42,20 +48,20 @@
                 </tr>
                 </thead>
                 <tbody>
-                <% @sale_bill.sale_details.each do |d| %>
+                  <% @sale_bill.sale_details.each do |d| %>
                     <tr>
                       <td><%= d.concept %></td>
                       <td class="text-right"><%= d.quantity %></td>
-                      <td class="text-right"><%= d.price %></td>
-                      <td class="text-right"><%= d.total %></td>
+                      <td class="text-right"><%= number_to_currency_py(d.price) %></td>
+                      <td class="text-right"><%= number_to_currency_py(d.total) %></td>
                     </tr>
-                <% end %>
+                  <% end %>
                 </tbody>
                 <tfoot>
-                <tr>
-                  <td colspan="3" class="text-bold text-right">Total:</td>
-                  <td class="text-bold text-right"><%= @sale_bill.total %></td>
-                </tr>
+                  <tr>
+                    <td colspan="3" class="text-bold text-right">Total:</td>
+                    <td class="text-bold text-right"><%= number_to_currency_py(@sale_bill.total) %></td>
+                  </tr>
                 </tfoot>
               </table>
             </div>
@@ -67,46 +73,44 @@
                   <th>Vencimiento</th>
                   <th>Monto</th>
                   <th>Saldo</th>
-                  <th>Pagar</th>
+                  <th>Cobrar Gs.</th>
                 </tr>
                 </thead>
                 <tbody>
-                <% first = true %>
-                <% @sale_bill.installments.order(due_date: 'asc').each_with_index do |installment| %>
+                  <% @sale_bill.installments.each do |i| %>
                     <tr>
-                      <td class="text-right"><%= installment.due_date.strftime('%d/%m/%Y') %></td>
-                      <td class="text-right"><%= installment.amount %></td>
-                      <td class="text-right"><%= installment.balance %></td>
-                      <td class="text-right">
-                        <% if not installment.balance == 0 %>
-                        <% if first %>
-                                <% installment_payment = InstallmentPayment.new %>
-                                <%= form_for installment_payment, url: url_for(:controller => 'installment_payment', :action => 'create') do |f| %>
-                                    <%= f.label :date, 'Monto:', :class => 'control-label  tooltip_required' %>
-                                    <%= f.number_field :amount, value: installment.balance%>
-                                    <%= f.hidden_field :installment_id, value: installment.id %>
-                                    <%= f.submit "Pagar", {:class => "btn btn-warning"} %>
-                                <% end %>
-                                <% first = false %>
-                            <% end %>
+                      <td><%= i.due_date %></td>
+                      <td class="text-right"><%= number_to_currency_py(i.amount) %></td>
+                      <td class="text-right"><%= number_to_currency_py(i.balance) %></td>
+                      <td>
+                        <% if not i.balance == 0 %>
+                          <% installment_payment = InstallmentPayment.new %>
+                          <%= form_for installment_payment, url: url_for(:controller => 'installment_payment', :action => 'create') do |f| %>
+                            <%= f.hidden_field :installment_id, value: i.id %>
+                            <div class="col-md-12">
+                              <div class="input-group">
+                                <%= f.text_field :amount, value: i.balance, class: "form-control input-sm maskMoneda" %>
+                                <span class="input-group-btn">
+                                  <%= f.submit "Pagar", {:class => "btn btn-warning btn-sm"} %>
+                                </span>
+                              </div>
+                            </div>
+                          <% end %>
+                        <% else %>
+                          <p class="text-green">Pagado</p>
                         <% end %>
                       </td>
                     </tr>
-                <% end %>
+                  <% end %>
                 </tbody>
-                <tfoot>
-                <tr>
-                  <td colspan="2" class="text-bold text-right">Total:</td>
-                  <td class="text-bold text-right"><%= @sale_bill.total %></td>
-                  <td></td>
-                </tr>
-                </tfoot>
               </table>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
+  
   <div class="box-footer">
     <div class="pull-right">
       <!--<%= link_to t('button.edit'), edit_sale_bill_path(@sale_bill), {:class => "btn btn-flat bg-blue"} %>-->
