@@ -6,21 +6,40 @@
     <div class="row">
       <div class="col-md-9">
         <div class="row">
-          <div class="col-sm-6 show-padding">
-            <label class="control-label">Cliente: </label>
-            <span><%= @contract.client_name %></span>
+          <div class="field col-md-6 form-group">
+            <div class="field col-md-4">
+              <strong>Cliente:</strong>
+            </div>
+            <div class="field col-md-8 show-padding">
+              <%= @contract.budget_client_name %>
+            </div>
           </div>
-          <div class="col-sm-6 show-padding">
-            <label class="control-label">Monto: </label>
-            <span><%= number_to_currency_py(@contract.amount) %></span>
+
+          <div class="field col-md-6 form-group">
+            <div class="field col-md-4">
+              <strong>Monto:</strong>
+            </div>
+            <div class="field col-md-8 show-padding">
+              <%=  number_to_currency_py(@contract.amount)  %>
+            </div>
           </div>
-          <div class="col-sm-6 show-padding">
-            <label class="control-label">Fecha de inicio: </label>
-            <span><%= @contract.start_date %></span>
+
+          <div class="field col-md-6 form-group">
+            <div class="field col-md-4">
+              <strong>Fecha de inicio:</strong>
+            </div>
+            <div class="field col-md-8 show-padding">
+              <%= @contract.start_date %>
+            </div>
           </div>
-          <div class="col-sm-6 show-padding">
-            <label class="control-label">Fecha de cierre: </label>
-            <span><%= @contract.end_date %></span>
+
+          <div class="field col-md-6 form-group">
+            <div class="field col-md-4">
+              <strong>Fecha de fin:</strong>
+            </div>
+            <div class="field col-md-8 show-padding">
+              <%= @contract.end_date  %>
+            </div>
           </div>
         </div>
       </div>

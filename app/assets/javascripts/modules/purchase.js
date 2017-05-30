@@ -16,6 +16,11 @@ var Purchase = (function(){
       var name_field = event.field.find(elements.materialSearch.selector);
       Material.search($.extend({selector: name_field.val($(event.link).data('predefined-name')), url: setSearchMaterialUrl}));
     });
+    $("#details-body-cuota").on("nested:fieldAdded", function(event, insertedItem) {
+      //$(event.target).find(':input').enableClientSideValidations();
+      NumberHelper.mascaraMoneda('.maskMoneda');
+      DatepickerHelper.initDatepicker('.datepicker');
+    });
     $(".condition").on("change",function(){
       var condition = getCondition();
       if ( condition === 'contado' ) {

@@ -21,6 +21,7 @@ class MaterialMovementsController < ApplicationController
   def new
     @material_movement = MaterialMovement.new
     @material_movement.date = Time.now
+    @material_movement.movement_details.build
   end
 
   # GET /material_movements/1/edit

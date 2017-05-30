@@ -14,8 +14,9 @@
   <% contracts.each do |contract| %>
       <tr>
         <td><%= contract.name %></td>
-        <td><%= contract.client_name %> </td>
-        <td><%= contract.start_date %></td>
+        <td>
+          <%= contract.budget_client_name %> </td>
+        <td><%= contract.budget.nil? ? '' : contract.start_date %></td>
         <td><%= contract.end_date %></td>
         <td><%= number_to_currency_py(contract.amount) %></td>
         <td>

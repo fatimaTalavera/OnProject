@@ -84,10 +84,10 @@
                   <th class="col-md-1"> </th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody id="details-body">
               <%= f.fields_for :client_certification_details, :wrapper => false do |form| %>
                   <tr class="fields" onchange='getRubroTotal(this);'>
-                    <td><%=form.collection_select(:budget_detail_id, client_certification.budget_details.pending, :id, :rubro_name, {prompt: 'Seleccionar'}, :onchange => 'getRubroPrice(this);', class: 'form-control')%></td>
+                    <td><%=form.collection_select(:budget_detail_id, client_certification.budget_details.pending, :id, :rubro_name, {prompt: 'Seleccionar'}, :onchange => 'getRubroPrice(this);', class: 'form-control select2 rubro-search')%></td>
                     <td><%=form.number_field :quantity, class: 'form-control amount_to_certify'%></td>
                     <td><%=form.number_field :total_quantity, class: 'form-control quantity', :readonly => true%></td>
                     <td><%=form.number_field :price, class: 'form-control price', :readonly => true%></td>
@@ -115,3 +115,7 @@
       </div>
     </div>
 <% end %>
+
+<script type="text/javascript">
+  Budget.setSearchRubro('<%= rubros_search_path %>');
+</script>

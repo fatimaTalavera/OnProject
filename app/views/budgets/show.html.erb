@@ -90,7 +90,7 @@
 
       <% end %>
       <% if (can? :update, Budget) &&  (can? :create, Contract) && @budget.studying? %>
-          <%= link_to 'Generar Contrato', new_contract_path({name:@budget.name, budget_id: @budget.id, client_id: @budget.client_id , total: @budget.total_amount}), class:'btn btn-flat bg-blue' %>
+          <%= link_to 'Generar Contrato', new_contract_path({budget_id: @budget.id}), class:'btn btn-flat bg-blue' %>
       <% end %>
       <% if @budget.approved? && !@budget.contract.nil? && (can? :show, Contract) %>
           <%= link_to 'Ver Contrato', contract_path(@budget.contract.id), :class => 'btn btn-flat bg-blue'%>

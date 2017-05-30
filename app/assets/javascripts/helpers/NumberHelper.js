@@ -3,11 +3,11 @@ var NumberHelper = {
         return I18n.toCurrency(monto);
     },
     aNumero: function(texto) {
-        var n = parseFloat(texto.replace(/\./g, '').replace(',', '.'));
+        var n = texto.replace(/\./g, '');
         return isNaN(n) ? 0 : n;
     },
     mascaraMoneda: function(selector) {
-        $(selector).inputmask({ alias: 'decimal',
+        $(selector).inputmask({ alias: 'integer',
                                 radixPoint: ',',
                                 autoGroup: true,
                                 groupSeparator: '.',

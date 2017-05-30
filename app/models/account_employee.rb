@@ -11,6 +11,9 @@ class AccountEmployee < ApplicationRecord
 
   enum states_type: [:Pendiente, :Pagado]
 
+  validates :date, presence:true
+  validates :contract_id, presence:true
+
   def discount_balance_employee
     details = account_employee_details.where(pay: 1).where(state: AccountEmployee.states_types.keys[0])
     details.each do |d|
