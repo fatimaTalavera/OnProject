@@ -3,9 +3,17 @@ class MovementDetail < ApplicationRecord
   belongs_to :material_movement, required: false
   belongs_to :material
   before_create :withdraw_material
-
+  before_update :quantity_change
   def withdraw_material
     Material.update(self.material.id, quantity: self.material.quantity - self.quantity)
+  end
+
+  def quantity_change
+    if self.quantity <  self.quantity_was
+      Material.update(self.material.id, quantity: (self.material.quantity + (self.quantity_was - self.quantity)))
+    else
+      Material.update(self.material.id, quantity: (self.material.quantity - (self.quantity - self.quantity_was)))
+    end
   end
 
   validates_numericality_of :quantity, :presence => {:message => "Debe rellenar este campo"},
