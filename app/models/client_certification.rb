@@ -21,6 +21,14 @@ class ClientCertification < ApplicationRecord
 
   validates :observation, :length => { maximum: 200, :message => "Permite hasta 200 caracteres"}
 
+  validate :detalles_vacio
+
+  def detalles_vacio
+    if client_certification_details.empty?
+      errors.add(:observation, "Debe agregar al menos un rubro")
+    end
+  end
+
   def subtract_missing_amount
     self.client_certification_details.each do |detail|
       budget = BudgetDetail.find(detail.budget_detail_id)
