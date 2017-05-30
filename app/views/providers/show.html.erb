@@ -60,3 +60,43 @@
     </div>
   </div>
 </div>
+
+<div class="box box-success">
+  <div class="box-header with-border">
+    <h3 class="box-title">Cuenta Corriente</h3>
+  </div>
+  <div class="box-body">
+    <div class="field col-md-12 form-group">
+      <div class="field col-md-8 form-group">
+        <strong>Balance Total:</strong>
+        <%= number_to_currency_py(@provider.purchase_bills.sum(:total) - @provider.payments.sum(:amount)) %>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <table class="table table-bordered table-condensed table-list">
+        <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Nº de Factura</th>
+          <th>Condición</th>
+          <th>Monto</th>
+          <th>Pagado</th>
+          <th>Balance</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @provider.purchase_bills.each do |purchase| %>
+              <tr>
+                <td><%= purchase.date %></td>
+                <td><%= purchase.number %></td>
+                <td><%= purchase.condition %></td>
+                <td><%= number_to_currency_py(purchase.total) %></td>
+                <td><%= number_to_currency_py(purchase.payments.sum(:amount)) %></td>
+                <td><%= number_to_currency_py(purchase.total - purchase.payments.sum(:amount)) %></td>
+              <tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

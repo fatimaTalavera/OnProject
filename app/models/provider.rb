@@ -1,6 +1,10 @@
 class Provider < ApplicationRecord
   audited
 
+
+  has_many :purchase_bills
+  has_many :payments, through: :purchase_bills
+
   validates :name,  :presence => {:message => "No puede estar en blanco"},
             :length => { maximum:100, :message => "Permite hasta 100 caracteres"},
             format: { :with => VALID_LETTER_REGEX, message: "Solo permite letras"}
