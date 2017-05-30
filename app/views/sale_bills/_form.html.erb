@@ -74,7 +74,7 @@
                   <%= f.fields_for :installments, :wrapper => false do |form| %>
                     <tr class="fields">
                       <td><%=form.text_field :due_date, :class => 'form-control datepicker'%></td>
-                      <td><%=form.number_field :amount, class: 'fform-control maskMoneda text-right input-sm'%></td>
+                      <td><%=form.text_field :amount, class: 'form-control maskMoneda text-right input-sm'%></td>
                       <td><%=form.link_to_remove '<i class="fa fa-trash-o"></i>'.html_safe, class: 'btn btn-flat bg-red btn-sm', title: 'Eliminar concepto'%></td>
                     </tr>
                   <% end %>
