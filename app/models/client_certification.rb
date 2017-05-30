@@ -11,9 +11,6 @@ class ClientCertification < ApplicationRecord
 
   after_create :subtract_missing_amount
 
-
-  VALID_LETTER_REGEX = /\A([a-zA-Z]|[a-zA-Z][\. ])+\z/
-
   validates :contract_id,  :presence => {:message => "Debe seleccionar una obra"}
 
   validates :date, :presence => {:message => "No puede estar en blanco"}

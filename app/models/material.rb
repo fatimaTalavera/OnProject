@@ -3,10 +3,6 @@ class Material < ApplicationRecord
   has_many :rubro_material_details
   before_update :modify_subtotal_rubros
 
-  #valida solo numeros
-  VALID_LETTER_REGEX = /\A([a-zA-Z]|[a-zA-Z][\. ])+\z/
-  # valida que solo sea numeros, y permita agregar double, o sea permita el punto
-  VALID_NUMBER_REGEX = /\A^-?([0-9]|(\.[0-9]+))*$\z/
   validates :name, :presence => {:message => "No puede estar en blanco"},
             :length => {in: 3..30, :message => "Debe tener entre 3 y 30 caracteres"},
             #valida que no sea un nombre existente
