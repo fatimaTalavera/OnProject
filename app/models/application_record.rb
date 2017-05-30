@@ -11,6 +11,5 @@ class ApplicationRecord < ActiveRecord::Base
   # valida formato de correo electronico
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   # valida formato de timbrado, numero de 8 digitos
-  VALID_LETTER_HEAD_REGEX = /\d{8}/
-
+  VALID_LETTER_HEAD_REGEX =  /\A\d{8}\z/
 end
