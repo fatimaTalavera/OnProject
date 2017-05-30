@@ -5,7 +5,6 @@
   <div class="box-body">
     <div class="row">
       <div class="col-md-12">
-        <div class="row">
           <div class="col-sm-4 show-padding">
             <label class="control-label">Fecha</label>
             <p><%= l @sale_bill.date, format: :default%></p>
@@ -18,10 +17,12 @@
             <label class="control-label">Condición de compra</label>
             <p><%= @sale_bill.condition %></p>
           </div>
-        </div>
       </div>
     </div>
-    <br><br>
+  </div>
+</div>
+
+  <div class="box box-success">
     <div class="row">
       <div class="col-md-12">
         <div class="nav-tabs-custom">
@@ -106,7 +107,6 @@
         </div>
       </div>
     </div>
-  </div>
   <div class="box-footer">
     <div class="pull-right">
       <!--<%= link_to t('button.edit'), edit_sale_bill_path(@sale_bill), {:class => "btn btn-flat bg-blue"} %>-->
