@@ -23,7 +23,15 @@
       <div class="field col-md-6 form-group">
         <div class="col-md-6 show-padding">
           <strong>Estado:</strong>
-          <%= @certification.state %>
+          <% if @certification.approved?%>
+              <label class="bg-green">Aprobado</label>
+          <%elsif @certification.pending? %>
+              <label class="bg-orange">Pendiente</label>
+          <%elsif @certification.rejected? %>
+              <label class="bg-red">Rechazado</label>
+          <% elsif @certification.paid?%>
+              <label  class="bg-gray disable">Pagado</label>
+          <% end %>
         </div>
       </div>
     </div>
@@ -60,12 +68,12 @@
   </div>
   <div class="box-footer">
     <div class="pull-right">
-      <% if @certification.state == Certification.states_types.keys[0] || @certification.state == Certification.states_types.keys[2] %>
-          <% if (can? :update, Certification) %>
-              <%= link_to 'Editar', edit_certification_path(@certification), :class => 'btn btn-primary active' %>
-          <% end %>
+      <% if (can? :update, Certification) && @certification.pending? %>
+          <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_certification_path(@certification), :class => 'btn btn-flat bg-orange'%>
+          <%= link_to "<i class=\"fa fa-check\"></i>".html_safe, approved_certification_path(@certification), :class => 'btn btn-flat bg-green' %>
+          <%= link_to "<i class=\"fa fa-times\"></i>".html_safe, rejected_certification_path(@certification), :class => 'btn btn-flat bg-red' %>
       <% end %>
-      <%= link_to 'Atrás', @certification.contract, :class => 'btn btn-default' %>
+      <%= link_to "<i class=\"fa fa-arrow-left\"></i>".html_safe, @certification.contract, :class => 'btn btn-flat btn-default' %>
     </div>
   </div>
 </div>

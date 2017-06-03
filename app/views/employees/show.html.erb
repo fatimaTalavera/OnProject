@@ -58,16 +58,22 @@
       <table class="table table-bordered table-condensed", cellspacing="0" width="100%">
         <thead>
         <tr>
+          <th>Contrato</th>
           <th>Monto Certificado</th>
           <th>Fecha de certificación</th>
+          <th>Fecha de pago</th>
+          <th>N° de recibo</th>
           <th>Estado del pago</th>
         </tr>
         </thead>
         <tbody>
             <% @account_details.each do |account| %>
                 <tr>
+                  <td><%= account.account_employee.contract_name%></td>
                   <td><%= number_to_currency(account.total, unit: "Gs.", separator: ".", precision: 0) %></td>
-                  <td><%= account.created_at %></td>
+                  <td><%= account.certification.date %></td>
+                  <td><%= account.date %></td>
+                  <td><%= account.number_bill %></td>
                   <td><%= account.state %></td>
                 <tr>
             <% end %>

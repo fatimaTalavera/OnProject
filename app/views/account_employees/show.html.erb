@@ -34,10 +34,10 @@
         <tr  style="word-wrap: break-word">
           <th width="20%">Jornalero</th>
           <th width="10%">Total a pagar</th>
-          <th width="10%">Pagar</th>
           <th width="10%">N° de recibo</th>
-          <th width="30%">Fecha de pago</th>
+          <th width="10%">Fecha de pago</th>
           <th width="10%">Estado del pago</th>
+          <th width="5%">Pagar</th>
         </tr>
         </thead>
         <tbody>
@@ -45,10 +45,10 @@
             <tr>
               <td><%= detail.employee_name_with_initial %> C.I: <%= detail.employee_identification_document %>
               <td><%= number_to_currency_py(detail.total) %>
-              <td><%= check_box_tag 'done', '1', detail.pay %>
               <td><%= detail.number_bill%>
               <td><%= detail.date %></td>
               <td><%= detail.state %>
+              <td><%= check_box_tag 'done', '1', detail.pay,disabled:true %>
             </tr>
         <% end %>
         </tbody>

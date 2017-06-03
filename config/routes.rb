@@ -12,7 +12,12 @@ Rails.application.routes.draw do
   #resources :budgets
   get 'rubros/search' => 'rubros#search'
   resources :rubros
-  resources :certifications, except: [:destroy]
+  resources :certifications, except: [:destroy] do
+    member do
+      get :rejected
+      get :approved
+    end
+  end
   resources :client_certifications
   get 'employees/search' => 'employees#search'
   resources :employees
