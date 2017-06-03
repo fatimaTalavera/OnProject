@@ -1,10 +1,10 @@
 <table class="table table-bordered table-condensed table-list">
   <thead>
   <tr>
-    <th>Contrato</th>
-    <th>Fecha</th>
-    <th>Estado</th>
-    <th class="table-actions"></th>
+    <th width="30%">Contrato</th>
+    <th width="10%">Fecha</th>
+    <th width="5%">Estado</th>
+    <th width="10%" class="table-actions"></th>
   </tr>
   </thead>
 
@@ -13,22 +13,24 @@
       <tr>
         <td><%= certification.contract_name %></td>
         <td><%= certification.date %></td>
-        <% if certification.state == Certification.states_types.keys[1]%>
-            <td class="bg-green"><%= certification.state %></td>
-        <%elsif certification.state == Certification.states_types.keys[0] %>
-            <td class="bg-orange"><%= certification.state %></td>
-        <%elsif certification.state == Certification.states_types.keys[2] %>
-            <td class="bg-red"><%= certification.state %></td>
-        <% elsif certification.state == AccountEmployee.states_types.keys[1]%>
-            <td  class="bg-gray disable"><%= certification.state %></td>
+        <% if certification.approved?%>
+            <td class="bg-green">Aprobado</td>
+        <%elsif certification.pending? %>
+            <td class="bg-orange">Pendiente</td>
+        <%elsif certification.rejected? %>
+            <td class="bg-red">Rechazado</td>
+        <% elsif certification.paid?%>
+            <td  class="bg-gray disable">Pagado</td>
         <% end %>
         <td>
           <%= link_to "<i class=\"fa fa-eye\"></i>".html_safe, certification_path(certification), {:class => "btn btn-xs bg-teal btn-flat"} %>
-          <% if certification.state == Certification.states_types.keys[0] || certification.state == Certification.states_types.keys[2] %>
-              <% if (can? :update, Certification) %>
-                  <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_certification_path(certification), {:class => "btn btn-xs bg-orange btn-flat"} %>
-              <% end %>
+
+          <% if (can? :update, Certification) && certification.pending? %>
+              <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_certification_path(certification), :class => 'btn btn-xs btn-flat bg-orange'%>
+              <%= link_to "<i class=\"fa fa-check\"></i>".html_safe, approved_certification_path(certification), :class => 'btn btn-xs btn-flat bg-green' %>
+              <%= link_to "<i class=\"fa fa-times\"></i>".html_safe, rejected_certification_path(certification), :class => 'btn btn-xs btn-flat bg-red' %>
           <% end %>
+
         </td>
       </tr>
   <% end %>

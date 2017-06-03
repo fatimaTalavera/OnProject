@@ -48,9 +48,9 @@
     <div class="box-footer">
       <div class="pull-right">
         <% if (can? :update, Contract) %>
-            <%= link_to t('button.edit'), edit_contract_path(@contract), {:class => "btn btn-flat bg-blue"} %>
+            <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_contract_path(@contract), {:class => "btn btn-flat bg-orange"} %>
         <% end %>
-        <%= link_to t('button.back'), url_for(:back), {:class => "btn btn-flat btn-default"} %>
+        <%= link_to  "<i class=\"fa fa-arrow-left\"></i>".html_safe, url_for(:back), {:class => "btn btn-flat btn-default"} %>
       </div>
     </div>
 
@@ -203,8 +203,7 @@
               <% if (can? :create, Certification) %>
                   <%= link_to "<i class=\"fa fa-plus\"></i>".html_safe, new_certification_path({contract_id: @contract.id}), {:class => 'btn btn-sm btn-flat bg-green btn-title', :title => "Agregar Certificación"} %>
               <% end %>
-
-              <% if @approved.any? { |element| element == Certification.states_types.keys[1]} %>
+              <% if @approved.any? { |element| element == Certification.states.keys[2]} %>
                   <%= link_to 'Generar Pago', edit_account_employee_path(@account_employee.first), class:'btn btn-sm btn-flat bg-blue' %>
               <% end %>
             </div>
