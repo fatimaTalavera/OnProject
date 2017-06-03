@@ -69,11 +69,11 @@
   <div class="box-footer">
     <div class="pull-right">
       <% if (can? :update, Certification) && @certification.pending? %>
-          <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_certification_path(@certification), :class => 'btn btn-flat bg-orange'%>
-          <%= link_to "<i class=\"fa fa-check\"></i>".html_safe, approved_certification_path(@certification), :class => 'btn btn-flat bg-green' %>
-          <%= link_to "<i class=\"fa fa-times\"></i>".html_safe, rejected_certification_path(@certification), :class => 'btn btn-flat bg-red' %>
+          <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_certification_path(@certification), :class => 'btn bg-orange'%>
+          <%= link_to "<i class=\"fa fa-check\"></i>".html_safe, approved_certification_path(@certification), :class => 'btn bg-green' %>
+          <%= link_to "<i class=\"fa fa-times\"></i>".html_safe, rejected_certification_path(@certification), :class => 'btn bg-red' %>
       <% end %>
-      <%= link_to "<i class=\"fa fa-arrow-left\"></i>".html_safe, @certification.contract, :class => 'btn btn-flat btn-default' %>
+      <%= link_to "<i class=\"fa fa-arrow-left\"></i>".html_safe, @certification.contract, :class => 'btn btn-default' %>
     </div>
   </div>
 </div>

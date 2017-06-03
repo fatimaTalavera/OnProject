@@ -2,7 +2,7 @@
   <div class="box-header with-border box-success">
     <h3 class="box-title"><%= t('helpers.title.material_movement.list') %></h3>
     <% if (can? :create, MaterialMovement) %>
-        <%= link_to "<i class=\"fa fa-plus\"></i>".html_safe, new_material_movement_path, {:class => "btn btn-sm btn-flat bg-green btn-title", :title => "Agregar Movimiento"} %>
+        <%= link_to "<i class=\"fa fa-plus\"></i>".html_safe, new_material_movement_path, {:class => "btn btn-sm bg-green btn-title", :title => "Agregar Movimiento"} %>
     <% end %>
   </div>
   <div class="box-body">

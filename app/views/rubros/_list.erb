@@ -15,9 +15,9 @@
         <td><%= rubro.utility %> %</td>
         <td><%= number_to_currency_py(rubro.final_price.to_i) %></td>
         <td>
-          <%= link_to "<i class=\"fa fa-eye\"></i>".html_safe, rubro_path(rubro), {:class => "btn btn-xs bg-teal btn-flat"} %>
+          <%= link_to "<i class=\"fa fa-eye\"></i>".html_safe, rubro_path(rubro), {:class => "btn btn-xs bg-teal"} %>
           <% if (can? :update, Rubro) %>
-          <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_rubro_path(rubro), {:class => "btn btn-xs bg-orange btn-flat"} %>
+          <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_rubro_path(rubro), {:class => "btn btn-xs bg-orange"} %>
               <% end %>
         </td>
       </tr>

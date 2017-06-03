@@ -80,8 +80,8 @@
 
     <div class="box-footer">
       <div class="pull-right">
-        <%= f.submit 'Guardar', :class => "btn btn-primary active" %>
-        <%= link_to 'Cancelar',  material_movements_path , class: 'btn btn-default' %>
+        <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i></button>
+        <%= link_to  "<i class=\"fa fa-arrow-left\"></i>".html_safe,  material_movements_path , class: 'btn btn-default' %>
       </div>
     </div>
 <% end %>

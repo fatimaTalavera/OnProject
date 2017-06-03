@@ -23,9 +23,9 @@
           <%= "<label class='label label-#{purchase_bill.state.pagado? ? 'success' : 'warning'}'>#{purchase_bill.state_text}</label>".html_safe %>
         </td>
         <td>
-          <%= link_to "<i class=\"fa fa-eye\"></i>".html_safe, purchase_bill_path(purchase_bill), {:class => "btn btn-xs bg-teal btn-flat", :title => "Ver detalles"} %>
+          <%= link_to "<i class=\"fa fa-eye\"></i>".html_safe, purchase_bill_path(purchase_bill), {:class => "btn btn-xs bg-teal", :title => "Ver detalles"} %>
           <!--<% if (can? :update, PurchaseBill) %>
-              <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_purchase_bill_path(purchase_bill), {:class => "btn btn-xs bg-orange btn-flat"} %>
+              <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_purchase_bill_path(purchase_bill), {:class => "btn btn-xs bg-orange"} %>
           <% end %>-->
         </td>
       </tr>

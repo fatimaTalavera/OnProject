@@ -20,7 +20,7 @@
         <td><%= contract.end_date %></td>
         <td><%= number_to_currency_py(contract.amount) %></td>
         <td>
-          <%= link_to "<i class=\"fa fa-eye\"></i>".html_safe, contract_path(contract), {:class => "btn btn-xs bg-teal btn-flat"} %>
+          <%= link_to "<i class=\"fa fa-eye\"></i>".html_safe, contract_path(contract), {:class => "btn btn-xs bg-teal"} %>
         </td>
       </tr>
   <% end %>
