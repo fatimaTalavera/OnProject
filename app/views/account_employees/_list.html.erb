@@ -14,8 +14,8 @@
         <td><%= account_employee.contract_name %></td>
         <td><%= account_employee.date %></td>
         <td><%= account_employee.pay %></td>
-        <td><%= link_to "<i class=\"fa fa-eye\"></i>".html_safe, account_employee_path(account_employee), {:class => "btn btn-xs bg-teal btn-flat"} %>
-        <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_account_employee_path(account_employee), {:class => "btn btn-xs bg-orange btn-flat"} %>
+        <td><%= link_to "<i class=\"fa fa-eye\"></i>".html_safe, account_employee_path(account_employee), {:class => "btn btn-xs bg-teal"} %>
+        <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_account_employee_path(account_employee), {:class => "btn btn-xs bg-orange"} %>
         </td>
       </tr>
   <% end %>

@@ -29,10 +29,10 @@
         <% end %>
         <td><%= number_to_currency_py(budget.total_amount) %></td>
         <td>
-          <%= link_to "<i class=\"fa fa-eye\"></i>".html_safe, budget_path(budget), {:class => "btn btn-xs bg-teal btn-flat"} %>
+          <%= link_to "<i class=\"fa fa-eye\"></i>".html_safe, budget_path(budget), {:class => "btn btn-xs bg-teal"} %>
           <% if budget.pending? %>
               <% if (can? :update, Budget) %>
-                <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_budget_path(budget), {:class => "btn btn-xs bg-orange btn-flat"} %>
+                <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_budget_path(budget), {:class => "btn btn-xs bg-orange "} %>
               <% end %>
           <%end %>
         </td>

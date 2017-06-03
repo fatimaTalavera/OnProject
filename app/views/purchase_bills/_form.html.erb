@@ -105,8 +105,8 @@
 
   <div class="box-footer clearfix">
     <div class="pull-right">
-      <%= f.submit t('button.save'), :class => "btn btn-flat bg-blue" %>
-      <%= link_to t('button.cancel'),  purchase_bills_path , class: 'btn btn-flat btn-default' %>
+      <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i></button>
+      <%= link_to "<i class=\"fa fa-arrow-left\"></i>".html_safe,  purchase_bills_path , class: 'btn btn-flat btn-default' %>
     </div>
   </div>
 <% end %>

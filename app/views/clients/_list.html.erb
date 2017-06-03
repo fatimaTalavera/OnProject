@@ -19,9 +19,9 @@
         <td><%= client.adress %></td>
         <td><%= client.phone %></td>
         <td>
-          <%= link_to "<i class=\"fa fa-eye\"></i>".html_safe, client_path(client), {:class => "btn btn-xs bg-teal btn-flat"} %>
+          <%= link_to "<i class=\"fa fa-eye\"></i>".html_safe, client_path(client), {:class => "btn btn-xs bg-teal"} %>
           <% if (can? :update, Client) %>
-              <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_client_path(client), {:class => "btn btn-xs bg-orange btn-flat"} %>
+              <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_client_path(client), {:class => "btn btn-xs bg-orange"} %>
           <% end %>
         </td>
       </tr>

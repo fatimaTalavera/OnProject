@@ -77,9 +77,9 @@
   <div class="box-footer">
     <div class="pull-right">
       <% if (can? :update, ClientCertification) %>
-      <%= link_to 'Editar', edit_client_certification_path(@client_certification), :class => 'btn btn-primary active' %>
+      <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_client_certification_path(@client_certification), :class => 'btn bg-orange' %>
           <% end %>
-      <%= link_to 'Atras', client_certifications_path, :class => 'btn btn-default' %>
+      <%= link_to "<i class=\"fa fa-arrow-left\"></i>".html_safe, client_certifications_path, :class => 'btn btn-default' %>
     </div>
   </div>
 </div>

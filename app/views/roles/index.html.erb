@@ -2,7 +2,7 @@
   <div class="box-header with-border box-success">
     <h3 class="box-title"><%= t('helpers.title.rol.list') %></h3>
     <% if (can? :create, Role) %>
-        <%= link_to "<i class=\"fa fa-plus\"></i>".html_safe, new_role_path, {:class => "btn btn-sm btn-flat bg-green btn-title", :title => "Agregar Rol"} %>
+        <%= link_to "<i class=\"fa fa-plus\"></i>".html_safe, new_role_path, {:class => "btn btn-sm bg-green btn-title", :title => "Agregar Rol"} %>
     <% end %>
   </div>
   <div class="box-body">
