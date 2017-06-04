@@ -77,12 +77,9 @@
       </div>
 
   <div class="box-footer">
-    <div class="pull-left">
-      <div>
-        <%= link_to 'Generar PDF', budget_path(@budget, format: 'pdf'), class:'btn btn-flat bg-red pull-right' %>
-      </div>
-    </div>
     <div class="pull-right">
+      <%= link_to "<i class=\"fa fa-file-pdf-o\"></i>".html_safe, budget_path(@budget, format: 'pdf'), class:'btn bg-navy', title:'Generar pdf' %>
+
       <% if (can? :update, Budget) && @budget.pending? %>
           <%= link_to "<i class=\"fa fa-check\"></i>".html_safe, deliver_budget_path(@budget), :class => 'btn bg-green' %>
           <%= link_to "<i class=\"fa fa-times\"></i>".html_safe, cancel_budget_path(@budget), :class => 'btn bg-red' %>
@@ -93,7 +90,7 @@
           <%= link_to 'Generar Contrato', new_contract_path({budget_id: @budget.id}), class:'btn bg-blue' %>
       <% end %>
       <% if @budget.approved? && !@budget.contract.nil? && (can? :show, Contract) %>
-          <%= link_to 'Ver Contrato'.html_safe, contract_path(@budget.contract.id), :class => 'btn bg-teal'%>
+          <%= link_to "<i class=\"fa fa-eye\"></i>".html_safe, contract_path(@budget.contract.id), :class => 'btn btn-info', :title=>'Ver Contrato'%>
       <% end %>
     </div>
   </div>

@@ -5,11 +5,11 @@
   <div class="box-body">
     <%= form_tag(audit_index_path, :method=>'get') do %>
         <p>
-          <b>Inicio:</b>
+          <b>Fecha Inicio:</b>
           <%= text_field_tag "inicio", "", :class => 'datepicker', value: params[:inicio] %>
-          <b>Fin:</b>
+          <b>Fecha Fin:</b>
           <%= text_field_tag "fin", "", :class => 'datepicker', value: params[:fin] %>
-          <%= submit_tag 'filtrar' %>
+          <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
         </p>
     <% end %>
     <div class="overlay-wrapper searchResult table-responsive" id="audits-table">
