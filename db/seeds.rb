@@ -16,7 +16,7 @@
 
 # Datos por defecto para la empresa
 if CompanyConfig.first.nil?
-  @company_config = CompanyConfig.new name: 'ON', address: 'Encarnación', tel_fax: '(000) 000 000', celphone: '(0000) 000 000', email: 'email@email.com', avatar: '', letterhead: '100-100-100', validity_of_letterhead: DateTime.now
+  @company_config = CompanyConfig.new name: 'ON', address: 'Encarnación', tel_fax: '(000) 000 000', celphone: '(0000) 000 000', email: 'email@email.com', avatar: '',current_pay:75558, letterhead: '10010010', validity_of_letterhead: Time.now
   @company_config.save!
 end
 
@@ -29,9 +29,6 @@ end
 @jerson = Client.new(name: "Jerson", last_name: "Derulo", ruc: 3324597, email: "jersonDerulo@gmail.com", adress: "Calle independencia c/ J L Mallorquín", phone:"0985643749")
 @jerson.save!
 
-# Contratos
-@contract = Contract.new(client_id: @alex.id, start_date: Date.today, end_date: Date.today, name: "Un mundo Feliz", amount: 50000000 )
-@contract.save!
 
 # Materiales
 @cemento = Material.new(name: "Cemento", description: "Bolsas 50 kg", price: 50000, quantity: 10, minimun_stock: 1, measurement_unit: "Kg")
@@ -50,22 +47,12 @@ end
 # Jornaleros
 @employee = Employee.new(name: "Jorge", last_name: "Esquivel", address: "San Juan del Parana", phone: "0985222333", identification_document: "4393032", email: "jorgenoob123@gmail.com")
 @employee.save!
+@employee = Employee.new(name: "Juan", last_name: "Ramíres", address: "San Pedro", phone: "098522453", identification_document: "5393032", email: "juam34@gmail.com")
+@employee.save!
 
 # Servicios
 @service = Service.new(name: "Instalacion de cables", price: 1000000, description: "Se instalan los cables", measurement_unit: "m")
 @service.save!
-
-# Movimientos de materiales
-@materialMovement = MaterialMovement.new(date: '01/01/2000', contract_id: @contract.id, reason: "Lecherado para la bicicenda, tramo 1")
-@materialMovement.save!
-
-# Movimientos detalles
-@movementDetail = MovementDetail.new(quantity: 3, material_id: @cemento.id, material_movement_id: @materialMovement.id, price: 10000)
-@movementDetail.save!
-@movementDetail = MovementDetail.new(quantity: 1, material_id: @cable.id, material_movement_id: @materialMovement.id)
-@movementDetail.save!
-@movementDetail = MovementDetail.new(quantity: 150, material_id: @clavo.id, material_movement_id: @materialMovement.id)
-@movementDetail.save!
 
 # Facturas de compra
 @purchaseBill = PurchaseBill.new(number: 123, provider_id: @provider.id, date: '30/03/2017', condition: 'contado', total: 200000)
