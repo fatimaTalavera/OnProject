@@ -77,21 +77,24 @@
       </div>
 
   <div class="box-footer">
-    <div class="pull-right">
-      <%= link_to "<i class=\"fa fa-file-pdf-o\"></i>".html_safe, budget_path(@budget, format: 'pdf'), class:'btn bg-navy', title:'Generar pdf' %>
+    <div class="pull-right bg-gray-light">
 
       <% if (can? :update, Budget) && @budget.pending? %>
-          <%= link_to "<i class=\"fa fa-check\"></i>".html_safe, deliver_budget_path(@budget), :class => 'btn bg-green' %>
-          <%= link_to "<i class=\"fa fa-times\"></i>".html_safe, cancel_budget_path(@budget), :class => 'btn bg-red' %>
-          <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_budget_path(@budget), :class => 'btn bg-orange'%>
-
+          <%= link_to "<i class=\"fa fa-check\"></i>".html_safe, deliver_budget_path(@budget), :class => 'btn bg-green', title:'Aprobar' %>
+          <%= link_to "<i class=\"fa fa-times\"></i>".html_safe, cancel_budget_path(@budget), :class => 'btn bg-red', title:'Anular', data: {confirm: 'Esta seguro que desea anular el presupuesto'} %>
+          <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_budget_path(@budget), :class => 'btn bg-orange', title:'Editar'%>
       <% end %>
+
       <% if (can? :update, Budget) &&  (can? :create, Contract) && @budget.studying? %>
-          <%= link_to 'Generar Contrato', new_contract_path({budget_id: @budget.id}), class:'btn bg-blue' %>
+          <%= link_to "<i class=\"fa fa-trophy\"></i>".html_safe, new_contract_path({budget_id: @budget.id}), :class => 'btn bg-green', title:'Generar contrato' %>
+          <%= link_to "<i class=\"fa fa-thumbs-o-down\"></i>".html_safe, reject_budget_path(@budget), :class => 'btn bg-orange', title:'Rechazar', data: {confirm: 'Esta seguro que desea rechazar el presupuesto'} %>
       <% end %>
       <% if @budget.approved? && !@budget.contract.nil? && (can? :show, Contract) %>
-          <%= link_to "<i class=\"fa fa-eye\"></i>".html_safe, contract_path(@budget.contract.id), :class => 'btn btn-info', :title=>'Ver Contrato'%>
+          <%= link_to "<i class=\"fa fa-trophy\"></i>".html_safe, contract_path(@budget.contract.id), :class => 'btn bg-purple', :title=>'Ver Contrato'%>
       <% end %>
+
+      <%= link_to "<i class=\"fa fa-file-pdf-o\"></i>".html_safe, budget_path(@budget, format: 'pdf'), class:'btn bg-gray-light', title:'Generar pdf' %>
+
     </div>
   </div>
 </div>

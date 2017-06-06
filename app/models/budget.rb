@@ -1,6 +1,6 @@
 class Budget < ApplicationRecord
   audited
-  enum state: { pending: 0, studying: 1, approved: 2, cancelled: 3 }
+  enum state: { pending: 0, studying: 1, approved: 2, cancelled: 3, rejected: 4 }
 
   belongs_to :client
   belongs_to :contract

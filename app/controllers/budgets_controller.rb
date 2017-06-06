@@ -17,6 +17,14 @@ class BudgetsController < ApplicationController
     end
   end
 
+  def reject
+    budget = Budget.find(params[:id])
+    if budget.studying?
+      budget.rejected!
+      redirect_to budget_url(budget), flash: {notice: 'El presupuesto ha sido rechazado'}
+    end
+  end
+
   def deliver
     budget = Budget.find(params[:id])
     if budget.pending?

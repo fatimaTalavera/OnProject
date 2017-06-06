@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     member do
       get :cancel
       get :deliver
+      get :reject
       get :get_detail
     end
   end

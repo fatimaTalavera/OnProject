@@ -7,7 +7,7 @@
     <th>Descripción</th>
     <th>Estado</th>
     <th>Monto total</th>
-    <th class="table-actions"></th>
+    <th class="table-actions-xs"></th>
   </tr>
   </thead>
 
@@ -18,23 +18,31 @@
         <td><%= budget.client_name %></td>
         <td><%= budget.date %></td>
         <td><%= budget.description %></td>
-        <% if budget.approved? %>
-            <td class="bg-green">Aprobado</td>
-        <% elsif budget.studying? %>
-            <td class="bg-aqua">En estudio</td>
-        <% elsif budget.pending? %>
-            <td class="bg-purple">Pendiente</td>
-        <% elsif budget.cancelled? %>
-            <td  class="bg-gray disable">Cancelado</td>
-        <% end %>
+        <td>
+          <% if budget.approved? %>
+              <span class="label label-success">Aprovado</span>
+          <% elsif budget.studying? %>
+              <span class="label label-primary">Pendiente</span>
+          <% elsif budget.pending? %>
+              <span class="label label-info">En estudio</span>
+          <% elsif budget.cancelled? %>
+              <span class="label label-default">Anulado</span>
+          <% elsif budget.rejected? %>
+              <span class="label label-warning">Rechazado</span>
+          <% end %>
+        </td>
         <td><%= number_to_currency_py(budget.total_amount) %></td>
         <td>
           <%= link_to "<i class=\"fa fa-eye\"></i>".html_safe, budget_path(budget), {:class => "btn btn-xs bg-teal"} %>
-          <% if budget.pending? %>
-              <% if (can? :update, Budget) %>
-                <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_budget_path(budget), {:class => "btn btn-xs bg-orange "} %>
-              <% end %>
+          <% if budget.pending? && (can? :update, Budget) %>
+              <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_budget_path(budget), {:class => "btn btn-xs bg-orange "} %>
           <%end %>
+
+          <% if budget.approved? && !budget.contract.nil? && (can? :show, Contract) %>
+              <%= link_to "<i class=\"fa fa-trophy\"></i>".html_safe, contract_path(budget.contract.id), class: 'btn btn-xs bg-purple', title: 'Ver Contrato' %>
+          <% end %>
+
+          <%= link_to "<i class=\"fa fa-file-pdf-o\"></i>".html_safe, budget_path(budget, format: 'pdf'), class:'btn btn-xs bg-gray-light', title:'Generar pdf' %>
         </td>
       </tr>
   <% end %>
