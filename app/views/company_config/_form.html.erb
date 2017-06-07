@@ -129,8 +129,8 @@
   </div>
   <div class="box-footer clearfix">
     <div class="pull-right">
-      <%= f.submit t('button.save'), :class => "btn btn-flat bg-blue" %>
-      <%= link_to t('button.cancel'),  welcome_index_url, class: 'btn btn-flat btn-default' %>
+      <button type="submit" class="btn btn-primary" title="Guardar"><i class="fa fa-save"></i></button>
+      <%= link_to "<i class=\"fa fa-arrow-left\"></i>".html_safe,  welcome_index_url, class: 'btn btn-default', title:'Atrás' %>
     </div>
   </div>
 <% end %>

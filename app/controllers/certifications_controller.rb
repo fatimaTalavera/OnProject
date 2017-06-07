@@ -20,7 +20,6 @@ class CertificationsController < ApplicationController
     certification = Certification.find(params[:id])
     if certification.pending?
       certification.approved!
-      puts("entro")
       redirect_to certification_url(certification), flash: {notice: 'La certificación interna ha sido aprobada'}
     end
   end

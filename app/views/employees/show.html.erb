@@ -64,6 +64,7 @@
           <th>Fecha de pago</th>
           <th>N° de recibo</th>
           <th>Estado del pago</th>
+          <th width="5%"></th>
         </tr>
         </thead>
         <tbody>
@@ -75,6 +76,11 @@
                   <td><%= account.date %></td>
                   <td><%= account.number_bill %></td>
                   <td><%= account.state %></td>
+                  <td>
+                    <% if account.state == "Pendiente" %>
+                        <%= link_to 'Pagar'.html_safe, edit_account_employee_path(account.account_employee_id), {:class => 'btn btn-xs btn-success', :title => 'Editar'} %>
+                    <% end %>
+                  </td>
                 <tr>
             <% end %>
 

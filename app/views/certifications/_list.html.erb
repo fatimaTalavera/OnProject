@@ -13,22 +13,24 @@
       <tr>
         <td><%= certification.contract_name %></td>
         <td><%= certification.date %></td>
-        <% if certification.approved?%>
-            <td class="bg-green">Aprobado</td>
-        <%elsif certification.pending? %>
-            <td class="bg-orange">Pendiente</td>
-        <%elsif certification.rejected? %>
-            <td class="bg-red">Rechazado</td>
-        <% elsif certification.paid?%>
-            <td  class="bg-gray disable">Pagado</td>
-        <% end %>
         <td>
-          <%= link_to "<i class=\"fa fa-eye\"></i>".html_safe, certification_path(certification), {:class => "btn btn-xs bg-teal"} %>
+        <% if certification.approved?%>
+            <span class="label label-success">Aprobado</span>
+        <%elsif certification.pending? %>
+            <span class="label label-warning">Pendiente</span>
+        <%elsif certification.rejected? %>
+            <span class="label label-danger">Rechazado</span>
+        <% elsif certification.paid?%>
+            <span  class="label label-default">Pagado</span>
+        <% end %>
+        </td>
+        <td>
+          <%= link_to "<i class=\"fa fa-eye\"></i>".html_safe, certification_path(certification), {:class => 'btn btn-xs bg-teal', :title=> 'Ver'} %>
 
           <% if (can? :update, Certification) && certification.pending? %>
-              <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_certification_path(certification), :class => 'btn btn-xs bg-orange'%>
-              <%= link_to "<i class=\"fa fa-check\"></i>".html_safe, approved_certification_path(certification), :class => 'btn btn-xs  bg-green' %>
-              <%= link_to "<i class=\"fa fa-times\"></i>".html_safe, rejected_certification_path(certification), :class => 'btn btn-xs bg-red' %>
+              <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_certification_path(certification), :class => 'btn btn-xs bg-orange',:title => 'Editar'%>
+              <%= link_to "<i class=\"fa fa-check\"></i>".html_safe, approved_certification_path(certification), :class => 'btn btn-xs  bg-green', :title => 'Aprobar',data: {confirm: 'La certificación interna fué aprobada por el cliente?'}  %>
+              <%= link_to "<i class=\"fa fa-times\"></i>".html_safe, rejected_certification_path(certification), :class => 'btn btn-xs bg-red', :title => 'Rechazar',data: {confirm: 'La certificación interna fué rechazada por el cliente?'} %>
           <% end %>
 
         </td>

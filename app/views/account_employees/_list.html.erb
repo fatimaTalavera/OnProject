@@ -4,7 +4,7 @@
     <th width="55%">Contrato</th>
     <th width="20%">Fecha de creación</th>
     <th width="20%">Total a pagar de certificaciones</th>
-    <th width="5%"></th>
+    <th width="7%"></th>
   </tr>
   </thead>
 
@@ -14,8 +14,10 @@
         <td><%= account_employee.contract_name %></td>
         <td><%= account_employee.date %></td>
         <td><%= account_employee.pay %></td>
-        <td><%= link_to "<i class=\"fa fa-eye\"></i>".html_safe, account_employee_path(account_employee), {:class => "btn btn-xs bg-teal"} %>
-        <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_account_employee_path(account_employee), {:class => "btn btn-xs bg-orange"} %>
+        <td><%= link_to "<i class=\"fa fa-eye\"></i>".html_safe, account_employee_path(account_employee), {:class => 'btn btn-xs bg-teal', :title => 'Ver'} %>
+          <% if account_employee.account_employee_details.pluck(:state).any? { |element| element == "Pendiente"} %>
+              <%= link_to 'Pagar'.html_safe, edit_account_employee_path(account_employee), {:class => 'btn btn-xs btn-success', :title => 'Editar'} %>
+          <% end %>
         </td>
       </tr>
   <% end %>

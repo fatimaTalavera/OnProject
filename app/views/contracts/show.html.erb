@@ -201,10 +201,10 @@
             <div class="form-group">
               <h3 class="box-title"><%= t('helpers.title.certification.list') %></h3>
               <% if (can? :create, Certification) %>
-                  <%= link_to "<i class=\"fa fa-plus\"></i>".html_safe, new_certification_path({contract_id: @contract.id}), {:class => 'btn btn-sm bg-green btn-title', :title => "Agregar Certificación"} %>
+                  <%= link_to "<i class=\"fa fa-plus\"></i>".html_safe, new_certification_path({contract_id: @contract.id}), {:class => 'btn btn-sm bg-green btn-title', :title => 'Agregar'} %>
               <% end %>
               <% if @approved.any? { |element| element == Certification.states.keys[2]} %>
-                  <%= link_to 'Generar Pago', edit_account_employee_path(@account_employee.first), class:'btn btn-sm  bg-blue' %>
+                  <%= link_to 'Generar Pago', edit_account_employee_path, class:'btn btn-sm  bg-blue' %>
               <% end %>
             </div>
           </div>
