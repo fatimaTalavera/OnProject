@@ -1,12 +1,12 @@
 <div class="box box-success">
-  <div class="box-header with-header">
+  <div class="box-header  with-border">
     <h3 class="box-title">Presupuesto</h3>
   </div>
   <div class="box-body">
     <div class="field col-md-12 form-group">
       <div class="field col-md-4 form-group">
         <div class="col-sm-3 label-pad">
-          <strong>Nombre:</strong>
+          <strong>Obra:</strong>
         </div>
         <div class="col-sm-7 show-padding">
           <%= @budget.name %>
@@ -33,6 +33,24 @@
 
     </div>
     <div class="field col-md-12">
+      <div class="field col-md-4 form-group">
+        <div class="col-sm-3 label-pad">
+          <strong>Estado:</strong>
+        </div>
+        <div class="col-sm-5 show-padding">
+          <% if @budget.approved? %>
+              <span class="label label-success">Aprovado</span>
+          <% elsif @budget.studying? %>
+              <span class="label label-primary">Pendiente</span>
+          <% elsif @budget.pending? %>
+              <span class="label label-info">En estudio</span>
+          <% elsif @budget.cancelled? %>
+              <span class="label label-default">Anulado</span>
+          <% elsif @budget.rejected? %>
+              <span class="label label-warning">Rechazado</span>
+          <% end %>
+        </div>
+      </div>
 
       <div class="field col-md-6">
         <div class="col-sm-3 label-pad ">
@@ -45,56 +63,54 @@
 
     </div>
     <div class="col-md-12">
-      <br>
-            <table class="table table-bordered table-condensed table-list">
-              <tr>
-                <th>Rubro</th>
-                <th>Ud. Medidad</th>
-                <th>Costo</th>
-                <th>Precio</th>
-                <th>Cantidad</th>
-                <th>% Utilidad</th>
-                <th>Sub Total</th>
+        <table class="table table-bordered table-condensed table-list">
+          <tr>
+            <th>Rubro</th>
+            <th>Ud. Medidad</th>
+            <th>Costo</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
+            <th>% Utilidad</th>
+            <th>Sub Total</th>
+          </tr>
+          <% @budget.budget_details.each do |budget_detail| %>
+              <tr class="fields ">
+                <td><%= budget_detail.rubro_name %></td>
+                <td><%= budget_detail.rubro_measurement_unit %></td>
+                <td><%= number_to_currency_py(budget_detail.cost) %></td>
+                <td><%= number_to_currency_py(budget_detail.price) %></td>
+                <td><%= eval(sprintf("%3.2f",budget_detail.quantity)) %></td>
+                <td><%= budget_detail.utility %></td>
+                <td><%= number_to_currency_py(budget_detail.subtotal) %></td>
               </tr>
-              <% @budget.budget_details.each do |budget_detail| %>
-                  <tr class="fields ">
-                    <td><%= budget_detail.rubro_name %></td>
-                    <td><%= budget_detail.rubro_measurement_unit %></td>
-                    <td><%= number_to_currency_py(budget_detail.cost) %></td>
-                    <td><%= number_to_currency_py(budget_detail.price) %></td>
-                    <td><%= eval(sprintf("%3.2f",budget_detail.quantity)) %></td>
-                    <td><%= budget_detail.utility %></td>
-                    <td><%= number_to_currency_py(budget_detail.subtotal) %></td>
-                  </tr>
-              <% end %>
-              <td>
-                  <strong>Monto Total:</strong>
-                  <%= number_to_currency_py(@budget.total_amount) %>
-              </td>
-            </table>
-          </div>
+          <% end %>
+        </table>
+        <div style="text-align: right">
+          <strong>Monto Total: <%= number_to_currency_py(@budget.total_amount) %></strong><br>
+          <strong>Utilidad: <%= number_to_currency_py(@budget.total_amount * @budget.budget_details.sum(:utility) / @budget.budget_details.count / 100) %></strong>
         </div>
       </div>
-
-  <div class="box-footer">
-    <div class="pull-right bg-gray-light">
-
-      <% if (can? :update, Budget) && @budget.pending? %>
-          <%= link_to "<i class=\"fa fa-check\"></i>".html_safe, deliver_budget_path(@budget), :class => 'btn bg-green', title:'Aprobar' %>
-          <%= link_to "<i class=\"fa fa-times\"></i>".html_safe, cancel_budget_path(@budget), :class => 'btn bg-red', title:'Anular', data: {confirm: 'Esta seguro que desea anular el presupuesto'} %>
-          <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_budget_path(@budget), :class => 'btn bg-orange', title:'Editar'%>
-      <% end %>
-
-      <% if (can? :update, Budget) &&  (can? :create, Contract) && @budget.studying? %>
-          <%= link_to "<i class=\"fa fa-trophy\"></i>".html_safe, new_contract_path({budget_id: @budget.id}), :class => 'btn bg-green', title:'Generar contrato' %>
-          <%= link_to "<i class=\"fa fa-thumbs-o-down\"></i>".html_safe, reject_budget_path(@budget), :class => 'btn bg-orange', title:'Rechazar', data: {confirm: 'Esta seguro que desea rechazar el presupuesto'} %>
-      <% end %>
-      <% if @budget.approved? && !@budget.contract.nil? && (can? :show, Contract) %>
-          <%= link_to "<i class=\"fa fa-trophy\"></i>".html_safe, contract_path(@budget.contract.id), :class => 'btn bg-purple', :title=>'Ver Contrato'%>
-      <% end %>
-
-      <%= link_to "<i class=\"fa fa-file-pdf-o\"></i>".html_safe, budget_path(@budget, format: 'pdf'), class:'btn bg-gray-light', title:'Generar pdf' %>
-
     </div>
-  </div>
+
+      <div class="box-footer">
+        <div class="pull-right bg-gray-light">
+
+          <% if (can? :update, Budget) && @budget.pending? %>
+              <%= link_to "<i class=\"fa fa-check\"></i>".html_safe, deliver_budget_path(@budget), :class => 'btn bg-green', title:'Entregar', data: {confirm: 'El presupuesto esta listo para entregarlo al cliente?'} %>
+              <%= link_to "<i class=\"fa fa-times\"></i>".html_safe, cancel_budget_path(@budget), :class => 'btn bg-red', title:'Anular', data: {confirm: 'Esta seguro que desea anular el presupuesto?'} %>
+              <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_budget_path(@budget), :class => 'btn bg-orange', title:'Editar'%>
+          <% end %>
+
+          <% if (can? :update, Budget) &&  (can? :create, Contract) && @budget.studying? %>
+              <%= link_to "<i class=\"fa fa-trophy\"></i>".html_safe, new_contract_path({budget_id: @budget.id}), :class => 'btn bg-green', title:'Generar contrato' %>
+              <%= link_to "<i class=\"fa fa-thumbs-o-down\"></i>".html_safe, reject_budget_path(@budget), :class => 'btn bg-orange', title:'Rechazar', data: {confirm: 'Esta seguro que desea rechazar el presupuesto?'} %>
+          <% end %>
+          <% if @budget.approved? && !@budget.contract.nil? && (can? :show, Contract) %>
+              <%= link_to "<i class=\"fa fa-trophy\"></i>".html_safe, contract_path(@budget.contract.id), :class => 'btn bg-purple', :title=>'Ver Contrato'%>
+          <% end %>
+
+          <%= link_to "<i class=\"fa fa-file-pdf-o\"></i>".html_safe, budget_path(@budget, format: 'pdf'), class:'btn bg-gray-light', title:'Generar pdf' %>
+
+        </div>
+      </div>
 </div>

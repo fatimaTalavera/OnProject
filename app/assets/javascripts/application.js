@@ -174,3 +174,19 @@ jQuery(function ($) {
         });
     }
 }(jQuery));
+
+$.rails.allowAction = function(element) {
+    var $link, $modal_html, message, title, modal_html;
+    message = element.data('confirm');
+    if (!message) {
+        return true;
+    }
+    title = 'Mensaje de confirmación';
+    $link = element.clone().removeAttr('class').removeAttr('data-confirm').addClass('btn').addClass('btn-primary').html("Confirmar");
+    modal_html = '<div class="modal"> <div class="modal-dialog"> <div class="modal-content"> <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> <h4 class="modal-title">MODAL-TITLE</h4></div> <div class="modal-body"><p>MODAL-MESSAGE</p> </div> <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button></div></div></div></div>';
+    modal_html = modal_html.replace('MODAL-TITLE', title).replace('MODAL-MESSAGE', message);
+    $modal_html = $(modal_html);
+    $modal_html.find('.modal-footer').prepend($link);
+    $modal_html.modal();
+    return false;
+};
