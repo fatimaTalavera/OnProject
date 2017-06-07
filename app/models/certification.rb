@@ -25,12 +25,8 @@ class Certification < ApplicationRecord
     aproved_certification = Certification.find(id)
     if(aproved_certification.approved?)
       account = AccountEmployee.where(contract_id: aproved_certification.contract_id)
-      puts("cuenta")
-      puts(account)
-      puts(account.blank?)
 
       if(account.blank?)
-        puts("entro en bucle1")
         #crea movimiento en cta. cte. empleado
         AccountEmployee.transaction do
           begin
@@ -51,11 +47,9 @@ class Certification < ApplicationRecord
           end
         end
       else
-        puts("bucle2")
+
         puts(certification_details)
         certification_details.each do |d|
-          puts("for certificaacion")
-          puts(d)
           new_account_detail = AccountEmployeeDetail.new(account_employee_id: account.pluck(:id).first, certification_id: aproved_certification.id, employee_id: d.employee_id, total: d.total,state:"Pendiente")
           if new_account_detail.save
 
