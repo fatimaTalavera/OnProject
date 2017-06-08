@@ -39,11 +39,11 @@
         </div>
         <div class="col-sm-5 show-padding">
           <% if @budget.approved? %>
-              <span class="label label-success">Aprovado</span>
+              <span class="label label-success">Aprobado</span>
           <% elsif @budget.studying? %>
-              <span class="label label-primary">Pendiente</span>
+              <span class="label label-primary">En estudio</span>
           <% elsif @budget.pending? %>
-              <span class="label label-info">En estudio</span>
+              <span class="label label-info">Pendiente</span>
           <% elsif @budget.cancelled? %>
               <span class="label label-default">Anulado</span>
           <% elsif @budget.rejected? %>
@@ -66,20 +66,19 @@
         <table class="table table-bordered table-condensed table-list">
           <tr>
             <th>Rubro</th>
-            <th>Ud. Medidad</th>
-            <th>Costo</th>
-            <th>Precio</th>
+            <th>Unidad</th>
             <th>Cantidad</th>
-            <th>% Utilidad</th>
+            <th>Costo</th>
+            <th>Utilidad (%)</th>
+            <th>Precio</th>
             <th>Sub Total</th>
           </tr>
           <% @budget.budget_details.each do |budget_detail| %>
               <tr class="fields ">
                 <td><%= budget_detail.rubro_name %></td>
                 <td><%= budget_detail.rubro_measurement_unit %></td>
-                <td><%= number_to_currency_py(budget_detail.cost) %></td>
-                <td><%= number_to_currency_py(budget_detail.price) %></td>
                 <td><%= eval(sprintf("%3.2f",budget_detail.quantity)) %></td>
+                <td><%= number_to_currency_py(budget_detail.cost) %></td>
                 <td><%= budget_detail.utility %></td>
                 <td><%= number_to_currency_py(budget_detail.subtotal) %></td>
               </tr>

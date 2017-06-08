@@ -2,9 +2,9 @@
   <thead>
   <tr>
     <th>Nombre</th>
+    <th>Descripción</th>
     <th>Cliente</th>
     <th>Fecha</th>
-    <th>Descripción</th>
     <th>Estado</th>
     <th>Monto total</th>
     <th class="table-actions-xs"></th>
@@ -15,16 +15,16 @@
   <% budgets.each do |budget| %>
       <tr>
         <td><%= budget.name %></td>
+        <td><%= budget.description %></td>
         <td><%= budget.client_name %></td>
         <td><%= budget.date %></td>
-        <td><%= budget.description %></td>
         <td>
           <% if budget.approved? %>
-              <span class="label label-success">Aprovado</span>
+              <span class="label label-success">Aprobado</span>
           <% elsif budget.studying? %>
-              <span class="label label-primary">Pendiente</span>
+              <span class="label label-primary">En estudio</span>
           <% elsif budget.pending? %>
-              <span class="label label-info">En estudio</span>
+              <span class="label label-info">Pendiente</span>
           <% elsif budget.cancelled? %>
               <span class="label label-default">Anulado</span>
           <% elsif budget.rejected? %>
