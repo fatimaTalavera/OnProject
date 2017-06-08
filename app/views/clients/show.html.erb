@@ -59,9 +59,9 @@
   <div class="box-footer">
     <div class="pull-right">
       <% if (can? :update, Client) %>
-          <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_client_path(@client), :class => 'btn bg-orange' %>
+          <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_client_path(@client), :class => 'btn bg-orange', :title => 'Editar' %>
       <% end %>
-      <%= link_to "<i class=\"fa fa-arrow-left\"></i>".html_safe, clients_path, :class => 'btn btn-default' %>
+      <%= link_to "<i class=\"fa fa-arrow-left\"></i>".html_safe, clients_path, :class => 'btn btn-default', :title=> 'Atrás' %>
     </div>
   </div>
 </div>

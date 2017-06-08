@@ -23,7 +23,7 @@
       <div class="field col-md-12 form-group">
         <div class="field col-md-6 form-group">
           <div class="col-md-3">
-            <%= f.label :measurement_unit, 'Unidad de medida:', :class => 'control-label tooltip_required' %>
+            <%= f.label :measurement_unit, 'Ud. medida:', :class => 'control-label tooltip_required' %>
           </div>
           <div class="col-md-6">
             <%= f.text_field :measurement_unit, :maxlength => 35, :class => 'form-control' %>
@@ -54,11 +54,11 @@
                      <td class="col-md-2"><%=form.number_field :price, class: 'form-control price', readonly: true%></td>
                      <td class="col-md-2"><%=form.number_field :quantity, class: 'form-control quantity'%></td>
                      <td class="col-md-2"><%=form.number_field :subtotal, class: 'form-control total', readonly: true%></td>
-                    <td class="col-md-1"><%=form.link_to_remove '<i class="fa  fa-trash-o"></i>'.html_safe, class: 'btn btn-danger'%></td>
+                    <td class="col-md-1"><%=form.link_to_remove '<i class="fa  fa-trash-o"></i>'.html_safe, class: 'btn btn-sm btn-danger', title:'Eliminar'%></td>
                   </tr>
               <% end %>
               <tr>
-                <td><%=f.link_to_add '<i class="fa fa-plus"></i>'.html_safe, :rubro_material_details, class: 'btn btn-success insert_in_table'%></td>
+                <td><%=f.link_to_add '<i class="fa fa-plus"></i>'.html_safe, :rubro_material_details, class: 'btn btn-sm btn-success insert_in_table', title:'Agregar'%></td>
               </tr>
               </tbody>
             </table>
@@ -90,11 +90,11 @@
                     <td class="col-md-2"><%=form.number_field :price, class: 'form-control price', readonly: true%></td>
                     <td class="col-md-2"><%=form.number_field :quantity, class: 'form-control quantity'%></td>
                     <td class="col-md-2"><%=form.number_field :subtotal, class: 'form-control total', readonly: true%></td>
-                    <td class="col-md-1"><%=form.link_to_remove '<i class="fa  fa-trash-o"></i>'.html_safe, class: 'btn btn-danger'%></td>
+                    <td class="col-md-1"><%=form.link_to_remove '<i class="fa  fa-trash-o"></i>'.html_safe, class: 'btn btn-sm btn-danger', title:'Eliminar'%></td>
                   </tr>
               <% end %>
               <tr>
-                <td><%=f.link_to_add '<i class="fa fa-plus"></i>'.html_safe, :rubro_service_details, class: 'btn btn-success insert_in_table'%></td>
+                <td><%=f.link_to_add '<i class="fa fa-plus"></i>'.html_safe, :rubro_service_details, class: 'btn btn-sm btn-success insert_in_table', title:'Agregar'%></td>
               </tr>
               </tbody>
             </table>
@@ -107,11 +107,11 @@
     <div class="box-footer">
       <div class="pull-right">
         <% if controller.action_name == 'edit'  %>
-            <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i></button>
+            <button type="submit" class="btn btn-primary" title="Guardar"><i class="fa fa-save"></i></button>
         <% else %>
-            <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i></button>
+            <button type="submit" class="btn btn-primary" title="Guardar"><i class="fa fa-save"></i></button>
         <% end %>
-        <%= link_to "<i class=\"fa fa-arrow-left\"></i>".html_safe,  rubros_path , class: 'btn btn-default' %>
+        <%= link_to "<i class=\"fa fa-arrow-left\"></i>".html_safe,  rubros_path , class: 'btn btn-default', title:'Atrás' %>
       </div>
     </div>
 <% end %>

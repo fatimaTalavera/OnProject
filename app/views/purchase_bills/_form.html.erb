@@ -29,7 +29,7 @@
           </div>
           <div class="field col-md-6 form-group">
             <div class="col-md-5">
-              <%= f.label :number, 'Número de boleta:', :class => 'control-label tooltip_required' %>
+              <%= f.label :number, 'N° de boleta:', :class => 'control-label tooltip_required' %>
             </div>
             <div class="col-md-5">
               <%= f.text_field :number, :class => 'form-control' %>
@@ -73,12 +73,12 @@
                       <tr class="fields">
                         <td class="col-md-6"><%=form.text_field :due_date, :class => 'form-control datepicker input-sm' %></td>
                         <td class="col-md-5"><%=form.text_field :amount, class: 'form-control maskMoneda text-right input-sm', :maxlength => 19%></td>
-                        <td class="col-md-1"><%=form.link_to_remove '<i class="fa fa-trash-o"></i>'.html_safe, class: 'btn btn-flat bg-red btn-sm', title: 'Eliminar material'%></td>
+                        <td class="col-md-1"><%=form.link_to_remove '<i class="fa fa-trash-o"></i>'.html_safe, class: 'btn bg-red btn-sm', title: 'Eliminar material'%></td>
                       </tr>
                     <% end %>
                     <tr>
                       <td colspan="3">
-                        <%= f.link_to_add 'Agregar Cuota'.html_safe.html_safe, :installment_purchases, class: 'btn btn-flat bg-green btn-sm insert_in_table', title: 'Agregar Cuota' %>
+                        <%= f.link_to_add '<i class="fa fa-plus"></i>'.html_safe.html_safe, :installment_purchases, class: 'btn bg-green btn-sm insert_in_table', title: 'Agregar Cuota' %>
                       </td>
                     </tr>
                     </tbody>
@@ -105,8 +105,8 @@
 
   <div class="box-footer clearfix">
     <div class="pull-right">
-      <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i></button>
-      <%= link_to "<i class=\"fa fa-arrow-left\"></i>".html_safe,  purchase_bills_path , class: 'btn btn-flat btn-default' %>
+      <button type="submit" class="btn btn-primary" title="Guardar"><i class="fa fa-save"></i></button>
+      <%= link_to "<i class=\"fa fa-arrow-left\"></i>".html_safe,  purchase_bills_path , class: 'btn btn-flat btn-default', title: 'Atrás' %>
     </div>
   </div>
 <% end %>

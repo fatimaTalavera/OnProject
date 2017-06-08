@@ -70,8 +70,8 @@
     <div class="pull-right">
       <% if (can? :update, Certification) && @certification.pending? %>
           <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_certification_path(@certification), :class => 'btn bg-orange', :title => 'Editar'%>
-          <%= link_to "<i class=\"fa fa-check\"></i>".html_safe, approved_certification_path(@certification), :class => 'btn bg-green', :title => 'Aprobar' %>
-          <%= link_to "<i class=\"fa fa-times\"></i>".html_safe, rejected_certification_path(@certification), :class => 'btn bg-red', :title => 'Rechazar' %>
+          <%= link_to "<i class=\"fa fa-check\"></i>".html_safe, approved_certification_path(@certification), :class => 'btn bg-green', :title => 'Aprobar', data: {confirm: 'La certificación interna fué aprobada?'} %>
+          <%= link_to "<i class=\"fa fa-times\"></i>".html_safe, rejected_certification_path(@certification), :class => 'btn bg-red', :title => 'Rechazar', data: {confirm: 'La certificación interna fué rechazada?'} %>
       <% end %>
       <%= link_to "<i class=\"fa fa-arrow-left\"></i>".html_safe, @certification.contract, :class => 'btn btn-default', :title => 'Atrás' %>
     </div>

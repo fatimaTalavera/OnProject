@@ -18,7 +18,7 @@
         <td><%= service.measurement_unit %></td>
         <td>
           <% if (can? :update, Service) %>
-          <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_service_path(service), {:class => "btn btn-xs bg-orange"} %>
+          <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_service_path(service), {:class => "btn btn-xs bg-orange", :title=>"Editar"} %>
               <% end %>
         </td>
       </tr>

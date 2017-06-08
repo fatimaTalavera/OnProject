@@ -17,12 +17,12 @@
         <td><%=form.text_field :quantity, class: 'form-control qty text-right'%></td>
         <td><%=form.text_field :price, class: 'form-control maskMoneda unit-price text-right'%></td>
         <td class="subtotal text-right"><%= form.object.total ? form.object.total : 0 %></td>
-        <td><%=form.link_to_remove '<i class="fa fa-trash-o"></i>'.html_safe, class: 'btn btn-flat bg-red', title: 'Eliminar material'%></td>
+        <td><%=form.link_to_remove '<i class="fa fa-trash-o"></i>'.html_safe, class: 'btn btn-sm bg-red', title: 'Eliminar material'%></td>
       </tr>
     <% end %>
     <tr>
       <td colspan="2">
-        <%= f.link_to_add 'Agregar Material'.html_safe, :purchase_details, class: 'btn btn-flat bg-green insert_in_table', title: 'Agregar material' %>
+        <%= f.link_to_add '<i class="fa fa-plus"></i>'.html_safe, :purchase_details, class: 'btn btn-sm bg-green insert_in_table', title: 'Agregar material' %>
       </td>
       <td class="text-right text-bold">Total:</td>
       <td class="text-right">Gs. <span class="table-total"><%= purchase_bill.total ? purchase_bill.total : 0 %></span>

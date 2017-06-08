@@ -117,7 +117,7 @@
                                 <div class="input-group">
                                   <%= f.text_field :amount, value: i.balance, class: "form-control input-sm maskMoneda" %>
                                   <span class="input-group-btn">
-                                    <%= f.submit "Pagar", {:class => "btn btn-warning btn-sm"} %>
+                                    <%= f.submit "Pagar", {:class => "btn btn-primary btn-sm"} %>
                                   </span>
                                 </div>
                               </div>
@@ -161,9 +161,9 @@
   <div class="box-footer">
     <div class="pull-right">
       <% if (can? :update, PurchaseBill) %>
-          <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_purchase_bill_path(@purchase_bill), {:class => "btn bg-orange"} %>
+          <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_purchase_bill_path(@purchase_bill), {:class => "btn bg-orange", :title => "Editar"} %>
       <% end %>
-      <%= link_to "<i class=\"fa fa-arrow-left\"></i>".html_safe, url_for(:back), {:class => "btn btn-default"} %>
+      <%= link_to "<i class=\"fa fa-arrow-left\"></i>".html_safe, url_for(:back), {:class => "btn btn-default", :title => "Atrás"} %>
     </div>
   </div>
 </div>

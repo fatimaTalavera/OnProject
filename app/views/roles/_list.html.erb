@@ -14,9 +14,9 @@
         <td><%= role.description %></td>
         <td><%= l role.created_at, format: :long%></td>
         <td>
-          <%= link_to "<i class=\"fa fa-eye\"></i>".html_safe, role_path(role), {:class => "btn btn-xs bg-teal"} %>
+          <%= link_to "<i class=\"fa fa-eye\"></i>".html_safe, role_path(role), {:class => "btn btn-xs bg-teal", :title => "Ver"} %>
           <% if (can? :update, Role) %>
-          <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_role_path(role), {:class => "btn btn-xs bg-orange"} %>
+          <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_role_path(role), {:class => "btn btn-xs bg-orange", :title => "Editar"} %>
               <% end %>
         </td>
       </tr>
