@@ -29,8 +29,8 @@
 
           <% if (can? :update, Certification) && certification.pending? %>
               <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_certification_path(certification), :class => 'btn btn-xs bg-orange',:title => 'Editar'%>
-              <%= link_to "<i class=\"fa fa-check\"></i>".html_safe, approved_certification_path(certification), :class => 'btn btn-xs  bg-green', :title => 'Aprobar',data: {confirm: 'La certificación interna fué aprobada por el cliente?'}  %>
-              <%= link_to "<i class=\"fa fa-times\"></i>".html_safe, rejected_certification_path(certification), :class => 'btn btn-xs bg-red', :title => 'Rechazar',data: {confirm: 'La certificación interna fué rechazada por el cliente?'} %>
+              <%= link_to "<i class=\"fa fa-check\"></i>".html_safe, approved_certification_path(certification), :class => 'btn btn-xs  bg-green', :title => 'Aprobar',data: {confirm: 'La certificación interna fué aprobada?'}  %>
+              <%= link_to "<i class=\"fa fa-times\"></i>".html_safe, rejected_certification_path(certification), :class => 'btn btn-xs bg-red', :title => 'Rechazar',data: {confirm: 'La certificación interna fué rechazada?'} %>
           <% end %>
 
         </td>

@@ -60,12 +60,12 @@
                       <td><%=form.number_field :quantity, class: 'form-control qty tooltip_required quantity'%></td>
                       <td><%=form.text_field :price, class: 'form-control maskMoneda tooltip_required price unit-price text-right'%></span></td>
                       <td class='subtotal text-right'>0</td>
-                      <td><%=form.link_to_remove '<i class="fa  fa-trash-o"></i>'.html_safe, class: 'btn btn-danger'%></td>
+                      <td><%=form.link_to_remove '<i class="fa  fa-trash-o"></i>'.html_safe, class: 'btn btn-sm btn-danger', title: 'Eliminar'%></td>
                     </tr>
                 <% end %>
                 <tr>
                   <td colspan="2">
-                    <%= f.link_to_add 'Agregar Material'.html_safe, :movement_details, class: 'btn btn-flat bg-green insert_in_table', title: 'Agregar material' %>
+                    <%= f.link_to_add '<i class="fa  fa-plus"></i>'.html_safe, :movement_details, class: 'btn btn-sm bg-green insert_in_table', title: 'Agregar material' %>
                   </td>
                   <td class="text-right text-bold">Total:</td>
                   <td class="text-right">Gs. <span class="table-total">0</span></td>
@@ -80,8 +80,8 @@
 
     <div class="box-footer">
       <div class="pull-right">
-        <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i></button>
-        <%= link_to  "<i class=\"fa fa-arrow-left\"></i>".html_safe,  material_movements_path , class: 'btn btn-default' %>
+        <button type="submit" class="btn btn-primary" title="Guardar"><i class="fa fa-save"></i></button>
+        <%= link_to  "<i class=\"fa fa-arrow-left\"></i>".html_safe,  material_movements_path , class: 'btn btn-default', title: 'Atrás' %>
       </div>
     </div>
 <% end %>

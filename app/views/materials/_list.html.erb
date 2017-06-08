@@ -22,7 +22,7 @@
 
         <td>
           <% if (can? :update, Material) %>
-              <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_material_path(material), {:class => "btn btn-xs bg-orange"} %>
+              <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_material_path(material), {:class => "btn btn-xs bg-orange", :title => "Editar"} %>
           <% end %>
         </tr>
   <% end %>
