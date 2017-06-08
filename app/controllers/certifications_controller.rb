@@ -75,7 +75,7 @@ class CertificationsController < ApplicationController
   private
   def get_certifications
     @q = Certification.ransack(params[:q])
-    @q.sorts = ['contract_name asc'] if @q.sorts.empty?
+    @q.sorts = ['state asc','contract_name asc'] if @q.sorts.empty?
     @certifications = @q.result.page(params[:page])
   end
   def set_certification

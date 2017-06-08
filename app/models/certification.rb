@@ -4,6 +4,7 @@ class Certification < ApplicationRecord
   has_many :certification_details
 
   enum state: { pending: 0, rejected: 1, approved: 2, paid: 3 }
+  enum state_type: {Pendiente:0, Rechazado:1, Aprobado:2, Pagado:3 }
   delegate :name, to: :contract, prefix: true
   accepts_nested_attributes_for :certification_details, allow_destroy: true
   after_commit :update_balance
