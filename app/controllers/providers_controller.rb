@@ -19,6 +19,7 @@ class ProvidersController < ApplicationController
   # GET /providers/1.json
   def show
     add_breadcrumb I18n.t('helpers.breadcrumbs.providers.show')
+    @purchase_bills = @provider.purchase_bills.page params[:page]
   end
 
   # GET /providers/new

@@ -91,7 +91,7 @@
         </tr>
         </thead>
         <tbody>
-        <% @client.contracts.each do |contract| %>
+        <% @contracts.each do |contract| %>
             <tr>
               <td><%= contract.name %></td>
               <td><%= contract.start_date %></td>
@@ -103,6 +103,11 @@
         <% end %>
         </tbody>
       </table>
+      <div id="paginate-container">
+        <ul class="pagination pagination-sm no-margin pull-right">
+          <%= paginate @contracts %>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
