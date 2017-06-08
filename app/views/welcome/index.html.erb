@@ -62,18 +62,14 @@
   <div class="col-lg-3 col-xs-6">
     <div class="small-box bg-aqua">
       <div class="inner">
-        <h3><%= @users.count %></h3>
-        <% if @users.count == 1 %>
-          <p>Usuario Registrado</p>
-        <% else %>
-          <p>Usuarios Registrados</p>
-        <% end %>
+        <h3><%= Budget.pending.count %></h3>
+        <p>Presupuesto(s) pendiente(s)</p>
       </div>
       <div class="icon">
         <i class="fa fa-user-plus"></i>
       </div>
-      <% if (can? :show_list, User) %>
-      <a href="<%= users_path  %>" class="small-box-footer">Ver Detalles <i class="fa fa-arrow-circle-right"></i></a>
+      <% if (can? :show_list, Budget) %>
+        <a href="<%= budgets_path(:q => {:state_eq => Budget.states[:pending]})   %>" class="small-box-footer">Ver Detalles <i class="fa fa-arrow-circle-right"></i></a>
       <% end %>
     </div>
   </div>
