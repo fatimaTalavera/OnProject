@@ -75,7 +75,7 @@ class MaterialMovementsController < ApplicationController
   private
     def get_movements
       @q = MaterialMovement.ransack(params[:q])
-      @q.sorts = ['fecha desc'] if @q.sorts.empty?
+      @q.sorts = ['created_at desc'] if @q.sorts.empty?
       @material_movements = @q.result.page(params[:page])
     end
 
