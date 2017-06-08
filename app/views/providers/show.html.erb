@@ -86,17 +86,22 @@
         </thead>
         <tbody>
         <% @provider.purchase_bills.each do |purchase| %>
-              <tr>
-                <td><%= purchase.date %></td>
-                <td><%= purchase.number %></td>
-                <td><%= purchase.condition %></td>
-                <td><%= number_to_currency_py(purchase.total) %></td>
-                <td><%= number_to_currency_py(purchase.payments.sum(:amount)) %></td>
-                <td><%= number_to_currency_py(purchase.total - purchase.payments.sum(:amount)) %></td>
-              <tr>
+            <tr>
+              <td><%= purchase.date %></td>
+              <td><%= purchase.number %></td>
+              <td><%= purchase.condition %></td>
+              <td><%= number_to_currency_py(purchase.total) %></td>
+              <td><%= number_to_currency_py(purchase.payments.sum(:amount)) %></td>
+              <td><%= number_to_currency_py(purchase.total - purchase.payments.sum(:amount)) %></td>
+            <tr>
         <% end %>
         </tbody>
       </table>
+      <div id="paginate-container">
+        <ul class="pagination pagination-sm no-margin pull-right">
+          <%= paginate @purchase_bills %>
+        </ul>
+      </div>
     </div>
   </div>
 </div>

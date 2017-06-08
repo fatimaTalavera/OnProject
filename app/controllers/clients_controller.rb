@@ -25,6 +25,7 @@ class ClientsController < ApplicationController
       @balance = @balance + contract.amount
       @balance = @balance - contract.sale_bills.sum(:total)
     end
+    @contracts = @client.contracts.page params[:page]
   end
 
   # GET /clients/new
