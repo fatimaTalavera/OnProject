@@ -9,5 +9,13 @@ class AccountEmployeeDetail < ApplicationRecord
   validates :state, presence:true
   validates :total, presence:true
   validates :certification_id, presence:true
+  validates :date, presence:true
+  validate :number
+
+  def number
+    if pay.to_i == 1 && number_bill.blank?
+      errors.add(:number_bill, "Ingrese n° de recibo")
+    end
+  end
 
 end

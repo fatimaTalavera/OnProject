@@ -9,10 +9,16 @@ class AccountEmployee < ApplicationRecord
   delegate :name, :last_name, :identification_document, to: :employee, prefix: true
   after_update :discount_balance_employee
 
+
   enum states_type: [:Pendiente, :Pagado]
 
   validates :date, presence:true
   validates :contract_id, presence:true
+
+  def pay_aux
+    AccountEmployeeDetail.where(account_employee_id: id).sum(:total)
+  end
+
 
   def discount_balance_employee
     details = account_employee_details.where(pay: 1).where(state: AccountEmployee.states_types.keys[0])

@@ -19,7 +19,7 @@ class AccountEmployeesController < ApplicationController
 
   # GET /account_employees/1/edit
   def edit
-    @account_employee.pay = AccountEmployeeDetail.where(account_employee_id: params[:id]).sum(:total)
+    @account_employee.pay = @account_employee.pay_aux
     @certification = Certification.where(id: AccountEmployeeDetail.where(account_employee_id: params[:id]).pluck(:certification_id))
   end
 
