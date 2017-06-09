@@ -34,7 +34,7 @@ class Certification < ApplicationRecord
             new_account = AccountEmployee.new(contract_id: aproved_certification.contract_id, date: Time.now)
             if new_account.save
               certification_details.each do |d|
-                new_account_detail = AccountEmployeeDetail.new(account_employee_id: new_account.id, certification_id: aproved_certification.id, employee_id: d.employee_id, total: d.total, state: "Pendiente")
+                new_account_detail = AccountEmployeeDetail.new(account_employee_id: new_account.id, certification_id: aproved_certification.id, employee_id: d.employee_id, total: d.total, state: "Pendiente", date:Date.today)
                 if new_account_detail.save
                   #actualiza saldo empleado
                   before_balance = Employee.find(d.employee_id).balance
@@ -51,9 +51,8 @@ class Certification < ApplicationRecord
 
         puts(certification_details)
         certification_details.each do |d|
-          new_account_detail = AccountEmployeeDetail.new(account_employee_id: account.pluck(:id).first, certification_id: aproved_certification.id, employee_id: d.employee_id, total: d.total,state:"Pendiente")
+          new_account_detail = AccountEmployeeDetail.new(account_employee_id: account.pluck(:id).first, certification_id: aproved_certification.id, employee_id: d.employee_id, total: d.total,state:"Pendiente", date:Date.today)
           if new_account_detail.save
-
             #actualiza saldo empleado
             before_balance = Employee.find(d.employee_id).balance
             Employee.find(d.employee_id).update_attribute(:balance, before_balance + d.total)

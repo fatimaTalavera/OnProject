@@ -11,57 +11,87 @@
           <%= @account_employee.contract_name %>
         </div>
       </div>
-
       <div class="field col-md-6 form-group">
         <div class="col-md-6 show-padding">
-          <strong>Fecha:</strong>
-          <%= @account_employee.date %>
-        </div>
-      </div>
-    </div>
-    <div class="field col-md-12 form-group">
-      <div class="field col-md-6 form-group">
-        <div class="col-md-6 show-padding">
-          <strong>Total:</strong>
-          <%= @account_employee.pay %>
+          <strong>Monto total certificado:</strong>
+          <%= number_to_currency_py(@account_employee.pay) %>
         </div>
       </div>
     </div>
 
-    <div class="col-md-12 form-group">
-      <table class="table table-bordered table-condensed table-list">
-        <thead>
-        <tr  style="word-wrap: break-word">
-          <th width="20%">Jornalero</th>
-          <th width="10%">Total a pagar</th>
-          <th width="10%">N° de recibo</th>
-          <th width="10%">Fecha de pago</th>
-          <th width="10%">Estado del pago</th>
-          <th width="5%">Pagar</th>
-        </tr>
-        </thead>
-        <tbody>
-        <% @account_employee.account_employee_details.each do |detail| %>
-            <tr>
-              <td><%= detail.employee_name_with_initial %> C.I: <%= detail.employee_identification_document %>
-              <td><%= number_to_currency_py(detail.total) %>
-              <td><%= detail.number_bill%>
-              <td><%= detail.date %></td>
-              <td><%= detail.state %>
-              <td><%= check_box_tag 'done', '1', detail.pay,disabled:true %>
-            </tr>
-        <% end %>
-        </tbody>
-      </table>
-    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="nav-tabs-justified">
+          <ul class="nav nav-tabs">
+            <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">Certificaciones a Pagar</a></li>
+            <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="false">Certificaciones Pagadas</a></li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane active" id="tab_1">
+              <div class="box-body">
+                <table class="table table-bordered table-condensed table-list">
+                  <thead>
+                  <tr  style="word-wrap: break-word">
+                    <th width="20%">Jornalero</th>
+                    <th width="10%">Monto certificado</th>
+                    <th width="10%">Fecha de Aprobación</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <% @account_employee.account_employee_details.where(state:"Pendiente").each do |detail| %>
+                      <tr>
+                        <td><%= detail.employee_name_with_initial %> C.I: <%= detail.employee_identification_document %>
+                        <td><%= number_to_currency_py(detail.total) %>
+                        <td><%= detail.certification.date %></td>
+                      </tr>
+                  <% end %>
+                  </tbody>
+                </table>
+              </div>
+              <div class="box-footer">
+                <div class="pull-right">
+                  <% if (can? :update, AccountEmployee) %>
+                      <%= link_to "Generar Pago", edit_account_employee_path(@account_employee), :class => 'btn bg-blue' %>
+                  <% end %>
+                  <%= link_to "<i class=\"fa fa-arrow-left\"></i>".html_safe, @account_employee.contract, :class => 'btn btn-default', :title => 'Atrás' %>
+                </div>
+              </div>
+            </div>
 
-  </div>
-  <div class="box-footer">
-    <div class="pull-right">
-          <% if (can? :update, AccountEmployee) %>
-              <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_account_employee_path(@account_employee), :class => 'btn bg-orange', :title => 'Editar' %>
-          <% end %>
-      <%= link_to "<i class=\"fa fa-arrow-left\"></i>".html_safe, @account_employee.contract, :class => 'btn btn-default', :title => 'Atrás' %>
+            <div class="tab-pane" id="tab_2">
+              <div class="box-body">
+                <table class="table table-bordered table-condensed table-list">
+                  <thead>
+                  <tr  style="word-wrap: break-word">
+                    <th width="20%">Jornalero</th>
+                    <th width="10%">Monto certificado</th>
+                    <th width="10%">Fecha de Aprobación</th>
+                    <th width="10%">N° de recibo</th>
+                    <th width="10%">Fecha de pago</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <% @account_employee.account_employee_details.where(state:"Pagado").each do |detail| %>
+                      <tr>
+                        <td><%= detail.employee_name_with_initial %> C.I: <%= detail.employee_identification_document %>
+                        <td><%= number_to_currency_py(detail.total) %>
+                        <td><%= detail.certification.date %></td>
+                        <td><%= detail.number_bill%>
+                        <td><%= detail.date %></td>
+                      </tr>
+                  <% end %>
+                  </tbody>
+                </table>
+              </div>
+              <div class="box-footer">
+                <div class="pull-right">
+                  <%= link_to "<i class=\"fa fa-arrow-left\"></i>".html_safe, @account_employee.contract, :class => 'btn btn-default', :title => 'Atrás' %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

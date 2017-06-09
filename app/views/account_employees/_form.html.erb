@@ -3,81 +3,114 @@
       <div class="field col-md-12 form-group">
         <div class="field col-md-6 form-group">
           <div class="col-md-2">
-            <%= f.label :contract, 'Contrato:', :class => 'control-label  tooltip_required' %>
+            <%= f.label :contract, 'Contrato:', :class => 'control-label' %>
           </div>
           <div class="col-md-8">
-            <%= f.collection_select(:contract_id, Contract.all, :id, :name, {prompt: 'Selecciona un contrato'}, :class => 'form-control', :disabled => 'true') %>
+            <%= f.label  account_employee.contract.name, :class => 'control-label' %>
+            <%= f.hidden_field :contract_id, :class => 'form-control'%>
           </div>
         </div>
         <div class="field col-md-6 form-group">
-          <div class="col-md-2">
-            <%= f.label :date, 'Fecha:', :class => 'control-label  tooltip_required' %>
-          </div>
-          <div class="input-group col-md-8">
-            <%= f.text_field :date, :id => 'datepickerFrom', :class => 'input-group date form-control datepicker', :value => Date.today, :disabled => 'true' %>
-            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-          </div>
-        </div>
-      </div>
-      <div id="demo"></div>
-      <div class="field col-md-12 form-group">
-        <div class="field col-md-6 form-group">
-          <div class="col-md-2">
-            <%= f.label :pay, 'Total:', :class => 'control-label' %>
+          <div class="col-md-4">
+            <%= f.label :pay, 'Monto total certificado:', :class => 'control-label' %>
           </div>
           <div class="col-md-8">
-            <%= f.text_field :pay, :class => 'form-control', readonly:true%>
+            <label class="control-label"><%= number_to_currency_py(account_employee.pay_aux) %></label>
+            <%= f.hidden_field :pay, :class => 'form-control'%>
           </div>
         </div>
       </div>
      </div>
 
-    <div class="col-md-12">
-      <div class="box box-success">
-        <div class="box-header with-border">
-          <h3 class="box-title">Certificaciones a pagar:</h3>
-        </div>
-        <div class="box-body">
-          <table id="table" class="table table-bordered">
-            <thead>
-            <tr>
-              <th width="15%">Empleado</th>
-              <th width="15%">Monto Certificado</th>
-              <th width="15%">Fecha de Aprobación</th>
-              <th width="15%">Recibo N°</th>
-              <th width="15%">Selecciona</th>
-              <th width="15%">Fecha de Pago</th>
-              <th width="15%">Estado del Pago</th>
-            </tr>
-            </thead>
-            <tbody>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="nav-tabs-justified">
+          <ul class="nav nav-tabs">
+            <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">Certificaciones a Pagar</a></li>
+            <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="false">Certificaciones Pagadas</a></li>
+          </ul>
 
-                <%= f.fields_for :account_employee_details, :wrapper => false do |detail| %>
-                    <tr class="fields">
-                      <td><%=detail.collection_select(:employee_id, Employee.all, :id, :name_with_initial, {prompt: 'Selecciona un Jornalero'}, class: 'form-control', disabled: true)%></td>
-                      <td><%=detail.number_field :total, class: 'form-control total', disabled: true %></td>
-                      <td><%=detail.text_field :created_at, class: 'form-control', disabled: true%></td>
-                      <td><%=detail.text_field :number_bill, class: 'form-control',minlength:1, maxlength:10 %></td>
-                      <td><%= detail.check_box :pay, checked:"checked" %></td>
-                      <td><%=detail.text_field :date, :id => 'datepickerFrom', :class => 'input-group date form-control datepicker', :value => Date.today %></td>
-                      <td><%=detail.text_field :state, class: 'form-control', disabled:true%></td>
-                      <br>
-                    </tr>
-                <% end %>
+          <div class="tab-content">
+            <div class="tab-pane active" id="tab_1">
+              <div class="box-body">
+                <table id="table" class="table table-bordered">
+                  <thead>
+                  <tr>
+                    <th width="15%">Empleado</th>
+                    <th width="15%">Monto Certificado</th>
+                    <th width="15%">Fecha de Aprobación</th>
+                    <th width="15%">Recibo N°</th>
+                    <th width="15%">Selecciona</th>
+                    <th width="15%">Fecha de Pago</th>
+                    <th width="15%">Estado del Pago</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+
+                  <%= f.fields_for :account_employee_details, account_employee.account_employee_details.where(state:"Pendiente") do |detail| %>
+                      <tr class="fields">
+                        <td><%=detail.collection_select(:employee_id, Employee.all, :id, :name_with_initial, {prompt: 'Selecciona un Jornalero'}, class: 'form-control', disabled: true)%></td>
+                        <td><%=detail.number_field :total, class: 'form-control total', disabled: true %></td>
+                        <td><%=detail.text_field :created_at, class: 'form-control', disabled: true%></td>
+                        <td><%=detail.text_field :number_bill, class: 'form-control',minlength:1, maxlength:10%></td>
+                        <td><%=detail.check_box :pay, checked:"checked" %></td>
+                        <td><%=detail.text_field :date, :id => 'datepickerFrom', :class => 'input-group date form-control datepicker', :value => Date.today %></td>
+                        <td><%=detail.text_field :state, class: 'form-control', disabled:true%></td>
+                      </tr>
+                  <% end %>
 
 
-            </tbody>
-          </table>
+                  </tbody>
+                </table>
+              </div>
+              <div class="box-footer">
+                <div class="pull-right">
+                  <%= f.submit 'Pagar', :class => "btn btn-success" %>
+                  <%= link_to "<i class=\"fa fa-arrow-left\"></i>".html_safe, account_employee.contract, :class => 'btn btn-default', :title => 'Atrás' %>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-pane" id="tab_2">
+              <div class="box-body">
+                <table id="table" class="table table-bordered">
+                  <thead>
+                  <tr>
+                    <th width="15%">Empleado</th>
+                    <th width="15%">Monto Certificado</th>
+                    <th width="15%">Fecha de Aprobación</th>
+                    <th width="15%">Recibo N°</th>
+                    <th width="15%">Fecha de Pago</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+
+                  <% account_employee.account_employee_details.where(state:"Pagado").each  do |detail| %>
+                      <tr class="fields">
+                        <td><%= detail.employee.name %>&nbsp;<%= detail.employee.last_name %></td>
+                        <td><%= detail.total %></td>
+                        <td><%= detail.certification.date %></td>
+                        <td><%= detail.number_bill %></td>
+                        <td><%= detail.date %></td>
+                      </tr>
+                  <% end %>
+
+
+                  </tbody>
+                </table>
+              </div>
+              <div class="box-footer">
+                <div class="pull-right">
+                  <%= link_to "<i class=\"fa fa-arrow-left\"></i>".html_safe, account_employee.contract, :class => 'btn btn-default', :title => 'Atrás' %>
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="box-footer">
-      <div class="pull-right">
-        <%= f.submit 'Pagar', :class => "btn btn-success" %>
-        <%= link_to "<i class=\"fa fa-arrow-left\"></i>".html_safe, account_employee.contract, :class => 'btn btn-default', :title => 'Atrás' %>
-      </div>
-    </div>
 
 <% end %>
 <script>
