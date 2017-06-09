@@ -1,11 +1,11 @@
 <%= form_for provider, validate: true, :html => { class: 'form-horizontal' } do |f| %>
     <div class="box-body box-success">
       <div class="field col-md-12 form-group">
-        <div class="field col-md-9 form-group">
+        <div class="field col-md-11 form-group">
           <div class="col-md-3">
             <%= f.label :name, 'Nombre o Razón Social:', :class => 'control-label tooltip_required' %>
           </div>
-          <div class="col-md-9">
+          <div class="col-md-7">
             <%= f.text_field :name, :class => 'form-control', autofocus:true, :maxlength => 100 %>
           </div>
         </div>

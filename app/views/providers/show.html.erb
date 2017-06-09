@@ -1,62 +1,65 @@
 <div class="box box-success">
-  <div class="box-header with-header">
-    <h3 class="page-header">Proveedor</h3>
-    <div class="box-body">
+  <div class="box-header with-border">
+    <h3 class="box-title"><%= t('helpers.title.provider.show') %></h3>
+  </div>
+  <div class="box-body">
 
-      <div class="field col-md-12 form-group">
-        <div class="field col-md-6 form-group">
-          <div class="col-md-4 label-pad">
-            <strong>Nombre o Razón Social: </strong>
-          </div>
-          <div class="col-md-8 show-padding">
-            <%= @provider.name %>
-          </div>
+    <div class="field col-md-12 form-group">
+      <div class="field col-md-8 form-group">
+        <div class="col-md-4 label-pad">
+          <strong>Nombre o Razón Social: </strong>
         </div>
-
-        <div class="field col-md-6 form-group">
-          <div class="col-md-1 label-pad">
-            <strong>RUC:</strong>
-          </div>
-          <div class="col-md-7 show-padding">
-            <%= @provider.ruc %>
-          </div>
+        <div class="col-md-8 show-padding">
+          <%= @provider.name %>
         </div>
       </div>
 
-      <div class="field col-md-12 form-group">
-        <div class="field col-md-4 form-group">
-          <div class="col-md-3">
-            <strong>Correo:</strong>
-          </div>
-          <div class="col-md-7 show-padding">
-            <%= @provider.email %>
-          </div>
+      <div class="field col-md-4 form-group">
+        <div class="col-md-3 label-pad">
+          <strong>RUC:</strong>
         </div>
-
-        <div class="field col-md-4 form-group">
-          <div class="col-md-3">
-            <strong>Dirección:</strong>
-          </div>
-          <div class="col-md-9 show-padding">
-            <%= @provider.address %>
-          </div>
-        </div>
-
-        <div class="field col-md-4 form-group">
-          <div class="col-md-3">
-            <strong>Teléfono:</strong>
-          </div>
-          <div class="col-md-7 show-padding">
-            <%= @provider.phone %>
-          </div>
+        <div class="col-md-9 show-padding">
+          <%= @provider.ruc %>
         </div>
       </div>
     </div>
-    <div class="box-footer">
-      <div class="pull-right">
-        <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_provider_path(@provider), :class => 'btn bg-orange', :title => 'Editar' %>
-        <%= link_to "<i class=\"fa fa-arrow-left\"></i>".html_safe, providers_path, :class => 'btn btn-default', :title => 'Atrás' %>
+
+    <div class="field col-md-12 form-group">
+      <div class="field col-md-8 form-group">
+        <div class="col-md-2">
+          <strong>Dirección:</strong>
+        </div>
+        <div class="col-md-10 show-padding">
+          <%= @provider.address %>
+        </div>
       </div>
+
+      <div class="field col-md-4 form-group">
+        <div class="col-md-3">
+          <strong>Teléfono:</strong>
+        </div>
+        <div class="col-md-7 show-padding">
+          <%= @provider.phone %>
+        </div>
+      </div>
+    </div>
+
+    <div class="field col-md-12 form-group">
+      <div class="field col-md-8 form-group">
+        <div class="col-md-2">
+          <strong>Correo:</strong>
+        </div>
+        <div class="col-md-10 show-padding">
+          <%= @provider.email %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="box-footer">
+    <div class="pull-right">
+      <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_provider_path(@provider), :class => 'btn bg-orange', :title => 'Editar' %>
+      <%= link_to "<i class=\"fa fa-arrow-left\"></i>".html_safe, providers_path, :class => 'btn btn-default', :title => 'Atrás' %>
     </div>
   </div>
 </div>
