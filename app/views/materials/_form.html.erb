@@ -14,14 +14,14 @@
           <div class="col-sm-2 alineado">
             <%= f.label :description, 'Descripción:', :class => 'control-label' %>
           </div>
-          <div class="col-sm-7">
-            <%= f.text_field :description, :maxlength => 30, :class => 'form-control' %>
+          <div class="col-sm-8">
+            <%= f.text_area :description, :class => 'form-control', :maxlength => 200 %>
           </div>
         </div>
       </div>
       <div class="field col-md-12 form-group">
         <br>
-        <div class="field col-md-3 form-group">
+        <div class="field col-md-4 form-group">
           <div class="col-sm-3 alineado">
             <%= f.label :quantity, 'Cantidad:', :class => 'control-label tooltip_required' %>
           </div>
@@ -33,8 +33,8 @@
             <% end %>
           </div>
         </div>
-        <div class="field col-md-3 form-group">
-          <div class="col-sm-6 ">
+        <div class="field col-md-4 form-group">
+          <div class="col-sm-5 ">
             <%= f.label :measurement_unit, 'Ud. medida:', :class => 'control-label tooltip_required' %>
           </div>
           <div class="col-sm-5">
@@ -42,21 +42,12 @@
           </div>
         </div>
 
-        <div class="field col-md-3 form-group">
+        <div class="field col-md-4 form-group">
           <div class="col-sm-4 alineado">
             <%= f.label :price, 'Precio:', :class => 'control-label tooltip_required' %>
           </div>
           <div class="col-sm-6 ">
             <%= f.text_field :price, :maxlength => 10, :class => 'form-control' %>
-          </div>
-        </div>
-
-        <div class="field col-md-3 form-group">
-          <div class="col-sm-7 alineado">
-            <%= f.label :minimun_stock, 'Stock min:', :class => 'control-label' %>
-          </div>
-          <div class="col-sm-5 ">
-            <%= f.text_field :minimun_stock, :maxlength => 5, :class => 'form-control' %>
           </div>
         </div>
       </div>

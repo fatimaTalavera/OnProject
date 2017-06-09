@@ -101,11 +101,11 @@
           <% end %>
 
           <% if (can? :update, Budget) &&  (can? :create, Contract) && @budget.studying? %>
-              <%= link_to "<i class=\"fa fa-trophy\"></i>".html_safe, new_contract_path({budget_id: @budget.id}), :class => 'btn bg-green', title:'Generar contrato' %>
+              <%= link_to "<i class=\"fa fa-file-text\"></i>".html_safe, new_contract_path({budget_id: @budget.id}), :class => 'btn bg-green', title:'Generar contrato' %>
               <%= link_to "<i class=\"fa fa-thumbs-o-down\"></i>".html_safe, reject_budget_path(@budget), :class => 'btn bg-orange', title:'Rechazar', data: {confirm: 'Esta seguro que desea rechazar el presupuesto?'} %>
           <% end %>
           <% if @budget.approved? && !@budget.contract.nil? && (can? :show, Contract) %>
-              <%= link_to "<i class=\"fa fa-trophy\"></i>".html_safe, contract_path(@budget.contract.id), :class => 'btn bg-purple', :title=>'Ver Contrato'%>
+              <%= link_to "<i class=\"fa fa-file-text\"></i>".html_safe, contract_path(@budget.contract.id), :class => 'btn bg-purple', :title=>'Ver Contrato'%>
           <% end %>
 
           <%= link_to "<i class=\"fa fa-file-pdf-o\"></i>".html_safe, budget_path(@budget, format: 'pdf'), class:'btn bg-gray-light', title:'Generar pdf' %>
