@@ -37,7 +37,7 @@
             <h3 class="box-title">Materiales</h3>
           </div>
           <div class="box-body">
-            <table class="table table-bordered">
+            <table class="table table-bordered" id="material-table">
               <tr>
                 <th class="col-md-3">Material</th>
                 <th class="col-md-1">Ud. Medida</th>
@@ -48,12 +48,12 @@
               </tr>
               <tbody id="material-details-body">
               <%= f.fields_for :rubro_material_details, :wrapper => false do |form| %>
-                   <tr class="fields" onchange='getMaterialTotal(this);'>
-                    <td class="col-md-3"><%=form.collection_select(:material_id, Material.all, :id, :name, {prompt: 'Seleccionar'}, :onchange => 'getMaterialPrice(this);', class: 'form-control select2 material-search')%></td>
-                     <td class="col-md-2"><%=form.text_field :measurement_unit, class: 'form-control measurement_unit', readonly: true%></td>
-                     <td class="col-md-2"><%=form.number_field :price, class: 'form-control price', readonly: true%></td>
-                     <td class="col-md-2"><%=form.number_field :quantity, class: 'form-control quantity'%></td>
-                     <td class="col-md-2"><%=form.number_field :subtotal, class: 'form-control total', readonly: true%></td>
+                   <tr class="fields">
+                    <td class="col-md-3"><%=form.collection_select(:material_id, Material.all, :id, :name, {prompt: 'Seleccionar'}, class: 'form-control select2 material-search')%></td>
+                     <td class="col-md-2"><%=form.text_field :measurement_unit, class: 'form-control measurement', readonly: true%></td>
+                     <td class="col-md-2"><%=form.text_field :price, class: 'form-control maskMoneda unit-price text-right', readonly: true%></td>
+                     <td class="col-md-2"><%=form.text_field :quantity, class: 'form-control qty text-right'%></td>
+                     <td class="subtotal text-right"><%= form.object.subtotal ? form.object.subtotal : 0 %></td>
                     <td class="col-md-1"><%=form.link_to_remove '<i class="fa  fa-trash-o"></i>'.html_safe, class: 'btn btn-sm btn-danger', title:'Eliminar'%></td>
                   </tr>
               <% end %>
@@ -73,7 +73,7 @@
             <h3 class="box-title">Servicios</h3>
           </div>
           <div class="box-body">
-            <table class="table table-bordered">
+            <table class="table table-bordered" id="service-table">
               <tr>
                 <th class="col-md-3">Servicio</th>
                 <th class="col-md-2">Ud. Medida</th>
@@ -84,12 +84,12 @@
               </tr>
               <tbody id="service-details-body">
               <%= f.fields_for :rubro_service_details, :wrapper => false do |form| %>
-                  <tr class="fields" onchange='getServiceTotal(this);'>
-                    <td class="col-md-3"><%=form.collection_select(:service_id, Service.all, :id, :name, {prompt: 'Seleccionar'}, :onchange => 'getServicePrice(this);', class: 'form-control select2 service-search')%></td>
-                    <td class="col-md-2"><%=form.text_field :measurement_unit, class: 'form-control measurement_unit', readonly: true%></td>
-                    <td class="col-md-2"><%=form.number_field :price, class: 'form-control price', readonly: true%></td>
-                    <td class="col-md-2"><%=form.number_field :quantity, class: 'form-control quantity'%></td>
-                    <td class="col-md-2"><%=form.number_field :subtotal, class: 'form-control total', readonly: true%></td>
+                  <tr class="fields">
+                    <td class="col-md-3"><%=form.collection_select(:service_id, Service.all, :id, :name, {prompt: 'Seleccionar'}, class: 'form-control select2 service-search')%></td>
+                    <td class="col-md-2"><%=form.text_field :measurement_unit, class: 'form-control measurement', readonly: true%></td>
+                    <td class="col-md-2"><%=form.text_field :price, class: 'form-control maskMoneda unit-price text-right', readonly: true%></td>
+                    <td class="col-md-2"><%=form.text_field :quantity, class: 'form-control qty text-right'%></td>
+                    <td class="subtotal text-right"><%= form.object.subtotal ? form.object.subtotal : 0 %></td>
                     <td class="col-md-1"><%=form.link_to_remove '<i class="fa  fa-trash-o"></i>'.html_safe, class: 'btn btn-sm btn-danger', title:'Eliminar'%></td>
                   </tr>
               <% end %>
