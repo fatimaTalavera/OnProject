@@ -38,7 +38,7 @@
             <%= f.label :measurement_unit, 'Ud. medida:', :class => 'control-label tooltip_required' %>
           </div>
           <div class="col-sm-5">
-            <%= f.text_field :measurement_unit, :maxlength => 5, :class => 'form-control' %>
+            <%= f.text_field :measurement_unit, :maxlength => 10, :class => 'form-control' %>
           </div>
         </div>
 
@@ -47,7 +47,7 @@
             <%= f.label :price, 'Precio:', :class => 'control-label tooltip_required' %>
           </div>
           <div class="col-sm-6 ">
-            <%= f.text_field :price, :maxlength => 10, :class => 'form-control' %>
+            <%= f.text_field :price, :maxlength => 15, :class => 'form-control maskMoneda' %>
           </div>
         </div>
       </div>

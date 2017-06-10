@@ -104,7 +104,7 @@
                     <%= f.label :advance_payment_percentage, 'Porcentage:', :class => 'control-label' %>
                   </div>
                   <div class="col-sm-3 ">
-                    <%= f.number_field :advance_payment_percentage, :id => 'calculate-with-percentage', :class => 'form-control'%>
+                    <%= f.text_field :advance_payment_percentage, :id => 'calculate-with-percentage', :class => 'form-control maskPercentage'%>
                   </div>
                 </div>
                 <div class="field col-md-6 form-group ">
@@ -112,7 +112,7 @@
                     <%= f.label :advance_payment, 'Monto:', :class => 'control-label  tooltip_required' %>
                   </div>
                   <div class="col-sm-5 ">
-                    <%= f.number_field :advance_payment, :id => 'calculate-with-amount',:class => 'form-control' %>
+                    <%= f.text_field :advance_payment, :id => 'calculate-with-amount',:class => 'form-control maskMoneda' %>
                   </div>
                 </div>
                 <span id="contract-amount" style="display: none"><%=contract.budget_total_amount%></span>
@@ -130,34 +130,3 @@
       </div>
     </div>
 <% end %>
-
-
-<script>
-  $(document).ready(function () {
-    $('#has_advance_payment').change(function () {
-      if (this.checked) {
-        $('#advance_payment_section').css('display', 'block');
-      } else {
-        $('#advance_payment_section').css('display', 'none');
-      }
-    });
-
-    $('#calculate-with-percentage').change(function (e) {
-      var percentage = $(e.currentTarget).val();
-      percentage = percentage > 100? 100 : percentage;
-      percentage = percentage < 0? 0 : percentage;
-      $(e.currentTarget).val(percentage);
-      var amount = $('#contract-amount').text();
-      $('#calculate-with-amount').val(amount * percentage / 100);
-    });
-
-    $('#calculate-with-amount').change(function (e) {
-      var amount = $(e.currentTarget).val();
-      var contract_amount = $('#contract-amount').text();
-      amount = amount > contract_amount? contract_amount : amount;
-      amount = amount < 0? 0 : amount;
-      $(e.currentTarget).val(amount);
-      $('#calculate-with-percentage').val((amount * 100 / contract_amount).toFixed(2));
-    });
-  });
-</script>

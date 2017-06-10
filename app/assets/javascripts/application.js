@@ -51,7 +51,14 @@ OnProject = {
             }
         });
 
-      $("#phone").inputmask("9999-999-999");
+      NumberHelper.mascaraMoneda('.maskMoneda');
+      NumberHelper.mascaraPorcentaje('.maskPercentage');
+
+      $("#phone").inputmask({ alias: 'integer',
+                              autoGroup: true,
+                              groupSeparator: '-',
+                              groupSize: 3,
+                              digits: 0 });
 
       $("#ci").inputmask("9999999999");
 
@@ -96,7 +103,8 @@ OnProject = {
   material_movements: Movement,
   rubros: Rubro,
   sale_bills: Sale,
-  client_certifications: ClientCertification
+  client_certifications: ClientCertification,
+  contracts: Contract
 
 };
 
