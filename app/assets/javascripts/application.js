@@ -55,6 +55,8 @@ OnProject = {
 
       $("#ci").inputmask("9999999999");
 
+      $("#bill").inputmask("999-999-9999999");
+
       //iCheck for checkbox and radio inputs
       $('input[type="checkbox"].square, input[type="radio"].square').iCheck({
         checkboxClass: 'icheckbox_square-blue',

@@ -1,59 +1,120 @@
 <div class="box box-success">
-  <div class="box-header">
-    <h3 class="box-title"><strong><%= @contract.name %></strong></h3>
+  <div class="box-header with-border">
+    <h3 class="box-title"><%= t('helpers.title.contract.show') %></h3>
   </div>
   <div class="box-body">
     <div class="row">
-      <div class="col-md-9">
+      <div class="field col-md-6 form-group">
+        <div class="field col-md-4">
+          <strong>Obra:</strong>
+        </div>
+        <div class="field col-md-8 show-padding">
+          <%= @contract.budget_name %>
+        </div>
+      </div>
+
+      <div class="field col-md-6 form-group">
+        <div class="field col-md-4">
+          <strong>Descripción:</strong>
+        </div>
+        <div class="field col-md-8 show-padding">
+          <%= @contract.budget_description %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="field col-md-6 form-group">
+        <div class="field col-md-4">
+          <strong>Cliente:</strong>
+        </div>
+        <div class="field col-md-8 show-padding">
+          <%= @contract.budget_client_name %>
+        </div>
+      </div>
+
+      <div class="field col-md-6 form-group">
+        <div class="field col-md-4">
+          <strong>Monto:</strong>
+        </div>
+        <div class="field col-md-8 show-padding">
+          <%= number_to_currency_py(@contract.amount) %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="field col-md-6 form-group">
+        <div class="field col-md-4">
+          <strong>Fecha de inicio:</strong>
+        </div>
+        <div class="field col-md-8 show-padding">
+          <%= @contract.start_date %>
+        </div>
+      </div>
+
+      <div class="field col-md-6 form-group">
+        <div class="field col-md-4">
+          <strong>Fecha de fin:</strong>
+        </div>
+        <div class="field col-md-8 show-padding">
+          <%= @contract.end_date %>
+        </div>
+      </div>
+    </div>
+
+    <!-- Advance payment section -->
+    <% if (@contract.has_advance_payment) %>
+        <div class="box-header with-border" style="padding-top: 50px">
+          <h4 class="box-title">Pago por anticipo</h4>
+        </div>
+        <br>
         <div class="row">
           <div class="field col-md-6 form-group">
             <div class="field col-md-4">
-              <strong>Cliente:</strong>
+              <strong>Factura:</strong>
             </div>
             <div class="field col-md-8 show-padding">
-              <%= @contract.budget_client_name %>
+              <%= @contract.advance_payment_voucher %>
             </div>
           </div>
 
+          <div class="field col-md-6 form-group">
+            <div class="field col-md-4">
+              <strong>Fecha:</strong>
+            </div>
+            <div class="field col-md-8 show-padding">
+              <%= @contract.advance_payment_date %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
           <div class="field col-md-6 form-group">
             <div class="field col-md-4">
               <strong>Monto:</strong>
             </div>
             <div class="field col-md-8 show-padding">
-              <%=  number_to_currency_py(@contract.amount)  %>
+              <%= number_to_currency_py(@contract.advance_payment) %>
             </div>
           </div>
 
           <div class="field col-md-6 form-group">
             <div class="field col-md-4">
-              <strong>Fecha de inicio:</strong>
+              <strong>Porcentaje:</strong>
             </div>
             <div class="field col-md-8 show-padding">
-              <%= @contract.start_date %>
-            </div>
-          </div>
-
-          <div class="field col-md-6 form-group">
-            <div class="field col-md-4">
-              <strong>Fecha de fin:</strong>
-            </div>
-            <div class="field col-md-8 show-padding">
-              <%= @contract.end_date  %>
+              <%= number_to_percentage(@contract.advance_payment_percentage, precision: 2 ) %>
             </div>
           </div>
         </div>
-      </div>
-    </div>
+    <% end %>
 
-    <div class="box-footer">
-      <div class="pull-right">
-        <% if (can? :update, Contract) %>
-            <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_contract_path(@contract), {:class => "btn  bg-orange"} %>
-        <% end %>
-        <%= link_to  "<i class=\"fa fa-arrow-left\"></i>".html_safe, url_for(:back), {:class => "btn  btn-default"} %>
-      </div>
+  </div>
+  <div class="box-footer">
+    <div class="pull-right">
+      <% if (can? :update, Contract) %>
+          <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_contract_path(@contract), {:class => "btn  bg-orange"} %>
+      <% end %>
+      <%= link_to "<i class=\"fa fa-arrow-left\"></i>".html_safe, url_for(:back), {:class => "btn  btn-default"} %>
     </div>
-
   </div>
 </div>
 
@@ -66,7 +127,8 @@
         </li>
         <li class=""><a href="#material-movements" data-toggle="tab" aria-expanded="false">Movimientos de Materiales</a>
         </li>
-        <li class=""><a href="#client-certifications" data-toggle="tab" aria-expanded="false">Certificaciones del cliente</a>
+        <li class="">
+          <a href="#client-certifications" data-toggle="tab" aria-expanded="false">Certificaciones del cliente</a>
         </li>
         <li class=""><a href="#certifications" data-toggle="tab" aria-expanded="false">Certificaciones Internas</a>
         </li>
@@ -83,28 +145,28 @@
           <br>
           <table class="table table-bordered table-condensed table-list col-md-12">
             <thead>
-              <tr>
-                <th class="col-md-3">Rubro</th>
-                <th class="col-md-1">Ud. Medidad</th>
-                <th class="col-md-2">Costo</th>
-                <th class="col-md-2">Precio</th>
-                <th class="col-md-1">Cantidad</th>
-                <th class="col-md-1">% Utilidad</th>
-                <th class="col-md-2">Sub Total</th>
-              </tr>
+            <tr>
+              <th class="col-md-3">Rubro</th>
+              <th class="col-md-1">Ud. Medidad</th>
+              <th class="col-md-2">Costo</th>
+              <th class="col-md-2">Precio</th>
+              <th class="col-md-1">Cantidad</th>
+              <th class="col-md-1">% Utilidad</th>
+              <th class="col-md-2">Sub Total</th>
+            </tr>
             </thead>
             <tbody>
-              <% @budget_details.each do |budget_detail| %>
-                  <tr class="fields ">
-                    <td><%= budget_detail.rubro_name %></td>
-                    <td><%= budget_detail.rubro_measurement_unit %></td>
-                    <td><%= number_to_currency_py(budget_detail.cost) %></td>
-                    <td><%= number_to_currency_py(budget_detail.price) %></td>
-                    <td><%= budget_detail.certified_quantity %></td>
-                    <td><%= budget_detail.utility %></td>
-                    <td><%= number_to_currency_py(budget_detail.subtotal) %></td>
-                  </tr>
-              <% end %>
+            <% @budget_details.each do |budget_detail| %>
+                <tr class="fields ">
+                  <td><%= budget_detail.rubro_name %></td>
+                  <td><%= budget_detail.rubro_measurement_unit %></td>
+                  <td><%= number_to_currency_py(budget_detail.cost) %></td>
+                  <td><%= number_to_currency_py(budget_detail.price) %></td>
+                  <td><%= budget_detail.certified_quantity %></td>
+                  <td><%= budget_detail.utility %></td>
+                  <td><%= number_to_currency_py(budget_detail.subtotal) %></td>
+                </tr>
+            <% end %>
             </tbody>
           </table>
           <div id="paginate-container">
@@ -157,7 +219,7 @@
             <% contador = 0; %>
             <% @contract.budget_details.each do |pr| %>
                 <% if pr.state == 'pending' %>
-                  <% contador += 1; %>
+                    <% contador += 1; %>
                 <% end %>
             <% end %>
             <% @contract.budget_details.each do |bu| %>
@@ -166,7 +228,7 @@
                         <%= link_to "<i class=\"fa fa-plus\"></i>".html_safe, new_client_certification_path({contract_id: @contract.id}), {:class => "btn btn-sm bg-green btn-title", :title => "Agregar Certificación"} %>
                     <% end %>
                     <% break %>
-              <% end %>
+                <% end %>
             <% end %>
             <% if contador == 0 %>
                 <span class="fa fa-check" style="color:green"></span>
@@ -203,8 +265,8 @@
               <% if (can? :create, Certification) %>
                   <%= link_to "<i class=\"fa fa-plus\"></i>".html_safe, new_certification_path({contract_id: @contract.id}), {:class => 'btn btn-sm bg-green btn-title', :title => 'Agregar'} %>
               <% end %>
-              <% if @approved.any? { |element| element == Certification.states.keys[2]} %>
-                  <%= link_to 'Generar Pago', edit_account_employee_path, class:'btn btn-sm  bg-blue' %>
+              <% if @approved.any? { |element| element == Certification.states.keys[2] } %>
+                  <%= link_to 'Generar Pago', edit_account_employee_path, class: 'btn btn-sm  bg-blue' %>
               <% end %>
             </div>
           </div>

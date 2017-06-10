@@ -9,7 +9,7 @@ class Contract < ApplicationRecord
   has_many :certifications
   has_many :account_employees
 
-  delegate :name, :total_amount, :client_name, :client_ruc, to: :budget, prefix: true
+  delegate :name, :description, :total_amount, :client_name, :client_ruc, to: :budget, prefix: true
 
   validates :start_date, :presence => {:message => "No puede estar en blanco"}
 

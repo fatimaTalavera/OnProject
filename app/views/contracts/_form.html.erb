@@ -1,61 +1,163 @@
-<%= form_for contract, validate: true, :html => { class: 'form-horizontal' } do |f| %>
+<%= form_for contract, validate: true, :html => {class: 'form-horizontal'} do |f| %>
     <div class="box-body">
-      <div class="field col-md-12 form-group">
-        <div class="field col-md-4 form-group">
-          <div class="col-sm-3 label-pad">
-            <strong>Obra:</strong>
+      <div class="row">
+        <div class="field col-md-12 form-group">
+          <div class="field col-md-6 form-group">
+            <div class="col-sm-2 label-pad">
+              <strong>Obra:</strong>
+            </div>
+            <div class="col-md-9 show-padding">
+              <span><%= contract.budget_name %></span>
+            </div>
           </div>
-          <div class="col-md-6 show-padding">
-            <span><%= contract.budget_name %></span>
+          <div class="field col-md-6 form-group">
+            <div class="col-sm-2 label-pad">
+              <strong>Monto:</strong>
+            </div>
+            <div class="col-md-5 show-padding">
+              <span><%= number_to_currency_py(contract.budget_total_amount) %></span>
+            </div>
           </div>
         </div>
-        <div class="field col-md-4 form-group">
-          <div class="col-sm-3 label-pad">
-            <strong>Cliente:</strong>
+        <div class="field col-md-12 form-group">
+          <div class="field col-md-6 form-group">
+            <div class="col-sm-2 label-pad">
+              <strong>Cliente:</strong>
+            </div>
+            <div class="col-md-9 show-padding">
+              <span><%= contract.budget_client_name %></span>
+            </div>
           </div>
-          <div class="col-md-7 show-padding">
-            <span><%= contract.budget_client_name %></span>
+          <div class="field col-md-6 form-group">
+            <div class="col-sm-2 label-pad">
+              <strong>RUC:</strong>
+            </div>
+            <div class="col-md-9 show-padding">
+              <span><%= contract.budget_client_ruc %></span>
+            </div>
           </div>
         </div>
 
-        <div class="field col-md-4 form-group">
-          <div class="col-sm-3 label-pad">
-            <strong>Monto:</strong>
+
+        <div class="field col-md-12 form-group">
+          <div class="field col-md-6 form-group">
+            <div class="col-md-4 col-lg-4">
+              <%= f.label :start_date, 'Inicio de ejecución:', :class => 'control-label  tooltip_required' %>
+            </div>
+            <div class="input-group col-sm-5" style="padding-left: 14px">
+              <%= f.text_field :start_date, :id => 'datepickerFrom', :class => ' date form-control datepicker' %>
+              <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+            </div>
           </div>
-          <div class="col-md-5 show-padding">
-            <span><%= number_to_currency_py(contract.budget_total_amount) %></span>
+
+          <div class="field col-md-6 form-group">
+            <div class="col-md-4 col-lg-4">
+              <%= f.label :end_date, 'Fin de Ejecución:', :class => 'control-label  tooltip_required' %>
+            </div>
+            <div class="input-group col-sm-5" style="padding-left: 14px">
+              <%= f.text_field :end_date, :id => 'datepickerTo', :class => ' date form-control datepicker' %>
+              <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="field col-md-12 form-group" style="padding-left: 30px">
+          <%= f.check_box :has_advance_payment, :id => 'has_advance_payment' %>
+          <span>Registrar anticipo</span>
+        </div>
+
+        <%= f.hidden_field :budget_id, :class => 'form-control' %>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div id="advance_payment_section" class="box box-success" style="display: none">
+            <div class="box-header with-border">
+              <h3 class="box-title">Anticipo</h3>
+            </div>
+            <div class="box-body">
+              <div class="field col-md-12 form-group">
+                <div class="field col-md-6 form-group ">
+                  <div class="col-sm-3">
+                    <%= f.label :advance_payment_voucher, 'Nro. de Factura:', :class => 'control-label' %>
+                  </div>
+                  <div class="col-sm-4">
+                    <%= f.text_field :advance_payment_voucher, :id=> 'bill', :class => 'form-control', :maxlength => 30 %>
+                  </div>
+                </div>
+                <div class="field col-md-6 form-group">
+                  <div class="col-md-3">
+                    <%= f.label :date, 'Fecha:', :class => 'control-label' %>
+                  </div>
+                  <div class="input-group col-md-5">
+                    <%= f.text_field :advance_payment_date, :class => 'input-group date form-control datepicker' %>
+                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="box-body">
+              <div class="field col-md-12 form-group">
+                <div class="field col-md-6 form-group ">
+                  <div class="col-sm-3">
+                    <%= f.label :advance_payment_percentage, 'Porcentage:', :class => 'control-label' %>
+                  </div>
+                  <div class="col-sm-3 ">
+                    <%= f.number_field :advance_payment_percentage, :id => 'calculate-with-percentage', :class => 'form-control'%>
+                  </div>
+                </div>
+                <div class="field col-md-6 form-group ">
+                  <div class="col-sm-3">
+                    <%= f.label :advance_payment, 'Monto:', :class => 'control-label  tooltip_required' %>
+                  </div>
+                  <div class="col-sm-5 ">
+                    <%= f.number_field :advance_payment, :id => 'calculate-with-amount',:class => 'form-control' %>
+                  </div>
+                </div>
+                <span id="contract-amount" style="display: none"><%=contract.budget_total_amount%></span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="field col-md-12 form-group">
-        <div class="field col-md-6 form-group">
-          <div class="col-md-4">
-            <%= f.label :start_date, 'Inicio de ejecución:', :class => 'control-label  tooltip_required' %>
-          </div>
-          <div class="input-group col-sm-5" style="padding-left: 14px">
-            <%= f.text_field :start_date, :id => 'datepickerFrom', :class => ' date form-control datepicker' %><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-          </div>
+      <div class="box-footer clearfix">
+        <div class="pull-right">
+          <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i></button>
+          <%= link_to "<i class=\"fa fa-arrow-left\"></i>".html_safe, contracts_path, class: 'btn btn-default' %>
         </div>
-
-        <div class="field col-md-6 form-group">
-          <div class="col-md-4">
-            <%= f.label :end_date, 'Fin de Ejecución:', :class => 'control-label  tooltip_required' %>
-          </div>
-          <div class="input-group col-sm-5" style="padding-left: 14px">
-            <%= f.text_field :end_date, :id => 'datepickerTo', :class => ' date form-control datepicker' %><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-          </div>
-        </div>
-      </div>
-
-
-      <%= f.hidden_field :budget_id, :class => 'form-control' %>
-    </div>
-
-    <div class="box-footer clearfix">
-      <div class="pull-right">
-        <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i></button>
-        <%= link_to "<i class=\"fa fa-arrow-left\"></i>".html_safe,  contracts_path , class: 'btn btn-default' %>
       </div>
     </div>
 <% end %>
+
+
+<script>
+  $(document).ready(function () {
+    $('#has_advance_payment').change(function () {
+      if (this.checked) {
+        $('#advance_payment_section').css('display', 'block');
+      } else {
+        $('#advance_payment_section').css('display', 'none');
+      }
+    });
+
+    $('#calculate-with-percentage').change(function (e) {
+      var percentage = $(e.currentTarget).val();
+      percentage = percentage > 100? 100 : percentage;
+      percentage = percentage < 0? 0 : percentage;
+      $(e.currentTarget).val(percentage);
+      var amount = $('#contract-amount').text();
+      $('#calculate-with-amount').val(amount * percentage / 100);
+    });
+
+    $('#calculate-with-amount').change(function (e) {
+      var amount = $(e.currentTarget).val();
+      var contract_amount = $('#contract-amount').text();
+      amount = amount > contract_amount? contract_amount : amount;
+      amount = amount < 0? 0 : amount;
+      $(e.currentTarget).val(amount);
+      $('#calculate-with-percentage').val((amount * 100 / contract_amount).toFixed(2));
+    });
+  });
+</script>
