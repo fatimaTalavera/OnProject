@@ -3,19 +3,19 @@ class Service < ApplicationRecord
   has_many :rubro_service_details
   before_update :modify_subtotal_rubros
 
-  VALID_PRICE_REGEX  = /\A^-?([0-9]|(\.[0-9]+))*$\z/
+  VALID_PRICE_REGEX = /\A^-?([0-9]|(\.[0-9]+))*$\z/
 
-  validates :name,  :presence => {:message => "No puede estar en blanco"},
-                    :length => { maximum:45, :message => "Permite hasta 45 caracteres"},
-                    :uniqueness => {:message => "Este servicio ya existe, vuelva a intentarlo"}
+  validates :name, :presence => {:message => "No puede estar en blanco"},
+            :length => {maximum: 45, :message => "Permite hasta 45 caracteres"},
+            :uniqueness => {:message => "Este servicio ya existe, vuelva a intentarlo"}
 
-  validates :description,   :presence => {:message => "No puede estar en blanco"},
-                            :length => { maximum:200, :message => "Permite hasta 200 caracteres"}
+  validates :description, :presence => {:message => "No puede estar en blanco"},
+            :length => {maximum: 200, :message => "Permite hasta 200 caracteres"}
 
-  validates :measurement_unit,  :presence => {:message => "No puede estar en blanco"}
+  validates :measurement_unit, :presence => {:message => "No puede estar en blanco"}
 
   validates :price, :presence => {:message => "No puede estar en blanco"}
-  
+
   def modify_subtotal_rubros
     if self.price_changed?
       @diferencia = self.price - self.price_was

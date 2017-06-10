@@ -24,6 +24,9 @@ class RubrosController < ApplicationController
   def new
     add_breadcrumb I18n.t('helpers.breadcrumbs.rubros.new')
     @rubro = Rubro.new
+    @rubro.utility = CompanyConfig.first.default_utility
+    @rubro.rubro_material_details.build
+    @rubro.rubro_service_details.build
   end
 
   # GET /rubros/1/edit

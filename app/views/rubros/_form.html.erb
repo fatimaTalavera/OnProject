@@ -12,10 +12,10 @@
 
         <div class="field col-md-6 form-group">
           <div class="col-md-3">
-            <%= f.label :utility, 'Utilidad(%):', :class => 'control-label tooltip_required' %>
+            <%= f.label :utility, 'Utilidad:', :class => 'control-label tooltip_required' %>
           </div>
           <div class="col-md-6">
-            <%= f.number_field :utility, :class => 'form-control' %>
+            <%= f.text_field :utility, :class => 'form-control maskPercentage' %>
           </div>
         </div>
       </div>
