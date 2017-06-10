@@ -4,8 +4,10 @@ class MovementDetail < ApplicationRecord
   belongs_to :material
   before_create :withdraw_material
   before_update :quantity_change
+
   def withdraw_material
     Material.update(self.material.id, quantity: self.material.quantity - self.quantity)
+    calculate_subtotal
   end
 
   def quantity_change
@@ -14,6 +16,11 @@ class MovementDetail < ApplicationRecord
     else
       Material.update(self.material.id, quantity: (self.material.quantity - (self.quantity - self.quantity_was)))
     end
+    calculate_subtotal
+  end
+
+  def calculate_subtotal
+    self.subtotal = self.material.price * self.quantity
   end
 
   validates_numericality_of :quantity, :presence => {:message => "Debe rellenar este campo"},

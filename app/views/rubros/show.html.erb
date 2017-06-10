@@ -22,9 +22,8 @@
       </div>
     </div>
 
-    <div class="col-md-12 form-group">
-      <div class="col-md-8">
-        <table class="table table-bordered table-condensed table-list">
+    <div class="col-md-10 form-group">
+        <table class="table table-bordered table-condensed table-list" style="margin-top: 50px; border-top: 3px solid green">
           <thead>
           <tr>
             <th>Material</th>
@@ -36,15 +35,25 @@
           </thead>
           <tbody>
           <% @rubro.rubro_material_details.each do |detalle| %>
-          <tr>
-              <td><%= detalle.material.name %></td>
-              <td><%= detalle.material.measurement_unit %></td>
-              <td><%= number_to_currency_py(detalle.material.price.to_i) %></td>
-              <td><%= number_with_precision(detalle.quantity, precision: 2) %></td>
-              <td><%= number_to_currency_py(detalle.subtotal.to_i) %></td>
-          </tr>
+              <tr>
+                <td><%= detalle.material.name %></td>
+                <td><%= detalle.material.measurement_unit %></td>
+                <td class="text-right"><%= number_to_currency_py(detalle.material.price) %></td>
+                <td class="text-right"><%= number_with_precision(detalle.quantity, precision: 2) %></td>
+                <td class="text-right"><%= number_to_currency_py(detalle.subtotal) %></td>
+              </tr>
           <% end %>
           </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="4" class="text-bold text-right">Total:</td>
+              <td class="text-bold text-right"><%= number_to_currency_py(@rubro.rubro_material_details.sum(:subtotal)) %></td>
+            </tr>
+          </tfoot>
+        </table>
+
+
+        <table class="table table-bordered table-condensed table-list" style="margin-top: 50px; border-top: 3px solid green">
           <thead>
           <tr>
             <th>Servicio</th>
@@ -56,17 +65,22 @@
           </thead>
           <tbody>
           <% @rubro.rubro_service_details.each do |detalle| %>
-          <tr>
-              <td><%= detalle.service.name %></td>
-              <td><%= detalle.service.measurement_unit %></td>
-              <td><%= number_to_currency_py(detalle.service.price.to_i) %></td>
-              <td><%= number_with_precision(detalle.quantity, precision: 2) %></td>
-              <td><%= number_to_currency_py(detalle.subtotal.to_i) %></td>
-          </tr>
+              <tr>
+                <td><%= detalle.service.name %></td>
+                <td><%= detalle.service.measurement_unit %></td>
+                <td class="text-right"><%= number_to_currency_py(detalle.service.price) %></td>
+                <td class="text-right"><%= number_with_precision(detalle.quantity, precision: 2) %></td>
+                <td class="text-right"><%= number_to_currency_py(detalle.subtotal) %></td>
+              </tr>
           <% end %>
           </tbody>
+          <tfoot>
+          <tr>
+            <td colspan="4" class="text-bold text-right">Total:</td>
+            <td class="text-bold text-right"><%= number_to_currency_py(@rubro.rubro_service_details.sum(:subtotal)) %></td>
+          </tr>
+          </tfoot>
         </table>
-      </div>
     </div>
 
   </div>

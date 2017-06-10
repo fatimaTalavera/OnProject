@@ -2,6 +2,7 @@
   <thead>
     <tr>
       <th class="col-md-4">Material</th>
+      <th>Unidad</th>
       <th>Cantidad</th>
       <th>Precio Unitario</th>
       <th>Subtotal</th>
@@ -14,6 +15,7 @@
         <td class="col-md-4">
           <%= form.collection_select :material_id, Material.all, :id, :name, {prompt: 'Buscar Material'}, {class: "form-control select2 material-search"} %>
         </td>
+        <td><input class="form-control measurement text-right" value="<%=form.object.material.nil? ? '' : form.object.material.measurement_unit %>" readonly></td>
         <td><%=form.text_field :quantity, class: 'form-control qty text-right'%></td>
         <td><%=form.text_field :price, class: 'form-control maskMoneda unit-price text-right'%></td>
         <td class="subtotal text-right"><%= form.object.total ? form.object.total : 0 %></td>

@@ -4,30 +4,45 @@
   </div>
   <div class="box-body">
     <div class="row">
-      <div class="col-md-12">
-        <div class="col-md-3">
-          <label class="control-label">Fecha</label>
-          <p><%= l @purchase_bill.date, format: :default%></p>
+      <div class="field col-md-12 form-group">
+        <div class="field col-md-3 form-group">
+          <div class="field col-md-4">
+            <strong>Fecha:</strong>
+          </div>
+          <div class="field col-md-8 show-padding">
+            <%= @purchase_bill.date %>
+          </div>
         </div>
-        <div class="col-md-3">
-          <label class="control-label">Cliente</label>
-          <p><%= @purchase_bill.provider_name %></p>
+        <div class="field col-md-4 form-group">
+          <div class="field col-md-6">
+            <strong>Condición de compra:</strong>
+          </div>
+          <div class="field col-md-5 show-padding">
+            <%= @purchase_bill.condition %>
+          </div>
         </div>
-        <div class="col-md-3">
-          <label class="control-label">Condición de compra</label>
-          <p><%= @purchase_bill.condition %></p>
-        </div>
-        <div class="col-md-3">
-          <label class="control-label">Estado</label>
-          <p>
-            <% if @purchase_bill.state.pagado? %>
-              <label class="label label-success"><%= @purchase_bill.state_text %></label>
-            <% else %>
-              <label class="label label-warning"><%= @purchase_bill.state_text %></label>
-            <% end %>
-          </p>
+        <div class="field col-md-3 form-group">
+          <div class="field col-md-4">
+            <strong>Estado:</strong>
+          </div>
+          <div class="field col-md-8 show-padding">
+            <label class="label label-<%= @purchase_bill.state.pagado? ? 'success' : 'warning' %>"><%= @purchase_bill.state_text %></label>
+          </div>
         </div>
       </div>
+
+      <div class="field col-md-12 form-group">
+        <div class="field col-md-6 form-group">
+          <div class="field col-md-2">
+            <strong>Cliente:</strong>
+          </div>
+          <div class="field col-md-8 show-padding">
+            <%= @purchase_bill.provider_name %>
+          </div>
+        </div>
+
+      </div>
+
     </div>
     <br><br>
     <div class="row">
@@ -37,125 +52,127 @@
             <li class="active"><a href="#tab_1" data-toggle="tab">Materiales</a></li>
             <li><a href="#tab_2" data-toggle="tab">Pagos</a></li>
             <% if @purchase_bill.crédito? %>
-              <li><a href="#tab_3" data-toggle="tab">Pagos Pendientes</a></li>
+                <li><a href="#tab_3" data-toggle="tab">Pagos Pendientes</a></li>
             <% end %>
           </ul>
           <div class="tab-content">
             <div class="tab-pane active" id="tab_1">
               <table class="table table-bordered table-condensed">
-                  <thead>
+                <thead>
+                <tr>
+                  <th>Material</th>
+                  <th>Unidad</th>
+                  <th>Cantidad</th>
+                  <th>Precio Unitario</th>
+                  <th>Subtotal</th>
+                </tr>
+                </thead>
+                <tbody>
+                <% @purchase_bill.purchase_details.each do |d| %>
                     <tr>
-                      <th>Material</th>
-                      <th>Cantidad</th>
-                      <th>Precio Unitario</th>
-                      <th>Subtotal</th>
+                      <td><%= d.material.name %></td>
+                      <td><%= d.material.measurement_unit %></td>
+                      <td class="text-right"><%= d.quantity %></td>
+                      <td class="text-right"><%= number_to_currency_py(d.price) %></td>
+                      <td class="text-right"><%= number_to_currency_py(d.total) %></td>
                     </tr>
-                  </thead>
-                  <tbody>
-                    <% @purchase_bill.purchase_details.each do |d| %>
-                        <tr>
-                          <td><%= d.material.name %></td>
-                          <td class="text-right"><%= d.quantity %></td>
-                          <td class="text-right"><%= number_to_currency_py(d.price) %></td>
-                          <td class="text-right"><%= number_to_currency_py(d.total) %></td>
-                        </tr>
-                    <% end %>
-                  </tbody>
-                  <tfoot>
-                    <tr>
-                      <td colspan="3" class="text-bold text-right">Total:</td>
-                      <td class="text-bold text-right"><%= number_to_currency_py(@purchase_bill.total) %></td>
-                    </tr>
-                  </tfoot>
-                </table>
+                <% end %>
+                </tbody>
+                <tfoot>
+                <tr>
+                  <td colspan="3" class="text-bold text-right">Total:</td>
+                  <td class="text-bold text-right"><%= number_to_currency_py(@purchase_bill.total) %></td>
+                </tr>
+                </tfoot>
+              </table>
             </div>
             <div class="tab-pane" id="tab_2">
               <table class="table table-bordered table-condensed">
-                  <thead>
+                <thead>
+                <tr>
+                  <th>Fecha de Pago</th>
+                  <th>Monto</th>
+                </tr>
+                </thead>
+                <tbody>
+                <% if @purchase_bill.payments.count == 0 %>
                     <tr>
-                      <th>Fecha de Pago</th>
-                      <th>Monto</th>
+                      <td colspan="2"><strong>No se registran pagos</strong></td>
                     </tr>
-                  </thead>
-                  <tbody>
-                    <% if @purchase_bill.payments.count == 0 %>
-                      <tr>
-                        <td colspan="2"><strong>No se registran pagos</strong></td>
-                      </tr>
-                    <% end %>
-                    <% @purchase_bill.payments.each do |p| %>
-                      <tr>
-                        <td><%= p.date %></td>
-                        <td><%= number_to_currency_py(p.amount) %></td>
-                      </tr>
-                    <% end  %>
-                  </tbody>
-                </table>
+                <% end %>
+                <% @purchase_bill.payments.each do |p| %>
+                    <tr>
+                      <td><%= p.date %></td>
+                      <td><%= number_to_currency_py(p.amount) %></td>
+                    </tr>
+                <% end %>
+                </tbody>
+              </table>
             </div>
             <div class="tab-pane" id="tab_3">
               <table class="table table-bordered table-condensed">
-                  <thead>
+                <thead>
+                <tr>
+                  <th>Vencimiento</th>
+                  <th>Monto</th>
+                  <th>Saldo</th>
+                  <th>Pagar Gs.</th>
+                </tr>
+                </thead>
+                <tbody>
+                <% @purchase_bill.installment_purchases.each do |i| %>
                     <tr>
-                      <th>Vencimiento</th>
-                      <th>Monto</th>
-                      <th>Saldo</th>
-                      <th>Pagar Gs.</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <% @purchase_bill.installment_purchases.each do |i| %>
-                      <tr>
-                        <td><%= i.due_date %></td>
-                        <td class="text-right"><%= number_to_currency_py(i.amount) %></td>
-                        <td class="text-right"><%= number_to_currency_py(i.balance) %></td>
-                        <td>
-                          <% if not i.balance == 0 %>
+                      <td><%= i.due_date %></td>
+                      <td class="text-right"><%= number_to_currency_py(i.amount) %></td>
+                      <td class="text-right"><%= number_to_currency_py(i.balance) %></td>
+                      <td>
+                        <% if not i.balance == 0 %>
                             <% payment = InstallmentPaymentPurchase.new %>
                             <%= form_for payment, url: url_for(:controller => 'installment_payment_purchase', :action => 'create') do |f| %>
-                              <%= f.hidden_field :installment_purchase_id, value: i.id %>
-                              <div class="col-md-5">
-                                <div class="input-group">
-                                  <%= f.text_field :amount, value: i.balance, class: "form-control input-sm maskMoneda" %>
-                                  <span class="input-group-btn">
+                                <%= f.hidden_field :installment_purchase_id, value: i.id %>
+                                <div class="col-md-5">
+                                  <div class="input-group">
+                                    <%= f.text_field :amount, value: i.balance, class: "form-control input-sm maskMoneda" %>
+                                    <span class="input-group-btn">
                                     <%= f.submit "Pagar", {:class => "btn btn-primary btn-sm"} %>
                                   </span>
+                                  </div>
                                 </div>
-                              </div>
                             <% end %>
-                          <% else %>
+                        <% else %>
                             <p class="text-green">Pagado</p>
-                          <% end %>
-                        </td>
-                      </tr>
-                    <% end %>
-                  </tbody>
-                </table>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <% if @purchase_bill.pendiente?  %>
-      <div class="row">
-        <div class="col-sm-offset-8 col-sm-4">
-          <div class="box box-solid">
-            <div class="box-body">
-              <table class="table">
-                <tbody>
-                  <tr class="bg-green">
-                    <td class="text-bold">Total pagado:</td>
-                    <td class="text-right text-bold"><%= number_to_currency_py(@purchase_bill.total - @purchase_bill.balance)%></td>
-                  </tr>
-                  <tr class="bg-red">
-                    <td class="text-bold">Total pendiente:</td>
-                    <td class="text-right text-bold"><%= number_to_currency_py(@purchase_bill.balance)%></td>
-                  </tr>
+                        <% end %>
+                      </td>
+                    </tr>
+                <% end %>
                 </tbody>
               </table>
             </div>
           </div>
         </div>
       </div>
+    </div>
+    <% if @purchase_bill.pendiente? %>
+        <div class="row">
+          <div class="col-sm-offset-8 col-sm-4">
+            <div class="box box-solid">
+              <div class="box-body">
+                <table class="table">
+                  <tbody>
+                  <tr class="bg-green">
+                    <td class="text-bold">Total pagado:</td>
+                    <td class="text-right text-bold"><%= number_to_currency_py(@purchase_bill.total - @purchase_bill.balance) %></td>
+                  </tr>
+                  <tr class="bg-red">
+                    <td class="text-bold">Total pendiente:</td>
+                    <td class="text-right text-bold"><%= number_to_currency_py(@purchase_bill.balance) %></td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
     <% end %>
   </div>
   <div class="box-footer">
