@@ -75,7 +75,7 @@ class ClientCertificationsController < ApplicationController
   private
   def get_client_certifications
     @q = ClientCertification.ransack(params[:q])
-    @q.sorts = ['contract_name asc', 'state asc'] if @q.sorts.empty?
+    @q.sorts = ['date desc', 'contract_name asc', 'state asc'] if @q.sorts.empty?
     @client_certifications = @q.result.page(params[:page])
   end
 

@@ -67,7 +67,7 @@ class SaleBillsController < ApplicationController
   private
     def get_sales
       @q = SaleBill.ransack(params[:q])
-      @q.sorts = ['created_at desc'] if @q.sorts.empty?
+      @q.sorts = ['date desc'] if @q.sorts.empty?
       @sale_bills = @q.result.page(params[:page])
     end
 

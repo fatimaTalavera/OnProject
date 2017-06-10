@@ -2,24 +2,27 @@
 <% if days < 0 %>
     <div class="alert alert-danger alert-dismissable">
       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-      Tu timbrado está vencido, si ya tienes uno nuevo modificalo en <a href="<%= edit_company_path %>" class="alert-link">Configuraciones</a>.
+      Tu timbrado está vencido, si ya tienes uno nuevo modificalo en
+      <a href="<%= edit_company_path %>" class="alert-link">Configuraciones</a>.
     </div>
 <% elsif days == 0 %>
     <div class="alert alert-warning alert-dismissable">
       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-      Tu timbrado vence hoy, si ya tienes uno nuevo modificalo en <a href="<%= edit_company_path %>" class="alert-link">Configuraciones</a>.
+      Tu timbrado vence hoy, si ya tienes uno nuevo modificalo en
+      <a href="<%= edit_company_path %>" class="alert-link">Configuraciones</a>.
     </div>
 <% elsif days < 30 %>
     <div class="alert alert-warning alert-dismissable">
       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-      Tu timbrado vencerá en <%= days %> días, si ya tienes uno nuevo modificalo en <a href="<%= edit_company_path %>" class="alert-link">Configuraciones</a>.
+      Tu timbrado vencerá en <%= days %> días, si ya tienes uno nuevo modificalo en
+      <a href="<%= edit_company_path %>" class="alert-link">Configuraciones</a>.
     </div>
 <% end %>
 
 
-<div class="row" >
+<div class="row">
   <div class="avatar_company">
-    <%= cl_image_tag(CompanyConfig.first.avatar_url(:medium), :class => 'img-rounded')if CompanyConfig.first.avatar?%>
+    <%= cl_image_tag(CompanyConfig.first.avatar_url(:medium), :class => 'img-rounded') if CompanyConfig.first.avatar? %>
   </div>
   <div class="info-company">
     <div class="row">
@@ -59,30 +62,49 @@
 </div>
 
 <div class="row">
-  <div class="col-lg-3 col-xs-6">
-    <div class="small-box bg-aqua">
-      <div class="inner">
-        <h3><%= Budget.pending.count %></h3>
-        <p>Presupuesto(s) pendiente(s)</p>
+  <% if (can? :show_list, Budget) %>
+      <div class="col-lg-3 col-xs-6">
+        <div class="small-box bg-aqua-gradient">
+          <div class="inner">
+            <h3><%= Budget.pending.count %></h3>
+            <p>Presupuesto(s) pendiente(s)</p>
+          </div>
+          <div class="icon">
+            <i class="fa fa-building"></i>
+          </div>
+          <a href="<%= budgets_path(:q => {:state_eq => Budget.states[:pending]}) %>" class="small-box-footer">Ver Detalles <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
       </div>
-      <div class="icon">
-        <i class="fa fa-user-plus"></i>
+  <% end %>
+
+  <% if (can? :show_list, SaleBill) %>
+      <div class="col-lg-3 col-xs-6">
+        <div class="small-box bg-yellow-gradient">
+          <div class="inner">
+            <h3><%= SaleBill.where({state: 'pendiente'}).count %></h3>
+            <p>Factura(s) a cobrar</p>
+          </div>
+          <div class="icon">
+            <i class="fa fa-dollar"></i>
+          </div>
+          <a href="<%= sale_bills_path(:q => {:state_eq => 'pendiente'}) %>" class="small-box-footer">Ver Detalles <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
       </div>
-      <% if (can? :show_list, Budget) %>
-        <a href="<%= budgets_path(:q => {:state_eq => Budget.states[:pending]})   %>" class="small-box-footer">Ver Detalles <i class="fa fa-arrow-circle-right"></i></a>
-      <% end %>
-    </div>
-  </div>
-  <div class="col-lg-3 col-xs-6">
-    <div class="small-box bg-green">
-      <div class="inner">
-        <h3>23</h3>
-        <p>Facturas de Compras</p>
+  <% end %>
+
+  <% if (can? :show_list, PurchaseBill) %>
+      <div class="col-lg-3 col-xs-6">
+        <div class="small-box bg-green-gradient">
+          <div class="inner">
+            <h3><%= PurchaseBill.where({state: 'pendiente'}).count %></h3>
+            <p>Factura(s) a pagar </p>
+          </div>
+          <div class="icon">
+            <i class="fa fa-shopping-cart"></i>
+          </div>
+          <a href="<%= purchase_bills_path(:q => {:state_eq => 'pendiente'}) %>" class="small-box-footer">Ver Detalles <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
       </div>
-      <div class="icon">
-        <i class="fa fa-file-text"></i>
-      </div>
-      <a href="#" class="small-box-footer">Ver Detalles <i class="fa fa-arrow-circle-right"></i></a>
-    </div>
-  </div>
+  <% end %>
+
 </div>

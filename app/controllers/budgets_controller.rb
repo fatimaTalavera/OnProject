@@ -119,7 +119,7 @@ class BudgetsController < ApplicationController
   private
   def get_budgets
     @q = Budget.ransack(params[:q])
-    @q.sorts = ['state asc', 'name asc'] if @q.sorts.empty?
+    @q.sorts = ['date desc', 'state asc', 'name asc'] if @q.sorts.empty?
     @budgets = @q.result.page(params[:page])
   end
 

@@ -90,7 +90,7 @@ class ContractsController < ApplicationController
   private
     def get_contracts
       @q = Contract.ransack(params[:q])
-      @q.sorts = ['name asc', 'client_name asc'] if @q.sorts.empty?
+      @q.sorts = ['created_at desc', 'name asc', 'client_name asc'] if @q.sorts.empty?
       @contracts = @q.result.page(params[:page])
     end
     # Use callbacks to share common setup or constraints between actions.
