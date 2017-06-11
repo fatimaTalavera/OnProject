@@ -22,6 +22,12 @@
     <div class="field col-md-12 form-group">
       <div class="field col-md-6 form-group">
         <div class="col-md-6 show-padding">
+          <strong>N° de  certificación:</strong>
+          <%= @certification.certification_number %>
+        </div>
+      </div>
+      <div class="field col-md-6 form-group">
+        <div class="col-md-6 show-padding">
           <strong>Estado:</strong>
           <% if @certification.approved?%>
               <label class="label label-success">Aprobado</label>
@@ -41,7 +47,7 @@
         <thead>
         <tr  style="word-wrap: break-word">
           <th width="20%">Jornalero</th>
-          <th width="10%">Dias trabajados</th>
+          <th width="10%">Días trabajados</th>
           <th width="10%">Jornal</th>
           <th width="10%">Descuento(%)</th>
           <th width="30%">Observación</th>
@@ -52,7 +58,7 @@
         <tbody>
         <% @certification.certification_details.each do |detail| %>
             <tr>
-              <td><%= detail.employee_name %>
+              <td><%= detail.employee_name %>&nbsp;<%= detail.employee_last_name %>
               <td><%= detail.quantity %>
               <td><%= number_to_currency_py(detail.pay) %>
               <td><%= eval(sprintf("%3.2f",detail.discount)) %>

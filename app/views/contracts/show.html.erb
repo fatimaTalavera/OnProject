@@ -271,7 +271,45 @@
             </div>
           </div>
 
-          <%= render 'certifications/list', :certifications => @internal_certifications %>
+          <table class="table table-bordered table-condensed table-list col-md-12">
+            <thead>
+            <tr>
+              <th width="10%">N° de certificación</th>
+              <th width="10%">Fecha</th>
+              <th width="5%">Estado</th>
+              <th  width="5%" class="table-actions"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @internal_certifications.each do |certification| %>
+                <tr class="fields ">
+                  <td><%= certification.certification_number %></td>
+                  <td><%= certification.date %></td>
+                  <td>
+                    <% if certification.approved?%>
+                        <span class="label label-success">Aprobado</span>
+                    <%elsif certification.pending? %>
+                        <span class="label label-warning">Pendiente</span>
+                    <%elsif certification.rejected? %>
+                        <span class="label label-danger">Rechazado</span>
+                    <% elsif certification.paid?%>
+                        <span  class="label label-default">Pagado</span>
+                    <% end %>
+                  </td>
+                  <td>
+                    <%= link_to "<i class=\"fa fa-eye\"></i>".html_safe, certification_path(certification), {:class => 'btn btn-xs bg-teal', :title=> 'Ver'} %>
+
+                    <% if (can? :update, Certification) && certification.pending? %>
+                        <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_certification_path(certification), :class => 'btn btn-xs bg-orange',:title => 'Editar'%>
+                        <%= link_to "<i class=\"fa fa-check\"></i>".html_safe, approved_certification_path(certification), :class => 'btn btn-xs  bg-green', :title => 'Aprobar',data: {confirm: 'La certificación interna fué aprobada?'}  %>
+                        <%= link_to "<i class=\"fa fa-times\"></i>".html_safe, rejected_certification_path(certification), :class => 'btn btn-xs bg-red', :title => 'Rechazar',data: {confirm: 'La certificación interna fué rechazada?'} %>
+                    <% end %>
+
+                  </td>
+                </tr>
+            <% end %>
+            </tbody>
+          </table>
           <div id="paginate-container">
             <ul class="pagination pagination-sm no-margin pull-right">
               <%= paginate @internal_certifications %>

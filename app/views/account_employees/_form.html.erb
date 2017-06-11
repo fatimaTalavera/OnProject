@@ -6,15 +6,15 @@
             <%= f.label :contract, 'Contrato:', :class => 'control-label' %>
           </div>
           <div class="col-md-8">
-            <%= f.label  account_employee.name_contract, :class => 'control-label' %>
+            <%= f.label  account_employee.contract_name, :class => 'control-label' %>
             <%= f.hidden_field :contract_id, :class => 'form-control'%>
           </div>
         </div>
         <div class="field col-md-6 form-group">
-          <div class="col-md-4">
+          <div class="col-md-6">
             <%= f.label :pay, 'Monto total certificado:', :class => 'control-label' %>
           </div>
-          <div class="col-md-8">
+          <div class="col-md-6">
             <label class="control-label"><%= number_to_currency_py(account_employee.pay_aux) %></label>
             <%= f.hidden_field :pay, :class => 'form-control'%>
           </div>
@@ -40,9 +40,8 @@
                     <th width="15%">Monto Certificado</th>
                     <th width="15%">Fecha de Aprobación</th>
                     <th width="15%">Recibo N°</th>
-                    <th width="15%">Selecciona</th>
+                    <th width="10%">Selecciona</th>
                     <th width="15%">Fecha de Pago</th>
-                    <th width="15%">Estado del Pago</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -55,7 +54,6 @@
                         <td><%=detail.text_field :number_bill, class: 'form-control',minlength:1, maxlength:10%></td>
                         <td><%=detail.check_box :pay, checked:"checked" %></td>
                         <td><%=detail.text_field :date, :id => 'datepickerFrom', :class => 'input-group date form-control datepicker', :value => Date.today %></td>
-                        <td><%=detail.text_field :state, class: 'form-control', disabled:true%></td>
                       </tr>
                   <% end %>
 
@@ -77,6 +75,7 @@
                   <thead>
                   <tr>
                     <th width="15%">Empleado</th>
+                    <th width="15%">N° de Certificación</th>
                     <th width="15%">Monto Certificado</th>
                     <th width="15%">Fecha de Aprobación</th>
                     <th width="15%">Recibo N°</th>
@@ -88,7 +87,8 @@
                   <% account_employee.account_employee_details.where(state:"Pagado").each  do |detail| %>
                       <tr class="fields">
                         <td><%= detail.employee.name %>&nbsp;<%= detail.employee.last_name %></td>
-                        <td><%= detail.total %></td>
+                        <td><%= detail.certification.certification_number %>&nbsp;<%= link_to "<i class=\"fa fa-eye\"></i>".html_safe, certification_path(detail.certification), :class => 'btn btn-xs bg-teal', :title => 'Ver Certificación' %></td>
+                        <td><%= number_to_currency_py(detail.total) %></td>
                         <td><%= detail.certification.date %></td>
                         <td><%= detail.number_bill %></td>
                         <td><%= detail.date %></td>

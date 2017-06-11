@@ -1,6 +1,7 @@
 class Employee < ApplicationRecord
   audited
   has_many :certifications
+  has_many :account_employee_details
 
   validates :name,  :presence => {:message => "No puede estar en blanco"},
             :length => { maximum:30, :message => "Permite hasta 30 caracteres"},

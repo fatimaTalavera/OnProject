@@ -59,6 +59,7 @@
         <thead>
         <tr>
           <th>Contrato</th>
+          <th>N° de certificación</th>
           <th>Monto Certificado</th>
           <th>Fecha de certificación</th>
           <th>Fecha de pago</th>
@@ -71,22 +72,32 @@
             <% @account_details.each do |account| %>
                 <tr>
                   <td><%= account.account_employee.contract_name%></td>
+                  <td><%= account.certification.certification_number %>&nbsp;<%= link_to "<i class=\"fa fa-eye\"></i>".html_safe, certification_path(account.certification), :class => 'btn btn-xs bg-teal', :title => 'Ver Certificación' %></td>
                   <td><%= number_to_currency(account.total, unit: "Gs.", separator: ".", precision: 0) %></td>
                   <td><%= account.certification.date %></td>
                   <td><%= account.date %></td>
                   <td><%= account.number_bill %></td>
-                  <td><%= account.state %></td>
                   <td>
                     <% if account.state == "Pendiente" %>
-                        <%= link_to 'Pagar'.html_safe, edit_account_employee_path(account.account_employee_id), {:class => 'btn btn-xs btn-success', :title => 'Editar'} %>
+                        <span class="label label-warning">Pendiente</span>
+                    <% elsif account.state == "Pagado"%>
+                        <span class="label label-default">Pagado</span>
+                    <% end %>
+                  </td>
+                  <td>
+                    <% if account.state == "Pendiente" %>
+                        <%= link_to 'Generar Pago'.html_safe, edit_account_employee_path(account.account_employee_id), {:class => 'btn btn-xs btn-primary'} %>
                     <% end %>
                   </td>
                 <tr>
             <% end %>
-
-
         </tbody>
       </table>
+      <div id="paginate-container">
+        <ul class="pagination pagination-sm no-margin pull-right">
+          <%= paginate @account %>
+        </ul>
+      </div>
     </div>
   </div>
 </div>

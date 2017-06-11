@@ -21,7 +21,7 @@ class EmployeesController < ApplicationController
   def show
     add_breadcrumb I18n.t('helpers.breadcrumbs.employees.show')
     @account_details = AccountEmployeeDetail.where(employee_id: @employee.id)
-
+    @account = @employee.account_employee_details.page params[:page]
   end
 
   # GET /employees/new

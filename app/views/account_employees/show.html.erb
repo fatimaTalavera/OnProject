@@ -50,7 +50,7 @@
               </div>
               <div class="box-footer">
                 <div class="pull-right">
-                  <% if (can? :update, AccountEmployee) %>
+                  <% if (can? :update, AccountEmployee) && !@account_employee.account_employee_details.where(state:"Pendiente").blank? %>
                       <%= link_to "Generar Pago", edit_account_employee_path(@account_employee), :class => 'btn bg-blue' %>
                   <% end %>
                   <%= link_to "<i class=\"fa fa-arrow-left\"></i>".html_safe, @account_employee.contract, :class => 'btn btn-default', :title => 'Atrás' %>
@@ -64,6 +64,7 @@
                   <thead>
                   <tr  style="word-wrap: break-word">
                     <th width="20%">Jornalero</th>
+                    <th width="10%">N° de certificación</th>
                     <th width="10%">Monto certificado</th>
                     <th width="10%">Fecha de Aprobación</th>
                     <th width="10%">N° de recibo</th>
@@ -74,6 +75,7 @@
                   <% @account_employee.account_employee_details.where(state:"Pagado").each do |detail| %>
                       <tr>
                         <td><%= detail.employee_name_with_initial %> C.I: <%= detail.employee_identification_document %>
+                        <td><%= detail.certification.certification_number %>&nbsp;<%= link_to "<i class=\"fa fa-eye\"></i>".html_safe, certification_path(detail.certification), :class => 'btn btn-xs bg-teal', :title => 'Ver Certificación' %></td>
                         <td><%= number_to_currency_py(detail.total) %>
                         <td><%= detail.certification.date %></td>
                         <td><%= detail.number_bill%>
