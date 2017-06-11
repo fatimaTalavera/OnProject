@@ -1,6 +1,7 @@
 <table class="table table-bordered table-condensed table-list">
   <thead>
   <tr>
+    <th width="10%">N° de certificación</th>
     <th width="30%">Contrato</th>
     <th width="10%">Fecha</th>
     <th width="5%">Estado</th>
@@ -11,6 +12,7 @@
   <tbody>
   <% certifications.each do |certification| %>
       <tr>
+        <td><%= certification.certification_number %></td>
         <td><%= certification.contract_name %></td>
         <td><%= certification.date %></td>
         <td>

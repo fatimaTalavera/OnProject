@@ -1,4 +1,5 @@
 class AccountEmployeesController < ApplicationController
+  add_breadcrumb I18n.t('helpers.breadcrumbs.account_employee.index'), :account_employees_path
   before_action :set_account_employee, only: [:show, :edit, :update, :destroy]
 
   # GET /account_employees
@@ -10,15 +11,18 @@ class AccountEmployeesController < ApplicationController
   # GET /account_employees/1
   # GET /account_employees/1.json
   def show
+    add_breadcrumb I18n.t('helpers.breadcrumbs.account_employee.show')
   end
 
   # GET /account_employees/new
   def new
+    add_breadcrumb I18n.t('helpers.breadcrumbs.account_employee.new')
     @account_employee = AccountEmployee.new
   end
 
   # GET /account_employees/1/edit
   def edit
+    add_breadcrumb I18n.t('helpers.breadcrumbs.account_employee.edit')
     @account_employee.pay = @account_employee.pay_aux
     @certification = Certification.where(id: AccountEmployeeDetail.where(account_employee_id: params[:id]).pluck(:certification_id))
   end
