@@ -1,4 +1,5 @@
 class Contract < ApplicationRecord
+  extend Enumerize
   audited
   belongs_to :client
   has_many :material_movements
@@ -8,6 +9,8 @@ class Contract < ApplicationRecord
   has_many :sale_bills
   has_many :certifications
   has_many :account_employees
+
+  enumerize :state, in: [:activo, :terminado], predicates: true
 
   delegate :name, :description, :total_amount, :client_name, :client_ruc, to: :budget, prefix: true
 
