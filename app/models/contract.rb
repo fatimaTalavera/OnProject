@@ -14,6 +14,10 @@ class Contract < ApplicationRecord
   validates :start_date, :presence => {:message => "No puede estar en blanco"}
 
   validates :end_date, :presence => {:message => "No puede estar en blanco"}
+  validates :amount, :presence =>true
+  validates :client_id, :presence =>true
+  validates :name, :presence =>true, :uniqueness =>true
+  validate :valid_amount_num
 
   def self.new_by_budget(params, budget)
     contract = self.new(params)
@@ -21,6 +25,15 @@ class Contract < ApplicationRecord
     contract.amount = budget.total_amount
     contract.name = budget.name
     contract
+  end
+
+  def valid_amount_num
+    if amount.nil? == true
+      errors.add(:amount, "No puede estar vacío")
+    end
+    if (amount.nil? == false) and amount <= 0
+      errors.add(:amount, "Debe ser mayor a 0")
+    end
   end
 
 end

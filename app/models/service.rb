@@ -14,7 +14,9 @@ class Service < ApplicationRecord
 
   validates :measurement_unit, :presence => {:message => "No puede estar en blanco"}
 
-  validates :price, :presence => {:message => "No puede estar en blanco"}
+  validates :price, :presence => {:message => "No puede estar en blanco"},
+            :format => {:multiline => true, with: VALID_NUMBER_REGEX, :message => "Solo permite numeros"},
+            :numericality => {:greater_than_or_equal_to => 0, message: "No puede ser negativo"}
 
   def modify_subtotal_rubros
     if self.price_changed?

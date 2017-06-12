@@ -17,7 +17,7 @@ class RubroTest < ActiveSupport::TestCase
   end
 
   test "Should save rubro without price" do
-    rubro = Rubro.new(name: "test", utility: 11.1)
-    assert rubro.valid?, "The rubro was not valid. Errors: #{rubro.errors.to_a.to_sentence}"
+    rubro = Rubro.new(name: "test", utility: 11.1,measurement_unit:'m')
+    assert_not rubro.valid?, "The rubro was not valid. Errors: #{rubro.errors.to_a.to_sentence}"
   end
 end

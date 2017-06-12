@@ -12,6 +12,7 @@ class RubroServiceDetail < ApplicationRecord
   validates :measurement_unit, :presence => {:message => "No puede estar vacío"}
   validates :quantity, :presence => {:message => "No puede estar vacío"}
   validates :price, :presence => {:message => "No puede estar vacío"}
+  validates :subtotal, :presence =>true
 
   validate :valid_quant_num
 

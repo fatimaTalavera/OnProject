@@ -47,16 +47,6 @@ class MaterialTest < ActiveSupport::TestCase
     assert_not material.valid?, "Cannot save a material with negative minimun stock. Errors: #{material.errors.to_a.to_sentence}"
   end
 
-  test "Should not save a material with invalid name" do
-    material = Material.new(name: '100', description: "description", price: '9a', quantity: 9.99, minimun_stock: 1, measurement_unit: "m")
-    assert_not material.valid?, "Cannot save a material with invalid name. Errors: #{material.errors.to_a.to_sentence}"
-  end
-
-  test "Should not save a material with invalid description" do
-    material = Material.new(name: "name", description: '100', price: '9a', quantity: 9.99, minimun_stock: 1, measurement_unit: "m")
-    assert_not material.valid?, "Cannot save a material with invalid description. Errors: #{material.errors.to_a.to_sentence}"
-  end
-
   test "Should not save a material with invalid price" do
     material = Material.new(name: "name", description: "description", price: '9a', quantity: 9.99, minimun_stock: 1, measurement_unit: "m")
     assert_not material.valid?, "Cannot save a material with invalid price. Errors: #{material.errors.to_a.to_sentence}"
