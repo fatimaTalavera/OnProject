@@ -18,7 +18,7 @@
           <div class="col-md-3">
             <%= f.label :date, 'Fecha:', :class => 'control-label tooltip_required' %>
           </div>
-          <div class="input-group col-md-7">
+          <div class="input-group col-md-6">
             <%= f.text_field :date, :id => 'datepickerFrom', :class => 'input-group date form-control datepicker'%><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
           </div>
         </div>
@@ -33,9 +33,26 @@
             <%= f.text_field :reason, :maxlength => 120, :class => 'form-control' %>
           </div>
         </div>
+        <div class="field col-md-6 form-group">
+          <div class="col-md-2">
+            <%= f.label :sender, 'Remitente:', :class => 'control-label' %>
+          </div>
+          <div class="col-md-7">
+            <%= f.text_field :sender, :maxlength => 80, :class => 'form-control' %>
+          </div>
+      </div>
       </div>
 
-
+      <div class="field col-md-12 form-group">
+        <div class="field col-md-6 form-group">
+          <div class="col-md-4">
+            <%= f.label :remission, 'Nota de remisión N°:', :class => 'control-label' %>
+          </div>
+          <div class="col-md-6">
+            <%= f.number_field :remission, :maxlength => 30, :class => 'form-control' %>
+          </div>
+        </div>
+      </div>
 
       <div class="col-md-12">
         <div class="box box-success">
