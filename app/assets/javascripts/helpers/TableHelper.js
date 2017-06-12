@@ -51,7 +51,7 @@ var TableHelper = {
                 var subtotal = NumberHelper.aNumero(row.find('.subtotal').text());
                 total -= subtotal;
                 subtotal = price * (isNaN(qty) ? 1 : qty);
-                isNaN(qty) ? (row.find('.qty').val(1)) : qty;
+                //isNaN(qty) ? (row.find('.qty').val(1)) : qty;
                 row.find('.subtotal').text(I18n.toCurrency(subtotal, {unit: ''}));
                 total += parseFloat(subtotal);
                 last_row.text(NumberHelper.aMoneda(total));
