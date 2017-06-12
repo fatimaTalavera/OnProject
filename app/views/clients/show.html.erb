@@ -86,7 +86,7 @@
           <th>Fecha de inicio</th>
           <th>Fecha de finalización</th>
           <th>Monto</th>
-          <th>Facturado</th>
+          <th>Pagado</th>
           <th>Balance</th>
         </tr>
         </thead>
@@ -97,8 +97,8 @@
               <td><%= contract.start_date %></td>
               <td><%= contract.end_date %></td>
               <td><%= number_to_currency_py(contract.amount) %></td>
-              <td><%= number_to_currency_py(contract.sale_bills.sum(:total))%></td>
-              <td><%= number_to_currency_py(contract.amount - contract.sale_bills.sum(:total))%></td>
+              <td><%= number_to_currency_py(contract.sale_bills.sum(:total) - contract.sale_bills.sum(:balance))%></td>
+              <td><%= number_to_currency_py(contract.amount - (contract.sale_bills.sum(:total) - contract.sale_bills.sum(:balance)))%></td>
             <tr>
         <% end %>
         </tbody>

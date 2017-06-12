@@ -1,7 +1,7 @@
 class Installment < ApplicationRecord
   audited
   belongs_to :sale_bill
-
+  has_many :installment_payments
   before_create :set_balance
 
   #Validaciones
