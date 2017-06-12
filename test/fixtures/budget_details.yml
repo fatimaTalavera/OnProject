@@ -3,15 +3,15 @@
 one:
   budget: one
   rubro: one
-  price: 9.99
-  quantity: 9.99
-  subtotal: 9.99
+  price: 9
+  quantity: 9
+  subtotal: 9
   utility: 9.99
 
 two:
   budget: two
   rubro: two
-  price: 9.99
-  quantity: 9.99
-  subtotal: 9.99
+  price: 9
+  quantity: 9
+  subtotal: 9
   utility: 9.99

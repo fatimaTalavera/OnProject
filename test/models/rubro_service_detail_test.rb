@@ -17,7 +17,7 @@ class RubroServiceDetailTest < ActiveSupport::TestCase
   end
 
   test "Should save rubro service detail without subtotal" do
-    rubroServiceDetail = RubroServiceDetail.new(service_id: 1, quantity: 1)
-    assert rubroServiceDetail.valid?, "The rubro service detail was not valid. Errors: #{rubroServiceDetail.errors.to_a.to_sentence}"
+    rubroServiceDetail = RubroServiceDetail.new(service_id: 1, quantity: 1,measurement_unit:'m' )
+    assert_not rubroServiceDetail.valid?, "The rubro service detail was not valid. Errors: #{rubroServiceDetail.errors.to_a.to_sentence}"
   end
 end

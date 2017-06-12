@@ -7,12 +7,12 @@ class BudgetTest < ActiveSupport::TestCase
   end
 
   test "Should not save budget without client" do
-    budget = Budget.new(date: Date.today, state: "pendiente")
+    budget = Budget.new(date: Date.today, state: 0)
     assert_not budget.valid?, "Cannot save a budget without client. Errors: #{budget.errors.to_a.to_sentence}"
   end
 
   test "Should not save budget without date" do
-    budget = Budget.new(client: Client.first, state: "pendiente")
+    budget = Budget.new(client: Client.first, state: 0)
     assert_not budget.valid?, "Cannot save a budget without date. Errors: #{budget.errors.to_a.to_sentence}"
   end
 end

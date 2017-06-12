@@ -11,18 +11,9 @@ class BudgetDetailTest < ActiveSupport::TestCase
     assert_not budget_detail.valid?, "Cannot save Budget_detail without rubro. Errors: #{budget_detail.errors.to_a.to_sentence}"
   end
 
-  test "Should not save budget detail without price" do
-    budget_detail = BudgetDetail.new(rubro: Rubro.first, quantity: 1, subtotal: 99.9, utility: 20)
-    assert_not budget_detail.valid?, "Cannot save Budget_detail without price. Errors: #{budget_detail.errors.to_a.to_sentence}"
-  end
-
   test "Should not save budget detail without quantity" do
     budget_detail = BudgetDetail.new(rubro: Rubro.first, price: 1, subtotal: 99.9, utility: 20)
     assert_not budget_detail.valid?, "Cannot save Budget_detail without quantity. Errors: #{budget_detail.errors.to_a.to_sentence}"
   end
 
-  test "Should not save budget detail without subtotal" do
-    budget_detail = BudgetDetail.new(rubro: Rubro.first, price: 1, quantity: 1, utility: 20)
-    assert_not budget_detail.valid?, "Cannot save Budget_detail without subtotal. Errors: #{budget_detail.errors.to_a.to_sentence}"
-  end
 end

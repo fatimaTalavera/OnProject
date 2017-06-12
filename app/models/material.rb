@@ -19,7 +19,10 @@ class Material < ApplicationRecord
   validates :measurement_unit, :presence => {:message => "No puede estar en blanco"},
             :format => {with: VALID_LETTER_NUMBER_REGEX, message: "No permite solo numeros"}
 
-  validates :price, :presence => {:message => "No puede estar en blanco"}
+  validates :price, :presence => {:message => "No puede estar en blanco"},
+          :format => {:multiline => true, with: VALID_NUMBER_REGEX, :message => "Solo permite numeros"},
+          #valida que no sea negativo
+          :numericality => {:greater_than_or_equal_to => 0, message: "No puede ser negativo"}
 
   validates :minimun_stock, :presence => {:message => "No puede estar en blanco"},
             :format => {:multiline => true, with: VALID_NUMBER_REGEX, :message => "Solo permite numeros"},
@@ -33,4 +36,5 @@ class Material < ApplicationRecord
       end
     end
   end
+
 end
