@@ -81,7 +81,7 @@
       <table class="table table-bordered table-condensed table-list">
         <thead>
         <tr>
-          <th>Nombre</th>
+          <th>Obra</th>
 
           <th>Fecha de inicio</th>
           <th>Fecha de finalización</th>
@@ -98,7 +98,10 @@
               <td><%= contract.end_date %></td>
               <td><%= number_to_currency_py(contract.amount) %></td>
               <td><%= number_to_currency_py(contract.sale_bills.sum(:total) - contract.sale_bills.sum(:balance))%></td>
-              <td><%= number_to_currency_py(contract.amount - (contract.sale_bills.sum(:total) - contract.sale_bills.sum(:balance)))%></td>
+              <td><%= number_to_currency_py(contract.amount - (contract.sale_bills.sum(:total) - contract.sale_bills.sum(:balance)))%>
+              <td>
+                <%= link_to "<i class=\"fa fa-file-text\"></i>".html_safe, contract_path(contract),:class => 'btn btn-xs bg-purple', :title=>'Ver Contrato' %>
+              </td>
             <tr>
         <% end %>
         </tbody>
