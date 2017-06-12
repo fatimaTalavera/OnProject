@@ -28,6 +28,7 @@ var DatepickerHelper = {
         format: 'DD/MM/YYYY',
         separator: ' hasta ',
         locale: {
+          format: 'DD/MM/YYYY',
           applyLabel: 'Aplicar',
           cancelLabel: 'Limpiar',
           fromLabel: 'Desde',
