@@ -96,6 +96,11 @@
               <td><%= number_to_currency_py(purchase.total) %></td>
               <td><%= number_to_currency_py(purchase.payments.sum(:amount)) %></td>
               <td><%= number_to_currency_py(purchase.total - purchase.payments.sum(:amount)) %></td>
+              <% if purchase.state == :pendiente %>
+                  <td>
+                    <%= link_to 'Pagar'.html_safe, purchase_bill_path(purchase), {:class => 'btn btn-xs btn-success', :title => 'Pagar'} %>
+                  </td>
+              <%end%>
             <tr>
         <% end %>
         </tbody>
