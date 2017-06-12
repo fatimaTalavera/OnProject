@@ -23,7 +23,7 @@ class ClientsController < ApplicationController
     @balance = 0
     @client.contracts.each do |contract|
       @balance = @balance + contract.amount
-      @balance = @balance - contract.sale_bills.sum(:total)
+      @balance = @balance - (contract.sale_bills.sum(:total) - contract.sale_bills.sum(:balance))
     end
     @contracts = @client.contracts.page params[:page]
   end
