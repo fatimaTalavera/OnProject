@@ -2,17 +2,18 @@ class RubroMaterialDetail < ApplicationRecord
   audited
   belongs_to :material
   belongs_to :rubro, required: false
-  before_create :calculate_subtotal
+
+  before_save :calculate_subtotal
   after_create_commit :calculate_price
-  after_update_commit :sum_to_price_quantity
-  before_update :sum_to_price_external
+  after_update :sum_to_external_price
+  after_destroy :sub_to_external_price
 
   validates :quantity, :presence => {:message => "No puede estar vacío"}
   validates :material_id, :presence => {:message => "Debe seleccionar un material"}
   validates :measurement_unit, :presence => {:message => "No puede estar vacío"}
   validates :quantity, :presence => {:message => "No puede estar vacío"}
   validates :price, :presence => {:message => "No puede estar vacío"}
-  validates :subtotal, :presence =>true
+  #validates :subtotal, :presence =>true
 
   validate :valid_quant_num
 
@@ -24,17 +25,15 @@ class RubroMaterialDetail < ApplicationRecord
     self.rubro.update(price: self.rubro.price + self.subtotal)
   end
 
-  def sum_to_price_quantity
-    if quantity_changed?
-      self.subtotal = self.material.price * self.quantity
-    end
-  end
-
-  def sum_to_price_external
+  def sum_to_external_price
     if self.subtotal_changed?
       @diferencia = self.subtotal - self.subtotal_was
       self.rubro.update(price: self.rubro.price + @diferencia)
     end
+  end
+
+  def sub_to_external_price
+    self.rubro.update(price: self.rubro.price - self.subtotal)
   end
 
   def valid_quant_num

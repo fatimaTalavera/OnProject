@@ -53,7 +53,7 @@
                      <td class="col-md-2"><%=form.text_field :quantity, class: 'form-control qty text-right'%></td>
                      <td class="col-md-2"><%=form.text_field :measurement_unit, class: 'form-control measurement text-right', readonly: true%></td>
                      <td class="col-md-2"><%=form.text_field :price, class: 'form-control maskMoneda unit-price text-right', readonly: true%></td>
-                     <td class="subtotal text-right maskMoneda"><%= form.object.subtotal ? form.object.subtotal : 0 %></td>
+                     <td class="subtotal text-right"><%= form.object.subtotal ? number_to_currency(form.object.subtotal, unit: '') : 0 %></td>
                     <td class="col-md-1"><%=form.link_to_remove '<i class="fa  fa-trash-o"></i>'.html_safe, class: 'btn btn-sm btn-danger', title:'Eliminar'%></td>
                   </tr>
               <% end %>
@@ -89,7 +89,7 @@
                     <td class="col-md-2"><%=form.text_field :quantity, class: 'form-control qty text-right'%></td>
                     <td class="col-md-2"><%=form.text_field :measurement_unit, class: 'form-control measurement text-right', readonly: true%></td>
                     <td class="col-md-2"><%=form.text_field :price, class: 'form-control maskMoneda unit-price text-right', readonly: true%></td>
-                    <td class="subtotal text-right maskMoneda"><%= form.object.subtotal ? form.object.subtotal : 0 %></td>
+                    <td class="subtotal text-right"><%= form.object.subtotal ? number_to_currency(form.object.subtotal, unit: '') : 0 %></td>
                     <td class="col-md-1"><%=form.link_to_remove '<i class="fa  fa-trash-o"></i>'.html_safe, class: 'btn btn-sm btn-danger', title:'Eliminar'%></td>
                   </tr>
               <% end %>
