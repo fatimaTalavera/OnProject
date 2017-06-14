@@ -26,9 +26,9 @@
           <thead>
           <tr>
             <th>Material</th>
+            <th>Cantidad</th>
             <th>Unidad</th>
             <th>Precio</th>
-            <th>Cantidad</th>
             <th>Total</th>
           </tr>
           </thead>
@@ -36,9 +36,9 @@
           <% @material_movement.movement_details.each do |detalle| %>
               <tr>
                 <td><%= detalle.material.name %></td>
-                <td><%= detalle.material.measurement_unit %></td>
-                <td class="text-right"><%= number_to_currency_py(detalle.price) %></td>
                 <td class="text-right"><%= number_with_precision(detalle.quantity, precision:2) %></td>
+                <td class="text-right"><%= detalle.material.measurement_unit %></td>
+                <td class="text-right"><%= number_to_currency_py(detalle.price) %></td>
                 <td class="text-right"><%= number_to_currency_py(detalle.subtotal) %></td>
               <tr>
           <% end %>
