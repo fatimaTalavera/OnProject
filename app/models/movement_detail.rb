@@ -4,6 +4,7 @@ class MovementDetail < ApplicationRecord
   belongs_to :material
   before_create :withdraw_material
   before_update :quantity_change
+  after_destroy :quantity_change_after_destroy
 
   def withdraw_material
     Material.update(self.material.id, quantity: self.material.quantity - self.quantity)
@@ -11,12 +12,14 @@ class MovementDetail < ApplicationRecord
   end
 
   def quantity_change
-    if self.quantity <  self.quantity_was
+    if self.quantity_changed?
       Material.update(self.material.id, quantity: (self.material.quantity + (self.quantity_was - self.quantity)))
-    else
-      Material.update(self.material.id, quantity: (self.material.quantity - (self.quantity - self.quantity_was)))
     end
     calculate_subtotal
+  end
+
+  def quantity_change_after_destroy
+    Material.update(self.material.id, quantity: (self.material.quantity + self.quantity))
   end
 
   def calculate_subtotal
