@@ -5,12 +5,12 @@
   <div class="box-body">
     <div class="account_employee-search searchList">
       <%= search_form_for(@q, remote: true, :html => { class: 'remote-search' }) do |f| %>
-          <div class="row">
-            <div class="col-md-3">
-              <div class="form-group has-feedback">
-                <%= f.text_field :contract_name_cont, class: 'form-control', autocomplete: 'off', placeholder: 'Busca por Contrato' %>
-                <i class="fa fa-search form-control-feedback"></i>
-              </div>
+          <div class="input-group">
+            <%= f.text_field :contract_name_cont, class: 'form-control', autocomplete: 'off', placeholder: 'Busca por Contrato' %>
+            <div class="input-group-btn">
+              <button type="submit" name="button" class="btn btn-default">
+                <i class="fa fa-search"></i>
+              </button>
             </div>
           </div>
       <% end %>

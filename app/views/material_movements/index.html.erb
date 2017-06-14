@@ -9,7 +9,7 @@
     <div class="material_movement-search searchList">
       <%= search_form_for(@q, remote: true, :html => { class: 'remote-search' }) do |f| %>
           <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-4">
               <div class="input-group">
                 <%= f.text_field :contract_name_or_reason_cont, class: 'form-control', autocomplete: 'off', placeholder: 'Busca por contrato o motivo' %>
                 <div class="input-group-btn">
@@ -19,7 +19,7 @@
                 </div>
               </div>
             </div>
-          <div class="col-md-3">
+          <div class="col-md-4">
             <div class="btn btn-default daterange btn-block" id="date-range">
               <%= f.hidden_field :date_gteq, class: 'fecha-desde' %>
               <%= f.hidden_field :date_gteq, class: 'fecha-hasta' %>
