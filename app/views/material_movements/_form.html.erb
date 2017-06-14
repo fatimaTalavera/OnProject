@@ -63,11 +63,11 @@
               <table class="table table-bordered" id="movement-table">
                 <thead>
                 <tr>
-                  <th class="col-md-2">Material</th>
-                  <th class="col-md-2">Unidad</th>
+                  <th class="col-md-3">Material</th>
                   <th class="col-md-2">Cantidad</th>
+                  <th class="col-md-2">Unidad</th>
                   <th class="col-md-2">Precio Unitario</th>
-                  <th class="col-md-3">Subtotal</th>
+                  <th class="col-md-2">Subtotal</th>
                   <th class="col-md-1"></th>
                 </tr>
                 </thead>
@@ -75,8 +75,8 @@
                 <%= f.fields_for :movement_details, :wrapper => false do |form| %>
                     <tr class="fields">
                       <td><%=form.collection_select(:material_id, Material.all, :id, :name, {prompt: 'Seleccionar'}, class: 'form-control select2 tooltip_required material-search')%></td>
-                      <td><%=form.text_field :measurement_unit, class: 'form-control measurement text-right', readonly: true%></td>
                       <td><%=form.text_field :quantity, class: 'form-control qty tooltip_required text-right'%></td>
+                      <td><%=form.text_field :measurement_unit, class: 'form-control measurement text-right', readonly: true%></td>
                       <td><%=form.text_field :price, class: 'form-control maskMoneda tooltip_required unit-price text-right', readonly: true%></td>
                       <td class='subtotal text-right maskMoneda'><%= form.object.subtotal ? form.object.subtotal : 0 %></td>
                       <td><%=form.link_to_remove '<i class="fa  fa-trash-o"></i>'.html_safe, class: 'btn btn-sm btn-danger', title: 'Eliminar'%></td>

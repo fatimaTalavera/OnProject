@@ -27,9 +27,9 @@
           <thead>
           <tr>
             <th>Material</th>
+            <th>Cantidad</th>
             <th>Unidad</th>
             <th>Precio Unitario</th>
-            <th>Cantidad</th>
             <th>Subtotal</th>
           </tr>
           </thead>
@@ -37,9 +37,9 @@
           <% @rubro.rubro_material_details.each do |detalle| %>
               <tr>
                 <td><%= detalle.material.name %></td>
-                <td><%= detalle.material.measurement_unit %></td>
-                <td class="text-right"><%= number_to_currency_py(detalle.material.price) %></td>
                 <td class="text-right"><%= number_with_precision(detalle.quantity, precision: 2) %></td>
+                <td class="text-right"><%= detalle.material.measurement_unit %></td>
+                <td class="text-right"><%= number_to_currency_py(detalle.material.price) %></td>
                 <td class="text-right"><%= number_to_currency_py(detalle.subtotal) %></td>
               </tr>
           <% end %>
@@ -57,9 +57,9 @@
           <thead>
           <tr>
             <th>Servicio</th>
+            <th>Cantidad</th>
             <th>Unidad</th>
             <th>Precio Unitario</th>
-            <th>Cantidad</th>
             <th>Subtotal</th>
           </tr>
           </thead>
@@ -67,9 +67,9 @@
           <% @rubro.rubro_service_details.each do |detalle| %>
               <tr>
                 <td><%= detalle.service.name %></td>
-                <td><%= detalle.service.measurement_unit %></td>
-                <td class="text-right"><%= number_to_currency_py(detalle.service.price) %></td>
                 <td class="text-right"><%= number_with_precision(detalle.quantity, precision: 2) %></td>
+                <td class="text-right"><%= detalle.service.measurement_unit %></td>
+                <td class="text-right"><%= number_to_currency_py(detalle.service.price) %></td>
                 <td class="text-right"><%= number_to_currency_py(detalle.subtotal) %></td>
               </tr>
           <% end %>
