@@ -177,9 +177,6 @@
   </div>
   <div class="box-footer">
     <div class="pull-right">
-      <% if (can? :update, PurchaseBill) %>
-          <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_purchase_bill_path(@purchase_bill), {:class => "btn bg-orange", :title => "Editar"} %>
-      <% end %>
       <%= link_to "<i class=\"fa fa-arrow-left\"></i>".html_safe, url_for(:back), {:class => "btn btn-default", :title => "Atrás"} %>
     </div>
   </div>
