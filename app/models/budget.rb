@@ -38,5 +38,4 @@ class Budget < ApplicationRecord
   def self.clients
     Client.all
   end
-
 end
