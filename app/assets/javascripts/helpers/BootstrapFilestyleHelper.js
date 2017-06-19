@@ -6,7 +6,7 @@ var BootstrapFilestyleHelper = {
       buttonText: '',
       iconName: 'fa fa-folder-open-o',
       buttonName: 'bg-green',
-      placeholder: 'Seleccionar una imagen'
+      placeholder: 'Seleccionar un archivo'
     });
   }
 

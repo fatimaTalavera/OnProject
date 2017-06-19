@@ -10,6 +10,9 @@ class Contract < ApplicationRecord
   has_many :certifications
   has_many :account_employees
 
+  require 'carrierwave/orm/activerecord'
+  mount_uploader :attachment, AttachmentUploader
+
   enumerize :state, in: [:activo, :terminado], predicates: true
 
   delegate :name, :description, :total_amount, :client_name, :client_ruc, to: :budget, prefix: true
