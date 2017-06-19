@@ -110,6 +110,8 @@
   </div>
   <div class="box-footer">
     <div class="pull-right">
+      <% contract = @contract %>
+      <%= link_to "<i class=\"fa fa-file-text-o\"></i>".html_safe, "#{contract.attachment}" ,:class => 'btn bg-teal', :title=>'Ver archivo adjunto' %>
       <% if (can? :update, Contract) %>
           <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_contract_path(@contract), {:class => "btn  bg-orange"} %>
       <% end %>

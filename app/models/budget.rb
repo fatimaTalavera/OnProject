@@ -16,7 +16,6 @@ class Budget < ApplicationRecord
 
   validates :name, :presence => {:message => "No puede estar en blanco"},
             :length => {maximum:150, :message => "Permite hasta 150 caracteres"},
-            format: { :with => VALID_LETTER_REGEX, message: 'Solo permite letras'},
             :uniqueness => {:message => "Este nombre ya existe, vuelva a intentarlo"}
   validates :client_id, :presence => {:message => "Debe seleccionar un cliente"}
   validate :detalles_vacio
