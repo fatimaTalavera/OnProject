@@ -6,7 +6,8 @@ one:
   date: 2017-04-12
   description: MyString
   state: MyString
-  total_amount: 9.99
+  total_amount: 0
+  client: one
 
 two:
   client: two
@@ -15,3 +16,4 @@ two:
   description: MyString
   state: MyString
   total_amount: 9.99
+  client: two

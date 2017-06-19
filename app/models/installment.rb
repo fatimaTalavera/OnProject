@@ -12,7 +12,6 @@ class Installment < ApplicationRecord
 
   validates :due_date, :presence => {:message => "No puede estar en blanco"}
 
-  private
   def set_balance
     self.balance = self.amount
   end

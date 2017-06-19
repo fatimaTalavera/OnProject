@@ -13,7 +13,7 @@ class RubroServiceDetail < ApplicationRecord
   validates :measurement_unit, :presence => {:message => "No puede estar vacío"}
   validates :quantity, :presence => {:message => "No puede estar vacío"}
   validates :price, :presence => {:message => "No puede estar vacío"}
-  #validates :subtotal, :presence =>true
+
 
   validate :valid_quant_num
 
@@ -22,18 +22,19 @@ class RubroServiceDetail < ApplicationRecord
   end
 
   def calculate_price
-    self.rubro.update(price: self.rubro.price + self.subtotal)
+    self.rubro.update_attribute(:price, self.rubro.price + self.subtotal)
+
   end
 
   def sum_to_external_price
     if self.subtotal_changed?
       @diferencia = self.subtotal - self.subtotal_was
-      self.rubro.update(price: self.rubro.price + @diferencia)
+      self.rubro.update_attribute(:price, self.rubro.price + @diferencia)
     end
   end
 
   def sub_to_external_price
-    self.rubro.update(price: self.rubro.price - self.subtotal)
+    self.rubro.update_attribute(:price, self.rubro.price - self.subtotal)
   end
 
   def valid_quant_num

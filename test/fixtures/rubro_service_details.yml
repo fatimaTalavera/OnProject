@@ -4,8 +4,10 @@ one:
   service: one
   quantity: 1
   subtotal: 1
+  rubro: one
 
 two:
   service: two
-  quantity: 1
+  quantity: 2
   subtotal: 1
+  rubro: two

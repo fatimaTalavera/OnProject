@@ -30,4 +30,16 @@ class ClientCertificationTest < ActiveSupport::TestCase
     clientCertification = ClientCertification.new(contract: Contract.first, state: 0, date: Date.today, received: 'Name15', observation: 'Observacion')
     assert_not clientCertification.valid?, "Cannot save a client invalid name. Errors: #{clientCertification.errors.to_a.to_sentence}"
   end
+
+  test "Should update certified_quantity of budget" do
+    assert_equal(true, ClientCertification.first.subtract_missing_amount)
+    assert_equal(8, ClientCertification.first.client_certification_details.first.budget_detail.certified_quantity)
+  end
+
+  test "Should update certified_quantity and change state of budget" do
+    assert_equal(true, ClientCertification.last.subtract_missing_amount)
+    assert_equal(0, ClientCertification.last.client_certification_details.last.budget_detail.certified_quantity)
+    assert_equal("certified",ClientCertification.last.client_certification_details.last.budget_detail.state)
+  end
+
 end
