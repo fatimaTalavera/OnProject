@@ -33,12 +33,13 @@ class ClientCertification < ApplicationRecord
   def subtract_missing_amount
     self.client_certification_details.each do |detail|
       budget = BudgetDetail.find(detail.budget_detail_id)
-      diferencia = budget.certified_quantity - detail.quantity
+      diferencia = budget.certified_quantity.to_i - detail.quantity.to_i
       if 0 == diferencia
         BudgetDetail.update(budget, :certified_quantity => diferencia, :state => BudgetDetail.states[:certified])
       else
         BudgetDetail.update(budget, :certified_quantity => diferencia)
       end
     end
+    true
   end
 end

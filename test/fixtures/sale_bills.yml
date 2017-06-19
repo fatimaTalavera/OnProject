@@ -5,9 +5,11 @@ one:
   condition: MyString
   number: 1
   total: 1
+  balance: 1
 
 two:
   date: 2017-05-07
   condition: MyString
   number: 1
   total: 1
+  balance: 10

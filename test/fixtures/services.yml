@@ -6,8 +6,10 @@ one:
   measurement_unit: MyString
   price: 9.99
 
+
 two:
   name: MyOtherName
   description: MyString
   measurement_unit: MyString
   price: 9.99
+

@@ -6,6 +6,7 @@ one:
   material_quantity: 1
   service_quantity: 1
   name: one
+  price: 1000
 
 two:
   material: two
@@ -13,3 +14,4 @@ two:
   material_quantity: 1
   service_quantity: 1
   name: two
+  price: 500

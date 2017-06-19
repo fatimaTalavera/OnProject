@@ -16,8 +16,4 @@ class RubroMaterialDetailTest < ActiveSupport::TestCase
     assert_not rubroMaterialDetail.valid?, "The rubro material detail was not valid. Errors: #{rubroMaterialDetail.errors.to_a.to_sentence}"
   end
 
-  test "Should save rubro material detail without subtotal" do
-    rubroMaterialDetail = RubroMaterialDetail.new(material_id: 1, quantity: 1, measurement_unit:'m2')
-    assert_not rubroMaterialDetail.valid?, "The rubro material detail was not valid. Errors: #{rubroMaterialDetail.errors.to_a.to_sentence}"
-  end
 end

@@ -15,4 +15,10 @@ class BudgetTest < ActiveSupport::TestCase
     budget = Budget.new(client: Client.first, state: 0)
     assert_not budget.valid?, "Cannot save a budget without date. Errors: #{budget.errors.to_a.to_sentence}"
   end
+
+  test "Should caclulate total of budget" do
+    assert_equal(true, Budget.last.as_total)
+    assert_equal(9,Budget.last.total_amount)
+  end
+
 end

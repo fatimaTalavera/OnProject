@@ -4,8 +4,10 @@ one:
   due_date: 2017-05-11
   amount: 1
   balance: 1
+  sale_bill: one
 
 two:
   due_date: 2017-05-11
   amount: 1
   balance: 1
+  sale_bill: two

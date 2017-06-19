@@ -27,7 +27,7 @@ class PurchaseBill < ApplicationRecord
 
   validates :provider_id, :presence => {:message => "Debe seleccionar un proveedor"}
 
-  private
+
 
   #def set_total
   #  self.total = 0
