@@ -6,8 +6,7 @@ var Sale = (function(){
 
   function initFormEvents(){
     NumberHelper.mascaraMoneda('.maskMoneda');
-    Material.search({selector: elements.contractSearch, url: searchContractUrl});
-    SaleTableHelper.totalsEvent({selector: elements.contractSearch.selector, table: elements.table.selector});
+    SaleTableHelper.totalsEvent({selector: elements.contractSearch.selector, table: elements.table.selector, url: '/client_certifications/'});
     $("#details-body").on("nested:fieldAdded", function(event, insertedItem) {
       //$(event.target).find(':input').enableClientSideValidations();
       NumberHelper.mascaraMoneda('.maskMoneda');
@@ -34,7 +33,7 @@ var Sale = (function(){
       elements =
         {
           table: $('#sale-table'),
-          contractSearch: $('.contract-search')
+          contractSearch: $('.certification-search')
         };
     },
     index: function() {

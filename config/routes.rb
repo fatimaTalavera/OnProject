@@ -19,7 +19,11 @@ Rails.application.routes.draw do
       get :approved
     end
   end
-  resources :client_certifications
+  resources :client_certifications do
+    member do
+      get :get_detail
+    end
+  end
   get 'employees/search' => 'employees#search'
   resources :employees
   resources :purchase_bills

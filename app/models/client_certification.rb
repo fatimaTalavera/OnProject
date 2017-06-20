@@ -4,15 +4,16 @@ class ClientCertification < ApplicationRecord
   belongs_to :budget
   has_many :budget_details, through: :contract
   has_many :client_certification_details, dependent: :destroy
+  has_one :sale_detail
 
-  enum state: { pending: 0, approved: 1, rejected: 2, paid: 3 }
-  enum state_type: { Pendiente: 0, Aprobado: 1, Rechazado: 2, Pagado: 3 }
+  enum state: { pending: 0, paid: 1 }
+  enum state_type: { Pendiente: 0, Pagado: 1 }
 
   delegate :name, to: :contract, prefix: true
 
   accepts_nested_attributes_for :client_certification_details, :allow_destroy => true
 
-  after_create :subtract_missing_amount
+  before_create :subtract_missing_amount
 
   validates :date, :presence => {:message => "No puede estar en blanco"}
 
@@ -31,7 +32,9 @@ class ClientCertification < ApplicationRecord
   end
 
   def subtract_missing_amount
+    total = 0
     self.client_certification_details.each do |detail|
+      total += detail.total
       budget = BudgetDetail.find(detail.budget_detail_id)
       certified = budget.certified_quantity + detail.quantity
       if budget.quantity == certified
@@ -40,5 +43,6 @@ class ClientCertification < ApplicationRecord
         BudgetDetail.update(budget.id, certified_quantity: certified)
       end
     end
+    self.total = total
   end
 end

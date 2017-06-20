@@ -1,9 +1,10 @@
 <table class="table table-bordered" id="sale-table">
   <thead>
     <tr>
-      <th class="col-md-4">Concepto</th>
-      <th>Cantidad</th>
+      <th>Certificación</th>
+      <th class="col-md-4">Detalle</th>
       <th>Precio Unitario</th>
+      <th>Desc. Anticipo</th>
       <th>Subtotal</th>
       <th class="table-actions"></th>
     </tr>
@@ -11,20 +12,21 @@
   <tbody id="details-body">
     <%= f.fields_for :sale_details, :wrapper => false do |form| %>
       <tr class="fields">
+        <td><%=form.collection_select(:client_certification_id, sale_bill.client_certifications.pending, :id, :date, {prompt: 'Seleccionar'}, class: 'form-control select2 certification-search')%></td>
         <td class="col-md-4"><%=form.text_field :concept, class: 'form-control'%></td>
-        <td><%=form.text_field :quantity, class: 'form-control qty text-right'%></td>
-        <td><%=form.text_field :price, class: 'form-control maskMoneda unit-price text-right'%></td>
+        <td class="price text-right"><%= form.object.price ? form.object.price : 0 %></td>
+        <td class="advance-payment text-right"><%= sale_bill.contract_advance_payment_percentage %></td>
         <td class="subtotal text-right"><%= form.object.total ? form.object.total : 0 %></td>
-        <td><%=form.link_to_remove '<i class="fa fa-trash-o"></i>'.html_safe, class: 'btn btn-flat bg-red', title: 'Eliminar Concepto'%></td>
+        <td><%=form.link_to_remove '<i class="fa fa-trash-o"></i>'.html_safe, class: 'btn btn-flat bg-red', title: 'Eliminar Certificación'%></td>
       </tr>
     <% end %>
     <tr>
-      <td colspan="2">
-        <%= f.link_to_add 'Agregar Concepto'.html_safe, :sale_details, class: 'btn btn-flat bg-green insert_in_table', title: 'Agregar Concepto' %>
+      <td colspan="3">
+        <%= f.link_to_add '<i class="fa fa-plus"></i>'.html_safe, :sale_details, class: 'btn btn-flat bg-green insert_in_table', title: 'Agregar Certificación' %>
       </td>
       <td class="text-right text-bold">Total:</td>
       <td class="text-right">Gs. <span class="table-total"><%= sale_bill.total ? sale_bill.total : 0 %></span>
-        <%= f.hidden_field :total, :class => 'maskMonedaa form-control input_total' %>
+        <%= f.hidden_field :total, :class => 'form-control input_total' %>
       </td>
       <td></td>
     </tr>

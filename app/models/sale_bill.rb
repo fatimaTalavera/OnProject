@@ -1,11 +1,15 @@
 class SaleBill < ApplicationRecord
   extend Enumerize
   audited
+
   belongs_to :contract
-  delegate :name, to: :contract, prefix: true
   has_many :sale_details
-  accepts_nested_attributes_for :sale_details, allow_destroy: true
   has_many :installments
+  has_many :client_certifications, through: :contract
+
+  delegate :name, :budget_client_name, :advance_payment_percentage, to: :contract, prefix: true
+
+  accepts_nested_attributes_for :sale_details, allow_destroy: true
   accepts_nested_attributes_for :installments, allow_destroy: true
 
   enumerize :condition, in: [:contado, :crédito], predicates: true
@@ -13,13 +17,13 @@ class SaleBill < ApplicationRecord
 
   after_validation :set_balance, if: :crédito?
   after_validation :set_state
-  #Validaciones
-  validates :condition, :presence => {:message => "Debe seleccionar una condicion de pago"}
 
-  validates_numericality_of :number, :presence => {:message => "Debe rellenar este campo"},
-                            :greater_than_or_equal_to => 1,
-                            :less_than_or_equal_to => 2147483647,
-                            :message => "Ingrese un número válido"
+  after_create :change_certifications
+
+  #Validaciones
+  #validates :condition, :presence => {:message => "Debe seleccionar una condicion de pago"}
+
+  validates :number, :presence => {:message => "Debe rellenar este campo"}
 
   validates :date, :presence => {:message => "No puede estar en blanco"}
 
@@ -36,5 +40,11 @@ class SaleBill < ApplicationRecord
 
   def set_balance
     self.balance = self.total
+  end
+
+  def change_certifications
+    self.sale_details.each do |detail|
+      ClientCertification.update(detail.client_certification_id, state: ClientCertification.states[:paid])
+    end
   end
 end

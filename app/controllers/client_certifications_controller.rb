@@ -7,6 +7,9 @@ class ClientCertificationsController < ApplicationController
 
   # GET /client_certifications
   # GET /client_certifications.json
+  def get_detail
+    render :json => ClientCertification.find(params[:id])
+  end
 
   def index
     get_client_certifications
