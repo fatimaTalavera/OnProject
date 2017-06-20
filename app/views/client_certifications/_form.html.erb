@@ -24,6 +24,15 @@
       <div class="field col-md-12 form-group">
         <div class="field col-md-6 form-group">
           <div class="col-md-3">
+            <%= f.label :number, 'Nro. de documento:', :class => 'control-label tooltip_required' %>
+          </div>
+          <div class="col-md-8">
+            <%= f.text_field :number, :class => 'form-control' %>
+          </div>
+        </div>
+
+        <div class="field col-md-6 form-group">
+          <div class="col-md-3">
             <%= f.label :received, 'Aprobado por:', :class => 'control-label tooltip_required' %>
           </div>
           <div class="col-md-8">

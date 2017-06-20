@@ -17,9 +17,9 @@ class ClientCertification < ApplicationRecord
 
   validates :date, :presence => {:message => "No puede estar en blanco"}
 
-  validates :received, 	:presence => {:message => "No puede estar en blanco"},
-  						          :length => { maximum: 50, :message => "Permite hasta 50 caracteres"},
-                        format: { :with => VALID_LETTER_REGEX, message: 'Solo permite letras'}
+  validates :number, :presence => {:message => "No puede estar en blanco"}
+
+  validates :received, 	:presence => {:message => "No puede estar en blanco"}
 
   validates :observation, :length => { maximum: 200, :message => "Permite hasta 200 caracteres"}
 

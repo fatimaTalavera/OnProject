@@ -4,31 +4,53 @@
   </div>
   <div class="box-body">
     <div class="row">
-      <div class="col-md-12">
-        <div class="col-md-3">
-          <label class="control-label">Fecha</label>
-          <p><%= l @sale_bill.date, format: :default%></p>
+      <div class="field col-md-4 form-group">
+        <div class="field col-md-3">
+          <strong>Fecha:</strong>
         </div>
-        <div class="col-md-3">
-          <label class="control-label">Cliente</label>
-          <p><%= @sale_bill.contract_name %></p>
+        <div class="field col-md-8 show-padding">
+          <%= @sale_bill.date %>
         </div>
-        <div class="col-md-3">
-          <label class="control-label">Condición de compra</label>
-          <p><%= @sale_bill.condition %></p>
+      </div>
+
+      <div class="field col-md-4 form-group">
+        <div class="field col-md-3">
+          <strong>Condición:</strong>
         </div>
-        <div class="col-md-3">
-          <label class="control-label">Estado</label>
-          <p>
-            <% if @sale_bill.state.pagado? %>
-              <label class="label label-success"><%= @sale_bill.state_text %></label>
-            <% else %>
-              <label class="label label-warning"><%= @sale_bill.state_text %></label>
-            <% end %>
-          </p>
+        <div class="field col-md-8 show-padding">
+          <%= @sale_bill.condition %>
+        </div>
+      </div>
+
+      <div class="field col-md-4 form-group">
+        <div class="field col-md-3">
+          <strong>Estado:</strong>
+        </div>
+        <div class="field col-md-8 show-padding">
+          <label class="label label-<%= @sale_bill.state.pagado? ? 'success' : 'warning' %>"><%= @sale_bill.state_text %></label>
         </div>
       </div>
     </div>
+    <div class="row">
+      <div class="field col-md-4 form-group">
+        <div class="field col-md-3">
+          <strong>Contrato:</strong>
+        </div>
+        <div class="field col-md-8 show-padding">
+          <%= @sale_bill.contract_name %>
+        </div>
+      </div>
+
+      <div class="field col-md-4 form-group">
+        <div class="field col-md-3">
+          <strong>Cliente:</strong>
+        </div>
+        <div class="field col-md-8 show-padding">
+          <%= @sale_bill.contract_budget_client_name %>
+        </div>
+      </div>
+    </div>
+    <br>
     <div class="row">
       <div class="col-md-12">
         <div class="nav-tabs-custom">
@@ -41,25 +63,35 @@
               <table class="table table-bordered table-condensed table-list">
                 <thead>
                 <tr>
-                  <th>Concepto</th>
-                  <th>Cantidad</th>
+                  <th>Certificado</th>
+                  <th>Fecha de Cert.</th>
+                  <th>Recibido por</th>
+                  <th>Detalle</th>
                   <th>Precio Unitario</th>
-                  <th>Subtotal</th>
                 </tr>
                 </thead>
                 <tbody>
                   <% @sale_bill.sale_details.each do |d| %>
                     <tr>
+                      <td><%= d.client_certification_number %></td>
+                      <td><%= d.client_certification_date %></td>
+                      <td><%= d.client_certification_received %></td>
                       <td><%= d.concept %></td>
-                      <td class="text-right"><%= d.quantity %></td>
-                      <td class="text-right"><%= number_to_currency_py(d.price) %></td>
-                      <td class="text-right"><%= number_to_currency_py(d.total) %></td>
+                      <td class="text-right"><%= number_to_currency_py(d.client_certification_total) %></td>
                     </tr>
                   <% end %>
                 </tbody>
                 <tfoot>
                   <tr>
-                    <td colspan="3" class="text-bold text-right">Total:</td>
+                    <td colspan="4" class="text-bold text-right">Subtotal:</td>
+                    <td class="text-bold text-right"><%= number_to_currency_py(@sale_bill.total * 100 / (100 - @sale_bill.contract_advance_payment_percentage)) %></td>
+                  </tr>
+                  <tr>
+                    <td colspan="4" class="text-bold text-right">Desc. Anticipo:</td>
+                    <td class="text-bold text-right"><%= number_to_currency_py(@sale_bill.total * @sale_bill.contract_advance_payment_percentage / (100 - @sale_bill.contract_advance_payment_percentage)) %></td>
+                  </tr>
+                  <tr>
+                    <td colspan="4" class="text-bold text-right">Total:</td>
                     <td class="text-bold text-right"><%= number_to_currency_py(@sale_bill.total) %></td>
                   </tr>
                 </tfoot>

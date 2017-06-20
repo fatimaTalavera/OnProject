@@ -1,9 +1,12 @@
 <table class="table table-bordered table-condensed table-list">
   <thead>
   <tr>
+    <th>Número</th>
     <th>Obra</th>
     <th>Fecha</th>
     <th>Recibido</th>
+    <th>Total</th>
+    <th>Estado</th>
     <th class="table-actions"></th>
   </tr>
   </thead>
@@ -11,9 +14,18 @@
   <tbody>
   <% client_certifications.each do |client_certification| %>
       <tr>
+        <td><%= client_certification.number %></td>
         <td><%= client_certification.contract_name %></td>
         <td><%= client_certification.date %></td>
         <td><%= client_certification.received %></td>
+        <td><%= number_to_currency_py(client_certification.total) %></td>
+        <td>
+          <% if client_certification.paid?%>
+              <span class="label label-success">Pagado</span>
+          <% else %>
+              <span class="label label-warning">Pendiente</span>
+          <% end %>
+        </td>
         <td>
           <%= link_to "<i class=\"fa fa-eye\"></i>".html_safe, client_certification_path(client_certification), {:class => "btn btn-xs bg-teal"} %>
         </td>

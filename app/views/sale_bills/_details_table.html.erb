@@ -12,7 +12,7 @@
   <tbody id="details-body">
     <%= f.fields_for :sale_details, :wrapper => false do |form| %>
       <tr class="fields">
-        <td><%=form.collection_select(:client_certification_id, sale_bill.client_certifications.pending, :id, :date, {prompt: 'Seleccionar'}, class: 'form-control select2 certification-search')%></td>
+        <td><%=form.collection_select(:client_certification_id, sale_bill.client_certifications.pending, :id, :number, {prompt: 'Seleccionar'}, class: 'form-control select2 certification-search')%></td>
         <td class="col-md-4"><%=form.text_field :concept, class: 'form-control'%></td>
         <td class="price text-right"><%= form.object.price ? form.object.price : 0 %></td>
         <td class="advance-payment text-right"><%= sale_bill.contract_advance_payment_percentage %></td>

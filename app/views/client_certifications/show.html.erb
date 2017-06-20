@@ -5,7 +5,7 @@
   <div class="box-body">
 
     <div class="field col-md-12 form-group">
-      <div class="field col-md-6 form-group">
+      <div class="field col-md-4 form-group">
         <div class="col-md-2">
           <strong>Obra:</strong>
         </div>
@@ -14,7 +14,16 @@
         </div>
       </div>
 
-      <div class="field col-md-6 form-group">
+      <div class="field col-md-4 form-group">
+        <div class="col-md-5">
+          <strong>Nro. Documento:</strong>
+        </div>
+        <div class="col-md-7 show-padding">
+          <%= @client_certification.number %>
+        </div>
+      </div>
+
+      <div class="field col-md-4 form-group">
         <div class="col-md-2">
           <strong>Fecha:</strong>
         </div>
@@ -25,20 +34,20 @@
     </div>
 
     <div class="field col-md-12 form-group">
+      <div class="field col-md-4 form-group">
+        <div class="col-md-4">
+          <strong>Recibido por:</strong>
+        </div>
+        <div class="col-md-7 show-padding">
+          <%= @client_certification.received %>
+        </div>
+      </div>
       <div class="field col-md-6 form-group">
         <div class="col-md-3">
           <strong>Observaciones:</strong>
         </div>
         <div class="col-md-7 show-padding">
           <%= @client_certification.observation %>
-        </div>
-      </div>
-      <div class="field col-md-6 form-group">
-        <div class="col-md-3">
-          <strong>Recibido por:</strong>
-        </div>
-        <div class="col-md-7 show-padding">
-          <%= @client_certification.received %>
         </div>
       </div>
     </div>
