@@ -70,11 +70,11 @@
                         <%= form.collection_select :rubro_id, Rubro.all, :id, :name, {prompt: 'Buscar Rubro'}, class: "form-control select2 rubro-search" %>
                       </td>
                       <td><%=form.text_field :measurement_unit, class:'form-control measurement_unit', readonly: true %> </td>
-                      <td><%=form.text_field :quantity, class: 'form-control quantity'%></td>
-                      <td><%=form.text_field :cost, class:'form-control cost maskMoneda', readonly: true %></td>
-                      <td><%=form.text_field :utility, class: 'form-control utility'%> </td>
-                      <td><%=form.text_field :price, class:'form-control price maskMoneda', readonly: true%></td>
-                      <td><%=form.text_field :subtotal, class: 'form-control subtotal maskMoneda', readonly: true %></td>
+                      <td><%=form.text_field :quantity, class: 'form-control text-right quantity'%></td>
+                      <td><%=form.text_field :cost, class:'form-control text-right cost maskMoneda', readonly: true %></td>
+                      <td><%=form.text_field :utility, class: 'form-control text-right utility'%> </td>
+                      <td><%=form.text_field :price, class:'form-control text-right price maskMoneda', readonly: true%></td>
+                      <td><%=form.text_field :subtotal, class: 'form-control text-right subtotal maskMoneda', readonly: true %></td>
                       <td><%=form.link_to_remove '<i class="fa fa-trash"></i>'.html_safe, class: 'btn btn-danger'%></td>
                     </tr>
                 <% end %>
@@ -83,8 +83,8 @@
                     <%= f.link_to_add '<i class="fa fa-plus"></i>'.html_safe, :budget_details, class: 'btn btn-sm bg-green insert_in_table', title: 'Agregar material' %>
                   </td>
                   <td class="text-right text-bold">Total:</td>
-                  <td class="text-right">Gs. <span class="table-total"><%= budget.total_amount ? budget.total_amount : 0 %></span>
-                    <%= f.hidden_field :total_amount, :class => 'maskMonedaa form-control input_total' %>
+                  <td class="text-right">Gs. <span class="table-total"><%= budget.total_amount ? number_to_currency(budget.total_amount, unit: '') : 0 %></span>
+                    <%= f.hidden_field :total_amount, :class => 'form-control input_total' %>
                   </td>
                   <td></td>
                 </tr>

@@ -77,11 +77,11 @@
               <tr class="fields ">
                 <td><%= budget_detail.rubro_name %></td>
                 <td><%= budget_detail.rubro_measurement_unit %></td>
-                <td><%= eval(sprintf("%3.2f",budget_detail.quantity)) %></td>
-                <td><%= number_to_currency_py(budget_detail.cost) %></td>
-                <td><%= budget_detail.utility %></td>
-                <td><%= number_to_currency_py(budget_detail.price) %></td>
-                <td><%= number_to_currency_py(budget_detail.subtotal) %></td>
+                <td class="text-right"><%= eval(sprintf("%3.2f",budget_detail.quantity)) %></td>
+                <td class="text-right"><%= number_to_currency_py(budget_detail.cost) %></td>
+                <td class="text-right"><%= budget_detail.utility %></td>
+                <td class="text-right"><%= number_to_currency_py(budget_detail.price) %></td>
+                <td class="text-right"><%= number_to_currency_py(budget_detail.subtotal) %></td>
               </tr>
           <% end %>
         </table>
