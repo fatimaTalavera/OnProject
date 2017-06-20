@@ -3,7 +3,7 @@
 one:
   account_employee: one
   employee: one
-  total: 1
+  total: 100
   pay: 1
   number_bill: 1
   state: "Pendiente"
@@ -11,8 +11,17 @@ one:
 
 two:
   account_employee: two
-  employee: two
-  total: 1
+  employee: one
+  total: 1000
+  pay: 1
+  number_bill: 1
+  state: "Pendiente"
+  certification: two
+
+three:
+  account_employee: one
+  employee: one
+  total: 100
   pay: 1
   number_bill: 1
   state: "Pendiente"

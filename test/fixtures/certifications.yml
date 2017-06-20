@@ -3,6 +3,7 @@
 one:
   date: 2017-04-08
   contract: one
+  state: 2
 
 two:
   date: 2017-04-08
