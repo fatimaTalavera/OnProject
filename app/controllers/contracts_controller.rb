@@ -30,6 +30,16 @@ class ContractsController < ApplicationController
       @approved << Certification.find(c.id).state
     end
     @account_employee = @contract.account_employees.page params[:page]
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = ContractPdf.new(@contract, view_context)
+        send_data pdf.render,
+                  filename: "contract_#{@contract.id}.pdf",
+                  type: 'application/pdf',
+                  disposition: 'inline'
+      end
+    end
   end
 
   # GET /contracts/new

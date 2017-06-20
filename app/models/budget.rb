@@ -13,6 +13,7 @@ class Budget < ApplicationRecord
   accepts_nested_attributes_for :budget_details, allow_destroy: true
 
   after_save :as_total
+  after_save :as_gain
 
   validates :name, :presence => {:message => "No puede estar en blanco"},
             :length => {maximum:150, :message => "Permite hasta 150 caracteres"},
@@ -32,6 +33,16 @@ class Budget < ApplicationRecord
       total = total + detail.subtotal
     end
     self.update_column(:total_amount, total)
+  end
+
+  def as_gain
+    total_utility = 0
+    total_gain = 0
+    self.budget_details.each do |detail|
+      total_utility = total_utility + detail.utility
+    end
+    total_gain = self.total_amount * total_utility/100
+    self.update_column(:expected_gain, total_gain)
   end
 
   def self.clients
