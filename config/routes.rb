@@ -51,5 +51,9 @@ Rails.application.routes.draw do
   resources :budgets do
     resources :budgets_details
   end
+  get 'reports' , to: 'reports#index', as: :reports
+  get 'reports/materials' , to: 'reports#materials', as: :reports_materials
+  get 'reports/bills' , to: 'reports#bills', as: :reports_bills
+  get 'reports/employees' , to: 'reports#employees', as: :report_employees
 
 end

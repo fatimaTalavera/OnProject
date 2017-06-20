@@ -3,11 +3,13 @@ class Contract < ApplicationRecord
   audited
   belongs_to :client
   has_many :material_movements
+  has_many :movement_details, through: :material_movements
   has_many :client_certifications
   has_one :budget
   has_many :budget_details, through: :budget
   has_many :sale_bills
   has_many :certifications
+  has_many :certification_details, through: :certifications
   has_many :account_employees
 
   require 'carrierwave/orm/activerecord'

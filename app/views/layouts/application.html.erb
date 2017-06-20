@@ -187,6 +187,8 @@
             </li>
         <% end %>
 
+        <li><a href="<%= reports_path %>"><i class="fa fa-pie-chart"></i><span><%= t('helpers.menu.reports') %></span></a></li>
+
         <% if (can? :read, Audit) %>
             <li><a href="<%= audit_index_path %>"><i class="fa fa-bars"></i><span><%= t('helpers.menu.audit') %></span></a></li>
         <% end %>

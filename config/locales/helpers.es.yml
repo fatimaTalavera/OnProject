@@ -26,6 +26,7 @@ es:
       sale_bills: Facturas de venta
       concepts: Conceptos
       index: Indice
+      reports: Reportes
       new: Agregar
       edit: Editar
       show: Ver
@@ -121,6 +122,12 @@ es:
         edit: Editar concepto
         list: Conceptos
         show: Ver Concepto
+      reports:
+        index: Reportes
+        new: Agregar
+        edit: Editar
+        list: Reportes
+        show: Reporte
 
     login:
       messages:

@@ -1,0 +1,75 @@
+<div class="box box-success">
+  <div class="box-header with-border box-success">
+    <h3 class="box-title"><%= t('helpers.menu.reports') %></h3>
+  </div>
+  <div class="box-body">
+    <%= form_tag('/reports/materials', method: :get) do %>
+        <b>Materiales:</b>
+        <br>
+        <div class="field col-md-12 form-group form-inline">
+          <div class="field form-group col-md-5">
+            <b>Contrato</b>
+            <%= select_tag "contract_id", options_from_collection_for_select(Contract.all, "id", "name"), prompt: "Todos", class: "form-control" %>
+            <b>Material</b>
+            <%= select_tag "material_id", options_from_collection_for_select(Material.all, "id", "name"), prompt: "Todos", class: "form-control", :required => true %>
+          </div>
+
+          <div class="field form-group">
+            <b>Inicio:</b>
+            <%= text_field_tag "start_date", "", class: "form-control", :class => 'form-control datepicker', :required => true, value: params[:start_date] %>
+            <b>Fin:</b>
+            <%= text_field_tag "end_date", "", class: "form-control", :class => 'form-control datepicker', :required => true, value: params[:end_date] %>
+          </div>
+          <%= submit_tag 'Generar', class: "btn btn-primary" %>
+        </div>
+    <% end %>
+    <br><br><br><br>
+
+    <%= form_tag('/reports/bills', method: :get) do %>
+        <b>Facturación:</b>
+        <br>
+        <div class="field col-md-12 form-group form-inline">
+          <div class="field form-group col-md-5">
+            <b>Contrato</b>
+            <%= select_tag "contract_id", options_from_collection_for_select(Contract.all, "id", "name"), prompt: "Todos", class: "form-control" %>
+          </div>
+
+          <div class="field form-group">
+            <b>Inicio:</b>
+            <%= text_field_tag "start_date", "", class: "form-control", :class => 'form-control datepicker', :required => true, value: params[:start_date] %>
+            <b>Fin:</b>
+            <%= text_field_tag "end_date", "", class: "form-control", :class => 'form-control datepicker', :required => true, value: params[:end_date] %>
+          </div>
+          <%= submit_tag 'Generar', class: "btn btn-primary" %>
+        </div>
+    <% end %>
+    <br><br><br><br>
+
+    <%= form_tag('/reports/employees', method: :get) do %>
+        <b>Jornaleros:</b>
+        <br>
+        <div class="field col-md-12 form-group form-inline">
+          <div class="field form-group col-md-5">
+            <b>Contrato</b>
+            <%= select_tag "contract_id", options_from_collection_for_select(Contract.all, "id", "name"), prompt: "Todos", class: "form-control" %>
+            <b>Jornalero</b>
+            <%= select_tag "employee_id", options_from_collection_for_select(Employee.all, "id", "name"), prompt: "Todos", class: "form-control" %>
+          </div>
+
+          <div class="field form-group">
+            <b>Inicio:</b>
+            <%= text_field_tag "start_date", "", class: "form-control", :class => 'form-control datepicker', :required => true, value: params[:start_date] %>
+            <b>Fin:</b>
+            <%= text_field_tag "end_date", "", class: "form-control", :class => 'form-control datepicker', :required => true, value: params[:end_date] %>
+          </div>
+          <%= submit_tag 'Generar', class: "btn btn-primary" %>
+        </div>
+    <% end %>
+
+  </div>
+  <div class="box-footer">
+    <div class="pull-right">
+      <%= link_to "<i class=\"fa fa-arrow-left\"></i>".html_safe, root_path, :class => 'btn btn-default', :title => 'Atrás' %>
+    </div>
+  </div>
+</div>
