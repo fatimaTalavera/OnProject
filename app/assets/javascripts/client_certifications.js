@@ -10,7 +10,7 @@ function getRubroPrice(currentElement) {
         },
         success: function (data) {
             var tr = $(currentElement).parent().parent();
-            var price = NumberHelper.aMoneda(Math.round(data.price));
+            var price = Math.round(data.price);
             tr.find('.price').val(price);
             tr.find('.quantity').val(data.quantity - data.certified_quantity);
             tr.find('.measurement').val(data.measurement_unit);
@@ -32,7 +32,7 @@ function getRubroTotal(currentElement) {
     }else{
         var total = price * quantity;
     }
-    self.find('.total').val(NumberHelper.aMoneda(total));
+    self.find('.total').val(total);
 };
 
 

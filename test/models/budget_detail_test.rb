@@ -16,8 +16,4 @@ class BudgetDetailTest < ActiveSupport::TestCase
     assert_not budget_detail.valid?, "Cannot save Budget_detail without quantity. Errors: #{budget_detail.errors.to_a.to_sentence}"
   end
 
-  test "Should update certified_quantity" do
-    assert_equal(9, BudgetDetail.first.update_certified_quantity)
-  end
-
 end
