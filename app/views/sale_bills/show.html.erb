@@ -89,7 +89,7 @@
                             <%= f.hidden_field :installment_id, value: i.id %>
                             <div class="col-md-12">
                               <div class="input-group">
-                                <%= f.text_field :amount, value: i.balance, class: "form-control input-sm maskMoneda" %>
+                                <%= f.text_field :amount, value: i.balance, class: "form-control input-sm" %>
                                 <span class="input-group-btn">
                                   <%= f.submit "Pagar", {:class => "btn btn-warning btn-sm"} %>
                                 </span>

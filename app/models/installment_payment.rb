@@ -5,12 +5,16 @@ class InstallmentPayment < ApplicationRecord
   #hacer logica de restar a cuotas
   before_create :restar_a_cuotas
   before_create :restar_a_factura
-
-  validates :date, :presence=>true
+  before_create :asignar_fecha
+  #validates :date, :presence=>true
   validates :amount, :presence =>true
 
   def restar_a_cuotas
     self.installment.update(balance: self.installment.balance - self.amount)
+  end
+
+  def asignar_fecha
+    self.date = Date.today
   end
 
   def restar_a_factura
