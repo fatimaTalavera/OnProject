@@ -11,9 +11,8 @@ class RubroMaterialDetail < ApplicationRecord
   validates :quantity, :presence => {:message => "No puede estar vacío"}
   validates :material_id, :presence => {:message => "Debe seleccionar un material"}
   validates :measurement_unit, :presence => {:message => "No puede estar vacío"}
-  validates :quantity, :presence => {:message => "No puede estar vacío"}
   validates :price, :presence => {:message => "No puede estar vacío"}
-  #validates :subtotal, :presence =>true
+
 
   validate :valid_quant_num
 
@@ -22,7 +21,7 @@ class RubroMaterialDetail < ApplicationRecord
   end
 
   def calculate_price
-    self.rubro.update(price: self.rubro.price + self.subtotal)
+    self.rubro.update_attribute(:price, self.rubro.price + self.subtotal)
   end
 
   def sum_to_external_price
@@ -33,7 +32,7 @@ class RubroMaterialDetail < ApplicationRecord
   end
 
   def sub_to_external_price
-    self.rubro.update(price: self.rubro.price - self.subtotal)
+    self.rubro.update_attribute(:price, self.rubro.price - self.subtotal)
   end
 
   def valid_quant_num

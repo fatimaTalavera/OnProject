@@ -1,11 +1,13 @@
 var ClientCertification = (function(){
 
   function initFormEvents(){
-    Material.search({selector: elements.rubroSearch, url: setSearchRubroUrl});
+    NumberHelper.mascaraMoneda('.maskMoneda');
+    //Material.search({selector: elements.rubroSearch, url: setSearchRubroUrl});
     $("#details-body").on("nested:fieldAdded", function(event, insertedItem) {
+      NumberHelper.mascaraMoneda('.maskMoneda');
       $(event.target).find(':input').enableClientSideValidations();
-      var name_field = event.field.find(elements.rubroSearch.selector);
-      Material.search($.extend({selector: name_field.val($(event.link).data('predefined-name')), url: setSearchRubroUrl}));
+      //var name_field = event.field.find(elements.rubroSearch.selector);
+      //Material.search($.extend({selector: name_field.val($(event.link).data('predefined-name')), url: setSearchRubroUrl}));
     });
   }
 

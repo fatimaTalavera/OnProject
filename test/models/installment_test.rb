@@ -27,4 +27,8 @@ class InstallmentTest < ActiveSupport::TestCase
     assert_not installment.valid?, "The installment was not valid. Errors: #{installment.errors.to_a.to_sentence}"
   end
 
+  test "Should update balance of installment" do
+    @installment = Installment.new(amount:200)
+    assert_equal(200,@installment.set_balance)
+  end
 end

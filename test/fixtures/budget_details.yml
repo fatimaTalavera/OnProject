@@ -5,6 +5,7 @@ one:
   rubro: one
   price: 9
   quantity: 9
+  certified_quantity: 9
   subtotal: 9
   utility: 9.99
 
@@ -13,5 +14,6 @@ two:
   rubro: two
   price: 9
   quantity: 9
+  certified_quantity: 9
   subtotal: 9
   utility: 9.99

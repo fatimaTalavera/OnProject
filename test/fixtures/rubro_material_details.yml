@@ -4,8 +4,12 @@ one:
   material: one
   quantity: 1
   subtotal: 1
+  price: 0
+  rubro: one
 
 two:
   material: two
   quantity: 1
   subtotal: 1
+  price: 0
+  rubro: two

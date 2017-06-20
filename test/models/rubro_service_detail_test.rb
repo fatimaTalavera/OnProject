@@ -16,8 +16,18 @@ class RubroServiceDetailTest < ActiveSupport::TestCase
     assert_not rubroServiceDetail.valid?, "The rubro service detail was not valid. Errors: #{rubroServiceDetail.errors.to_a.to_sentence}"
   end
 
-  test "Should save rubro service detail without subtotal" do
-    rubroServiceDetail = RubroServiceDetail.new(service_id: 1, quantity: 1,measurement_unit:'m' )
-    assert_not rubroServiceDetail.valid?, "The rubro service detail was not valid. Errors: #{rubroServiceDetail.errors.to_a.to_sentence}"
+  test "Should calculate subtotal rubro service detail" do
+    assert_equal(18, RubroServiceDetail.first.calculate_subtotal)
   end
+
+  test "Should update price rubro increment" do
+    assert_equal(true, RubroServiceDetail.first.calculate_price)
+    assert_equal(501, RubroServiceDetail.first.rubro.price)
+  end
+
+  test "Should update price rubro substract" do
+    assert_equal(true, RubroServiceDetail.first.sub_to_external_price)
+    assert_equal(499, RubroServiceDetail.first.rubro.price)
+  end
+
 end

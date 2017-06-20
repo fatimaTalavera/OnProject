@@ -61,6 +61,18 @@
           </div>
         </div>
 
+        <div class="field col-md-12 form-group">
+          <div class="col-md-6 form-group">
+            <div class="col-sm-4 label-pad">
+              <%= f.label :attachment, 'Adjuntar documento:', class: 'control-label' %>
+            </div>
+              <div class="col-md-6">
+                <%= f.file_field :attachment, :class => 'file-style form-control'%>
+                <p class="help-block">Se aceptan archivos PDF, DOC y DOCX.</p>
+              </div>
+            </div>
+        </div>
+
         <div class="field col-md-12 form-group" style="padding-left: 30px">
           <%= f.check_box :has_advance_payment, :id => 'has_advance_payment' %>
           <span>Registrar anticipo</span>

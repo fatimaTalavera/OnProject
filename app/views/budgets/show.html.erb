@@ -80,6 +80,7 @@
                 <td><%= eval(sprintf("%3.2f",budget_detail.quantity)) %></td>
                 <td><%= number_to_currency_py(budget_detail.cost) %></td>
                 <td><%= budget_detail.utility %></td>
+                <td><%= number_to_currency_py(budget_detail.price) %></td>
                 <td><%= number_to_currency_py(budget_detail.subtotal) %></td>
               </tr>
           <% end %>

@@ -6,14 +6,14 @@ function getRubroPrice(currentElement) {
         type: "GET",
         dataType: "json",
         data: {
-            id: rubro_id,
+            id: rubro_id
         },
         success: function (data) {
             var tr = $(currentElement).parent().parent();
-            var price = data.price;
-            var quantity = data.certified_quantity;
+            var price = NumberHelper.aMoneda(Math.round(data.price));
             tr.find('.price').val(price);
-            tr.find('.quantity').val(quantity);
+            tr.find('.quantity').val(data.quantity - data.certified_quantity);
+            tr.find('.measurement').val(data.measurement_unit);
             getRubroTotal(tr);
         }
     });
@@ -23,14 +23,16 @@ function getRubroPrice(currentElement) {
 function getRubroTotal(currentElement) {
     var self = $(currentElement);
     var amount_made = self.find('.quantity').val();
-    var price = self.find('.price').val();
+    var price = NumberHelper.aNumero(self.find('.price').val());
+    isNaN(price) ? 0 : price;
     var quantity = self.find('.amount_to_certify').val();
-    if (quantity > amount_made){
-                $("#myModal").modal();
+    isNaN(quantity) ? 0 : quantity;
+    if (Number(quantity) > amount_made){
+        $("#myModal").modal();
     }else{
-    var total = (undefined !== price && undefined !== quantity)? price * quantity : 0;
+        var total = price * quantity;
     }
-    self.find('.total').val(Math.round(total));
+    self.find('.total').val(NumberHelper.aMoneda(total));
 };
 
 

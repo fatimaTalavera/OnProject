@@ -2,12 +2,14 @@
 
 one:
   client_certification: one
-  quantity: 1.5
+  quantity: 9
   price: 1.5
   total: 1.5
+  budget_detail: one
 
 two:
   client_certification: two
   quantity: 1.5
   price: 1.5
   total: 1.5
+  budget_detail: two

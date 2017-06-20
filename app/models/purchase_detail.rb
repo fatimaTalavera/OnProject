@@ -21,10 +21,9 @@ class PurchaseDetail < ApplicationRecord
 
   validates :material_id, :presence => {:message => "Debe seleccionar un material"}
 
-  private
 
   def set_total
-    self.total = self.price.to_i * self.quantity.to_i
+    self.total = self.price.to_i * self.quantity
   end
 
 end

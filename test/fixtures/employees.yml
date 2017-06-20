@@ -7,3 +7,4 @@ one:
   address: MyString
   phone: 12345
   email: mail@test.com
+  balance: 2000

@@ -6,6 +6,9 @@ table.table-list {
   td {
     word-wrap:break-word;
   }
+  th {
+    text-align: center;
+  }
 }
 
 /*Configuracion para los mensajes en las validaciones*/
