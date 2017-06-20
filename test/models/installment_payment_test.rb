@@ -12,11 +12,6 @@ class InstallmentPaymentTest < ActiveSupport::TestCase
     assert_not installmentPayment.valid?, "The installment payment was not valid. Errors: #{installmentPayment.errors.to_a.to_sentence}"
   end
 
-  test "Should not save installment payment without date" do
-    installmentPayment = InstallmentPayment.new(installment_id: 1, amount: 1000)
-    assert_not installmentPayment.valid?, "The installment payment was not valid. Errors: #{installmentPayment.errors.to_a.to_sentence}"
-  end
-
   test "Should update balance of installment" do
     assert_equal(true,InstallmentPayment.first.restar_a_cuotas)
     assert_equal(0,InstallmentPayment.first.installment.balance)

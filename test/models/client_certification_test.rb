@@ -32,14 +32,8 @@ class ClientCertificationTest < ActiveSupport::TestCase
   end
 
   test "Should update certified_quantity of budget" do
-    assert_equal(true, ClientCertification.first.subtract_missing_amount)
-    assert_equal(8, ClientCertification.first.client_certification_details.first.budget_detail.certified_quantity)
-  end
-
-  test "Should update certified_quantity and change state of budget" do
-    assert_equal(true, ClientCertification.last.subtract_missing_amount)
-    assert_equal(0, ClientCertification.last.client_certification_details.last.budget_detail.certified_quantity)
-    assert_equal("certified",ClientCertification.last.client_certification_details.last.budget_detail.state)
+    assert_equal(1, ClientCertification.first.subtract_missing_amount)
+    assert_equal(10.5, ClientCertification.first.client_certification_details.first.budget_detail.certified_quantity)
   end
 
 end

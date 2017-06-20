@@ -7,7 +7,7 @@ class Budget < ApplicationRecord
   belongs_to :contract
   has_many :budget_details
 
-  delegate :name, :ruc, to: :client, prefix: true
+  delegate :name, :ruc, :email, :adress, :phone, to: :client, prefix: true
   delegate :name, to: :rubro, prefix: true
 
   accepts_nested_attributes_for :budget_details, allow_destroy: true

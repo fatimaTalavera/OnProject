@@ -61,10 +61,10 @@ class ContractPdf < Prawn::Document
 
     font_size(12) do
       text_box "Cliente: #{@contract.budget.client_name}", :kerning => true, :at => [0, y - 160]
-      text_box "RUC: #{@contract.budget.client.ruc}", :kerning => true, :at => [0, y - 180]
-      text_box "Email: #{@contract.budget.client.email}", :kerning => true, :at => [250, y - 180]
-      text_box "Dirección: #{@contract.budget.client.adress}", :kerning => true, :at => [0, y - 200]
-      text_box "Teléfono: #{@contract.budget.client.phone}", :kerning => true, :at => [0, y - 220]
+      text_box "RUC: #{@contract.budget.client_ruc}", :kerning => true, :at => [0, y - 180]
+      text_box "Email: #{@contract.budget.client_email}", :kerning => true, :at => [250, y - 180]
+      text_box "Dirección: #{@contract.budget.client_adress}", :kerning => true, :at => [0, y - 200]
+      text_box "Teléfono: #{@contract.budget.client_phone}", :kerning => true, :at => [0, y - 220]
     end
     stroke do
       horizontal_line 0, 550, :at => y - 240
