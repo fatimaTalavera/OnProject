@@ -43,6 +43,6 @@ class AccountEmployee < ApplicationRecord
         Certification.find(l).update_attribute(:state, 3)
       end
     end
-
+  true
   end
 end

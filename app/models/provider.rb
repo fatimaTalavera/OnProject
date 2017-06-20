@@ -6,7 +6,8 @@ class Provider < ApplicationRecord
   has_many :payments, through: :purchase_bills
 
   validates :name,  :presence => {:message => "No puede estar en blanco"},
-            :length => { maximum:100, :message => "Permite hasta 100 caracteres"}
+            :length => { maximum:100, :message => "Permite hasta 100 caracteres"},
+            format: { :with => VALID_LETTER_REGEX, message: 'Solo permite letras'}
 
   validates :ruc, :presence => {:message => "No puede estar en blanco"},
             :format => {:multiline => true, with: VALID_RUC_REGEX, message: "Formato de RUC/CI incorrecto (Ej: 99999-9 o 99999)"},
