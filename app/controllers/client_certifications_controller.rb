@@ -22,9 +22,9 @@ class ClientCertificationsController < ApplicationController
   def new
     add_breadcrumb I18n.t('helpers.breadcrumbs.client_certifications.new')
     @client_certification = ClientCertification.new
-    #@client_certification.contract = Contract.find(params[:contract_id])
     @client_certification.contract_id = params[:contract_id]
     @client_certification.date = Time.now
+    @client_certification.client_certification_details.build
   end
 
   # GET /client_certifications/1/edit

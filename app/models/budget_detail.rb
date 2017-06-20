@@ -11,8 +11,6 @@ class BudgetDetail < ApplicationRecord
   validate 'valid_utility_num'
   validate 'valid_quant_num'
 
-  before_create :update_certified_quantity
-
   def valid_utility_num
     if utility.nil? == true
       errors.add(:utility, "No puede estar vacío")
@@ -31,10 +29,6 @@ class BudgetDetail < ApplicationRecord
     if (quantity.nil? == false) and quantity <= 0
       errors.add(:quantity, "Debe ser mayor a 0")
     end
-  end
-
-  def update_certified_quantity
-    self.certified_quantity = self.quantity
   end
 
 end

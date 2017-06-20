@@ -44,7 +44,7 @@
     </div>
 
     <div class="box-header with-border">
-      <h3 class="box-title">Rubros a certificar:</h3>
+      <h3 class="box-title">Rubros certificados:</h3>
     </div>
 
     <div class="col-md-12 form-group">
@@ -52,6 +52,7 @@
         <thead>
         <tr>
           <th>Rubro</th>
+          <th>Unidad</th>
           <th>Precio</th>
           <th>Cantidad hecha</th>
           <th>Cantidad total</th>
@@ -62,13 +63,20 @@
         <% @client_certification.client_certification_details.each do |detail| %>
             <tr>
               <td><%= detail.budget_detail.rubro_name %>
-              <td><%=  number_to_currency_py(detail.price) %>
-              <td><%= detail.quantity %>
-              <td><%= detail.total_quantity %>
-              <td><%= number_to_currency_py(detail.total) %>
+              <td><%= detail.budget_detail.measurement_unit %>
+              <td class="text-right"><%=  number_to_currency_py(detail.price) %>
+              <td class="text-right"><%= detail.quantity %>
+              <td class="text-right"><%= detail.total_quantity %>
+              <td class="text-right"><%= number_to_currency_py(detail.total) %>
             </tr>
         <% end %>
         </tbody>
+        <tfoot>
+        <tr>
+          <td colspan="5" class="text-bold text-right">Total:</td>
+          <td class="text-bold text-right"><%= number_to_currency_py(@client_certification.client_certification_details.sum(:total)) %></td>
+        </tr>
+        </tfoot>
       </table>
     </div>
 
@@ -76,9 +84,6 @@
 
   <div class="box-footer">
     <div class="pull-right">
-      <% if (can? :update, ClientCertification) %>
-      <%= link_to "<i class=\"fa fa-pencil\"></i>".html_safe, edit_client_certification_path(@client_certification), :class => 'btn bg-orange' %>
-          <% end %>
       <%= link_to "<i class=\"fa fa-arrow-left\"></i>".html_safe, client_certifications_path, :class => 'btn btn-default' %>
     </div>
   </div>

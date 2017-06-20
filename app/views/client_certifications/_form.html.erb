@@ -6,27 +6,28 @@
           <div class="col-md-3">
             <%= f.label :contract, 'Obra:', :class => 'control-label  tooltip_required' %>
           </div>
-          <div class="col-md-8 ">
-            <%= f.collection_select(:contract_id, Contract.all.order('name'), :id, :name, {prompt: 'Ninguno'}, :onchange => 'buscarRub(this);', :class => 'form-control', :disabled => 'disabled') %>
+          <div class="col-md-8">
+            <input value="<%= client_certification.contract_name %>" class="form-control" disabled>
           </div>
         </div>
         <div class="field col-md-6 form-group">
           <div class="col-md-3">
-            <%= f.label :received, 'Recibido por:', :class => 'control-label tooltip_required' %>
+            <%= f.label :date, 'Fecha:', :class => 'control-label tooltip_required' %>
           </div>
-          <div class="col-md-9">
-            <%= f.text_field :received, value: current_user.full_name.titleize, :class => 'form-control', :readonly => true %>
+          <div class="input-group col-md-5">
+            <%= f.text_field :date, :id => 'datepickerFrom', :class => 'input-group date form-control datepicker'%><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
           </div>
         </div>
+
       </div>
 
       <div class="field col-md-12 form-group">
         <div class="field col-md-6 form-group">
           <div class="col-md-3">
-            <%= f.label :date, 'Fecha:', :class => 'control-label tooltip_required' %>
+            <%= f.label :received, 'Aprobado por:', :class => 'control-label tooltip_required' %>
           </div>
-          <div class="input-group col-md-7">
-            <%= f.text_field :date, :id => 'datepickerFrom', :class => 'input-group date form-control datepicker'%><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+          <div class="col-md-8">
+            <%= f.text_field :received, :class => 'form-control' %>
           </div>
         </div>
       </div>
@@ -77,8 +78,9 @@
               <thead>
                 <tr>
                   <th class="col-md-3">Rubro</th>
-                  <th class="col-md-2">Cantidad a certificar</th>
-                  <th class="col-md-2">Cantidad faltante</th>
+                  <th class="col-md-1">Unidad</th>
+                  <th class="col-md-1">Cantidad a certificar</th>
+                  <th class="col-md-1">Cantidad faltante</th>
                   <th class="col-md-2">Precio(Gs)</th>
                   <th class="col-md-2">Total(Gs)</th>
                   <th class="col-md-1"> </th>
@@ -87,11 +89,12 @@
               <tbody id="details-body">
               <%= f.fields_for :client_certification_details, :wrapper => false do |form| %>
                   <tr class="fields" onchange='getRubroTotal(this);'>
-                    <td><%=form.collection_select(:budget_detail_id, client_certification.budget_details.pending, :id, :rubro_name, {prompt: 'Seleccionar'}, :onchange => 'getRubroPrice(this);', class: 'form-control select2 rubro-search')%></td>
-                    <td><%=form.number_field :quantity, class: 'form-control amount_to_certify'%></td>
-                    <td><%=form.number_field :total_quantity, class: 'form-control quantity', :readonly => true%></td>
-                    <td><%=form.number_field :price, class: 'form-control price', :readonly => true%></td>
-                    <td><%=form.number_field :total, class: 'form-control total', :readonly => true%></td>
+                    <td><%=form.collection_select(:budget_detail_id, client_certification.budget_details.pending, :id, :rubro_name, {prompt: 'Seleccionar'}, :onchange => 'getRubroPrice(this);', class: 'form-control select2')%></td>
+                    <td><input class="form-control measurement" value=""></td>
+                    <td><%=form.number_field :quantity, class: 'form-control amount_to_certify text-right'%></td>
+                    <td><%=form.number_field :total_quantity, class: 'form-control quantity text-right', :readonly => true%></td>
+                    <td><%=form.text_field :price, class: 'form-control price text-right', :readonly => true%></td>
+                    <td><%=form.text_field :total, class: 'form-control total text-right', :readonly => true%></td>
                     <td><%=form.link_to_remove '<i class="fa fa-trash"></i>'.html_safe, class: 'btn btn-danger'%></td>
                   </tr>
               <% end %>
